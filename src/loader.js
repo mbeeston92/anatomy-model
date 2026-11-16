@@ -24,6 +24,19 @@ export async function loadStructureData() {
   }
 }
 
+/** Quick views. The app still works without them, so a failure is not fatal. */
+export async function loadPresets() {
+  try {
+    const response = await fetch(`${BASE}data/presets.json`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    return (data.presets ?? []).filter((preset) => preset.id && preset.label);
+  } catch (cause) {
+    console.warn('Quick views could not be loaded (public/data/presets.json):', cause);
+    return [];
+  }
+}
+
 /** Download a file, calling onBytes(count) as each piece arrives. */
 async function fetchWithProgress(url, onBytes) {
   const response = await fetch(url);

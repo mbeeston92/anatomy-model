@@ -19,6 +19,7 @@ const TRANSITION_MS = 700;
 const MIN_DISTANCE = 0.06;   // 6 cm: close enough to fill the screen with one ligament
 const MAX_DISTANCE = 9;
 const FIT_MARGIN = 1.16;     // space round the model for the buttons
+const FRAME_MARGIN = 1.2;    // space round a framed region
 const WHEEL_ZOOM_RATE = 0.00154; // one mouse-wheel notch (100 units) = about 14% closer or further
 const ZOOM_GLIDE_MS = 70;        // how quickly the camera catches up with the wheel
 
@@ -101,6 +102,22 @@ export function createCameraRig({ camera, domElement, getPickTargets, onViewChan
   function focusOn(point) {
     spherical.setFromVector3(scratch.copy(camera.position).sub(controls.target));
     startTransition({ radius: spherical.radius, theta: spherical.theta, phi: spherical.phi, target: point }, 450);
+    setCurrentView(null);
+  }
+
+  /**
+   * Move smoothly so a box fills the screen. Keeps the current viewing angle
+   * unless a named view (front, back, left, right, top) is given.
+   */
+  function frame(box, { view = null } = {}) {
+    const sphere = box.getBoundingSphere(new THREE.Sphere());
+    const tanUp = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    const halfAngle = Math.atan(Math.min(tanUp, tanUp * camera.aspect));
+    const radius = THREE.MathUtils.clamp(
+      (Math.max(sphere.radius, 0.03) / Math.sin(halfAngle)) * FRAME_MARGIN, MIN_DISTANCE * 2, MAX_DISTANCE);
+    spherical.setFromVector3(scratch.copy(camera.position).sub(controls.target));
+    const angle = VIEWS[view] ?? { theta: spherical.theta, phi: spherical.phi };
+    startTransition({ radius, theta: angle.theta, phi: angle.phi, target: sphere.center });
     setCurrentView(null);
   }
 
@@ -229,6 +246,7 @@ export function createCameraRig({ camera, domElement, getPickTargets, onViewChan
     setBounds,
     goTo,
     focusOn,
+    frame,
     update,
     get currentView() { return currentView; },
     get isTransitioning() { return transition !== null; },

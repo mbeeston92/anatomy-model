@@ -10,6 +10,7 @@
     "build": "vite build",
     "preview": "vite preview --open",
     "check": "node tests/check-viewer.mjs",
+    "check:regions": "node tests/check-regions.mjs",
     "build:models": "node scripts/build-models.mjs",
     "export": "node scripts/build-models.mjs --only export",
     "compress": "node scripts/compress.mjs",

@@ -235,4 +235,93 @@ Other commands:
 
 ### Next step
 
-Stage 3. Not started.
+Done; see Stage 3 below.
+
+## Stage 3: hide and restore by region, system filter, quick views — DONE
+
+### How to use the region controls
+
+Everything is in the side panel, top to bottom:
+
+1. **Quick views.** One click sets region, systems and camera together. Choose Left, Right or Both first (it starts on Right), then click a view. The button stays teal while that view is on.
+2. **Show everything / Undo / Redo.** This bar stays in sight while the panel scrolls. "Show everything" brings back all regions, all systems and anything a quick view hid. Undo and Redo step through visibility changes; `Ctrl+Z` and `Ctrl+Shift+Z` do the same (`Cmd` on a Mac; `Ctrl+Y` also redoes). The camera is not part of undo.
+3. **Systems.** Untick a system to remove it everywhere, e.g. untick Muscles to see the ligaments underneath. This works together with the regions.
+4. **Body regions**, head to toe. For arm and leg regions, first pick **Left**, **Right** or **Both**, then press:
+   - **Hide**: removes that region.
+   - **Show**: brings it back.
+   - **Isolate**: shows only that region and zooms to it. Press Isolate again to end it.
+   A hidden region is greyed and crossed out and says "Hidden" (or "Left hidden" / "Right hidden"). The isolated region has a teal bar and says "Showing only this". Head and neck, chest and lower back have no left/right choice.
+5. **Options.**
+   - "Show hidden regions as a faint outline": hidden regions stay as a see-through silhouette so the patient keeps their bearings. Off to start with.
+   - "Zoom to a region when I isolate it": untick to keep the camera where it is.
+
+Example: knee row, Left, Isolate, then untick Muscles and Bursae = left knee bones, ligaments, cartilage, tendons and nerves. Rotate to the back to see the cruciates.
+
+### The rule for structures in more than one region
+
+Agreed with the user (the alternative to the rule in the stage brief):
+
+- **Soft tissue** is shown only if none of its regions is hidden. Hiding the thigh removes the quadriceps, the hamstrings and their tendons, including the quadriceps/patellar tendon at the knee.
+- **Bones** stay until every region they belong to is hidden. Hiding the thigh leaves the femur, so the hip and knee stay whole. Hiding the right shoulder removes the collar bone but leaves the humerus and shoulder blade.
+- **Isolate** shows everything listed under that region, even where it runs into the next region (isolating the knee shows the whole femur, tibia, fibula and the full length of the muscles that cross the knee). The camera frames only the structures that belong to that region alone, so it lands on the joint.
+- **Midline structures** (spine, sacrum, spinal cord) count a region as hidden only when both sides are hidden, and show when either side is isolated.
+- Structures removed by a system tick box or by a quick view are never shown, isolated or not.
+
+### How to add a quick view
+
+Open `public/data/presets.json` in a text editor, copy one block between `{` and `}` (with the comma between blocks) and change:
+
+- `id`: a short name of your own, no spaces, different from the others.
+- `label`: the words on the button.
+- `isolate`: the region, spelt exactly as in `public/data/structures.json` under "regions" (e.g. `"pelvis and hip"`, `"abdomen and lower back (lumbar)"`). Leave the line out to show the whole body.
+- `hideSystems`: any of `"bone"`, `"cartilage"`, `"ligament"`, `"tendon"`, `"muscle"`, `"nerve"`, `"bursa"`.
+- `hideStructures`: single structures to hide, by id from `data/structures-approved.csv` without the `_l` / `_r` ending (e.g. `"muscle_deltoid"`).
+- `view`: `"front"`, `"back"`, `"left"`, `"right"`, `"top"`, or `"outer"` / `"inner"` (the outer or inner side of whichever limb is chosen).
+
+Save and refresh the browser. A mistyped name is skipped and reported in the browser console (F12); the app carries on.
+
+Current quick views:
+
+| Quick view | Isolates | Hides | Camera |
+|---|---|---|---|
+| Knee – ligaments | knee | muscles, bursae | front |
+| Shoulder – rotator cuff | shoulder | bursae; deltoid, trapezius (3 parts), pectoralis major, latissimus dorsi | back |
+| Ankle – ligaments | ankle and foot | muscles | outer side |
+| Lower back | abdomen and lower back | nothing (muscles shown, as the user asked) | back |
+
+### What was built
+
+- `src/visibility.js`: the rule above, the undo/redo history (100 steps) and ghost mode. One place decides what every structure looks like.
+- `src/panel.js`: the panel controls. `public/data/presets.json`: the quick views.
+- `src/camera.js`: new `frame(box, { view })` to glide to a region.
+- Panel widened from 280 to 380 pixels to fit the region rows.
+- `npm run check:regions` (`tests/check-regions.mjs`): drives the real panel, 34 pass/fail checks and screenshots 10 to 19 in `work/screens/`.
+
+### Decisions made
+
+- **Bursae tick box added** (seventh system), as agreed.
+- **Left/Right/Both** for shoulder to hand and pelvis to foot; one control for head and neck, chest and lower back, as agreed.
+- **Ghost outlines apply to regions only.** Something removed with a system tick box or by a quick view disappears completely, so it does not haze over what is being revealed.
+- Ghosts cannot be double-clicked; only real, shown structures respond.
+- Hiding the region that is currently isolated ends the isolation (everything else comes back) and then hides that region.
+- A quick view replaces whatever was set before, and always moves the camera, even when "zoom when I isolate" is off.
+- The Shoulder quick view also hides bursae, because the subacromial bursa sits over the cuff. Remove `"bursa"` from its `hideSystems` to change this.
+- Nothing is stored: all of this resets when the page is refreshed.
+
+### Checked (16 November 2026)
+
+- `npm run check:regions`: all checks pass, no console errors. Screenshots looked at: isolate left knee; the same with muscles off (ACL, PCL and both menisci clearly visible from behind); hide right shoulder; hide thigh; ghost mode (whole body and zoomed); all four quick views; quick view on the left side.
+- `npm run check` (Stage 2): views, double-click, wheel zoom, load-failure message and retry all still work. `npm run build` succeeds.
+
+### Known issues / things to look at
+
+- **Not measured: frame rate with ghost mode on.** Ghost mode draws the whole body see-through, which is more work for the graphics chip. It looked fine in the check but was not timed.
+- The panel is long: the region list needs scrolling on a laptop screen. The restore bar stays visible. Systems sit above the regions so both are reachable without much scrolling.
+- After a quick view, the region row's own Left/Right/Both chooser does not move to match (the row still says "Showing only right" correctly).
+- With the knee isolated and viewed from the front, the cruciates are behind the patella and patellar tendon; rotate to the back or side to see them.
+- The **soft-tissue side switch** from the brief (soft tissue on left, right or both for the whole body) is not built yet. The Left/Right region controls partly cover it.
+- Close-up views have strong perspective (near parts look larger). This is the Stage 2 camera lens; it can be made flatter if wanted.
+
+### Next step
+
+Stage 4 (selection, names, search). Not started.

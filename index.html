@@ -12,16 +12,56 @@
       <aside id="panel" class="panel" aria-label="Controls">
         <div class="panel__inner">
           <h1 class="panel__title">Anatomy model</h1>
-          <p class="panel__note">
-            Controls for body regions, systems and highlights will appear here.
+
+          <section id="quick-views" class="section" aria-labelledby="quick-views-heading">
+            <div class="section__head">
+              <h2 id="quick-views-heading" class="panel__heading">Quick views</h2>
+              <div id="preset-side"></div>
+            </div>
+            <div id="presets" class="presets"></div>
+          </section>
+
+          <div class="restore">
+            <button id="show-everything" class="button button--small restore__all" type="button">Show everything</button>
+            <button id="undo" class="button button--small" type="button" title="Undo (Ctrl+Z)" disabled>Undo</button>
+            <button id="redo" class="button button--small" type="button" title="Redo (Ctrl+Shift+Z)" disabled>Redo</button>
+          </div>
+          <p id="structures-note" class="note" hidden>
+            <span id="structures-count"></span>
+            <button id="structures-show" class="link" type="button">Show them</button>
           </p>
-          <h2 class="panel__heading">Moving the model</h2>
-          <dl class="help">
-            <div><dt>Rotate</dt><dd>Drag</dd></div>
-            <div><dt>Move</dt><dd>Right-drag, or drag with two fingers</dd></div>
-            <div><dt>Zoom</dt><dd>Scroll or pinch</dd></div>
-            <div><dt>Centre on a point</dt><dd>Double-click the model</dd></div>
-          </dl>
+
+          <section class="section" aria-labelledby="systems-heading">
+            <h2 id="systems-heading" class="panel__heading">Systems</h2>
+            <div id="systems" class="checks"></div>
+          </section>
+
+          <section class="section" aria-labelledby="regions-heading">
+            <h2 id="regions-heading" class="panel__heading">Body regions</h2>
+            <div id="regions" class="regions"></div>
+          </section>
+
+          <section class="section" aria-labelledby="options-heading">
+            <h2 id="options-heading" class="panel__heading">Options</h2>
+            <label class="check check--wide">
+              <input id="option-ghost" class="check__box" type="checkbox" />
+              <span>Show hidden regions as a faint outline</span>
+            </label>
+            <label class="check check--wide">
+              <input id="option-frame" class="check__box" type="checkbox" checked />
+              <span>Zoom to a region when I isolate it</span>
+            </label>
+          </section>
+
+          <details class="section help-box">
+            <summary class="panel__heading">Moving the model</summary>
+            <dl class="help">
+              <div><dt>Rotate</dt><dd>Drag</dd></div>
+              <div><dt>Move</dt><dd>Right-drag, or drag with two fingers</dd></div>
+              <div><dt>Zoom</dt><dd>Scroll or pinch</dd></div>
+              <div><dt>Centre on a point</dt><dd>Double-click the model</dd></div>
+            </dl>
+          </details>
         </div>
       </aside>
 

@@ -1,0 +1,43 @@
+{
+  "presets": [
+    {
+      "id": "knee-ligaments",
+      "label": "Knee – ligaments",
+      "isolate": "knee",
+      "hideSystems": ["muscle", "bursa"],
+      "hideStructures": [],
+      "view": "front"
+    },
+    {
+      "id": "shoulder-rotator-cuff",
+      "label": "Shoulder – rotator cuff",
+      "isolate": "shoulder",
+      "hideSystems": ["bursa"],
+      "hideStructures": [
+        "muscle_deltoid",
+        "muscle_trapezius_upper",
+        "muscle_trapezius_middle",
+        "muscle_trapezius_lower",
+        "muscle_pectoralis_major",
+        "muscle_latissimus_dorsi"
+      ],
+      "view": "back"
+    },
+    {
+      "id": "ankle-ligaments",
+      "label": "Ankle – ligaments",
+      "isolate": "ankle and foot",
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "view": "outer"
+    },
+    {
+      "id": "lower-back",
+      "label": "Lower back",
+      "isolate": "abdomen and lower back (lumbar)",
+      "hideSystems": [],
+      "hideStructures": [],
+      "view": "back"
+    }
+  ]
+}

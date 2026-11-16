@@ -7,16 +7,19 @@ import * as THREE from 'three';
 import { createStage } from './scene.js';
 import { createMaterials } from './materials.js';
 import { createRegistry } from './registry.js';
-import { createModelLoader, loadStructureData } from './loader.js';
+import { createModelLoader, loadStructureData, loadPresets } from './loader.js';
 import { createCameraRig } from './camera.js';
 import { createUI, listInWords } from './ui.js';
+import { createVisibility } from './visibility.js';
+import { createPanel } from './panel.js';
 
 const canvas = document.getElementById('canvas');
 const viewport = document.getElementById('viewport');
 
 const SETTLE_MS = 400;  // how long after movement stops before the sharp redraw
 
-let stage, rig, registry, loader;
+let stage, rig, registry, loader, visibility, panel;
+let frameOnIsolate = true;
 let needsRender = true;
 let moving = false;
 let lastMoved = 0;
@@ -67,7 +70,7 @@ function setUpStage() {
   rig = createCameraRig({
     camera: stage.camera,
     domElement: canvas,
-    getPickTargets: () => registry?.meshes() ?? [],
+    getPickTargets: () => visibility?.shownMeshes() ?? [],
     onViewChange: (name) => ui.setCurrentView(name),
   });
   rig.goTo('front', { immediate: true });
@@ -89,6 +92,28 @@ function setUpStage() {
   return true;
 }
 
+function frameRegion(region, sides, view = null) {
+  const box = visibility.frameBox(region, sides);
+  if (box) rig.frame(box, { view });
+}
+
+/** Turn a quick view's "view" into a camera view. "outer" and "inner" depend on the side. */
+function presetView(view, sides) {
+  if (view !== 'outer' && view !== 'inner') return view ?? null;
+  if (sides.length !== 1) return 'front';
+  const other = { left: 'right', right: 'left' };
+  return view === 'outer' ? sides[0] : other[sides[0]];
+}
+
+// Undo and redo from the keyboard.
+window.addEventListener('keydown', (event) => {
+  if (!visibility || !(event.ctrlKey || event.metaKey) || event.altKey) return;
+  if (event.target instanceof HTMLElement && event.target.matches('input[type="text"], input[type="search"], textarea')) return;
+  const letter = event.key.toLowerCase();
+  if (letter === 'z') { event.preventDefault(); if (event.shiftKey) visibility.redo(); else visibility.undo(); }
+  else if (letter === 'y') { event.preventDefault(); visibility.redo(); }
+});
+
 async function start() {
   if (!stage && !setUpStage()) return;
 
@@ -96,9 +121,28 @@ async function start() {
     if (!registry) {
       const data = await loadStructureData();
       registry = createRegistry(data);
+      const materials = createMaterials(data.systems);
+      visibility = createVisibility({
+        registry,
+        materials,
+        onChange: () => { panel?.refresh(); requestRender(); },
+      });
+      panel = createPanel({
+        visibility,
+        systems: data.systems,
+        presets: await loadPresets(),
+        onIsolated: (region, sides) => { if (frameOnIsolate) frameRegion(region, sides); },
+        onPreset: (preset, sides) => {
+          const isolated = visibility.applyPreset(preset, sides);
+          if (isolated) frameRegion(isolated.region, isolated.sides, presetView(preset.view, sides));
+          else if (preset.view) rig.goTo(presetView(preset.view, sides) ?? 'front');
+        },
+        onGhost: (on) => visibility.setGhost(on),
+        onFrameOption: (on) => { frameOnIsolate = on; },
+      });
       loader = createModelLoader({
         registry,
-        materials: createMaterials(data.systems),
+        materials,
         parent: stage.scene,
         onProgress: (state) => ui.setProgress(state),
         onSystemLoaded: (system, group) => {
@@ -108,7 +152,7 @@ async function start() {
             rig.goTo('front', { immediate: true });
             stats.firstModelAt = performance.now();
           }
-          requestRender();
+          visibility.apply();      // newly arrived parts follow the current settings
         },
       });
     }
@@ -144,6 +188,7 @@ window.__viewer = {
   get stage() { return stage; },
   get rig() { return rig; },
   get registry() { return registry; },
+  get visibility() { return visibility; },
   stats,
   requestRender,
 };
