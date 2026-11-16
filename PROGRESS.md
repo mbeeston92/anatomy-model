@@ -6,7 +6,7 @@
 - **Node:** v26. **Python:** 3.15 (used for the proposal script).
 - **Source files** (git-ignored, never modified):
   - `Source/Z-Anatomy/Startup.blend` (294 MB). The full atlas. This is the file all geometry comes from.
-  - `Source/Z-Biomechanics/Startup.blend` (133 MB). Skeleton and muscle attachment marks only, rigged to an armature (movable skeleton). Not used yet; likely useful for Stage 5 (joint movement).
+  - `Source/Z-Biomechanics/Startup.blend` (133 MB). Skeleton and muscle attachment marks only, rigged to an armature (movable skeleton). Not used. It was kept for joint movement, which has since been dropped (see the end of this file).
 - The folder on disk is `Source` with a capital S. Windows treats it the same as `source`.
 
 ## Stage 1a: inventory and proposed structure list — DONE, list approved
@@ -460,4 +460,18 @@ Done; see Stage 5 below.
 
 ### Next step
 
-Joint movement (knee, ankle, shoulder). Not started.
+Not decided. See "Joint movement: dropped" below for what is still open.
+
+## Joint movement: dropped (17 November 2026)
+
+### Decision
+
+- Joint movement (knee, ankle and shoulder sliders, with soft tissue following the bones) will not be built. A start was made on the knee and then removed completely by the user; nothing of it is in the project.
+- `CLAUDE.md` updated to match: "how a joint moves" and the joint movement feature were removed, and joint movement is listed as not in scope.
+
+### Still open from the brief and earlier stages
+
+- **Soft-tissue side switch** (left, right or both for the whole body) is not built yet (noted under Stage 3).
+- **Not yet on GitHub Pages.** Load time over a normal internet connection has not been measured.
+- **Names waiting for the user's view** (listed under Stage 4).
+- **Not measured:** frame rate with faint outlines (ghost mode) on, on a 4K screen, and on older Intel graphics.

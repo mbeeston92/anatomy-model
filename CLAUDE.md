@@ -7,7 +7,6 @@ Read this whole file before doing anything in this project. Then read `PROGRESS.
 A browser-based, interactive 3D model of the adult male body. A UK physiotherapist uses it on a laptop during appointments to show patients:
 - where their injury is
 - which structures are involved
-- how a joint moves
 
 The physiotherapist drives the app; the patient watches. The physiotherapist takes their own screenshots for patient handouts.
 
@@ -19,7 +18,7 @@ A physiotherapist, not a software developer. When you report back:
 - use plain English
 - give exact steps for anything they need to do (commands to type, links to open, files to edit)
 - explain what you did and why in a few sentences, not a technical log
-- ask clinical questions (names, which structures, how a movement should look) instead of guessing
+- ask clinical questions (names, which structures) instead of guessing
 
 ## Scope
 
@@ -42,6 +41,7 @@ The exact list is set by the user in `data/structures-approved.csv` (produced in
 - login or accounts
 - saving patient data
 - a backend server
+- joint movement (dropped by the user on 17 November 2026)
 
 ## Core features
 
@@ -68,7 +68,6 @@ The exact list is set by the user in `data/structures-approved.csv` (produced in
    Secondary control: show or hide each system (bones, cartilage, ligaments, tendons, muscles, nerves, bursae). This lets them reveal deep structures, e.g. hide muscles around the knee to show the cruciate ligaments.
 3. **Selection.** Click a structure to see its plain-English name in UK spelling, plus which side (left/right). Hovering shows the name too. A search box finds structures by name. A setting can show the medical name as well (off by default).
 4. **Coloured injury highlights.** Mark one or more structures in a chosen colour, e.g. red for the injured structure and amber for structures affected or under strain. Highlights can be cleared one at a time or all at once. A clean presentation view hides the interface for screenshots.
-5. **Joint movement.** Knee, ankle and shoulder move through physiological ranges using sliders. Soft tissues (muscles, tendons, ligaments, nerves) follow the bones believably.
 
 ## Technical decisions (already made; don't change without asking)
 
