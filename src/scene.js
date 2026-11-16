@@ -1,12 +1,12 @@
 // Scene setup: renderer, camera, lighting. No knowledge of anatomy or the interface.
 import * as THREE from 'three';
-import { createOutline } from './outline.js';
+import { createOutline, createGlow } from './outline.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const MAX_PIXEL_RATIO = 2;      // sharp when still
 const MOVING_PIXEL_RATIO = 1;   // lighter while the camera is moving
 
-export function createStage(canvas, container) {
+export function createStage(canvas, container, { highlightColours = [] } = {}) {
   const renderer = new THREE.WebGLRenderer({
     canvas,
     antialias: true,
@@ -71,12 +71,34 @@ export function createStage(canvas, container) {
   }
 
   const outline = createOutline(renderer, camera);
+  const glow = createGlow(renderer, camera, highlightColours);
+  let plain = false;             // presentation view and saved images: no selection outline
 
   function render() {
     renderer.render(scene, camera);
-    outline.render();            // selected / hovered structure, if any
+    glow.render();                  // injury highlights, if any
+    if (!plain) outline.render();   // selected / hovered structure, if any
+  }
+
+  /**
+   * Draw one frame at `ratio` times the on-screen size, hand the finished
+   * canvas to `use` (which must copy it straight away), then put things back.
+   */
+  function snapshot(ratio, use) {
+    const wasPlain = plain;
+    plain = true;
+    renderer.setPixelRatio(ratio);
+    render();
+    try { use(renderer.domElement); } finally {
+      plain = wasPlain;
+      renderer.setPixelRatio(pixelRatio);
+      render();
+    }
   }
 
   resize();
-  return { renderer, scene, camera, lights, outline, resize, render, setMoving };
+  return {
+    renderer, scene, camera, lights, outline, glow, resize, render, setMoving, snapshot,
+    setPlain(on) { plain = !!on; },
+  };
 }

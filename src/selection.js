@@ -14,6 +14,7 @@ export function createSelection({
   let selectedId = null;
   let hoverId = null;
   let medical = false;
+  let interceptClick = null;   // set while the next click means something else (placing a pain area)
   const pointer = { x: 0, y: 0, inside: false, buttons: 0, dirty: false, down: null };
 
   const hoverLabel = $('hover-label');
@@ -90,6 +91,7 @@ export function createSelection({
     if (!down || event.button !== 0) return;
     if (Math.hypot(event.clientX - down.x, event.clientY - down.y) > CLICK_SLOP) return;   // it was a drag
     const hit = picker.pick(event.clientX, event.clientY);
+    if (interceptClick?.(hit)) return;
     if (hit) select(hit.entry.id);
     else deselect();
   });
@@ -176,6 +178,7 @@ export function createSelection({
     get selectedId() { return selectedId; },
     get hoverId() { return hoverId; },
     get medical() { return medical; },
+    setClickInterceptor(fn) { interceptClick = fn; },
     setMedical(on) { medical = !!on; refreshCard(); pointer.dirty = true; },
     /** Call when visibility changes: the card and the hover may be out of date. */
     refresh() { refreshCard(); pointer.dirty = true; requestRender(); },

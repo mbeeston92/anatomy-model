@@ -22,6 +22,7 @@ const UNPAIRED = new Set([
 ]);
 
 const HISTORY_LIMIT = 100;
+export const MAX_SPOTS = 6;     // shaded pain areas at once (the oldest goes when a seventh is added)
 const key = (region, side) => `${region}|${side}`;
 
 const emptyState = () => ({
@@ -31,6 +32,8 @@ const emptyState = () => ({
   structuresOff: new Set(),   // structure ids hidden one by one (quick views, "Hide this")
   only: null,                 // id of the one structure being shown on its own ("Isolate this")
   preset: null,               // label of the quick view that produced this state
+  marks: [],                  // injury highlights, in the order made: [structure id, colour id]
+  spots: [],                  // shaded pain areas: { x, y, z, r, colour, on }
 });
 
 const serialise = (s) => JSON.stringify({
@@ -40,7 +43,12 @@ const serialise = (s) => JSON.stringify({
   structuresOff: [...s.structuresOff].sort(),
   only: s.only,
   preset: s.preset,
+  marks: s.marks,
+  spots: s.spots,
 });
+
+/** The same, leaving out highlights: "is anything hidden?" must not count them. */
+const serialiseView = (s) => serialise({ ...s, marks: [], spots: [] });
 
 const deserialise = (text) => {
   const o = JSON.parse(text);
@@ -51,16 +59,20 @@ const deserialise = (text) => {
     structuresOff: new Set(o.structuresOff),
     only: o.only ?? null,
     preset: o.preset,
+    marks: o.marks ?? [],
+    spots: o.spots ?? [],
   };
 };
 
-export function createVisibility({ registry, materials, onChange = () => {} }) {
+export function createVisibility({ registry, materials, looks = null, onChange = () => {} }) {
   const regions = registry.regions;
   let state = emptyState();
   let history = [serialise(state)];
   let position = 0;
   let ghost = false;
+  let emphasis = false;       // fade everything that is not highlighted
   let shown = [];
+  let highlighted = [];       // [{ mesh, colour }] for the highlights that are on show
 
   const ghostMaterial = new THREE.MeshBasicMaterial({
     name: 'mat_ghost',
@@ -98,25 +110,35 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
   /** Put the current state onto the meshes. */
   function apply() {
     shown = [];
+    highlighted = [];
+    const marks = new Map(state.marks);
+    const fade = emphasis && looks && (marks.size > 0 || state.spots.length > 0);
     for (const entry of registry.all()) {
       const mesh = entry.mesh;
       if (!mesh) continue;
       const status = statusOf(entry);
       const ghosted = (ghost || state.only !== null) && status === 'hidden';
+      const colour = status === 'shown' && looks ? marks.get(entry.id) : null;
       mesh.visible = status === 'shown' || ghosted;
-      mesh.material = ghosted ? ghostMaterial : materials.get(entry.data.system);
+      if (ghosted) mesh.material = ghostMaterial;
+      else if (colour && looks.highlight.has(colour)) mesh.material = looks.highlight.get(colour);
+      else mesh.material = fade ? looks.fade : materials.get(entry.data.system);
       mesh.userData.ghost = ghosted;
       if (status === 'shown') shown.push(mesh);
+      if (colour) highlighted.push({ mesh, colour });
     }
+    looks?.setSpots(state.spots);
     onChange();
   }
 
   // ----- History -----
 
-  function commit(change) {
+  function commit(change, { keep = false } = {}) {
     const next = deserialise(serialise(state));
-    next.preset = null;
-    next.only = null;            // any other change ends "Isolate this"
+    if (!keep) {                   // highlights (keep) leave the view as it is
+      next.preset = null;
+      next.only = null;            // any other change ends "Isolate this"
+    }
     change(next);
     const text = serialise(next);
     if (text === history[position]) return false;
@@ -219,7 +241,8 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
   }
 
   function showEverything() {
-    return commit((s) => Object.assign(s, emptyState()));
+    // Highlights stay: only "Clear all highlights" removes them.
+    return commit((s) => Object.assign(s, emptyState(), { marks: s.marks, spots: s.spots }));
   }
 
   /**
@@ -249,13 +272,49 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
       for (const e of found) structuresOff.add(e.id);
     }
     commit((s) => {
-      Object.assign(s, emptyState());
+      Object.assign(s, emptyState(), { marks: s.marks, spots: s.spots });
       if (region) isolateIn(s, region, list);
       s.systemsOff = systemsOff;
       s.structuresOff = structuresOff;
       s.preset = `${preset.id}|${[...list].sort().join('+')}`;
     });
     return region ? { region, sides: list } : null;
+  }
+
+  // ----- Highlights (injury colours) and shaded pain areas -----
+
+  const highlightOf = (id) => state.marks.find(([markId]) => markId === id)?.[1] ?? null;
+
+  /** Give a structure a highlight colour. The same colour again removes it. */
+  function setHighlight(id, colour) {
+    if (!registry.has(id)) return false;
+    const current = highlightOf(id);
+    return commit((s) => {
+      if (current === colour) s.marks = s.marks.filter(([markId]) => markId !== id);
+      else if (current) s.marks = s.marks.map((mark) => (mark[0] === id ? [id, colour] : mark));
+      else s.marks.push([id, colour]);
+    }, { keep: true });
+  }
+
+  function removeHighlight(id) {
+    return commit((s) => { s.marks = s.marks.filter(([markId]) => markId !== id); }, { keep: true });
+  }
+
+  function clearHighlights() {
+    return commit((s) => { s.marks = []; s.spots = []; }, { keep: true });
+  }
+
+  /** Shade everything within r metres of a point. `on` is the structure that was clicked. */
+  function addSpot({ x, y, z, r, colour, on = null }) {
+    const round = (n) => Math.round(n * 1000) / 1000;
+    return commit((s) => {
+      s.spots.push({ x: round(x), y: round(y), z: round(z), r: round(r), colour, on });
+      if (s.spots.length > MAX_SPOTS) s.spots.shift();
+    }, { keep: true });
+  }
+
+  function removeSpot(index) {
+    return commit((s) => { s.spots.splice(index, 1); }, { keep: true });
   }
 
   // ----- Questions the interface asks -----
@@ -289,6 +348,14 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
     isPaired,
     hide, show, isolate, isIsolated, setSystem, showStructures, showEverything, applyPreset,
     setStructure, isolateStructure, reveal,
+    highlightOf, setHighlight, removeHighlight, clearHighlights, addSpot, removeSpot,
+    /** [{ id, colour }] in the order they were made. */
+    highlights: () => state.marks.map(([id, colour]) => ({ id, colour })),
+    spots: () => state.spots.map((spot) => ({ ...spot })),
+    /** [{ mesh, colour }] for highlighted structures that are on show. */
+    highlightedMeshes: () => highlighted,
+    get emphasis() { return emphasis; },
+    setEmphasis(on) { emphasis = !!on; apply(); },
     get only() { return state.only; },
     get isolated() { return state.isolated; },
     structureOn: (id) => !state.structuresOff.has(id),
@@ -305,7 +372,7 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
     systemOn: (id) => !state.systemsOff.has(id),
     get structuresOffCount() { return state.structuresOff.size; },
     get preset() { return state.preset; },
-    get isDefault() { return serialise(state) === serialise(emptyState()); },
+    get isDefault() { return serialiseView(state) === serialiseView(emptyState()); },
     /** Meshes that are really shown (not ghosts): the ones a click can hit. */
     shownMeshes: () => shown,
   };

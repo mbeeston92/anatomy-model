@@ -5,7 +5,7 @@ import './styles.css';
 
 import * as THREE from 'three';
 import { createStage } from './scene.js';
-import { createMaterials } from './materials.js';
+import { createMaterials, createLooks } from './materials.js';
 import { createRegistry } from './registry.js';
 import { createModelLoader, loadStructureData, loadPresets } from './loader.js';
 import { createCameraRig } from './camera.js';
@@ -16,6 +16,9 @@ import { createPicker } from './picking.js';
 import { createSelection } from './selection.js';
 import { createSearchBox } from './searchbox.js';
 import { createLabels } from './labels.js';
+import { createPalette } from './palette.js';
+import { createHighlights } from './highlights.js';
+import { createPresentation } from './present.js';
 
 const canvas = document.getElementById('canvas');
 const viewport = document.getElementById('viewport');
@@ -23,6 +26,8 @@ const viewport = document.getElementById('viewport');
 const SETTLE_MS = 400;  // how long after movement stops before the sharp redraw
 
 let stage, rig, registry, loader, visibility, panel, picker, selection, searchBox, labels;
+let highlights, presentation;
+const palette = createPalette();   // highlight colours and their meanings (this session only)
 let frameOnIsolate = true;
 let needsRender = true;
 let moving = false;
@@ -64,7 +69,7 @@ function frame(now) {
 
 function setUpStage() {
   try {
-    stage = createStage(canvas, viewport);
+    stage = createStage(canvas, viewport, { highlightColours: palette.colours });
   } catch (cause) {
     console.error(cause);
     ui.showError({
@@ -133,7 +138,12 @@ async function start() {
       visibility = createVisibility({
         registry,
         materials,
-        onChange: () => { panel?.refresh(); selection?.refresh(); labels?.invalidate(); requestRender(); },
+        looks: createLooks(palette),
+        onChange: () => {
+          stage.glow.set(visibility.highlightedMeshes(), visibility.emphasis);
+          panel?.refresh(); selection?.refresh(); highlights?.refresh(); presentation?.refreshKey();
+          labels?.invalidate(); requestRender();
+        },
       });
       picker = createPicker({
         camera: stage.camera,
@@ -146,7 +156,16 @@ async function start() {
         outline: stage.outline,
         shouldZoom: () => frameOnIsolate,
         requestRender,
-        onChange: () => { labels?.invalidate(); requestRender(); },
+        onChange: () => { highlights?.refresh(); labels?.invalidate(); requestRender(); },
+      });
+      highlights = createHighlights({
+        palette, registry, visibility, selection, picker, canvas, viewport,
+        onNamesChanged: () => presentation?.refreshKey(),
+      });
+      presentation = createPresentation({
+        stage, viewport, requestRender,
+        coloursInUse: () => highlights.coloursInUse(),
+        onChange: () => { highlights.closeMenu(); selection.setHover(null); },
       });
       searchBox = createSearchBox({
         registry,
@@ -229,6 +248,9 @@ window.__viewer = {
   get picker() { return picker; },
   get selection() { return selection; },
   get labels() { return labels; },
+  get highlights() { return highlights; },
+  get presentation() { return presentation; },
+  palette,
   stats,
   requestRender,
 };

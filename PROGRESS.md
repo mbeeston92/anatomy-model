@@ -183,6 +183,7 @@ Other commands:
 
 - `npm run build` makes the finished static site in `dist/` (this is what goes on GitHub Pages; about 9 MB in total).
 - `npm run preview` opens that built site, to check it before publishing.
+- `npm run check:regions`, `check:select` and `check:highlights` run the checks for Stages 3, 4 and 5.
 - `npm run check` runs the automated check: it starts the app, takes screenshots into `work/screens/` (not committed) and prints load time and frame rate. Add `-- --headed` to watch it in a real browser window.
 
 ### What was built
@@ -399,4 +400,64 @@ No non-UK spellings were found.
 
 ### Next step
 
-The next stage, as set by the user (injury highlights and joint movement are still to build). Not started.
+Done; see Stage 5 below.
+
+## Stage 5: injury highlights, emphasis, pain areas, presentation view and Save image — DONE
+
+### How to use it
+
+- **Highlight a structure.** Select it (click it or use the search), then click a colour. The colour buttons are in three places: on the info card ("Highlight"), in the **Highlights** section of the panel, and in the right-click menu. Clicking the same colour again removes it; a different colour replaces it.
+- **Colours and what they mean:** Red "Injured", Amber "Affected / under strain", Green "Healing", Blue "Area to strengthen". Click the wording next to a colour in the Highlights section to change it. The change lasts until the page is refreshed.
+- **Right-click a structure** for a small menu: the four colours, Remove highlight, Hide this, Isolate this, Zoom to this. Right-*drag* still moves the model.
+- **Highlight list** (under the colours): colour dot, name, side and meaning. Click a row to select the structure and go to it (it is brought back if it was hidden). The × removes that highlight.
+- **Clear all highlights** removes every highlight and pain area. "Show everything" does not touch highlights.
+- **Undo / Redo** (buttons, `Ctrl+Z`, `Ctrl+Shift+Z`) cover highlights and pain areas, in the same history as hiding and showing.
+- **"Fade everything that is not highlighted"** (tick box): everything else turns a pale see-through grey so the highlighted structures are the focus. It does nothing until at least one highlight or pain area exists.
+- **Shade a pain area** (for vaguer presentations): choose a colour and a size (4 to 24 cm across), press "Shade a pain area", then click the model where the pain is. Everything within that distance of the point is tinted. `Esc` cancels. Up to 6 at once. Listed with the highlights; × removes it.
+- **Presentation view:** the button at the top right of the model, or the `P` key. Everything is hidden except the model, the colour key (only the colours in use, with their current wording) and the credit line. `P` or `Esc` returns. A short note about these keys shows for 3 seconds and then fades, so it is not in a screenshot taken after that.
+- **Save image:** the button at the top right, or `S` while in presentation view. Saves a PNG to the Downloads folder, twice the on-screen size, light background, with the colour key and credit line. The file is named `anatomy-model-date-time.png`.
+- **Option:** "Show the colour key in presentation view and saved images" (on to start with).
+
+### What was built
+
+- `src/palette.js`: the four colours and their meanings.
+- `src/visibility.js`: highlights and pain areas are part of the same state as hide/show, which is what makes Undo/Redo work for them.
+- `src/materials.js`: a glowing material per highlight colour, the pale "faded" material, and the pain-area tint (added to the normal tissue materials).
+- `src/outline.js`: a second outline pass that draws a coloured line, soft glow and faint tint round every highlighted structure, visible through whatever is in front of it.
+- `src/highlights.js`: palette, info-card buttons, highlight list, right-click menu, fade option, pain-area controls.
+- `src/present.js`: presentation view, colour key, Save image.
+- `npm run check:highlights` (`tests/check-highlights.mjs`): 52 pass/fail checks and screenshots 31 to 43 in `work/screens/`.
+
+### Decisions made
+
+- **Shades:** red #F0123C (a vivid crimson, well away from the muted muscle red #A8514B), amber #FF8A00 (a strong orange, so it is not confused with the yellow nerves), green #12A84A, blue #3554F2 (deeper than cartilage, bursae and the selection outline).
+- **Region shading as asked could not be done:** there is no skin in the app, so there is no surface to shade, and "lateral knee" is finer than the regions. The pain-area spot was built instead, agreed with the user. It tints the real structures near the clicked point; no geometry is added.
+- **"Show everything" and quick views keep highlights.** Only "Clear all highlights" (or × on a row) removes them.
+- **A highlighted structure that gets hidden stays in the list**, marked "hidden at the moment", and returns when its row is clicked. Its colour is not shown in the key while it is hidden.
+- **Fade is a display option, not an Undo step** (like the faint-outline option).
+- **Presentation view and saved images leave out the blue selection outline and the hover name.** Highlights are shown.
+- **Saved image is the model area only.** From the normal view that is the area to the right of the panel; from presentation view it is the full width.
+- **Privacy:** highlights, pain areas and reworded meanings are held in memory only. The check confirms no cookies, no localStorage or sessionStorage, no requests to other sites and no uploads; a refresh clears everything. The image is made inside the browser and handed to the browser's own download.
+
+### Checked (16 November 2026)
+
+- `npm run check:highlights`: all pass, no console errors. ACL red (info card) + MCL amber (right-click menu) + medial meniscus amber (panel), left knee. Screenshots looked at with the fade off and on, from front and back, and with muscles on. Presentation view looked at. Both saved PNGs opened and looked at: 2880 x 1552 from presentation view (key and credit present, colours correct) and 2120 x 1552 from the normal view with fade on and the key switched off.
+- 60 frames per second turning the whole body with three highlights, and the same with everything else faded.
+- `npm run check`, `check:regions` and `check:select` (Stages 2 to 4) still pass. `npm run build` succeeds.
+
+### Known issues / things to look at
+
+- **Floating labels (labels mode) are not included in a saved image.** They do appear in presentation view, so a normal screenshot captures them.
+- **Highlight outlines show through everything**, by design. With several highlights behind one another the outlines overlap, and which colour is on top depends on the order they were made, not on which is nearer.
+- **Faded view is see-through all the way**, so the far side shows faintly through the near side.
+- **A pain area is a ball, not a patch of skin:** it tints every structure within reach of the point, including deeper ones that become visible when a system is hidden. On red muscle, a blue pain area looks purple, because the tint is translucent.
+- A pain area has no outline and is not shown through structures in front of it.
+- The saved image's size follows the browser window. A small window gives a small image.
+- The Highlights section makes the panel longer; Quick views now sit below it.
+- Screenshots 33, 35, 36 and 38 (further angles of the same knee, and the whole body without fade) were taken but not looked at by eye; the others were.
+- Still not built: the whole-body soft-tissue side switch (noted under Stage 3).
+- The app code is now 789 KB (207 KB compressed).
+
+### Next step
+
+Joint movement (knee, ankle, shoulder). Not started.
