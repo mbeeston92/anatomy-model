@@ -1,0 +1,20 @@
+{
+  "name": "anatomy-model",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive 3D anatomy model for physiotherapy patient education",
+  "scripts": {
+    "build:models": "node scripts/build-models.mjs",
+    "export": "node scripts/build-models.mjs --only export",
+    "compress": "node scripts/compress.mjs",
+    "build:data": "node scripts/build-data.mjs",
+    "previews": "node scripts/build-models.mjs --only previews"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "4.5.1",
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
+    "meshoptimizer": "1.3.0"
+  }
+}

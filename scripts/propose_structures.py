@@ -12,11 +12,14 @@ if one is missing, so the proposal cannot reference geometry that is not in
 the source file.
 
 Source-name syntax used in the CSV column `source_object_names`:
-    Name.r               the whole Z-Anatomy object
-    Name.r#Tendon        only the part of the object painted with the
-                         "Tendon" material in the source
-    Name.r#Cartilage     only the part painted with the "Cartilage" material
-    Name.r#!Tendon       everything in the object except that part
+    Name.r                 the whole Z-Anatomy object
+    Name.r#Tendon          only the part of the object painted with the
+                           "Tendon" material in the source
+    Name.r#Cartilage       only the part painted with the "Cartilage" material
+    Name.r#Tendon^upper    of that painted part, only the separate pieces in
+                           the upper half (by height); ^lower is the lower
+                           half; ^largest is the single biggest piece
+    Name.r#rest            everything in the object that no other row uses
 Several objects merged into one structure are separated by " + ".
 """
 import csv
@@ -249,24 +252,24 @@ for d in DISCS:
          "Discus intervertebralis " + d, regs, paired=False)
     # The separate "Nucleus pulposus" objects are deliberately not used
     # (user decision at review: disc centres are not shown separately).
-AC_NOTE = ("Not a separate object in source: articular cartilage is a painted area on the bone mesh. "
-           "Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. "
-           "Needs a visual check in Stage 1b.")
-cart("articular_femur", "Femur#Cartilage", "Joint cartilage of the thigh bone (hip and knee surfaces)",
-     "Cartilago articularis femoris", [PH, KN],
-     AC_NOTE + " Covers the head (hip) and condyles (knee) in one area; I will try to split these into two pieces.")
-cart("articular_tibia", "Tibia#Cartilage", "Joint cartilage of the shin bone (knee and ankle surfaces)",
-     "Cartilago articularis tibiae", [KN, AF], AC_NOTE + " Knee and ankle surfaces in one area; I will try to split them.")
+AC_NOTE = ("Not a separate object in source: articular cartilage is a painted area on the bone mesh, "
+           "cut out of the bone at export so it can be selected and highlighted on its own.")
+cart("articular_femur_head", "Femur#Cartilage^upper", "Joint cartilage of the ball of the hip (femoral head)", "Cartilago articularis capitis femoris", PH, AC_NOTE)
+cart("articular_femur_condyles", "Femur#Cartilage^lower", "Joint cartilage of the thigh bone at the knee (femoral condyles and groove)", "Cartilago articularis condylorum femoris", KN, AC_NOTE)
+cart("articular_tibia_plateau", "Tibia#Cartilage^upper", "Joint cartilage of the shin bone at the knee (tibial plateau)", "Cartilago articularis condylorum tibiae", KN, AC_NOTE)
+cart("articular_tibia_ankle", "Tibia#Cartilage^lower", "Joint cartilage of the shin bone at the ankle", "Cartilago articularis tibiae (facies articularis inferior)", AF, AC_NOTE)
 cart("articular_patella", "Patella#Cartilage", "Joint cartilage behind the kneecap", "Cartilago articularis patellae", KN, AC_NOTE)
 cart("articular_talus", "Talus#Cartilage", "Joint cartilage of the ankle bone (talus)", "Cartilago articularis tali", AF, AC_NOTE)
-cart("articular_acetabulum", "Hip bone#Cartilage", "Joint cartilage of the hip socket", "Facies lunata acetabuli", PH,
-     AC_NOTE + " May also include the sacroiliac and pubic joint surfaces.")
-cart("articular_humerus", "Humerus#Cartilage", "Joint cartilage of the upper arm bone (shoulder and elbow surfaces)",
-     "Cartilago articularis humeri", [SH, EL], AC_NOTE + " Shoulder and elbow surfaces in one area; I will try to split them.")
-cart("articular_glenoid", "Scapula#Cartilage", "Joint cartilage of the shoulder socket", "Cartilago articularis cavitatis glenoidalis", SH,
-     AC_NOTE + " May also include the small AC joint surface.")
-cart("articular_radius", "Radius#Cartilage", "Joint cartilage of the radius (elbow and wrist surfaces)", "Cartilago articularis radii", [EL, WH], AC_NOTE)
-cart("articular_ulna", "Ulna#Cartilage", "Joint cartilage of the ulna (elbow and wrist surfaces)", "Cartilago articularis ulnae", [EL, WH], AC_NOTE)
+cart("articular_acetabulum", "Hip bone#Cartilage^largest", "Joint cartilage of the hip socket", "Facies lunata acetabuli", PH,
+     AC_NOTE + " Only the socket surface; the sacroiliac and pubic joint surfaces stay part of the hip bone.")
+cart("articular_humerus_head", "Humerus#Cartilage^upper", "Joint cartilage of the ball of the shoulder (humeral head)", "Cartilago articularis capitis humeri", SH, AC_NOTE)
+cart("articular_humerus_elbow", "Humerus#Cartilage^lower", "Joint cartilage of the upper arm bone at the elbow", "Cartilago articularis condyli humeri", EL, AC_NOTE)
+cart("articular_glenoid", "Scapula#Cartilage^largest", "Joint cartilage of the shoulder socket", "Cartilago articularis cavitatis glenoidalis", SH,
+     AC_NOTE + " Only the socket surface; the small AC joint surface stays part of the shoulder blade.")
+cart("articular_radius_elbow", "Radius#Cartilage^upper", "Joint cartilage of the radius at the elbow (radial head)", "Cartilago articularis capitis radii", EL, AC_NOTE)
+cart("articular_radius_wrist", "Radius#Cartilage^lower", "Joint cartilage of the radius at the wrist", "Cartilago articularis radii (facies articularis carpalis)", WH, AC_NOTE)
+cart("articular_ulna_elbow", "Ulna#Cartilage^upper", "Joint cartilage of the ulna at the elbow", "Cartilago articularis incisurae trochlearis", EL, AC_NOTE)
+cart("articular_ulna_wrist", "Ulna#Cartilage^lower", "Joint cartilage of the ulna at the wrist", "Cartilago articularis capitis ulnae", WH, AC_NOTE)
 
 # ================================================================== LIGAMENTS
 SIMPLE = "Simple strap shape in source (thin band)."
@@ -350,38 +353,41 @@ lig("tmj_lateral", "Lateral temporomandibular ligament", "Jaw joint ligament (la
 
 # ==================================================================== TENDONS
 TPART = ("Not a separate object in source: this is the area of the muscle mesh that the source paints as "
-         "'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. ")
+         "'Tendon', cut from the muscle at export so it can be selected on its own. ")
+ORIGIN_STAYS = "The tendon area at the other end of the muscle stays part of the muscle. "
 ten("achilles", "Calcaneal tendon", "Achilles tendon", "Tendo calcaneus", [LL, AF])
-ten("quadriceps_patellar", ["Rectus femoris muscle#Tendon", "Vastus lateralis muscle#Tendon", "Vastus medialis muscle#Tendon", "Vastus intermedius muscle#Tendon"],
+ten("quadriceps_patellar", ["Rectus femoris muscle#Tendon^lower", "Vastus lateralis muscle#Tendon^lower", "Vastus intermedius muscle#Tendon^lower"],
     "Quadriceps tendon and patellar tendon", "Tendo musculi quadricipitis femoris; ligamentum patellae", [TG, KN],
-    TPART + "The patellar tendon is NOT a separate object; it appears to be part of this tendon area (rectus femoris reaches below the kneecap). "
-    "Needs a visual check in Stage 1b; I will try to separate quadriceps tendon from patellar tendon.")
-ten("biceps_long_head", "Long head of biceps brachii#Tendon", "Biceps tendon, long head", "Tendo capitis longi musculi bicipitis brachii", [SH, UA, EL],
-    TPART + "Includes the tendon at both the shoulder and elbow ends; I will try to split them.")
-ten("biceps_short_head", "Short head of biceps brachii#Tendon", "Biceps tendon, short head", "Tendo capitis brevis musculi bicipitis brachii", [SH, UA, EL], TPART)
-ten("triceps", ["Long head of triceps brachii#Tendon", "Lateral head of triceps brachii#Tendon", "Medial head of triceps brachii#Tendon"],
-    "Triceps tendon", "Tendo musculi tricipitis brachii", [UA, EL], TPART)
+    TPART + "The quadriceps tendon and patellar tendon are ONE continuous piece in the source and cannot be separated without cutting it by hand. "
+    "Vastus medialis has no separate lower tendon piece, so its tendon stays with the muscle.")
+ten("biceps_long_head", "Long head of biceps brachii#Tendon^upper", "Biceps tendon, long head (at the shoulder)", "Tendo capitis longi musculi bicipitis brachii", [SH, UA], TPART)
+ten("biceps_short_head", "Short head of biceps brachii#Tendon^upper", "Biceps tendon, short head (at the shoulder)", "Tendo capitis brevis musculi bicipitis brachii", [SH, UA], TPART)
+ten("biceps_distal", ["Long head of biceps brachii#Tendon^lower", "Short head of biceps brachii#Tendon^lower"], "Biceps tendon at the elbow (distal biceps tendon)", "Tendo musculi bicipitis brachii (distalis)", [UA, EL], TPART)
+ten("triceps", ["Long head of triceps brachii#Tendon^lower", "Lateral head of triceps brachii#Tendon^lower", "Medial head of triceps brachii#Tendon"],
+    "Triceps tendon (at the elbow)", "Tendo musculi tricipitis brachii", [UA, EL], TPART + ORIGIN_STAYS)
 ten("infraspinatus", "Infraspinatus muscle#Tendon", "Rotator cuff tendon: infraspinatus", "Tendo musculi infraspinati", SH,
     TPART + "The other three rotator cuff tendons are not marked in the source (see summary).")
-ten("common_extensor", "Extensor carpi radialis brevis#Tendon", "Wrist extensor tendon (ECRB; tennis elbow tendon)", "Tendo musculi extensoris carpi radialis brevis", [EL, FA, WH],
-    TPART + "Uncertain match: the source has no single 'common extensor origin'. This is the ECRB tendon, both ends.")
-ten("common_flexor", ["Flexor carpi radialis#Tendon", "Superficial head of pronator teres#Tendon"], "Wrist flexor tendons (golfer's elbow tendons)", "Tendines musculorum flexorum (origo communis)", [EL, FA, WH],
-    TPART + "Uncertain match: the source has no single 'common flexor origin'. These are the tendon areas of flexor carpi radialis and pronator teres.")
-ten("finger_extensors", "Extensor digitorum#Tendon", "Finger extensor tendons", "Tendines musculi extensoris digitorum", [FA, WH], TPART)
-ten("finger_flexors", ["Humero-ulnar head of flexor digitorum superficialis#Tendon", "Flexor digitorum profundus#Tendon"],
-    "Finger flexor tendons", "Tendines musculorum flexorum digitorum", [FA, WH], TPART + "Superficial and deep flexor tendons merged.")
+ten("common_extensor", "Extensor carpi radialis brevis#Tendon^upper", "Common extensor tendon at the elbow (ECRB; tennis elbow)", "Tendo musculi extensoris carpi radialis brevis (origo)", EL,
+    TPART + "Uncertain match: the source has no single 'common extensor origin'. This is the elbow end of the ECRB tendon. " + ORIGIN_STAYS)
+ten("common_flexor", ["Flexor carpi radialis#Tendon^upper", "Superficial head of pronator teres#Tendon^upper"], "Common flexor tendon at the elbow (golfer's elbow)", "Tendines musculorum flexorum (origo communis)", EL,
+    TPART + "Uncertain match: the source has no single 'common flexor origin'. These are the elbow ends of flexor carpi radialis and pronator teres. " + ORIGIN_STAYS)
+ten("finger_extensors", "Extensor digitorum#Tendon^lower", "Finger extensor tendons", "Tendines musculi extensoris digitorum", [FA, WH], TPART + ORIGIN_STAYS)
+ten("finger_flexors", ["Humero-ulnar head of flexor digitorum superficialis#Tendon^lower", "Flexor digitorum profundus#Tendon^lower"],
+    "Finger flexor tendons", "Tendines musculorum flexorum digitorum", [FA, WH], TPART + "Superficial and deep flexor tendons merged. " + ORIGIN_STAYS)
 ten("de_quervain", ["Abductor pollicis longus#Tendon", "Extensor pollicis brevis#Tendon"], "Thumb tendons at the wrist (APL and EPB; De Quervain's tendons)",
     "Tendines musculorum abductoris pollicis longi et extensoris pollicis brevis", [FA, WH], TPART)
-ten("ecu", ["Humeral head of extensor carpi ulnaris#Tendon", "Ulnar head of extensor carpi ulnaris#Tendon"], "ECU tendon (little-finger side of wrist)", "Tendo musculi extensoris carpi ulnaris", [FA, WH], TPART)
+ten("ecu", ["Humeral head of extensor carpi ulnaris#Tendon^lower", "Ulnar head of extensor carpi ulnaris#Tendon"], "ECU tendon (little-finger side of wrist)", "Tendo musculi extensoris carpi ulnaris", [FA, WH], TPART + ORIGIN_STAYS)
 ten("gluteus_medius", "Gluteus medius muscle#Tendon", "Gluteal tendon (gluteus medius)", "Tendo musculi glutei medii", PH,
     TPART + "Gluteus minimus has no tendon marked in the source.")
 ten("iliopsoas", ["Psoas major#Tendon", "Iliacus muscle#Tendon"], "Hip flexor tendon (iliopsoas)", "Tendo musculi iliopsoas", PH, TPART)
 ten("adductor_longus", "Adductor longus#Tendon", "Adductor tendon (adductor longus; groin)", "Tendo musculi adductoris longi", [PH, TG], TPART)
-ten("hamstring_biceps_femoris", ["Long head of biceps femoris#Tendon", "Short head of biceps femoris#Tendon"], "Hamstring tendon: biceps femoris (outer)", "Tendo musculi bicipitis femoris", [PH, TG, KN], TPART + "Top and bottom tendons in one area; I will try to split them.")
-ten("hamstring_semitendinosus", "Semitendinosus muscle#Tendon", "Hamstring tendon: semitendinosus (inner)", "Tendo musculi semitendinosi", [PH, TG, KN], TPART)
-ten("hamstring_semimembranosus", "Semimembranosus muscle#Tendon", "Hamstring tendon: semimembranosus (inner, deep)", "Tendo musculi semimembranosi", [PH, TG, KN], TPART)
+ten("hamstring_origin", ["Long head of biceps femoris#Tendon^upper", "Semitendinosus muscle#Tendon^upper", "Semimembranosus muscle#Tendon^upper"],
+    "Hamstring tendons at the sitting bone (proximal hamstring tendons)", "Tendines musculorum ischiocruralium (origo)", [PH, TG], TPART + "Three tendons merged.")
+ten("hamstring_biceps_femoris", ["Long head of biceps femoris#Tendon^lower", "Short head of biceps femoris#Tendon"], "Hamstring tendon at the knee: biceps femoris (outer)", "Tendo musculi bicipitis femoris", [TG, KN], TPART)
+ten("hamstring_semitendinosus", "Semitendinosus muscle#Tendon^lower", "Hamstring tendon at the knee: semitendinosus (inner)", "Tendo musculi semitendinosi", [TG, KN], TPART)
+ten("hamstring_semimembranosus", "Semimembranosus muscle#Tendon^lower", "Hamstring tendon at the knee: semimembranosus (inner, deep)", "Tendo musculi semimembranosi", [TG, KN], TPART)
 ten("itb", "Iliotibial tract", "Iliotibial band (ITB)", "Tractus iliotibialis", [PH, TG, KN],
-    "A band of fascia, filed under 'tendon'. Very high detail in source (about 48,000 triangles per side); will be simplified at export.")
+    "A band of fascia, filed under 'tendon'. Very high detail in source (about 48,000 triangles per side); simplified at export.")
 ten("tibialis_posterior", "Tibialis posterior muscle#Tendon", "Tibialis posterior tendon (inner ankle)", "Tendo musculi tibialis posterioris", [LL, AF], TPART)
 ten("tibialis_anterior", "Tibialis anterior muscle#Tendon", "Tibialis anterior tendon (front of ankle)", "Tendo musculi tibialis anterioris", [LL, AF], TPART)
 ten("peroneal", ["Fibularis longus muscle#Tendon", "Fibularis brevis muscle#Tendon"], "Peroneal tendons (outer ankle)", "Tendines musculorum fibularium", [LL, AF], TPART + "Longus and brevis merged.")
@@ -637,24 +643,25 @@ def mat_counts(row):
 
 
 def tri_count(obj_name, subset):
+    """Approximate triangle count from the inventory (exact numbers come
+    from the export report). '^upper/^lower/^largest' pieces are counted as
+    the whole painted area, and '#rest' as the whole object."""
     row = INV[obj_name]
     if row["type"] == "CURVE":
         return int(row["triangles_if_converted_to_mesh"])
     total = int(row["triangles_after_modifiers"])
-    if subset is None:
+    if subset is None or subset == "rest":
         return total
-    neg = subset.startswith("!")
-    part = mat_counts(row).get(subset.lstrip("!"), 0)
-    return total - part if neg else part
+    return mat_counts(row).get(subset.split("^")[0], 0)
 
 
-# Which whole objects have a material part claimed by another structure?
-claimed = {}   # base name -> material
+# Objects that have a painted part used by another structure: the row that
+# names the whole object gets "#rest" (everything not used elsewhere).
+claimed = set()
 for system, slug, sources, *_ in ENTRIES:
-    for s in sources:
-        if "#" in s:
-            base, m = s.split("#")
-            claimed[base] = m
+    for s_ in sources:
+        if "#" in s_:
+            claimed.add(s_.split("#")[0])
 
 rows = []
 errors = []
@@ -672,7 +679,7 @@ for system, slug, sources, plain, medical, regions, notes, paired in ENTRIES:
         for s in sources:
             base, subset = (s.split("#") + [None])[:2]
             if subset is None and base in claimed:
-                subset = "!" + claimed[base]          # e.g. muscle minus tendon
+                subset = "rest"                     # e.g. muscle minus tendon
             obj = resolve(base, side)
             if obj not in INV:
                 errors.append("%s: source object not found: %r" % (sid, obj))

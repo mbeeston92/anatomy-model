@@ -81,4 +81,85 @@ The user saved `data/structures-approved.csv` with no row edits and answered the
 
 ### Next step
 
-Stage 1b (export). Stage 1a is complete with no open questions.
+Done; see Stage 1b below.
+
+## Stage 1b: export pipeline — DONE
+
+### How to run
+
+```
+npm install            (first time only)
+npm run build:models
+```
+
+That one command runs four steps and stops with a clear error if any fails:
+
+1. **Export** (`blender/export.py`, Blender headless): Z-Anatomy to `work/export/*.glb` (not committed) and `data/export-report.json`.
+2. **Compress** (`scripts/compress.mjs`, gltf-transform): dedup, prune, weld, meshopt into `public/models/`.
+3. **Data** (`scripts/build-data.mjs`): `structures-approved.csv` to `public/data/structures.json`, then checks every id against the models in both directions.
+4. **Previews** (`blender/preview.py`): renders 30 images of the exported models to `data/previews/` (not committed; about 65 MB).
+
+Options: `npm run build:models -- --no-previews`, or `-- --only export|compress|data|previews`. Blender is found automatically; set `BLENDER_PATH` to override. The whole run takes about two minutes.
+
+### Results (16 November 2026)
+
+| System | File | Download | Meshes in file | Triangles in file | Triangles shown, both sides |
+|---|---|---:|---:|---:|---:|
+| Bones | bones.glb | 2.63 MB | 208 | 371,614 | 371,618 |
+| Cartilage | cartilage.glb | 0.73 MB | 56 | 104,567 | 160,770 |
+| Ligaments | ligaments.glb | 0.48 MB | 67 | 64,700 | 105,696 |
+| Tendons | tendons.glb | 0.43 MB | 26 | 62,461 | 124,922 |
+| Muscles | muscles.glb | 2.93 MB | 113 | 404,011 | 794,288 |
+| Nerves | nerves.glb | 0.32 MB | 33 | 46,706 | 83,510 |
+| Bursae | bursae.glb | 0.34 MB | 34 | 52,024 | 90,488 |
+| **Total** | | **7.85 MB** | **537** | **1,106,083** | **1,731,292** |
+
+- 817 structures: 537 have their own mesh, 280 left-side soft-tissue structures are mirrored from the right in the app.
+- Before simplification the same set was 2,565,860 triangles (both sides). 125 dense meshes were simplified.
+- With soft tissue on one side only, about 1.42 million triangles are shown; with both sides, 1.73 million. That is a little above the 1.2 to 1.5 million aim for both sides. To go lower, reduce `DECIMATE_SLOPE` in `blender/export.py`.
+- No export warnings. All ids match.
+
+### Decisions made
+
+- **Coordinates:** metres, Y-up, front of body faces +Z, body's left is +X. Every mesh has its geometry in body position (node origin at the body origin). Note for Stage 2: meshopt quantisation gives each node its own small scale/offset transform, so mirroring must be done by a parent flipped in X, not by overwriting the node's own transform.
+- **Mirroring:** `structures.json` gives `mirrorOf` (the right-side id) for each mirrored left structure, and `mirrorAxis: "x"`. A pair counts as a mirror only if every point matches within 0.01 mm.
+- **Pieces of painted areas:** new selectors `^upper`, `^lower`, `^largest` pick the physically separate pieces of a tendon or cartilage area; `#rest` is whatever no other row uses. This changed the approved list from 803 to 817 rows (see below).
+- **Simplification:** meshes of 3,000 triangles or fewer are untouched. Above that only the excess is reduced to 30%. Never simplified: all ligaments, all cartilage, bursae, rotator cuff muscles and tendon, Achilles, quadriceps/patellar tendon. Open edges (cut lines) are held in place so tendons still meet their muscles.
+- **Nerves:** curves become 6-sided tubes with 6 segments per curve section (source settings are 12-sided and 12). Path and thickness unchanged.
+- **Materials:** one per system, `mat_bone`, `mat_cartilage`, `mat_ligament`, `mat_tendon`, `mat_muscle`, `mat_nerve`, `mat_bursa`; double-sided. Colours are in `blender/export.py` and copied into `structures.json`. Bone is a warm off-white (#EFE6CF) and ligament/tendon a cooler silver-cream (#C9CEC6) so they can be told apart.
+- `scripts/propose_structures.py` remains the generator for the list. The user has made no hand edits to `structures-approved.csv` so far, so the two CSVs are identical. If the user edits the approved CSV by hand in future, stop regenerating it from the script.
+
+### Changes to the approved list in this stage (803 to 817)
+
+Made because the painted areas turned out to be cleanly separate pieces:
+
+- Joint cartilage split by joint: femur (hip head / knee), tibia (knee / ankle), humerus (shoulder / elbow), radius (elbow / wrist), ulna (elbow / wrist). Hip socket and shoulder socket now take only the socket surface.
+- Biceps: long head and short head tendons at the shoulder, plus a new "biceps tendon at the elbow".
+- Hamstrings: new "hamstring tendons at the sitting bone"; the three existing rows are now the knee ends only.
+- Triceps, finger flexors, finger extensors, ECU: the far (wrist or elbow) end only; the origin end stays with the muscle.
+- Common extensor and common flexor tendons: now the elbow end only.
+- Quadriceps/patellar tendon: lower pieces of rectus femoris, vastus lateralis and vastus intermedius.
+
+### Not in the source / could not be done
+
+- **Quadriceps tendon and patellar tendon are one continuous piece** in the source. They cannot be separated without cutting by hand, so they stay one structure.
+- Vastus medialis has no separate lower tendon piece; its tendon stays with the muscle.
+
+### Left/right pairs that are NOT exact mirrors (exported for both sides as they are)
+
+MCL (superficial part), sacrotuberous ligament, sacrospinous ligament, transverse humeral ligament, costoclavicular ligament, annular ligament of the radius, bursa under trapezius, intermuscular gluteal bursae. In most, the two sides differ in level of detail or by a few millimetres.
+
+### Known issues / things to look at
+
+- **Jagged tendon edges.** Where a tendon is cut from its muscle the edge is zig-zag, because the source paints the muscle-to-tendon join as interlocking fibres. With muscles shown it looks natural; with muscles hidden the tendon ends look frayed.
+- **Simple ligaments.** Many ligaments (ankle, hip, wrist, coracoclavicular) are flat straps in the source.
+- **Interspinous ligaments** are one flat sheet down the midline, extending a little behind the spinous processes.
+- **Gap between sacrum and coccyx:** the sacrococcygeal joint is not in the list.
+- **Linea alba is not in the list**, so the spine shows through a gap between the two rectus abdominis muscles from the front.
+- Bursae render opaque in the previews; they are translucent in the exported material.
+- The inside-out-face test (previews 07 and 09) showed no difference from the normal renders. I am not certain the test setting takes effect in background rendering, so treat this as "nothing seen", not "proven clean". Materials are exported double-sided, so an inside-out face would still display.
+- A stray folder `C:\data\previews` was created by an early preview run (Blender treated the path as relative to the drive). The script is fixed. The folder holds 30 PNGs and can be deleted by hand.
+
+### Next step
+
+Stage 2 (the app). Not started.

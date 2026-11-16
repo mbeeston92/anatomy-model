@@ -1,0 +1,6513 @@
+{
+ "blender": "5.3.0",
+ "settings": {
+  "decimate_floor": 3000,
+  "decimate_slope": 0.3,
+  "curve_bevel_resolution": 1,
+  "curve_resolution_u": 6,
+  "mirror_tolerance_m": 1e-05
+ },
+ "systems": {
+  "bone": {
+   "file": "bones.glb",
+   "material": "mat_bone",
+   "colour": "#EFE6CF",
+   "opacity": 1.0
+  },
+  "cartilage": {
+   "file": "cartilage.glb",
+   "material": "mat_cartilage",
+   "colour": "#A9C3D6",
+   "opacity": 1.0
+  },
+  "ligament": {
+   "file": "ligaments.glb",
+   "material": "mat_ligament",
+   "colour": "#C9CEC6",
+   "opacity": 1.0
+  },
+  "tendon": {
+   "file": "tendons.glb",
+   "material": "mat_tendon",
+   "colour": "#C9CEC6",
+   "opacity": 1.0
+  },
+  "muscle": {
+   "file": "muscles.glb",
+   "material": "mat_muscle",
+   "colour": "#A8514B",
+   "opacity": 1.0
+  },
+  "nerve": {
+   "file": "nerves.glb",
+   "material": "mat_nerve",
+   "colour": "#E8C83A",
+   "opacity": 1.0
+  },
+  "bursa": {
+   "file": "bursae.glb",
+   "material": "mat_bursa",
+   "colour": "#9CC7EA",
+   "opacity": 0.55
+  }
+ },
+ "totals": {
+  "structures": 817,
+  "meshes_exported": 537,
+  "mirrored_in_app": 280,
+  "triangles_source_both_sides": 2565860,
+  "triangles_in_files": 1106100,
+  "triangles_displayed_both_sides": 1731292
+ },
+ "by_system": {
+  "bone": {
+   "structures": 208,
+   "meshes_exported": 208,
+   "triangles_source_both_sides": 555380,
+   "triangles_in_files": 371618,
+   "triangles_displayed_both_sides": 371618,
+   "file": "bones.glb",
+   "meshes": 208,
+   "bytes_uncompressed": 6855496
+  },
+  "cartilage": {
+   "structures": 88,
+   "meshes_exported": 56,
+   "triangles_source_both_sides": 160770,
+   "triangles_in_files": 104567,
+   "triangles_displayed_both_sides": 160770,
+   "file": "cartilage.glb",
+   "meshes": 56,
+   "bytes_uncompressed": 1941292
+  },
+  "ligament": {
+   "structures": 116,
+   "meshes_exported": 67,
+   "triangles_source_both_sides": 105696,
+   "triangles_in_files": 64700,
+   "triangles_displayed_both_sides": 105696,
+   "file": "ligaments.glb",
+   "meshes": 67,
+   "bytes_uncompressed": 1241064
+  },
+  "tendon": {
+   "structures": 52,
+   "meshes_exported": 26,
+   "triangles_source_both_sides": 202862,
+   "triangles_in_files": 62461,
+   "triangles_displayed_both_sides": 124922,
+   "file": "tendons.glb",
+   "meshes": 26,
+   "bytes_uncompressed": 1161288
+  },
+  "muscle": {
+   "structures": 225,
+   "meshes_exported": 113,
+   "triangles_source_both_sides": 1353270,
+   "triangles_in_files": 404024,
+   "triangles_displayed_both_sides": 794288,
+   "file": "muscles.glb",
+   "meshes": 113,
+   "bytes_uncompressed": 8230156
+  },
+  "nerve": {
+   "structures": 64,
+   "meshes_exported": 33,
+   "triangles_source_both_sides": 97394,
+   "triangles_in_files": 46706,
+   "triangles_displayed_both_sides": 83510,
+   "file": "nerves.glb",
+   "meshes": 33,
+   "bytes_uncompressed": 878136
+  },
+  "bursa": {
+   "structures": 64,
+   "meshes_exported": 34,
+   "triangles_source_both_sides": 90488,
+   "triangles_in_files": 52024,
+   "triangles_displayed_both_sides": 90488,
+   "file": "bursae.glb",
+   "meshes": 34,
+   "bytes_uncompressed": 782656
+  }
+ },
+ "exported_both_sides_not_exact_mirror": [
+  [
+   "ligament_mcl_l",
+   "'Superficial part of tibial collateral ligament.l' has 78 points, 'Superficial part of tibial collateral ligament.r' has 250"
+  ],
+  [
+   "ligament_sacrotuberous_l",
+   "'Sacrotuberous ligament.l' differs from mirrored 'Sacrotuberous ligament.r' by up to 4.4 mm"
+  ],
+  [
+   "ligament_sacrospinous_l",
+   "'Sacrospinous ligament.l' differs from mirrored 'Sacrospinous ligament.r' by up to 5.3 mm"
+  ],
+  [
+   "ligament_transverse_humeral_l",
+   "'Transverse humeral ligament.l' has 70 points, 'Transverse humeral ligament.r' has 234"
+  ],
+  [
+   "ligament_costoclavicular_l",
+   "'Costoclavicular ligament.l' differs from mirrored 'Costoclavicular ligament.r' by up to 9.7 mm"
+  ],
+  [
+   "ligament_annular_l",
+   "'Annular ligament of radius.l' differs from mirrored 'Annular ligament of radius.r' by up to 0.5 mm"
+  ],
+  [
+   "bursa_trapezius_l",
+   "'Subtendinous bursa of trapezius muscle.l' has 2946 points, 'Subtendinous bursa of trapezius muscle.r' has 738"
+  ],
+  [
+   "bursa_intermuscular_gluteal_l",
+   "'Intermuscular gluteal bursae.l' has 624 points, 'Intermuscular gluteal bursae.r' has 2484"
+  ]
+ ],
+ "warnings": [],
+ "structures": {
+  "bone_frontal": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 7776,
+   "triangles_export": 4432,
+   "triangles_displayed": 4432,
+   "simplified": true
+  },
+  "bone_occipital": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 7531,
+   "triangles_export": 4359,
+   "triangles_displayed": 4359,
+   "simplified": true
+  },
+  "bone_sphenoid": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 7308,
+   "triangles_export": 4292,
+   "triangles_displayed": 4292,
+   "simplified": true
+  },
+  "bone_ethmoid": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 10130,
+   "triangles_export": 5138,
+   "triangles_displayed": 5138,
+   "simplified": true
+  },
+  "bone_vomer": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1022,
+   "triangles_export": 1022,
+   "triangles_displayed": 1022,
+   "simplified": false
+  },
+  "bone_mandible": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 18838,
+   "triangles_export": 7750,
+   "triangles_displayed": 7750,
+   "simplified": true
+  },
+  "bone_hyoid": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1324,
+   "triangles_export": 1324,
+   "triangles_displayed": 1324,
+   "simplified": false
+  },
+  "bone_parietal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 6886,
+   "triangles_export": 4164,
+   "triangles_displayed": 4164,
+   "simplified": true
+  },
+  "bone_parietal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 6780,
+   "triangles_export": 4134,
+   "triangles_displayed": 4134,
+   "simplified": true
+  },
+  "bone_temporal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 14094,
+   "triangles_export": 6328,
+   "triangles_displayed": 6328,
+   "simplified": true
+  },
+  "bone_temporal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 14094,
+   "triangles_export": 6328,
+   "triangles_displayed": 6328,
+   "simplified": true
+  },
+  "bone_maxilla_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 4798,
+   "triangles_export": 3538,
+   "triangles_displayed": 3538,
+   "simplified": true
+  },
+  "bone_maxilla_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 4798,
+   "triangles_export": 3538,
+   "triangles_displayed": 3538,
+   "simplified": true
+  },
+  "bone_zygomatic_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1328,
+   "triangles_export": 1328,
+   "triangles_displayed": 1328,
+   "simplified": false
+  },
+  "bone_zygomatic_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1328,
+   "triangles_export": 1328,
+   "triangles_displayed": 1328,
+   "simplified": false
+  },
+  "bone_nasal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 292,
+   "triangles_export": 292,
+   "triangles_displayed": 292,
+   "simplified": false
+  },
+  "bone_nasal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 292,
+   "triangles_export": 292,
+   "triangles_displayed": 292,
+   "simplified": false
+  },
+  "bone_lacrimal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 588,
+   "triangles_export": 588,
+   "triangles_displayed": 588,
+   "simplified": false
+  },
+  "bone_lacrimal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 588,
+   "triangles_export": 588,
+   "triangles_displayed": 588,
+   "simplified": false
+  },
+  "bone_palatine_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1460,
+   "triangles_export": 1460,
+   "triangles_displayed": 1460,
+   "simplified": false
+  },
+  "bone_palatine_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1460,
+   "triangles_export": 1460,
+   "triangles_displayed": 1460,
+   "simplified": false
+  },
+  "bone_inferior_nasal_concha_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 476,
+   "triangles_export": 476,
+   "triangles_displayed": 476,
+   "simplified": false
+  },
+  "bone_inferior_nasal_concha_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 476,
+   "triangles_export": 476,
+   "triangles_displayed": 476,
+   "simplified": false
+  },
+  "bone_teeth_upper_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 11550,
+   "triangles_export": 5564,
+   "triangles_displayed": 5564,
+   "simplified": true
+  },
+  "bone_teeth_upper_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 11550,
+   "triangles_export": 5564,
+   "triangles_displayed": 5564,
+   "simplified": true
+  },
+  "bone_teeth_lower_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 11886,
+   "triangles_export": 5664,
+   "triangles_displayed": 5664,
+   "simplified": true
+  },
+  "bone_teeth_lower_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 11886,
+   "triangles_export": 5664,
+   "triangles_displayed": 5664,
+   "simplified": true
+  },
+  "bone_vertebra_c1": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2194,
+   "triangles_export": 2194,
+   "triangles_displayed": 2194,
+   "simplified": false
+  },
+  "bone_vertebra_c2": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2334,
+   "triangles_export": 2334,
+   "triangles_displayed": 2334,
+   "simplified": false
+  },
+  "bone_vertebra_c3": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2440,
+   "triangles_export": 2440,
+   "triangles_displayed": 2440,
+   "simplified": false
+  },
+  "bone_vertebra_c4": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1940,
+   "triangles_export": 1940,
+   "triangles_displayed": 1940,
+   "simplified": false
+  },
+  "bone_vertebra_c5": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2336,
+   "triangles_export": 2336,
+   "triangles_displayed": 2336,
+   "simplified": false
+  },
+  "bone_vertebra_c6": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2304,
+   "triangles_export": 2304,
+   "triangles_displayed": 2304,
+   "simplified": false
+  },
+  "bone_vertebra_c7": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2164,
+   "triangles_export": 2164,
+   "triangles_displayed": 2164,
+   "simplified": false
+  },
+  "bone_vertebra_t1": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1946,
+   "triangles_export": 1946,
+   "triangles_displayed": 1946,
+   "simplified": false
+  },
+  "bone_vertebra_t2": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2142,
+   "triangles_export": 2142,
+   "triangles_displayed": 2142,
+   "simplified": false
+  },
+  "bone_vertebra_t3": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2344,
+   "triangles_export": 2344,
+   "triangles_displayed": 2344,
+   "simplified": false
+  },
+  "bone_vertebra_t4": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2216,
+   "triangles_export": 2216,
+   "triangles_displayed": 2216,
+   "simplified": false
+  },
+  "bone_vertebra_t5": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2152,
+   "triangles_export": 2152,
+   "triangles_displayed": 2152,
+   "simplified": false
+  },
+  "bone_vertebra_t6": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1780,
+   "triangles_export": 1780,
+   "triangles_displayed": 1780,
+   "simplified": false
+  },
+  "bone_vertebra_t7": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2794,
+   "triangles_export": 2794,
+   "triangles_displayed": 2794,
+   "simplified": false
+  },
+  "bone_vertebra_t8": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1733,
+   "triangles_export": 1733,
+   "triangles_displayed": 1733,
+   "simplified": false
+  },
+  "bone_vertebra_t9": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2978,
+   "triangles_export": 2978,
+   "triangles_displayed": 2978,
+   "simplified": false
+  },
+  "bone_vertebra_t10": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3058,
+   "triangles_export": 3016,
+   "triangles_displayed": 3016,
+   "simplified": true
+  },
+  "bone_vertebra_t11": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1798,
+   "triangles_export": 1798,
+   "triangles_displayed": 1798,
+   "simplified": false
+  },
+  "bone_vertebra_t12": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2586,
+   "triangles_export": 2586,
+   "triangles_displayed": 2586,
+   "simplified": false
+  },
+  "bone_vertebra_l1": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3162,
+   "triangles_export": 3048,
+   "triangles_displayed": 3048,
+   "simplified": true
+  },
+  "bone_vertebra_l2": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2688,
+   "triangles_export": 2688,
+   "triangles_displayed": 2688,
+   "simplified": false
+  },
+  "bone_vertebra_l3": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3160,
+   "triangles_export": 3048,
+   "triangles_displayed": 3048,
+   "simplified": true
+  },
+  "bone_vertebra_l4": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3804,
+   "triangles_export": 3240,
+   "triangles_displayed": 3240,
+   "simplified": true
+  },
+  "bone_vertebra_l5": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 4032,
+   "triangles_export": 3308,
+   "triangles_displayed": 3308,
+   "simplified": true
+  },
+  "bone_sacrum": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 11676,
+   "triangles_export": 5602,
+   "triangles_displayed": 5602,
+   "simplified": true
+  },
+  "bone_coccyx": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1166,
+   "triangles_export": 1166,
+   "triangles_displayed": 1166,
+   "simplified": false
+  },
+  "bone_manubrium": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2662,
+   "triangles_export": 2662,
+   "triangles_displayed": 2662,
+   "simplified": false
+  },
+  "bone_sternum_body": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 4466,
+   "triangles_export": 3438,
+   "triangles_displayed": 3438,
+   "simplified": true
+  },
+  "bone_xiphoid": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 913,
+   "triangles_export": 913,
+   "triangles_displayed": 913,
+   "simplified": false
+  },
+  "bone_rib_1_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3210,
+   "triangles_export": 3062,
+   "triangles_displayed": 3062,
+   "simplified": true
+  },
+  "bone_rib_1_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3210,
+   "triangles_export": 3062,
+   "triangles_displayed": 3062,
+   "simplified": true
+  },
+  "bone_rib_2_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 5364,
+   "triangles_export": 3708,
+   "triangles_displayed": 3708,
+   "simplified": true
+  },
+  "bone_rib_2_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 5364,
+   "triangles_export": 3708,
+   "triangles_displayed": 3708,
+   "simplified": true
+  },
+  "bone_rib_3_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 6980,
+   "triangles_export": 4194,
+   "triangles_displayed": 4194,
+   "simplified": true
+  },
+  "bone_rib_3_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 6980,
+   "triangles_export": 4194,
+   "triangles_displayed": 4194,
+   "simplified": true
+  },
+  "bone_rib_4_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 8646,
+   "triangles_export": 4692,
+   "triangles_displayed": 4692,
+   "simplified": true
+  },
+  "bone_rib_4_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 8646,
+   "triangles_export": 4692,
+   "triangles_displayed": 4692,
+   "simplified": true
+  },
+  "bone_rib_5_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 9376,
+   "triangles_export": 4912,
+   "triangles_displayed": 4912,
+   "simplified": true
+  },
+  "bone_rib_5_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 9376,
+   "triangles_export": 4912,
+   "triangles_displayed": 4912,
+   "simplified": true
+  },
+  "bone_rib_6_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 10132,
+   "triangles_export": 5138,
+   "triangles_displayed": 5138,
+   "simplified": true
+  },
+  "bone_rib_6_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 10132,
+   "triangles_export": 5138,
+   "triangles_displayed": 5138,
+   "simplified": true
+  },
+  "bone_rib_7_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 9776,
+   "triangles_export": 5032,
+   "triangles_displayed": 5032,
+   "simplified": true
+  },
+  "bone_rib_7_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 9776,
+   "triangles_export": 5032,
+   "triangles_displayed": 5032,
+   "simplified": true
+  },
+  "bone_rib_8_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 8270,
+   "triangles_export": 4580,
+   "triangles_displayed": 4580,
+   "simplified": true
+  },
+  "bone_rib_8_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 8270,
+   "triangles_export": 4580,
+   "triangles_displayed": 4580,
+   "simplified": true
+  },
+  "bone_rib_9_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 7778,
+   "triangles_export": 4432,
+   "triangles_displayed": 4432,
+   "simplified": true
+  },
+  "bone_rib_9_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 7778,
+   "triangles_export": 4432,
+   "triangles_displayed": 4432,
+   "simplified": true
+  },
+  "bone_rib_10_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 7026,
+   "triangles_export": 4206,
+   "triangles_displayed": 4206,
+   "simplified": true
+  },
+  "bone_rib_10_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 7026,
+   "triangles_export": 4206,
+   "triangles_displayed": 4206,
+   "simplified": true
+  },
+  "bone_rib_11_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 5034,
+   "triangles_export": 3610,
+   "triangles_displayed": 3610,
+   "simplified": true
+  },
+  "bone_rib_11_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 5034,
+   "triangles_export": 3610,
+   "triangles_displayed": 3610,
+   "simplified": true
+  },
+  "bone_rib_12_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3002,
+   "triangles_export": 3000,
+   "triangles_displayed": 3000,
+   "simplified": true
+  },
+  "bone_rib_12_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3002,
+   "triangles_export": 3000,
+   "triangles_displayed": 3000,
+   "simplified": true
+  },
+  "bone_clavicle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1550,
+   "triangles_export": 1550,
+   "triangles_displayed": 1550,
+   "simplified": false
+  },
+  "bone_clavicle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1550,
+   "triangles_export": 1550,
+   "triangles_displayed": 1550,
+   "simplified": false
+  },
+  "bone_scapula_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 25326,
+   "triangles_export": 9696,
+   "triangles_displayed": 9696,
+   "simplified": true
+  },
+  "bone_scapula_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 24692,
+   "triangles_export": 9506,
+   "triangles_displayed": 9506,
+   "simplified": true
+  },
+  "bone_humerus_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 4280,
+   "triangles_export": 3384,
+   "triangles_displayed": 3384,
+   "simplified": true
+  },
+  "bone_humerus_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3477,
+   "triangles_export": 3143,
+   "triangles_displayed": 3143,
+   "simplified": true
+  },
+  "bone_radius_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 784,
+   "triangles_export": 784,
+   "triangles_displayed": 784,
+   "simplified": false
+  },
+  "bone_radius_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 511,
+   "triangles_export": 511,
+   "triangles_displayed": 511,
+   "simplified": false
+  },
+  "bone_ulna_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 904,
+   "triangles_export": 904,
+   "triangles_displayed": 904,
+   "simplified": false
+  },
+  "bone_ulna_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 639,
+   "triangles_export": 639,
+   "triangles_displayed": 639,
+   "simplified": false
+  },
+  "bone_scaphoid_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 390,
+   "triangles_export": 390,
+   "triangles_displayed": 390,
+   "simplified": false
+  },
+  "bone_scaphoid_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 390,
+   "triangles_export": 390,
+   "triangles_displayed": 390,
+   "simplified": false
+  },
+  "bone_lunate_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2088,
+   "triangles_export": 2088,
+   "triangles_displayed": 2088,
+   "simplified": false
+  },
+  "bone_lunate_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2088,
+   "triangles_export": 2088,
+   "triangles_displayed": 2088,
+   "simplified": false
+  },
+  "bone_triquetrum_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 176,
+   "triangles_export": 176,
+   "triangles_displayed": 176,
+   "simplified": false
+  },
+  "bone_triquetrum_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 176,
+   "triangles_export": 176,
+   "triangles_displayed": 176,
+   "simplified": false
+  },
+  "bone_pisiform_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1668,
+   "triangles_export": 1668,
+   "triangles_displayed": 1668,
+   "simplified": false
+  },
+  "bone_pisiform_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1668,
+   "triangles_export": 1668,
+   "triangles_displayed": 1668,
+   "simplified": false
+  },
+  "bone_trapezium_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 500,
+   "triangles_export": 500,
+   "triangles_displayed": 500,
+   "simplified": false
+  },
+  "bone_trapezium_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 500,
+   "triangles_export": 500,
+   "triangles_displayed": 500,
+   "simplified": false
+  },
+  "bone_trapezoid_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 364,
+   "triangles_export": 364,
+   "triangles_displayed": 364,
+   "simplified": false
+  },
+  "bone_trapezoid_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 364,
+   "triangles_export": 364,
+   "triangles_displayed": 364,
+   "simplified": false
+  },
+  "bone_capitate_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 472,
+   "triangles_export": 472,
+   "triangles_displayed": 472,
+   "simplified": false
+  },
+  "bone_capitate_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 472,
+   "triangles_export": 472,
+   "triangles_displayed": 472,
+   "simplified": false
+  },
+  "bone_hamate_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 536,
+   "triangles_export": 536,
+   "triangles_displayed": 536,
+   "simplified": false
+  },
+  "bone_hamate_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 536,
+   "triangles_export": 536,
+   "triangles_displayed": 536,
+   "simplified": false
+  },
+  "bone_metacarpal_1_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 682,
+   "triangles_export": 682,
+   "triangles_displayed": 682,
+   "simplified": false
+  },
+  "bone_metacarpal_1_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 682,
+   "triangles_export": 682,
+   "triangles_displayed": 682,
+   "simplified": false
+  },
+  "bone_metacarpal_2_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 764,
+   "triangles_export": 764,
+   "triangles_displayed": 764,
+   "simplified": false
+  },
+  "bone_metacarpal_2_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 764,
+   "triangles_export": 764,
+   "triangles_displayed": 764,
+   "simplified": false
+  },
+  "bone_metacarpal_3_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 708,
+   "triangles_export": 708,
+   "triangles_displayed": 708,
+   "simplified": false
+  },
+  "bone_metacarpal_3_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 708,
+   "triangles_export": 708,
+   "triangles_displayed": 708,
+   "simplified": false
+  },
+  "bone_metacarpal_4_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 642,
+   "triangles_export": 642,
+   "triangles_displayed": 642,
+   "simplified": false
+  },
+  "bone_metacarpal_4_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 642,
+   "triangles_export": 642,
+   "triangles_displayed": 642,
+   "simplified": false
+  },
+  "bone_metacarpal_5_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 512,
+   "triangles_export": 512,
+   "triangles_displayed": 512,
+   "simplified": false
+  },
+  "bone_metacarpal_5_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 512,
+   "triangles_export": 512,
+   "triangles_displayed": 512,
+   "simplified": false
+  },
+  "bone_phalanx_hand_thumb_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 328,
+   "triangles_export": 328,
+   "triangles_displayed": 328,
+   "simplified": false
+  },
+  "bone_phalanx_hand_thumb_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 328,
+   "triangles_export": 328,
+   "triangles_displayed": 328,
+   "simplified": false
+  },
+  "bone_phalanx_hand_thumb_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 222,
+   "triangles_export": 222,
+   "triangles_displayed": 222,
+   "simplified": false
+  },
+  "bone_phalanx_hand_thumb_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 222,
+   "triangles_export": 222,
+   "triangles_displayed": 222,
+   "simplified": false
+  },
+  "bone_phalanx_hand_index_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 414,
+   "triangles_export": 414,
+   "triangles_displayed": 414,
+   "simplified": false
+  },
+  "bone_phalanx_hand_index_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 414,
+   "triangles_export": 414,
+   "triangles_displayed": 414,
+   "simplified": false
+  },
+  "bone_phalanx_hand_index_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 314,
+   "triangles_export": 314,
+   "triangles_displayed": 314,
+   "simplified": false
+  },
+  "bone_phalanx_hand_index_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 314,
+   "triangles_export": 314,
+   "triangles_displayed": 314,
+   "simplified": false
+  },
+  "bone_phalanx_hand_index_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 250,
+   "triangles_export": 250,
+   "triangles_displayed": 250,
+   "simplified": false
+  },
+  "bone_phalanx_hand_index_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 250,
+   "triangles_export": 250,
+   "triangles_displayed": 250,
+   "simplified": false
+  },
+  "bone_phalanx_hand_middle_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 440,
+   "triangles_export": 440,
+   "triangles_displayed": 440,
+   "simplified": false
+  },
+  "bone_phalanx_hand_middle_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 440,
+   "triangles_export": 440,
+   "triangles_displayed": 440,
+   "simplified": false
+  },
+  "bone_phalanx_hand_middle_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 360,
+   "triangles_export": 360,
+   "triangles_displayed": 360,
+   "simplified": false
+  },
+  "bone_phalanx_hand_middle_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 360,
+   "triangles_export": 360,
+   "triangles_displayed": 360,
+   "simplified": false
+  },
+  "bone_phalanx_hand_middle_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 192,
+   "triangles_export": 192,
+   "triangles_displayed": 192,
+   "simplified": false
+  },
+  "bone_phalanx_hand_middle_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 192,
+   "triangles_export": 192,
+   "triangles_displayed": 192,
+   "simplified": false
+  },
+  "bone_phalanx_hand_ring_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 368,
+   "triangles_export": 368,
+   "triangles_displayed": 368,
+   "simplified": false
+  },
+  "bone_phalanx_hand_ring_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 368,
+   "triangles_export": 368,
+   "triangles_displayed": 368,
+   "simplified": false
+  },
+  "bone_phalanx_hand_ring_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 446,
+   "triangles_export": 446,
+   "triangles_displayed": 446,
+   "simplified": false
+  },
+  "bone_phalanx_hand_ring_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 446,
+   "triangles_export": 446,
+   "triangles_displayed": 446,
+   "simplified": false
+  },
+  "bone_phalanx_hand_ring_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 134,
+   "triangles_export": 134,
+   "triangles_displayed": 134,
+   "simplified": false
+  },
+  "bone_phalanx_hand_ring_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 134,
+   "triangles_export": 134,
+   "triangles_displayed": 134,
+   "simplified": false
+  },
+  "bone_phalanx_hand_little_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 560,
+   "triangles_export": 560,
+   "triangles_displayed": 560,
+   "simplified": false
+  },
+  "bone_phalanx_hand_little_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 560,
+   "triangles_export": 560,
+   "triangles_displayed": 560,
+   "simplified": false
+  },
+  "bone_phalanx_hand_little_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 292,
+   "triangles_export": 292,
+   "triangles_displayed": 292,
+   "simplified": false
+  },
+  "bone_phalanx_hand_little_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 292,
+   "triangles_export": 292,
+   "triangles_displayed": 292,
+   "simplified": false
+  },
+  "bone_phalanx_hand_little_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 192,
+   "triangles_export": 192,
+   "triangles_displayed": 192,
+   "simplified": false
+  },
+  "bone_phalanx_hand_little_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 192,
+   "triangles_export": 192,
+   "triangles_displayed": 192,
+   "simplified": false
+  },
+  "bone_hip_bone_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3788,
+   "triangles_export": 3236,
+   "triangles_displayed": 3236,
+   "simplified": true
+  },
+  "bone_hip_bone_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3636,
+   "triangles_export": 3190,
+   "triangles_displayed": 3190,
+   "simplified": true
+  },
+  "bone_femur_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 3794,
+   "triangles_export": 3238,
+   "triangles_displayed": 3238,
+   "simplified": true
+  },
+  "bone_femur_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 2973,
+   "triangles_export": 2973,
+   "triangles_displayed": 2973,
+   "simplified": false
+  },
+  "bone_patella_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 276,
+   "triangles_export": 276,
+   "triangles_displayed": 276,
+   "simplified": false
+  },
+  "bone_patella_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 171,
+   "triangles_export": 171,
+   "triangles_displayed": 171,
+   "simplified": false
+  },
+  "bone_tibia_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1670,
+   "triangles_export": 1670,
+   "triangles_displayed": 1670,
+   "simplified": false
+  },
+  "bone_tibia_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1385,
+   "triangles_export": 1385,
+   "triangles_displayed": 1385,
+   "simplified": false
+  },
+  "bone_fibula_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1264,
+   "triangles_export": 1264,
+   "triangles_displayed": 1264,
+   "simplified": false
+  },
+  "bone_fibula_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1264,
+   "triangles_export": 1264,
+   "triangles_displayed": 1264,
+   "simplified": false
+  },
+  "bone_talus_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1350,
+   "triangles_export": 1350,
+   "triangles_displayed": 1350,
+   "simplified": false
+  },
+  "bone_talus_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 901,
+   "triangles_export": 901,
+   "triangles_displayed": 901,
+   "simplified": false
+  },
+  "bone_calcaneus_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1448,
+   "triangles_export": 1448,
+   "triangles_displayed": 1448,
+   "simplified": false
+  },
+  "bone_calcaneus_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1448,
+   "triangles_export": 1448,
+   "triangles_displayed": 1448,
+   "simplified": false
+  },
+  "bone_navicular_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 732,
+   "triangles_export": 732,
+   "triangles_displayed": 732,
+   "simplified": false
+  },
+  "bone_navicular_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 732,
+   "triangles_export": 732,
+   "triangles_displayed": 732,
+   "simplified": false
+  },
+  "bone_cuboid_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 998,
+   "triangles_export": 998,
+   "triangles_displayed": 998,
+   "simplified": false
+  },
+  "bone_cuboid_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 998,
+   "triangles_export": 998,
+   "triangles_displayed": 998,
+   "simplified": false
+  },
+  "bone_cuneiform_medial_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bone_cuneiform_medial_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bone_cuneiform_intermediate_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 444,
+   "triangles_export": 444,
+   "triangles_displayed": 444,
+   "simplified": false
+  },
+  "bone_cuneiform_intermediate_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 444,
+   "triangles_export": 444,
+   "triangles_displayed": 444,
+   "simplified": false
+  },
+  "bone_cuneiform_lateral_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 638,
+   "triangles_export": 638,
+   "triangles_displayed": 638,
+   "simplified": false
+  },
+  "bone_cuneiform_lateral_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 638,
+   "triangles_export": 638,
+   "triangles_displayed": 638,
+   "simplified": false
+  },
+  "bone_metatarsal_1_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1088,
+   "triangles_export": 1088,
+   "triangles_displayed": 1088,
+   "simplified": false
+  },
+  "bone_metatarsal_1_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 1088,
+   "triangles_export": 1088,
+   "triangles_displayed": 1088,
+   "simplified": false
+  },
+  "bone_metatarsal_2_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 690,
+   "triangles_export": 690,
+   "triangles_displayed": 690,
+   "simplified": false
+  },
+  "bone_metatarsal_2_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 690,
+   "triangles_export": 690,
+   "triangles_displayed": 690,
+   "simplified": false
+  },
+  "bone_metatarsal_3_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 814,
+   "triangles_export": 814,
+   "triangles_displayed": 814,
+   "simplified": false
+  },
+  "bone_metatarsal_3_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 814,
+   "triangles_export": 814,
+   "triangles_displayed": 814,
+   "simplified": false
+  },
+  "bone_metatarsal_4_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 834,
+   "triangles_export": 834,
+   "triangles_displayed": 834,
+   "simplified": false
+  },
+  "bone_metatarsal_4_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 834,
+   "triangles_export": 834,
+   "triangles_displayed": 834,
+   "simplified": false
+  },
+  "bone_metatarsal_5_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 894,
+   "triangles_export": 894,
+   "triangles_displayed": 894,
+   "simplified": false
+  },
+  "bone_metatarsal_5_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 894,
+   "triangles_export": 894,
+   "triangles_displayed": 894,
+   "simplified": false
+  },
+  "bone_phalanx_foot_big_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 532,
+   "triangles_export": 532,
+   "triangles_displayed": 532,
+   "simplified": false
+  },
+  "bone_phalanx_foot_big_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 532,
+   "triangles_export": 532,
+   "triangles_displayed": 532,
+   "simplified": false
+  },
+  "bone_phalanx_foot_big_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 466,
+   "triangles_export": 466,
+   "triangles_displayed": 466,
+   "simplified": false
+  },
+  "bone_phalanx_foot_big_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 466,
+   "triangles_export": 466,
+   "triangles_displayed": 466,
+   "simplified": false
+  },
+  "bone_phalanx_foot_2nd_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 426,
+   "triangles_export": 426,
+   "triangles_displayed": 426,
+   "simplified": false
+  },
+  "bone_phalanx_foot_2nd_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 426,
+   "triangles_export": 426,
+   "triangles_displayed": 426,
+   "simplified": false
+  },
+  "bone_phalanx_foot_2nd_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 382,
+   "triangles_export": 382,
+   "triangles_displayed": 382,
+   "simplified": false
+  },
+  "bone_phalanx_foot_2nd_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 382,
+   "triangles_export": 382,
+   "triangles_displayed": 382,
+   "simplified": false
+  },
+  "bone_phalanx_foot_2nd_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 236,
+   "triangles_export": 236,
+   "triangles_displayed": 236,
+   "simplified": false
+  },
+  "bone_phalanx_foot_2nd_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 236,
+   "triangles_export": 236,
+   "triangles_displayed": 236,
+   "simplified": false
+  },
+  "bone_phalanx_foot_3rd_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 460,
+   "triangles_export": 460,
+   "triangles_displayed": 460,
+   "simplified": false
+  },
+  "bone_phalanx_foot_3rd_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 460,
+   "triangles_export": 460,
+   "triangles_displayed": 460,
+   "simplified": false
+  },
+  "bone_phalanx_foot_3rd_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 400,
+   "triangles_export": 400,
+   "triangles_displayed": 400,
+   "simplified": false
+  },
+  "bone_phalanx_foot_3rd_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 400,
+   "triangles_export": 400,
+   "triangles_displayed": 400,
+   "simplified": false
+  },
+  "bone_phalanx_foot_3rd_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 318,
+   "triangles_export": 318,
+   "triangles_displayed": 318,
+   "simplified": false
+  },
+  "bone_phalanx_foot_3rd_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 318,
+   "triangles_export": 318,
+   "triangles_displayed": 318,
+   "simplified": false
+  },
+  "bone_phalanx_foot_4th_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 460,
+   "triangles_export": 460,
+   "triangles_displayed": 460,
+   "simplified": false
+  },
+  "bone_phalanx_foot_4th_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 460,
+   "triangles_export": 460,
+   "triangles_displayed": 460,
+   "simplified": false
+  },
+  "bone_phalanx_foot_4th_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 448,
+   "triangles_export": 448,
+   "triangles_displayed": 448,
+   "simplified": false
+  },
+  "bone_phalanx_foot_4th_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 448,
+   "triangles_export": 448,
+   "triangles_displayed": 448,
+   "simplified": false
+  },
+  "bone_phalanx_foot_4th_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 278,
+   "triangles_export": 278,
+   "triangles_displayed": 278,
+   "simplified": false
+  },
+  "bone_phalanx_foot_4th_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 278,
+   "triangles_export": 278,
+   "triangles_displayed": 278,
+   "simplified": false
+  },
+  "bone_phalanx_foot_little_proximal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 516,
+   "triangles_export": 516,
+   "triangles_displayed": 516,
+   "simplified": false
+  },
+  "bone_phalanx_foot_little_proximal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 516,
+   "triangles_export": 516,
+   "triangles_displayed": 516,
+   "simplified": false
+  },
+  "bone_phalanx_foot_little_middle_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 216,
+   "triangles_export": 216,
+   "triangles_displayed": 216,
+   "simplified": false
+  },
+  "bone_phalanx_foot_little_middle_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 216,
+   "triangles_export": 216,
+   "triangles_displayed": 216,
+   "simplified": false
+  },
+  "bone_phalanx_foot_little_distal_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 236,
+   "triangles_export": 236,
+   "triangles_displayed": 236,
+   "simplified": false
+  },
+  "bone_phalanx_foot_little_distal_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 236,
+   "triangles_export": 236,
+   "triangles_displayed": 236,
+   "simplified": false
+  },
+  "bone_sesamoids_foot_l": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 290,
+   "triangles_export": 290,
+   "triangles_displayed": 290,
+   "simplified": false
+  },
+  "bone_sesamoids_foot_r": {
+   "system": "bone",
+   "mirror_of": null,
+   "triangles_source": 290,
+   "triangles_export": 290,
+   "triangles_displayed": 290,
+   "simplified": false
+  },
+  "cartilage_meniscus_medial_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_meniscus_medial_r",
+   "triangles_source": 284,
+   "triangles_export": 0,
+   "triangles_displayed": 284
+  },
+  "cartilage_meniscus_medial_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 284,
+   "triangles_export": 284,
+   "triangles_displayed": 284,
+   "simplified": false
+  },
+  "cartilage_meniscus_lateral_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_meniscus_lateral_r",
+   "triangles_source": 468,
+   "triangles_export": 0,
+   "triangles_displayed": 468
+  },
+  "cartilage_meniscus_lateral_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 468,
+   "triangles_export": 468,
+   "triangles_displayed": 468,
+   "simplified": false
+  },
+  "cartilage_labrum_hip_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_labrum_hip_r",
+   "triangles_source": 1408,
+   "triangles_export": 0,
+   "triangles_displayed": 1408
+  },
+  "cartilage_labrum_hip_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1408,
+   "triangles_export": 1408,
+   "triangles_displayed": 1408,
+   "simplified": false
+  },
+  "cartilage_labrum_shoulder_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_labrum_shoulder_r",
+   "triangles_source": 848,
+   "triangles_export": 0,
+   "triangles_displayed": 848
+  },
+  "cartilage_labrum_shoulder_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 848,
+   "triangles_export": 848,
+   "triangles_displayed": 848,
+   "simplified": false
+  },
+  "cartilage_tfcc_disc_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_tfcc_disc_r",
+   "triangles_source": 28,
+   "triangles_export": 0,
+   "triangles_displayed": 28
+  },
+  "cartilage_tfcc_disc_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 28,
+   "triangles_export": 28,
+   "triangles_displayed": 28,
+   "simplified": false
+  },
+  "cartilage_disc_ac_joint_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_disc_ac_joint_r",
+   "triangles_source": 176,
+   "triangles_export": 0,
+   "triangles_displayed": 176
+  },
+  "cartilage_disc_ac_joint_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 176,
+   "triangles_export": 176,
+   "triangles_displayed": 176,
+   "simplified": false
+  },
+  "cartilage_disc_sc_joint_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_disc_sc_joint_r",
+   "triangles_source": 176,
+   "triangles_export": 0,
+   "triangles_displayed": 176
+  },
+  "cartilage_disc_sc_joint_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 176,
+   "triangles_export": 176,
+   "triangles_displayed": 176,
+   "simplified": false
+  },
+  "cartilage_disc_tmj_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_disc_tmj_r",
+   "triangles_source": 288,
+   "triangles_export": 0,
+   "triangles_displayed": 288
+  },
+  "cartilage_disc_tmj_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 288,
+   "triangles_export": 288,
+   "triangles_displayed": 288,
+   "simplified": false
+  },
+  "cartilage_pubic_symphysis": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 416,
+   "triangles_export": 416,
+   "triangles_displayed": 416,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_1_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_1_r",
+   "triangles_source": 2772,
+   "triangles_export": 0,
+   "triangles_displayed": 2772
+  },
+  "cartilage_costal_cartilage_1_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 2772,
+   "triangles_export": 2772,
+   "triangles_displayed": 2772,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_2_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_2_r",
+   "triangles_source": 3408,
+   "triangles_export": 0,
+   "triangles_displayed": 3408
+  },
+  "cartilage_costal_cartilage_2_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3408,
+   "triangles_export": 3408,
+   "triangles_displayed": 3408,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_3_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_3_r",
+   "triangles_source": 3600,
+   "triangles_export": 0,
+   "triangles_displayed": 3600
+  },
+  "cartilage_costal_cartilage_3_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3600,
+   "triangles_export": 3600,
+   "triangles_displayed": 3600,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_4_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_4_r",
+   "triangles_source": 4472,
+   "triangles_export": 0,
+   "triangles_displayed": 4472
+  },
+  "cartilage_costal_cartilage_4_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 4472,
+   "triangles_export": 4472,
+   "triangles_displayed": 4472,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_5_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_5_r",
+   "triangles_source": 6492,
+   "triangles_export": 0,
+   "triangles_displayed": 6492
+  },
+  "cartilage_costal_cartilage_5_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 6492,
+   "triangles_export": 6492,
+   "triangles_displayed": 6492,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_6_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_6_r",
+   "triangles_source": 8120,
+   "triangles_export": 0,
+   "triangles_displayed": 8120
+  },
+  "cartilage_costal_cartilage_6_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 8120,
+   "triangles_export": 8120,
+   "triangles_displayed": 8120,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_7_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_7_r",
+   "triangles_source": 13764,
+   "triangles_export": 0,
+   "triangles_displayed": 13764
+  },
+  "cartilage_costal_cartilage_7_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 13764,
+   "triangles_export": 13764,
+   "triangles_displayed": 13764,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_8_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_8_r",
+   "triangles_source": 2624,
+   "triangles_export": 0,
+   "triangles_displayed": 2624
+  },
+  "cartilage_costal_cartilage_8_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 2624,
+   "triangles_export": 2624,
+   "triangles_displayed": 2624,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_9_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_9_r",
+   "triangles_source": 1964,
+   "triangles_export": 0,
+   "triangles_displayed": 1964
+  },
+  "cartilage_costal_cartilage_9_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1964,
+   "triangles_export": 1964,
+   "triangles_displayed": 1964,
+   "simplified": false
+  },
+  "cartilage_costal_cartilage_10_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_costal_cartilage_10_r",
+   "triangles_source": 1524,
+   "triangles_export": 0,
+   "triangles_displayed": 1524
+  },
+  "cartilage_costal_cartilage_10_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1524,
+   "triangles_export": 1524,
+   "triangles_displayed": 1524,
+   "simplified": false
+  },
+  "cartilage_disc_c2_c3": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 848,
+   "triangles_export": 848,
+   "triangles_displayed": 848,
+   "simplified": false
+  },
+  "cartilage_disc_c3_c4": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 688,
+   "triangles_export": 688,
+   "triangles_displayed": 688,
+   "simplified": false
+  },
+  "cartilage_disc_c4_c5": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 856,
+   "triangles_export": 856,
+   "triangles_displayed": 856,
+   "simplified": false
+  },
+  "cartilage_disc_c5_c6": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 968,
+   "triangles_export": 968,
+   "triangles_displayed": 968,
+   "simplified": false
+  },
+  "cartilage_disc_c6_c7": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 834,
+   "triangles_export": 834,
+   "triangles_displayed": 834,
+   "simplified": false
+  },
+  "cartilage_disc_c7_t1": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1168,
+   "triangles_export": 1168,
+   "triangles_displayed": 1168,
+   "simplified": false
+  },
+  "cartilage_disc_t1_t2": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1252,
+   "triangles_export": 1252,
+   "triangles_displayed": 1252,
+   "simplified": false
+  },
+  "cartilage_disc_t2_t3": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1324,
+   "triangles_export": 1324,
+   "triangles_displayed": 1324,
+   "simplified": false
+  },
+  "cartilage_disc_t3_t4": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1360,
+   "triangles_export": 1360,
+   "triangles_displayed": 1360,
+   "simplified": false
+  },
+  "cartilage_disc_t4_t5": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1630,
+   "triangles_export": 1630,
+   "triangles_displayed": 1630,
+   "simplified": false
+  },
+  "cartilage_disc_t5_t6": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1738,
+   "triangles_export": 1738,
+   "triangles_displayed": 1738,
+   "simplified": false
+  },
+  "cartilage_disc_t6_t7": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 2388,
+   "triangles_export": 2388,
+   "triangles_displayed": 2388,
+   "simplified": false
+  },
+  "cartilage_disc_t7_t8": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 2658,
+   "triangles_export": 2658,
+   "triangles_displayed": 2658,
+   "simplified": false
+  },
+  "cartilage_disc_t8_t9": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 2890,
+   "triangles_export": 2890,
+   "triangles_displayed": 2890,
+   "simplified": false
+  },
+  "cartilage_disc_t9_t10": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 1248,
+   "triangles_export": 1248,
+   "triangles_displayed": 1248,
+   "simplified": false
+  },
+  "cartilage_disc_t10_t11": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 2870,
+   "triangles_export": 2870,
+   "triangles_displayed": 2870,
+   "simplified": false
+  },
+  "cartilage_disc_t11_t12": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3392,
+   "triangles_export": 3392,
+   "triangles_displayed": 3392,
+   "simplified": false
+  },
+  "cartilage_disc_t12_l1": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3328,
+   "triangles_export": 3328,
+   "triangles_displayed": 3328,
+   "simplified": false
+  },
+  "cartilage_disc_l1_l2": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3132,
+   "triangles_export": 3132,
+   "triangles_displayed": 3132,
+   "simplified": false
+  },
+  "cartilage_disc_l2_l3": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3388,
+   "triangles_export": 3388,
+   "triangles_displayed": 3388,
+   "simplified": false
+  },
+  "cartilage_disc_l3_l4": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3116,
+   "triangles_export": 3116,
+   "triangles_displayed": 3116,
+   "simplified": false
+  },
+  "cartilage_disc_l4_l5": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3286,
+   "triangles_export": 3286,
+   "triangles_displayed": 3286,
+   "simplified": false
+  },
+  "cartilage_disc_l5_s1": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 3586,
+   "triangles_export": 3586,
+   "triangles_displayed": 3586,
+   "simplified": false
+  },
+  "cartilage_articular_femur_head_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_femur_head_r",
+   "triangles_source": 325,
+   "triangles_export": 0,
+   "triangles_displayed": 325
+  },
+  "cartilage_articular_femur_head_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 325,
+   "triangles_export": 325,
+   "triangles_displayed": 325,
+   "simplified": false,
+   "cuts": [
+    "Femur.r#Cartilage^upper: 1 of 2 separate pieces"
+   ]
+  },
+  "cartilage_articular_femur_condyles_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_femur_condyles_r",
+   "triangles_source": 496,
+   "triangles_export": 0,
+   "triangles_displayed": 496
+  },
+  "cartilage_articular_femur_condyles_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 496,
+   "triangles_export": 496,
+   "triangles_displayed": 496,
+   "simplified": false,
+   "cuts": [
+    "Femur.r#Cartilage^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "cartilage_articular_tibia_plateau_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_tibia_plateau_r",
+   "triangles_source": 141,
+   "triangles_export": 0,
+   "triangles_displayed": 141
+  },
+  "cartilage_articular_tibia_plateau_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 141,
+   "triangles_export": 141,
+   "triangles_displayed": 141,
+   "simplified": false,
+   "cuts": [
+    "Tibia.r#Cartilage^upper: 3 of 4 separate pieces"
+   ]
+  },
+  "cartilage_articular_tibia_ankle_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_tibia_ankle_r",
+   "triangles_source": 144,
+   "triangles_export": 0,
+   "triangles_displayed": 144
+  },
+  "cartilage_articular_tibia_ankle_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 144,
+   "triangles_export": 144,
+   "triangles_displayed": 144,
+   "simplified": false,
+   "cuts": [
+    "Tibia.r#Cartilage^lower: 1 of 4 separate pieces"
+   ]
+  },
+  "cartilage_articular_patella_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_patella_r",
+   "triangles_source": 105,
+   "triangles_export": 0,
+   "triangles_displayed": 105
+  },
+  "cartilage_articular_patella_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 105,
+   "triangles_export": 105,
+   "triangles_displayed": 105,
+   "simplified": false
+  },
+  "cartilage_articular_talus_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_talus_r",
+   "triangles_source": 449,
+   "triangles_export": 0,
+   "triangles_displayed": 449
+  },
+  "cartilage_articular_talus_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 449,
+   "triangles_export": 449,
+   "triangles_displayed": 449,
+   "simplified": false
+  },
+  "cartilage_articular_acetabulum_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_acetabulum_r",
+   "triangles_source": 152,
+   "triangles_export": 0,
+   "triangles_displayed": 152
+  },
+  "cartilage_articular_acetabulum_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 152,
+   "triangles_export": 152,
+   "triangles_displayed": 152,
+   "simplified": false,
+   "cuts": [
+    "Hip bone.r#Cartilage^largest: 1 of 3 separate pieces"
+   ]
+  },
+  "cartilage_articular_humerus_head_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_humerus_head_r",
+   "triangles_source": 321,
+   "triangles_export": 0,
+   "triangles_displayed": 321
+  },
+  "cartilage_articular_humerus_head_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 321,
+   "triangles_export": 321,
+   "triangles_displayed": 321,
+   "simplified": false,
+   "cuts": [
+    "Humerus.r#Cartilage^upper: 1 of 3 separate pieces"
+   ]
+  },
+  "cartilage_articular_humerus_elbow_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_humerus_elbow_r",
+   "triangles_source": 482,
+   "triangles_export": 0,
+   "triangles_displayed": 482
+  },
+  "cartilage_articular_humerus_elbow_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 482,
+   "triangles_export": 482,
+   "triangles_displayed": 482,
+   "simplified": false,
+   "cuts": [
+    "Humerus.r#Cartilage^lower: 2 of 3 separate pieces"
+   ]
+  },
+  "cartilage_articular_glenoid_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_glenoid_r",
+   "triangles_source": 634,
+   "triangles_export": 0,
+   "triangles_displayed": 634
+  },
+  "cartilage_articular_glenoid_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 634,
+   "triangles_export": 634,
+   "triangles_displayed": 634,
+   "simplified": false,
+   "cuts": [
+    "Scapula.r#Cartilage^largest: 1 of 2 separate pieces"
+   ]
+  },
+  "cartilage_articular_radius_elbow_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_radius_elbow_r",
+   "triangles_source": 178,
+   "triangles_export": 0,
+   "triangles_displayed": 178
+  },
+  "cartilage_articular_radius_elbow_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 178,
+   "triangles_export": 178,
+   "triangles_displayed": 178,
+   "simplified": false,
+   "cuts": [
+    "Radius.r#Cartilage^upper: 1 of 2 separate pieces"
+   ]
+  },
+  "cartilage_articular_radius_wrist_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_radius_wrist_r",
+   "triangles_source": 95,
+   "triangles_export": 0,
+   "triangles_displayed": 95
+  },
+  "cartilage_articular_radius_wrist_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 95,
+   "triangles_export": 95,
+   "triangles_displayed": 95,
+   "simplified": false,
+   "cuts": [
+    "Radius.r#Cartilage^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "cartilage_articular_ulna_elbow_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_ulna_elbow_r",
+   "triangles_source": 161,
+   "triangles_export": 0,
+   "triangles_displayed": 161
+  },
+  "cartilage_articular_ulna_elbow_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 161,
+   "triangles_export": 161,
+   "triangles_displayed": 161,
+   "simplified": false,
+   "cuts": [
+    "Ulna.r#Cartilage^upper: 1 of 2 separate pieces"
+   ]
+  },
+  "cartilage_articular_ulna_wrist_l": {
+   "system": "cartilage",
+   "mirror_of": "cartilage_articular_ulna_wrist_r",
+   "triangles_source": 104,
+   "triangles_export": 0,
+   "triangles_displayed": 104
+  },
+  "cartilage_articular_ulna_wrist_r": {
+   "system": "cartilage",
+   "mirror_of": null,
+   "triangles_source": 104,
+   "triangles_export": 104,
+   "triangles_displayed": 104,
+   "simplified": false,
+   "cuts": [
+    "Ulna.r#Cartilage^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "ligament_acl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_acl_r",
+   "triangles_source": 1576,
+   "triangles_export": 0,
+   "triangles_displayed": 1576
+  },
+  "ligament_acl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 1576,
+   "triangles_export": 1576,
+   "triangles_displayed": 1576,
+   "simplified": false
+  },
+  "ligament_pcl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_pcl_r",
+   "triangles_source": 788,
+   "triangles_export": 0,
+   "triangles_displayed": 788
+  },
+  "ligament_pcl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 788,
+   "triangles_export": 788,
+   "triangles_displayed": 788,
+   "simplified": false
+  },
+  "ligament_mcl_l": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 408,
+   "triangles_export": 408,
+   "triangles_displayed": 408,
+   "simplified": false
+  },
+  "ligament_mcl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 752,
+   "triangles_export": 752,
+   "triangles_displayed": 752,
+   "simplified": false
+  },
+  "ligament_lcl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_lcl_r",
+   "triangles_source": 80,
+   "triangles_export": 0,
+   "triangles_displayed": 80
+  },
+  "ligament_lcl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 80,
+   "triangles_export": 80,
+   "triangles_displayed": 80,
+   "simplified": false
+  },
+  "ligament_popliteofibular_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_popliteofibular_r",
+   "triangles_source": 896,
+   "triangles_export": 0,
+   "triangles_displayed": 896
+  },
+  "ligament_popliteofibular_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 896,
+   "triangles_export": 896,
+   "triangles_displayed": 896,
+   "simplified": false
+  },
+  "ligament_oblique_popliteal_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_oblique_popliteal_r",
+   "triangles_source": 368,
+   "triangles_export": 0,
+   "triangles_displayed": 368
+  },
+  "ligament_oblique_popliteal_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 368,
+   "triangles_export": 368,
+   "triangles_displayed": 368,
+   "simplified": false
+  },
+  "ligament_patellar_retinaculum_medial_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_patellar_retinaculum_medial_r",
+   "triangles_source": 184,
+   "triangles_export": 0,
+   "triangles_displayed": 184
+  },
+  "ligament_patellar_retinaculum_medial_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 184,
+   "triangles_export": 184,
+   "triangles_displayed": 184,
+   "simplified": false
+  },
+  "ligament_patellar_retinaculum_lateral_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_patellar_retinaculum_lateral_r",
+   "triangles_source": 148,
+   "triangles_export": 0,
+   "triangles_displayed": 148
+  },
+  "ligament_patellar_retinaculum_lateral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 148,
+   "triangles_export": 148,
+   "triangles_displayed": 148,
+   "simplified": false
+  },
+  "ligament_atfl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_atfl_r",
+   "triangles_source": 32,
+   "triangles_export": 0,
+   "triangles_displayed": 32
+  },
+  "ligament_atfl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 32,
+   "triangles_export": 32,
+   "triangles_displayed": 32,
+   "simplified": false
+  },
+  "ligament_cfl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_cfl_r",
+   "triangles_source": 32,
+   "triangles_export": 0,
+   "triangles_displayed": 32
+  },
+  "ligament_cfl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 32,
+   "triangles_export": 32,
+   "triangles_displayed": 32,
+   "simplified": false
+  },
+  "ligament_ptfl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_ptfl_r",
+   "triangles_source": 32,
+   "triangles_export": 0,
+   "triangles_displayed": 32
+  },
+  "ligament_ptfl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 32,
+   "triangles_export": 32,
+   "triangles_displayed": 32,
+   "simplified": false
+  },
+  "ligament_deltoid_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_deltoid_r",
+   "triangles_source": 344,
+   "triangles_export": 0,
+   "triangles_displayed": 344
+  },
+  "ligament_deltoid_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 344,
+   "triangles_export": 344,
+   "triangles_displayed": 344,
+   "simplified": false
+  },
+  "ligament_aitfl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_aitfl_r",
+   "triangles_source": 248,
+   "triangles_export": 0,
+   "triangles_displayed": 248
+  },
+  "ligament_aitfl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 248,
+   "triangles_export": 248,
+   "triangles_displayed": 248,
+   "simplified": false
+  },
+  "ligament_pitfl_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_pitfl_r",
+   "triangles_source": 248,
+   "triangles_export": 0,
+   "triangles_displayed": 248
+  },
+  "ligament_pitfl_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 248,
+   "triangles_export": 248,
+   "triangles_displayed": 248,
+   "simplified": false
+  },
+  "ligament_interosseous_membrane_leg_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_interosseous_membrane_leg_r",
+   "triangles_source": 12642,
+   "triangles_export": 0,
+   "triangles_displayed": 12642
+  },
+  "ligament_interosseous_membrane_leg_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 12642,
+   "triangles_export": 12642,
+   "triangles_displayed": 12642,
+   "simplified": false
+  },
+  "ligament_spring_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_spring_r",
+   "triangles_source": 32,
+   "triangles_export": 0,
+   "triangles_displayed": 32
+  },
+  "ligament_spring_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 32,
+   "triangles_export": 32,
+   "triangles_displayed": 32,
+   "simplified": false
+  },
+  "ligament_long_plantar_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_long_plantar_r",
+   "triangles_source": 3486,
+   "triangles_export": 0,
+   "triangles_displayed": 3486
+  },
+  "ligament_long_plantar_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 3486,
+   "triangles_export": 3486,
+   "triangles_displayed": 3486,
+   "simplified": false
+  },
+  "ligament_bifurcate_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_bifurcate_r",
+   "triangles_source": 128,
+   "triangles_export": 0,
+   "triangles_displayed": 128
+  },
+  "ligament_bifurcate_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 128,
+   "triangles_export": 128,
+   "triangles_displayed": 128,
+   "simplified": false
+  },
+  "ligament_lisfranc_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_lisfranc_r",
+   "triangles_source": 36,
+   "triangles_export": 0,
+   "triangles_displayed": 36
+  },
+  "ligament_lisfranc_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 36,
+   "triangles_export": 36,
+   "triangles_displayed": 36,
+   "simplified": false
+  },
+  "ligament_plantar_fascia_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_plantar_fascia_r",
+   "triangles_source": 406,
+   "triangles_export": 0,
+   "triangles_displayed": 406
+  },
+  "ligament_plantar_fascia_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 406,
+   "triangles_export": 406,
+   "triangles_displayed": 406,
+   "simplified": false
+  },
+  "ligament_iliofemoral_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_iliofemoral_r",
+   "triangles_source": 1072,
+   "triangles_export": 0,
+   "triangles_displayed": 1072
+  },
+  "ligament_iliofemoral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 1072,
+   "triangles_export": 1072,
+   "triangles_displayed": 1072,
+   "simplified": false
+  },
+  "ligament_pubofemoral_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_pubofemoral_r",
+   "triangles_source": 392,
+   "triangles_export": 0,
+   "triangles_displayed": 392
+  },
+  "ligament_pubofemoral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 392,
+   "triangles_export": 392,
+   "triangles_displayed": 392,
+   "simplified": false
+  },
+  "ligament_ischiofemoral_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_ischiofemoral_r",
+   "triangles_source": 672,
+   "triangles_export": 0,
+   "triangles_displayed": 672
+  },
+  "ligament_ischiofemoral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 672,
+   "triangles_export": 672,
+   "triangles_displayed": 672,
+   "simplified": false
+  },
+  "ligament_si_anterior_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_si_anterior_r",
+   "triangles_source": 504,
+   "triangles_export": 0,
+   "triangles_displayed": 504
+  },
+  "ligament_si_anterior_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 504,
+   "triangles_export": 504,
+   "triangles_displayed": 504,
+   "simplified": false
+  },
+  "ligament_si_posterior_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_si_posterior_r",
+   "triangles_source": 5456,
+   "triangles_export": 0,
+   "triangles_displayed": 5456
+  },
+  "ligament_si_posterior_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 5456,
+   "triangles_export": 5456,
+   "triangles_displayed": 5456,
+   "simplified": false
+  },
+  "ligament_si_interosseous_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_si_interosseous_r",
+   "triangles_source": 200,
+   "triangles_export": 0,
+   "triangles_displayed": 200
+  },
+  "ligament_si_interosseous_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 200,
+   "triangles_export": 200,
+   "triangles_displayed": 200,
+   "simplified": false
+  },
+  "ligament_sacrotuberous_l": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 656,
+   "triangles_export": 656,
+   "triangles_displayed": 656,
+   "simplified": false
+  },
+  "ligament_sacrotuberous_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 656,
+   "triangles_export": 656,
+   "triangles_displayed": 656,
+   "simplified": false
+  },
+  "ligament_sacrospinous_l": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 280,
+   "triangles_export": 280,
+   "triangles_displayed": 280,
+   "simplified": false
+  },
+  "ligament_sacrospinous_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 280,
+   "triangles_export": 280,
+   "triangles_displayed": 280,
+   "simplified": false
+  },
+  "ligament_iliolumbar_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_iliolumbar_r",
+   "triangles_source": 112,
+   "triangles_export": 0,
+   "triangles_displayed": 112
+  },
+  "ligament_iliolumbar_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 112,
+   "triangles_export": 112,
+   "triangles_displayed": 112,
+   "simplified": false
+  },
+  "ligament_inguinal_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_inguinal_r",
+   "triangles_source": 1056,
+   "triangles_export": 0,
+   "triangles_displayed": 1056
+  },
+  "ligament_inguinal_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 1056,
+   "triangles_export": 1056,
+   "triangles_displayed": 1056,
+   "simplified": false
+  },
+  "ligament_anterior_longitudinal": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 4928,
+   "triangles_export": 4928,
+   "triangles_displayed": 4928,
+   "simplified": false
+  },
+  "ligament_posterior_longitudinal": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 7536,
+   "triangles_export": 7536,
+   "triangles_displayed": 7536,
+   "simplified": false
+  },
+  "ligament_ligamenta_flava": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 4728,
+   "triangles_export": 4728,
+   "triangles_displayed": 4728,
+   "simplified": false
+  },
+  "ligament_interspinous": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 584,
+   "triangles_export": 584,
+   "triangles_displayed": 584,
+   "simplified": false
+  },
+  "ligament_supraspinous": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 872,
+   "triangles_export": 872,
+   "triangles_displayed": 872,
+   "simplified": false
+  },
+  "ligament_nuchal": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 648,
+   "triangles_export": 648,
+   "triangles_displayed": 648,
+   "simplified": false
+  },
+  "ligament_acromioclavicular_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_acromioclavicular_r",
+   "triangles_source": 320,
+   "triangles_export": 0,
+   "triangles_displayed": 320
+  },
+  "ligament_acromioclavicular_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 320,
+   "triangles_export": 320,
+   "triangles_displayed": 320,
+   "simplified": false
+  },
+  "ligament_coracoclavicular_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_coracoclavicular_r",
+   "triangles_source": 112,
+   "triangles_export": 0,
+   "triangles_displayed": 112
+  },
+  "ligament_coracoclavicular_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 112,
+   "triangles_export": 112,
+   "triangles_displayed": 112,
+   "simplified": false
+  },
+  "ligament_coracoacromial_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_coracoacromial_r",
+   "triangles_source": 12,
+   "triangles_export": 0,
+   "triangles_displayed": 12
+  },
+  "ligament_coracoacromial_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 12,
+   "triangles_export": 12,
+   "triangles_displayed": 12,
+   "simplified": false
+  },
+  "ligament_coracohumeral_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_coracohumeral_r",
+   "triangles_source": 200,
+   "triangles_export": 0,
+   "triangles_displayed": 200
+  },
+  "ligament_coracohumeral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 200,
+   "triangles_export": 200,
+   "triangles_displayed": 200,
+   "simplified": false
+  },
+  "ligament_glenohumeral_superior_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_glenohumeral_superior_r",
+   "triangles_source": 200,
+   "triangles_export": 0,
+   "triangles_displayed": 200
+  },
+  "ligament_glenohumeral_superior_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 200,
+   "triangles_export": 200,
+   "triangles_displayed": 200,
+   "simplified": false
+  },
+  "ligament_glenohumeral_middle_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_glenohumeral_middle_r",
+   "triangles_source": 280,
+   "triangles_export": 0,
+   "triangles_displayed": 280
+  },
+  "ligament_glenohumeral_middle_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 280,
+   "triangles_export": 280,
+   "triangles_displayed": 280,
+   "simplified": false
+  },
+  "ligament_glenohumeral_inferior_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_glenohumeral_inferior_r",
+   "triangles_source": 320,
+   "triangles_export": 0,
+   "triangles_displayed": 320
+  },
+  "ligament_glenohumeral_inferior_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 320,
+   "triangles_export": 320,
+   "triangles_displayed": 320,
+   "simplified": false
+  },
+  "ligament_transverse_humeral_l": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 136,
+   "triangles_export": 136,
+   "triangles_displayed": 136,
+   "simplified": false
+  },
+  "ligament_transverse_humeral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 464,
+   "triangles_export": 464,
+   "triangles_displayed": 464,
+   "simplified": false
+  },
+  "ligament_sternoclavicular_anterior_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_sternoclavicular_anterior_r",
+   "triangles_source": 320,
+   "triangles_export": 0,
+   "triangles_displayed": 320
+  },
+  "ligament_sternoclavicular_anterior_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 320,
+   "triangles_export": 320,
+   "triangles_displayed": 320,
+   "simplified": false
+  },
+  "ligament_costoclavicular_l": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 12,
+   "triangles_export": 12,
+   "triangles_displayed": 12,
+   "simplified": false
+  },
+  "ligament_costoclavicular_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 12,
+   "triangles_export": 12,
+   "triangles_displayed": 12,
+   "simplified": false
+  },
+  "ligament_ucl_elbow_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_ucl_elbow_r",
+   "triangles_source": 152,
+   "triangles_export": 0,
+   "triangles_displayed": 152
+  },
+  "ligament_ucl_elbow_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 152,
+   "triangles_export": 152,
+   "triangles_displayed": 152,
+   "simplified": false
+  },
+  "ligament_rcl_elbow_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_rcl_elbow_r",
+   "triangles_source": 96,
+   "triangles_export": 0,
+   "triangles_displayed": 96
+  },
+  "ligament_rcl_elbow_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 96,
+   "triangles_export": 96,
+   "triangles_displayed": 96,
+   "simplified": false
+  },
+  "ligament_annular_l": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 376,
+   "triangles_export": 376,
+   "triangles_displayed": 376,
+   "simplified": false
+  },
+  "ligament_annular_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 376,
+   "triangles_export": 376,
+   "triangles_displayed": 376,
+   "simplified": false
+  },
+  "ligament_interosseous_membrane_forearm_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_interosseous_membrane_forearm_r",
+   "triangles_source": 2766,
+   "triangles_export": 0,
+   "triangles_displayed": 2766
+  },
+  "ligament_interosseous_membrane_forearm_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 2766,
+   "triangles_export": 2766,
+   "triangles_displayed": 2766,
+   "simplified": false
+  },
+  "ligament_scapholunate_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_scapholunate_r",
+   "triangles_source": 12,
+   "triangles_export": 0,
+   "triangles_displayed": 12
+  },
+  "ligament_scapholunate_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 12,
+   "triangles_export": 12,
+   "triangles_displayed": 12,
+   "simplified": false
+  },
+  "ligament_lunotriquetral_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_lunotriquetral_r",
+   "triangles_source": 12,
+   "triangles_export": 0,
+   "triangles_displayed": 12
+  },
+  "ligament_lunotriquetral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 12,
+   "triangles_export": 12,
+   "triangles_displayed": 12,
+   "simplified": false
+  },
+  "ligament_dorsal_radiocarpal_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_dorsal_radiocarpal_r",
+   "triangles_source": 248,
+   "triangles_export": 0,
+   "triangles_displayed": 248
+  },
+  "ligament_dorsal_radiocarpal_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 248,
+   "triangles_export": 248,
+   "triangles_displayed": 248,
+   "simplified": false
+  },
+  "ligament_palmar_radiocarpal_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_palmar_radiocarpal_r",
+   "triangles_source": 32,
+   "triangles_export": 0,
+   "triangles_displayed": 32
+  },
+  "ligament_palmar_radiocarpal_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 32,
+   "triangles_export": 32,
+   "triangles_displayed": 32,
+   "simplified": false
+  },
+  "ligament_rcl_wrist_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_rcl_wrist_r",
+   "triangles_source": 144,
+   "triangles_export": 0,
+   "triangles_displayed": 144
+  },
+  "ligament_rcl_wrist_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 144,
+   "triangles_export": 144,
+   "triangles_displayed": 144,
+   "simplified": false
+  },
+  "ligament_ucl_wrist_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_ucl_wrist_r",
+   "triangles_source": 128,
+   "triangles_export": 0,
+   "triangles_displayed": 128
+  },
+  "ligament_ucl_wrist_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 128,
+   "triangles_export": 128,
+   "triangles_displayed": 128,
+   "simplified": false
+  },
+  "ligament_flexor_retinaculum_wrist_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_flexor_retinaculum_wrist_r",
+   "triangles_source": 524,
+   "triangles_export": 0,
+   "triangles_displayed": 524
+  },
+  "ligament_flexor_retinaculum_wrist_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 524,
+   "triangles_export": 524,
+   "triangles_displayed": 524,
+   "simplified": false
+  },
+  "ligament_collateral_mcp_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_collateral_mcp_r",
+   "triangles_source": 1040,
+   "triangles_export": 0,
+   "triangles_displayed": 1040
+  },
+  "ligament_collateral_mcp_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 1040,
+   "triangles_export": 1040,
+   "triangles_displayed": 1040,
+   "simplified": false
+  },
+  "ligament_collateral_ip_hand_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_collateral_ip_hand_r",
+   "triangles_source": 1968,
+   "triangles_export": 0,
+   "triangles_displayed": 1968
+  },
+  "ligament_collateral_ip_hand_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 1968,
+   "triangles_export": 1968,
+   "triangles_displayed": 1968,
+   "simplified": false
+  },
+  "ligament_palmar_plates_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_palmar_plates_r",
+   "triangles_source": 864,
+   "triangles_export": 0,
+   "triangles_displayed": 864
+  },
+  "ligament_palmar_plates_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 864,
+   "triangles_export": 864,
+   "triangles_displayed": 864,
+   "simplified": false
+  },
+  "ligament_tmj_lateral_l": {
+   "system": "ligament",
+   "mirror_of": "ligament_tmj_lateral_r",
+   "triangles_source": 76,
+   "triangles_export": 0,
+   "triangles_displayed": 76
+  },
+  "ligament_tmj_lateral_r": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 76,
+   "triangles_export": 76,
+   "triangles_displayed": 76,
+   "simplified": false
+  },
+  "tendon_achilles_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_achilles_r",
+   "triangles_source": 4377,
+   "triangles_export": 0,
+   "triangles_displayed": 4377
+  },
+  "tendon_achilles_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 4377,
+   "triangles_export": 4377,
+   "triangles_displayed": 4377,
+   "simplified": false
+  },
+  "tendon_quadriceps_patellar_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_quadriceps_patellar_r",
+   "triangles_source": 4289,
+   "triangles_export": 0,
+   "triangles_displayed": 4289
+  },
+  "tendon_quadriceps_patellar_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 4289,
+   "triangles_export": 4289,
+   "triangles_displayed": 4289,
+   "simplified": false,
+   "cuts": [
+    "Rectus femoris muscle.r#Tendon^lower: 1 of 2 separate pieces",
+    "Vastus intermedius muscle.r#Tendon^lower: 1 of 2 separate pieces",
+    "Vastus lateralis muscle.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_biceps_long_head_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_biceps_long_head_r",
+   "triangles_source": 635,
+   "triangles_export": 0,
+   "triangles_displayed": 635
+  },
+  "tendon_biceps_long_head_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 635,
+   "triangles_export": 635,
+   "triangles_displayed": 635,
+   "simplified": false,
+   "cuts": [
+    "Long head of biceps brachii.r#Tendon^upper: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_biceps_short_head_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_biceps_short_head_r",
+   "triangles_source": 563,
+   "triangles_export": 0,
+   "triangles_displayed": 563
+  },
+  "tendon_biceps_short_head_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 563,
+   "triangles_export": 563,
+   "triangles_displayed": 563,
+   "simplified": false,
+   "cuts": [
+    "Short head of biceps brachii.r#Tendon^upper: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_biceps_distal_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_biceps_distal_r",
+   "triangles_source": 830,
+   "triangles_export": 0,
+   "triangles_displayed": 830
+  },
+  "tendon_biceps_distal_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 830,
+   "triangles_export": 830,
+   "triangles_displayed": 830,
+   "simplified": false,
+   "cuts": [
+    "Long head of biceps brachii.r#Tendon^lower: 1 of 2 separate pieces",
+    "Short head of biceps brachii.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_triceps_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_triceps_r",
+   "triangles_source": 1816,
+   "triangles_export": 0,
+   "triangles_displayed": 1816
+  },
+  "tendon_triceps_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 1816,
+   "triangles_export": 1816,
+   "triangles_displayed": 1816,
+   "simplified": false,
+   "cuts": [
+    "Lateral head of triceps brachii.r#Tendon^lower: 1 of 2 separate pieces",
+    "Long head of triceps brachii.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_infraspinatus_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_infraspinatus_r",
+   "triangles_source": 521,
+   "triangles_export": 0,
+   "triangles_displayed": 521
+  },
+  "tendon_infraspinatus_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 521,
+   "triangles_export": 521,
+   "triangles_displayed": 521,
+   "simplified": false
+  },
+  "tendon_common_extensor_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_common_extensor_r",
+   "triangles_source": 453,
+   "triangles_export": 0,
+   "triangles_displayed": 453
+  },
+  "tendon_common_extensor_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 453,
+   "triangles_export": 453,
+   "triangles_displayed": 453,
+   "simplified": false,
+   "cuts": [
+    "Extensor carpi radialis brevis.r#Tendon^upper: 1 of 3 separate pieces"
+   ]
+  },
+  "tendon_common_flexor_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_common_flexor_r",
+   "triangles_source": 476,
+   "triangles_export": 0,
+   "triangles_displayed": 476
+  },
+  "tendon_common_flexor_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 476,
+   "triangles_export": 476,
+   "triangles_displayed": 476,
+   "simplified": false,
+   "cuts": [
+    "Flexor carpi radialis.r#Tendon^upper: 1 of 2 separate pieces",
+    "Superficial head of pronator teres.r#Tendon^upper: 1 of 3 separate pieces"
+   ]
+  },
+  "tendon_finger_extensors_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_finger_extensors_r",
+   "triangles_source": 3798,
+   "triangles_export": 0,
+   "triangles_displayed": 3238
+  },
+  "tendon_finger_extensors_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 3798,
+   "triangles_export": 3238,
+   "triangles_displayed": 3238,
+   "simplified": true,
+   "cuts": [
+    "Extensor digitorum.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_finger_flexors_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_finger_flexors_r",
+   "triangles_source": 9892,
+   "triangles_export": 0,
+   "triangles_displayed": 5066
+  },
+  "tendon_finger_flexors_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 9892,
+   "triangles_export": 5066,
+   "triangles_displayed": 5066,
+   "simplified": true,
+   "cuts": [
+    "Flexor digitorum profundus.r#Tendon^lower: 1 of 2 separate pieces",
+    "Humero-ulnar head of flexor digitorum superficialis.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_de_quervain_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_de_quervain_r",
+   "triangles_source": 1085,
+   "triangles_export": 0,
+   "triangles_displayed": 1085
+  },
+  "tendon_de_quervain_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 1085,
+   "triangles_export": 1085,
+   "triangles_displayed": 1085,
+   "simplified": false
+  },
+  "tendon_ecu_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_ecu_r",
+   "triangles_source": 427,
+   "triangles_export": 0,
+   "triangles_displayed": 427
+  },
+  "tendon_ecu_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 427,
+   "triangles_export": 427,
+   "triangles_displayed": 427,
+   "simplified": false,
+   "cuts": [
+    "Humeral head of extensor carpi ulnaris.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_gluteus_medius_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_gluteus_medius_r",
+   "triangles_source": 802,
+   "triangles_export": 0,
+   "triangles_displayed": 802
+  },
+  "tendon_gluteus_medius_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 802,
+   "triangles_export": 802,
+   "triangles_displayed": 802,
+   "simplified": false
+  },
+  "tendon_iliopsoas_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_iliopsoas_r",
+   "triangles_source": 1394,
+   "triangles_export": 0,
+   "triangles_displayed": 1394
+  },
+  "tendon_iliopsoas_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 1394,
+   "triangles_export": 1394,
+   "triangles_displayed": 1394,
+   "simplified": false
+  },
+  "tendon_adductor_longus_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_adductor_longus_r",
+   "triangles_source": 689,
+   "triangles_export": 0,
+   "triangles_displayed": 689
+  },
+  "tendon_adductor_longus_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 689,
+   "triangles_export": 689,
+   "triangles_displayed": 689,
+   "simplified": false
+  },
+  "tendon_hamstring_origin_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_hamstring_origin_r",
+   "triangles_source": 2251,
+   "triangles_export": 0,
+   "triangles_displayed": 2251
+  },
+  "tendon_hamstring_origin_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 2251,
+   "triangles_export": 2251,
+   "triangles_displayed": 2251,
+   "simplified": false,
+   "cuts": [
+    "Long head of biceps femoris.r#Tendon^upper: 1 of 2 separate pieces",
+    "Semimembranosus muscle.r#Tendon^upper: 2 of 3 separate pieces",
+    "Semitendinosus muscle.r#Tendon^upper: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_hamstring_biceps_femoris_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_hamstring_biceps_femoris_r",
+   "triangles_source": 1695,
+   "triangles_export": 0,
+   "triangles_displayed": 1695
+  },
+  "tendon_hamstring_biceps_femoris_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 1695,
+   "triangles_export": 1695,
+   "triangles_displayed": 1695,
+   "simplified": false,
+   "cuts": [
+    "Long head of biceps femoris.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_hamstring_semitendinosus_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_hamstring_semitendinosus_r",
+   "triangles_source": 1160,
+   "triangles_export": 0,
+   "triangles_displayed": 1160
+  },
+  "tendon_hamstring_semitendinosus_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 1160,
+   "triangles_export": 1160,
+   "triangles_displayed": 1160,
+   "simplified": false,
+   "cuts": [
+    "Semitendinosus muscle.r#Tendon^lower: 1 of 2 separate pieces"
+   ]
+  },
+  "tendon_hamstring_semimembranosus_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_hamstring_semimembranosus_r",
+   "triangles_source": 1376,
+   "triangles_export": 0,
+   "triangles_displayed": 1376
+  },
+  "tendon_hamstring_semimembranosus_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 1376,
+   "triangles_export": 1376,
+   "triangles_displayed": 1376,
+   "simplified": false,
+   "cuts": [
+    "Semimembranosus muscle.r#Tendon^lower: 1 of 3 separate pieces"
+   ]
+  },
+  "tendon_itb_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_itb_r",
+   "triangles_source": 48612,
+   "triangles_export": 0,
+   "triangles_displayed": 16682
+  },
+  "tendon_itb_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 48612,
+   "triangles_export": 16682,
+   "triangles_displayed": 16682,
+   "simplified": true
+  },
+  "tendon_tibialis_posterior_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_tibialis_posterior_r",
+   "triangles_source": 2880,
+   "triangles_export": 0,
+   "triangles_displayed": 2880
+  },
+  "tendon_tibialis_posterior_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 2880,
+   "triangles_export": 2880,
+   "triangles_displayed": 2880,
+   "simplified": false
+  },
+  "tendon_tibialis_anterior_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_tibialis_anterior_r",
+   "triangles_source": 925,
+   "triangles_export": 0,
+   "triangles_displayed": 925
+  },
+  "tendon_tibialis_anterior_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 925,
+   "triangles_export": 925,
+   "triangles_displayed": 925,
+   "simplified": false
+  },
+  "tendon_peroneal_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_peroneal_r",
+   "triangles_source": 3177,
+   "triangles_export": 0,
+   "triangles_displayed": 3053
+  },
+  "tendon_peroneal_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 3177,
+   "triangles_export": 3053,
+   "triangles_displayed": 3053,
+   "simplified": true
+  },
+  "tendon_fhl_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_fhl_r",
+   "triangles_source": 2124,
+   "triangles_export": 0,
+   "triangles_displayed": 2124
+  },
+  "tendon_fhl_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 2124,
+   "triangles_export": 2124,
+   "triangles_displayed": 2124,
+   "simplified": false
+  },
+  "tendon_toe_extensors_l": {
+   "system": "tendon",
+   "mirror_of": "tendon_toe_extensors_r",
+   "triangles_source": 5184,
+   "triangles_export": 0,
+   "triangles_displayed": 3654
+  },
+  "tendon_toe_extensors_r": {
+   "system": "tendon",
+   "mirror_of": null,
+   "triangles_source": 5184,
+   "triangles_export": 3654,
+   "triangles_displayed": 3654,
+   "simplified": true
+  },
+  "muscle_masseter_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_masseter_r",
+   "triangles_source": 2398,
+   "triangles_export": 0,
+   "triangles_displayed": 2398
+  },
+  "muscle_masseter_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2398,
+   "triangles_export": 2398,
+   "triangles_displayed": 2398,
+   "simplified": false
+  },
+  "muscle_temporalis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_temporalis_r",
+   "triangles_source": 10260,
+   "triangles_export": 0,
+   "triangles_displayed": 5178
+  },
+  "muscle_temporalis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 10260,
+   "triangles_export": 5178,
+   "triangles_displayed": 5178,
+   "simplified": true
+  },
+  "muscle_pterygoid_medial_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pterygoid_medial_r",
+   "triangles_source": 496,
+   "triangles_export": 0,
+   "triangles_displayed": 496
+  },
+  "muscle_pterygoid_medial_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 496,
+   "triangles_export": 496,
+   "triangles_displayed": 496,
+   "simplified": false
+  },
+  "muscle_pterygoid_lateral_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pterygoid_lateral_r",
+   "triangles_source": 552,
+   "triangles_export": 0,
+   "triangles_displayed": 552
+  },
+  "muscle_pterygoid_lateral_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 552,
+   "triangles_export": 552,
+   "triangles_displayed": 552,
+   "simplified": false
+  },
+  "muscle_sternocleidomastoid_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_sternocleidomastoid_r",
+   "triangles_source": 4952,
+   "triangles_export": 0,
+   "triangles_displayed": 3584
+  },
+  "muscle_sternocleidomastoid_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4952,
+   "triangles_export": 3584,
+   "triangles_displayed": 3584,
+   "simplified": true
+  },
+  "muscle_scalene_anterior_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_scalene_anterior_r",
+   "triangles_source": 1386,
+   "triangles_export": 0,
+   "triangles_displayed": 1386
+  },
+  "muscle_scalene_anterior_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1386,
+   "triangles_export": 1386,
+   "triangles_displayed": 1386,
+   "simplified": false
+  },
+  "muscle_scalene_middle_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_scalene_middle_r",
+   "triangles_source": 2078,
+   "triangles_export": 0,
+   "triangles_displayed": 2078
+  },
+  "muscle_scalene_middle_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2078,
+   "triangles_export": 2078,
+   "triangles_displayed": 2078,
+   "simplified": false
+  },
+  "muscle_scalene_posterior_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_scalene_posterior_r",
+   "triangles_source": 1326,
+   "triangles_export": 0,
+   "triangles_displayed": 1326
+  },
+  "muscle_scalene_posterior_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1326,
+   "triangles_export": 1326,
+   "triangles_displayed": 1326,
+   "simplified": false
+  },
+  "muscle_longus_colli_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_longus_colli_r",
+   "triangles_source": 6294,
+   "triangles_export": 0,
+   "triangles_displayed": 3988
+  },
+  "muscle_longus_colli_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6294,
+   "triangles_export": 3988,
+   "triangles_displayed": 3988,
+   "simplified": true
+  },
+  "muscle_longus_capitis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_longus_capitis_r",
+   "triangles_source": 1980,
+   "triangles_export": 0,
+   "triangles_displayed": 1980
+  },
+  "muscle_longus_capitis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1980,
+   "triangles_export": 1980,
+   "triangles_displayed": 1980,
+   "simplified": false
+  },
+  "muscle_suboccipitals_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_suboccipitals_r",
+   "triangles_source": 2414,
+   "triangles_export": 0,
+   "triangles_displayed": 2414
+  },
+  "muscle_suboccipitals_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2414,
+   "triangles_export": 2414,
+   "triangles_displayed": 2414,
+   "simplified": false
+  },
+  "muscle_splenius_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_splenius_r",
+   "triangles_source": 9576,
+   "triangles_export": 0,
+   "triangles_displayed": 4972
+  },
+  "muscle_splenius_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 9576,
+   "triangles_export": 4972,
+   "triangles_displayed": 4972,
+   "simplified": true
+  },
+  "muscle_levator_scapulae_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_levator_scapulae_r",
+   "triangles_source": 3082,
+   "triangles_export": 0,
+   "triangles_displayed": 3024
+  },
+  "muscle_levator_scapulae_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3082,
+   "triangles_export": 3024,
+   "triangles_displayed": 3024,
+   "simplified": true
+  },
+  "muscle_trapezius_upper_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_trapezius_upper_r",
+   "triangles_source": 6760,
+   "triangles_export": 0,
+   "triangles_displayed": 4128
+  },
+  "muscle_trapezius_upper_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6760,
+   "triangles_export": 4128,
+   "triangles_displayed": 4128,
+   "simplified": true
+  },
+  "muscle_trapezius_middle_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_trapezius_middle_r",
+   "triangles_source": 2992,
+   "triangles_export": 0,
+   "triangles_displayed": 2992
+  },
+  "muscle_trapezius_middle_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2992,
+   "triangles_export": 2992,
+   "triangles_displayed": 2992,
+   "simplified": false
+  },
+  "muscle_trapezius_lower_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_trapezius_lower_r",
+   "triangles_source": 4596,
+   "triangles_export": 0,
+   "triangles_displayed": 3478
+  },
+  "muscle_trapezius_lower_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4596,
+   "triangles_export": 3478,
+   "triangles_displayed": 3478,
+   "simplified": true
+  },
+  "muscle_rhomboid_major_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_rhomboid_major_r",
+   "triangles_source": 4800,
+   "triangles_export": 0,
+   "triangles_displayed": 3540
+  },
+  "muscle_rhomboid_major_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4800,
+   "triangles_export": 3540,
+   "triangles_displayed": 3540,
+   "simplified": true
+  },
+  "muscle_rhomboid_minor_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_rhomboid_minor_r",
+   "triangles_source": 1494,
+   "triangles_export": 0,
+   "triangles_displayed": 1494
+  },
+  "muscle_rhomboid_minor_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1494,
+   "triangles_export": 1494,
+   "triangles_displayed": 1494,
+   "simplified": false
+  },
+  "muscle_serratus_anterior_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_serratus_anterior_r",
+   "triangles_source": 25240,
+   "triangles_export": 0,
+   "triangles_displayed": 9672
+  },
+  "muscle_serratus_anterior_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 25240,
+   "triangles_export": 9672,
+   "triangles_displayed": 9672,
+   "simplified": true
+  },
+  "muscle_pectoralis_major_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pectoralis_major_r",
+   "triangles_source": 5580,
+   "triangles_export": 0,
+   "triangles_displayed": 3774
+  },
+  "muscle_pectoralis_major_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 5580,
+   "triangles_export": 3774,
+   "triangles_displayed": 3774,
+   "simplified": true
+  },
+  "muscle_pectoralis_minor_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pectoralis_minor_r",
+   "triangles_source": 4142,
+   "triangles_export": 0,
+   "triangles_displayed": 3342
+  },
+  "muscle_pectoralis_minor_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4142,
+   "triangles_export": 3342,
+   "triangles_displayed": 3342,
+   "simplified": true
+  },
+  "muscle_latissimus_dorsi_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_latissimus_dorsi_r",
+   "triangles_source": 21580,
+   "triangles_export": 0,
+   "triangles_displayed": 8574
+  },
+  "muscle_latissimus_dorsi_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 21580,
+   "triangles_export": 8574,
+   "triangles_displayed": 8574,
+   "simplified": true
+  },
+  "muscle_deltoid_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_deltoid_r",
+   "triangles_source": 10244,
+   "triangles_export": 0,
+   "triangles_displayed": 5172
+  },
+  "muscle_deltoid_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 10244,
+   "triangles_export": 5172,
+   "triangles_displayed": 5172,
+   "simplified": true
+  },
+  "muscle_supraspinatus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_supraspinatus_r",
+   "triangles_source": 1430,
+   "triangles_export": 0,
+   "triangles_displayed": 1430
+  },
+  "muscle_supraspinatus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1430,
+   "triangles_export": 1430,
+   "triangles_displayed": 1430,
+   "simplified": false
+  },
+  "muscle_infraspinatus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_infraspinatus_r",
+   "triangles_source": 2645,
+   "triangles_export": 0,
+   "triangles_displayed": 2645
+  },
+  "muscle_infraspinatus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2645,
+   "triangles_export": 2645,
+   "triangles_displayed": 2645,
+   "simplified": false
+  },
+  "muscle_teres_minor_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_teres_minor_r",
+   "triangles_source": 1522,
+   "triangles_export": 0,
+   "triangles_displayed": 1522
+  },
+  "muscle_teres_minor_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1522,
+   "triangles_export": 1522,
+   "triangles_displayed": 1522,
+   "simplified": false
+  },
+  "muscle_subscapularis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_subscapularis_r",
+   "triangles_source": 2954,
+   "triangles_export": 0,
+   "triangles_displayed": 2954
+  },
+  "muscle_subscapularis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2954,
+   "triangles_export": 2954,
+   "triangles_displayed": 2954,
+   "simplified": false
+  },
+  "muscle_teres_major_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_teres_major_r",
+   "triangles_source": 1154,
+   "triangles_export": 0,
+   "triangles_displayed": 1154
+  },
+  "muscle_teres_major_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1154,
+   "triangles_export": 1154,
+   "triangles_displayed": 1154,
+   "simplified": false
+  },
+  "muscle_intercostals_external_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_intercostals_external_r",
+   "triangles_source": 41410,
+   "triangles_export": 0,
+   "triangles_displayed": 14521
+  },
+  "muscle_intercostals_external_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 41410,
+   "triangles_export": 14521,
+   "triangles_displayed": 14521,
+   "simplified": true
+  },
+  "muscle_intercostals_internal_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_intercostals_internal_r",
+   "triangles_source": 40184,
+   "triangles_export": 0,
+   "triangles_displayed": 14154
+  },
+  "muscle_intercostals_internal_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 40184,
+   "triangles_export": 14154,
+   "triangles_displayed": 14154,
+   "simplified": true
+  },
+  "muscle_diaphragm": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 38868,
+   "triangles_export": 13760,
+   "triangles_displayed": 13760,
+   "simplified": true
+  },
+  "muscle_iliocostalis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_iliocostalis_r",
+   "triangles_source": 17860,
+   "triangles_export": 0,
+   "triangles_displayed": 7458
+  },
+  "muscle_iliocostalis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 17860,
+   "triangles_export": 7458,
+   "triangles_displayed": 7458,
+   "simplified": true
+  },
+  "muscle_longissimus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_longissimus_r",
+   "triangles_source": 13052,
+   "triangles_export": 0,
+   "triangles_displayed": 6014
+  },
+  "muscle_longissimus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 13052,
+   "triangles_export": 6014,
+   "triangles_displayed": 6014,
+   "simplified": true
+  },
+  "muscle_spinalis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_spinalis_r",
+   "triangles_source": 8688,
+   "triangles_export": 0,
+   "triangles_displayed": 4706
+  },
+  "muscle_spinalis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 8688,
+   "triangles_export": 4706,
+   "triangles_displayed": 4706,
+   "simplified": true
+  },
+  "muscle_multifidus_lumbar_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_multifidus_lumbar_r",
+   "triangles_source": 2820,
+   "triangles_export": 0,
+   "triangles_displayed": 2820
+  },
+  "muscle_multifidus_lumbar_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2820,
+   "triangles_export": 2820,
+   "triangles_displayed": 2820,
+   "simplified": false
+  },
+  "muscle_multifidus_thoracic_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_multifidus_thoracic_r",
+   "triangles_source": 3902,
+   "triangles_export": 0,
+   "triangles_displayed": 3270
+  },
+  "muscle_multifidus_thoracic_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3902,
+   "triangles_export": 3270,
+   "triangles_displayed": 3270,
+   "simplified": true
+  },
+  "muscle_multifidus_cervical_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_multifidus_cervical_r",
+   "triangles_source": 1390,
+   "triangles_export": 0,
+   "triangles_displayed": 1390
+  },
+  "muscle_multifidus_cervical_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1390,
+   "triangles_export": 1390,
+   "triangles_displayed": 1390,
+   "simplified": false
+  },
+  "muscle_semispinalis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_semispinalis_r",
+   "triangles_source": 7556,
+   "triangles_export": 0,
+   "triangles_displayed": 4366
+  },
+  "muscle_semispinalis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 7556,
+   "triangles_export": 4366,
+   "triangles_displayed": 4366,
+   "simplified": true
+  },
+  "muscle_quadratus_lumborum_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_quadratus_lumborum_r",
+   "triangles_source": 2832,
+   "triangles_export": 0,
+   "triangles_displayed": 2832
+  },
+  "muscle_quadratus_lumborum_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2832,
+   "triangles_export": 2832,
+   "triangles_displayed": 2832,
+   "simplified": false
+  },
+  "muscle_rectus_abdominis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_rectus_abdominis_r",
+   "triangles_source": 20604,
+   "triangles_export": 0,
+   "triangles_displayed": 8280
+  },
+  "muscle_rectus_abdominis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 20604,
+   "triangles_export": 8280,
+   "triangles_displayed": 8280,
+   "simplified": true
+  },
+  "muscle_external_oblique_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_external_oblique_r",
+   "triangles_source": 29622,
+   "triangles_export": 0,
+   "triangles_displayed": 10986
+  },
+  "muscle_external_oblique_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 29622,
+   "triangles_export": 10986,
+   "triangles_displayed": 10986,
+   "simplified": true
+  },
+  "muscle_internal_oblique_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_internal_oblique_r",
+   "triangles_source": 28869,
+   "triangles_export": 0,
+   "triangles_displayed": 10759
+  },
+  "muscle_internal_oblique_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 28869,
+   "triangles_export": 10759,
+   "triangles_displayed": 10759,
+   "simplified": true
+  },
+  "muscle_transversus_abdominis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_transversus_abdominis_r",
+   "triangles_source": 34328,
+   "triangles_export": 0,
+   "triangles_displayed": 12398
+  },
+  "muscle_transversus_abdominis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 34328,
+   "triangles_export": 12398,
+   "triangles_displayed": 12398,
+   "simplified": true
+  },
+  "muscle_psoas_major_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_psoas_major_r",
+   "triangles_source": 4585,
+   "triangles_export": 0,
+   "triangles_displayed": 3475
+  },
+  "muscle_psoas_major_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4585,
+   "triangles_export": 3475,
+   "triangles_displayed": 3475,
+   "simplified": true
+  },
+  "muscle_iliacus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_iliacus_r",
+   "triangles_source": 3849,
+   "triangles_export": 0,
+   "triangles_displayed": 3253
+  },
+  "muscle_iliacus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3849,
+   "triangles_export": 3253,
+   "triangles_displayed": 3253,
+   "simplified": true
+  },
+  "muscle_pelvic_floor_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pelvic_floor_r",
+   "triangles_source": 6948,
+   "triangles_export": 0,
+   "triangles_displayed": 4184
+  },
+  "muscle_pelvic_floor_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6948,
+   "triangles_export": 4184,
+   "triangles_displayed": 4184,
+   "simplified": true
+  },
+  "muscle_biceps_long_head_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_biceps_long_head_r",
+   "triangles_source": 2073,
+   "triangles_export": 0,
+   "triangles_displayed": 2073
+  },
+  "muscle_biceps_long_head_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2073,
+   "triangles_export": 2073,
+   "triangles_displayed": 2073,
+   "simplified": false
+  },
+  "muscle_biceps_short_head_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_biceps_short_head_r",
+   "triangles_source": 1813,
+   "triangles_export": 0,
+   "triangles_displayed": 1813
+  },
+  "muscle_biceps_short_head_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1813,
+   "triangles_export": 1813,
+   "triangles_displayed": 1813,
+   "simplified": false
+  },
+  "muscle_coracobrachialis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_coracobrachialis_r",
+   "triangles_source": 1160,
+   "triangles_export": 0,
+   "triangles_displayed": 1160
+  },
+  "muscle_coracobrachialis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1160,
+   "triangles_export": 1160,
+   "triangles_displayed": 1160,
+   "simplified": false
+  },
+  "muscle_brachialis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_brachialis_r",
+   "triangles_source": 3478,
+   "triangles_export": 0,
+   "triangles_displayed": 3142
+  },
+  "muscle_brachialis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3478,
+   "triangles_export": 3142,
+   "triangles_displayed": 3142,
+   "simplified": true
+  },
+  "muscle_triceps_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_triceps_r",
+   "triangles_source": 8448,
+   "triangles_export": 0,
+   "triangles_displayed": 4634
+  },
+  "muscle_triceps_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 8448,
+   "triangles_export": 4634,
+   "triangles_displayed": 4634,
+   "simplified": true
+  },
+  "muscle_anconeus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_anconeus_r",
+   "triangles_source": 1442,
+   "triangles_export": 0,
+   "triangles_displayed": 1442
+  },
+  "muscle_anconeus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1442,
+   "triangles_export": 1442,
+   "triangles_displayed": 1442,
+   "simplified": false
+  },
+  "muscle_brachioradialis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_brachioradialis_r",
+   "triangles_source": 7312,
+   "triangles_export": 0,
+   "triangles_displayed": 4292
+  },
+  "muscle_brachioradialis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 7312,
+   "triangles_export": 4292,
+   "triangles_displayed": 4292,
+   "simplified": true
+  },
+  "muscle_pronator_teres_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pronator_teres_r",
+   "triangles_source": 3368,
+   "triangles_export": 0,
+   "triangles_displayed": 3110
+  },
+  "muscle_pronator_teres_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3368,
+   "triangles_export": 3110,
+   "triangles_displayed": 3110,
+   "simplified": true
+  },
+  "muscle_flexor_carpi_radialis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_carpi_radialis_r",
+   "triangles_source": 1482,
+   "triangles_export": 0,
+   "triangles_displayed": 1482
+  },
+  "muscle_flexor_carpi_radialis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1482,
+   "triangles_export": 1482,
+   "triangles_displayed": 1482,
+   "simplified": false
+  },
+  "muscle_palmaris_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_palmaris_longus_r",
+   "triangles_source": 4374,
+   "triangles_export": 0,
+   "triangles_displayed": 3412
+  },
+  "muscle_palmaris_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4374,
+   "triangles_export": 3412,
+   "triangles_displayed": 3412,
+   "simplified": true
+  },
+  "muscle_flexor_carpi_ulnaris_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_carpi_ulnaris_r",
+   "triangles_source": 5378,
+   "triangles_export": 0,
+   "triangles_displayed": 3712
+  },
+  "muscle_flexor_carpi_ulnaris_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 5378,
+   "triangles_export": 3712,
+   "triangles_displayed": 3712,
+   "simplified": true
+  },
+  "muscle_flexor_digitorum_superficialis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_digitorum_superficialis_r",
+   "triangles_source": 7673,
+   "triangles_export": 0,
+   "triangles_displayed": 4401
+  },
+  "muscle_flexor_digitorum_superficialis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 7673,
+   "triangles_export": 4401,
+   "triangles_displayed": 4401,
+   "simplified": true
+  },
+  "muscle_flexor_digitorum_profundus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_digitorum_profundus_r",
+   "triangles_source": 3619,
+   "triangles_export": 0,
+   "triangles_displayed": 3185
+  },
+  "muscle_flexor_digitorum_profundus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3619,
+   "triangles_export": 3185,
+   "triangles_displayed": 3185,
+   "simplified": true
+  },
+  "muscle_flexor_pollicis_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_pollicis_longus_r",
+   "triangles_source": 1666,
+   "triangles_export": 0,
+   "triangles_displayed": 1666
+  },
+  "muscle_flexor_pollicis_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1666,
+   "triangles_export": 1666,
+   "triangles_displayed": 1666,
+   "simplified": false
+  },
+  "muscle_pronator_quadratus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pronator_quadratus_r",
+   "triangles_source": 1020,
+   "triangles_export": 0,
+   "triangles_displayed": 1020
+  },
+  "muscle_pronator_quadratus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1020,
+   "triangles_export": 1020,
+   "triangles_displayed": 1020,
+   "simplified": false
+  },
+  "muscle_supinator_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_supinator_r",
+   "triangles_source": 2754,
+   "triangles_export": 0,
+   "triangles_displayed": 2754
+  },
+  "muscle_supinator_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2754,
+   "triangles_export": 2754,
+   "triangles_displayed": 2754,
+   "simplified": false
+  },
+  "muscle_ecrl_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_ecrl_r",
+   "triangles_source": 3706,
+   "triangles_export": 0,
+   "triangles_displayed": 3210
+  },
+  "muscle_ecrl_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3706,
+   "triangles_export": 3210,
+   "triangles_displayed": 3210,
+   "simplified": true
+  },
+  "muscle_ecrb_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_ecrb_r",
+   "triangles_source": 2689,
+   "triangles_export": 0,
+   "triangles_displayed": 2689
+  },
+  "muscle_ecrb_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2689,
+   "triangles_export": 2689,
+   "triangles_displayed": 2689,
+   "simplified": false
+  },
+  "muscle_extensor_digitorum_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_digitorum_r",
+   "triangles_source": 2612,
+   "triangles_export": 0,
+   "triangles_displayed": 2612
+  },
+  "muscle_extensor_digitorum_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2612,
+   "triangles_export": 2612,
+   "triangles_displayed": 2612,
+   "simplified": false
+  },
+  "muscle_extensor_digiti_minimi_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_digiti_minimi_r",
+   "triangles_source": 2152,
+   "triangles_export": 0,
+   "triangles_displayed": 2152
+  },
+  "muscle_extensor_digiti_minimi_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2152,
+   "triangles_export": 2152,
+   "triangles_displayed": 2152,
+   "simplified": false
+  },
+  "muscle_extensor_carpi_ulnaris_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_carpi_ulnaris_r",
+   "triangles_source": 985,
+   "triangles_export": 0,
+   "triangles_displayed": 985
+  },
+  "muscle_extensor_carpi_ulnaris_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 985,
+   "triangles_export": 985,
+   "triangles_displayed": 985,
+   "simplified": false
+  },
+  "muscle_abductor_pollicis_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_abductor_pollicis_longus_r",
+   "triangles_source": 1857,
+   "triangles_export": 0,
+   "triangles_displayed": 1857
+  },
+  "muscle_abductor_pollicis_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1857,
+   "triangles_export": 1857,
+   "triangles_displayed": 1857,
+   "simplified": false
+  },
+  "muscle_extensor_pollicis_brevis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_pollicis_brevis_r",
+   "triangles_source": 696,
+   "triangles_export": 0,
+   "triangles_displayed": 696
+  },
+  "muscle_extensor_pollicis_brevis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 696,
+   "triangles_export": 696,
+   "triangles_displayed": 696,
+   "simplified": false
+  },
+  "muscle_extensor_pollicis_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_pollicis_longus_r",
+   "triangles_source": 1602,
+   "triangles_export": 0,
+   "triangles_displayed": 1602
+  },
+  "muscle_extensor_pollicis_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1602,
+   "triangles_export": 1602,
+   "triangles_displayed": 1602,
+   "simplified": false
+  },
+  "muscle_extensor_indicis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_indicis_r",
+   "triangles_source": 1142,
+   "triangles_export": 0,
+   "triangles_displayed": 1142
+  },
+  "muscle_extensor_indicis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1142,
+   "triangles_export": 1142,
+   "triangles_displayed": 1142,
+   "simplified": false
+  },
+  "muscle_thenar_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_thenar_r",
+   "triangles_source": 2030,
+   "triangles_export": 0,
+   "triangles_displayed": 2030
+  },
+  "muscle_thenar_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2030,
+   "triangles_export": 2030,
+   "triangles_displayed": 2030,
+   "simplified": false
+  },
+  "muscle_adductor_pollicis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_adductor_pollicis_r",
+   "triangles_source": 1464,
+   "triangles_export": 0,
+   "triangles_displayed": 1464
+  },
+  "muscle_adductor_pollicis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1464,
+   "triangles_export": 1464,
+   "triangles_displayed": 1464,
+   "simplified": false
+  },
+  "muscle_hypothenar_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_hypothenar_r",
+   "triangles_source": 1400,
+   "triangles_export": 0,
+   "triangles_displayed": 1400
+  },
+  "muscle_hypothenar_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1400,
+   "triangles_export": 1400,
+   "triangles_displayed": 1400,
+   "simplified": false
+  },
+  "muscle_hand_intrinsics_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_hand_intrinsics_r",
+   "triangles_source": 2906,
+   "triangles_export": 0,
+   "triangles_displayed": 2906
+  },
+  "muscle_hand_intrinsics_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2906,
+   "triangles_export": 2906,
+   "triangles_displayed": 2906,
+   "simplified": false
+  },
+  "muscle_gluteus_maximus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_gluteus_maximus_r",
+   "triangles_source": 3326,
+   "triangles_export": 0,
+   "triangles_displayed": 3096
+  },
+  "muscle_gluteus_maximus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3326,
+   "triangles_export": 3096,
+   "triangles_displayed": 3096,
+   "simplified": true
+  },
+  "muscle_gluteus_medius_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_gluteus_medius_r",
+   "triangles_source": 4374,
+   "triangles_export": 0,
+   "triangles_displayed": 3412
+  },
+  "muscle_gluteus_medius_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4374,
+   "triangles_export": 3412,
+   "triangles_displayed": 3412,
+   "simplified": true
+  },
+  "muscle_gluteus_minimus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_gluteus_minimus_r",
+   "triangles_source": 6250,
+   "triangles_export": 0,
+   "triangles_displayed": 3974
+  },
+  "muscle_gluteus_minimus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6250,
+   "triangles_export": 3974,
+   "triangles_displayed": 3974,
+   "simplified": true
+  },
+  "muscle_tensor_fasciae_latae_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_tensor_fasciae_latae_r",
+   "triangles_source": 1862,
+   "triangles_export": 0,
+   "triangles_displayed": 1862
+  },
+  "muscle_tensor_fasciae_latae_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1862,
+   "triangles_export": 1862,
+   "triangles_displayed": 1862,
+   "simplified": false
+  },
+  "muscle_piriformis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_piriformis_r",
+   "triangles_source": 1500,
+   "triangles_export": 0,
+   "triangles_displayed": 1500
+  },
+  "muscle_piriformis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1500,
+   "triangles_export": 1500,
+   "triangles_displayed": 1500,
+   "simplified": false
+  },
+  "muscle_deep_hip_rotators_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_deep_hip_rotators_r",
+   "triangles_source": 7942,
+   "triangles_export": 0,
+   "triangles_displayed": 4482
+  },
+  "muscle_deep_hip_rotators_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 7942,
+   "triangles_export": 4482,
+   "triangles_displayed": 4482,
+   "simplified": true
+  },
+  "muscle_rectus_femoris_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_rectus_femoris_r",
+   "triangles_source": 6100,
+   "triangles_export": 0,
+   "triangles_displayed": 3930
+  },
+  "muscle_rectus_femoris_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6100,
+   "triangles_export": 3930,
+   "triangles_displayed": 3930,
+   "simplified": true
+  },
+  "muscle_vastus_lateralis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_vastus_lateralis_r",
+   "triangles_source": 8651,
+   "triangles_export": 0,
+   "triangles_displayed": 4695
+  },
+  "muscle_vastus_lateralis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 8651,
+   "triangles_export": 4695,
+   "triangles_displayed": 4695,
+   "simplified": true
+  },
+  "muscle_vastus_medialis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_vastus_medialis_r",
+   "triangles_source": 6460,
+   "triangles_export": 0,
+   "triangles_displayed": 4038
+  },
+  "muscle_vastus_medialis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6460,
+   "triangles_export": 4038,
+   "triangles_displayed": 4038,
+   "simplified": true
+  },
+  "muscle_vastus_intermedius_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_vastus_intermedius_r",
+   "triangles_source": 4756,
+   "triangles_export": 0,
+   "triangles_displayed": 3526
+  },
+  "muscle_vastus_intermedius_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4756,
+   "triangles_export": 3526,
+   "triangles_displayed": 3526,
+   "simplified": true
+  },
+  "muscle_sartorius_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_sartorius_r",
+   "triangles_source": 4966,
+   "triangles_export": 0,
+   "triangles_displayed": 3588
+  },
+  "muscle_sartorius_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4966,
+   "triangles_export": 3588,
+   "triangles_displayed": 3588,
+   "simplified": true
+  },
+  "muscle_gracilis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_gracilis_r",
+   "triangles_source": 4812,
+   "triangles_export": 0,
+   "triangles_displayed": 3542
+  },
+  "muscle_gracilis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4812,
+   "triangles_export": 3542,
+   "triangles_displayed": 3542,
+   "simplified": true
+  },
+  "muscle_pectineus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_pectineus_r",
+   "triangles_source": 1952,
+   "triangles_export": 0,
+   "triangles_displayed": 1952
+  },
+  "muscle_pectineus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1952,
+   "triangles_export": 1952,
+   "triangles_displayed": 1952,
+   "simplified": false
+  },
+  "muscle_adductor_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_adductor_longus_r",
+   "triangles_source": 3025,
+   "triangles_export": 0,
+   "triangles_displayed": 3007
+  },
+  "muscle_adductor_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3025,
+   "triangles_export": 3007,
+   "triangles_displayed": 3007,
+   "simplified": true
+  },
+  "muscle_adductor_brevis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_adductor_brevis_r",
+   "triangles_source": 2132,
+   "triangles_export": 0,
+   "triangles_displayed": 2132
+  },
+  "muscle_adductor_brevis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2132,
+   "triangles_export": 2132,
+   "triangles_displayed": 2132,
+   "simplified": false
+  },
+  "muscle_adductor_magnus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_adductor_magnus_r",
+   "triangles_source": 9140,
+   "triangles_export": 0,
+   "triangles_displayed": 4842
+  },
+  "muscle_adductor_magnus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 9140,
+   "triangles_export": 4842,
+   "triangles_displayed": 4842,
+   "simplified": true
+  },
+  "muscle_biceps_femoris_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_biceps_femoris_r",
+   "triangles_source": 7471,
+   "triangles_export": 0,
+   "triangles_displayed": 4341
+  },
+  "muscle_biceps_femoris_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 7471,
+   "triangles_export": 4341,
+   "triangles_displayed": 4341,
+   "simplified": true
+  },
+  "muscle_semitendinosus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_semitendinosus_r",
+   "triangles_source": 2144,
+   "triangles_export": 0,
+   "triangles_displayed": 2144
+  },
+  "muscle_semitendinosus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2144,
+   "triangles_export": 2144,
+   "triangles_displayed": 2144,
+   "simplified": false
+  },
+  "muscle_semimembranosus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_semimembranosus_r",
+   "triangles_source": 5395,
+   "triangles_export": 0,
+   "triangles_displayed": 3717
+  },
+  "muscle_semimembranosus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 5395,
+   "triangles_export": 3717,
+   "triangles_displayed": 3717,
+   "simplified": true
+  },
+  "muscle_popliteus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_popliteus_r",
+   "triangles_source": 1132,
+   "triangles_export": 0,
+   "triangles_displayed": 1132
+  },
+  "muscle_popliteus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1132,
+   "triangles_export": 1132,
+   "triangles_displayed": 1132,
+   "simplified": false
+  },
+  "muscle_gastrocnemius_medial_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_gastrocnemius_medial_r",
+   "triangles_source": 6462,
+   "triangles_export": 0,
+   "triangles_displayed": 4038
+  },
+  "muscle_gastrocnemius_medial_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6462,
+   "triangles_export": 4038,
+   "triangles_displayed": 4038,
+   "simplified": true
+  },
+  "muscle_gastrocnemius_lateral_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_gastrocnemius_lateral_r",
+   "triangles_source": 4908,
+   "triangles_export": 0,
+   "triangles_displayed": 3572
+  },
+  "muscle_gastrocnemius_lateral_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4908,
+   "triangles_export": 3572,
+   "triangles_displayed": 3572,
+   "simplified": true
+  },
+  "muscle_soleus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_soleus_r",
+   "triangles_source": 6774,
+   "triangles_export": 0,
+   "triangles_displayed": 4132
+  },
+  "muscle_soleus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6774,
+   "triangles_export": 4132,
+   "triangles_displayed": 4132,
+   "simplified": true
+  },
+  "muscle_plantaris_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_plantaris_r",
+   "triangles_source": 4698,
+   "triangles_export": 0,
+   "triangles_displayed": 3508
+  },
+  "muscle_plantaris_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4698,
+   "triangles_export": 3508,
+   "triangles_displayed": 3508,
+   "simplified": true
+  },
+  "muscle_tibialis_anterior_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_tibialis_anterior_r",
+   "triangles_source": 2601,
+   "triangles_export": 0,
+   "triangles_displayed": 2601
+  },
+  "muscle_tibialis_anterior_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2601,
+   "triangles_export": 2601,
+   "triangles_displayed": 2601,
+   "simplified": false
+  },
+  "muscle_extensor_digitorum_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_digitorum_longus_r",
+   "triangles_source": 3176,
+   "triangles_export": 0,
+   "triangles_displayed": 3052
+  },
+  "muscle_extensor_digitorum_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3176,
+   "triangles_export": 3052,
+   "triangles_displayed": 3052,
+   "simplified": true
+  },
+  "muscle_extensor_hallucis_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_hallucis_longus_r",
+   "triangles_source": 2362,
+   "triangles_export": 0,
+   "triangles_displayed": 2362
+  },
+  "muscle_extensor_hallucis_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2362,
+   "triangles_export": 2362,
+   "triangles_displayed": 2362,
+   "simplified": false
+  },
+  "muscle_fibularis_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_fibularis_longus_r",
+   "triangles_source": 3557,
+   "triangles_export": 0,
+   "triangles_displayed": 3167
+  },
+  "muscle_fibularis_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3557,
+   "triangles_export": 3167,
+   "triangles_displayed": 3167,
+   "simplified": true
+  },
+  "muscle_fibularis_brevis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_fibularis_brevis_r",
+   "triangles_source": 2234,
+   "triangles_export": 0,
+   "triangles_displayed": 2234
+  },
+  "muscle_fibularis_brevis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2234,
+   "triangles_export": 2234,
+   "triangles_displayed": 2234,
+   "simplified": false
+  },
+  "muscle_fibularis_tertius_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_fibularis_tertius_r",
+   "triangles_source": 586,
+   "triangles_export": 0,
+   "triangles_displayed": 586
+  },
+  "muscle_fibularis_tertius_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 586,
+   "triangles_export": 586,
+   "triangles_displayed": 586,
+   "simplified": false
+  },
+  "muscle_tibialis_posterior_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_tibialis_posterior_r",
+   "triangles_source": 2646,
+   "triangles_export": 0,
+   "triangles_displayed": 2646
+  },
+  "muscle_tibialis_posterior_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 2646,
+   "triangles_export": 2646,
+   "triangles_displayed": 2646,
+   "simplified": false
+  },
+  "muscle_flexor_digitorum_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_digitorum_longus_r",
+   "triangles_source": 6836,
+   "triangles_export": 0,
+   "triangles_displayed": 4150
+  },
+  "muscle_flexor_digitorum_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 6836,
+   "triangles_export": 4150,
+   "triangles_displayed": 4150,
+   "simplified": true
+  },
+  "muscle_flexor_hallucis_longus_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_hallucis_longus_r",
+   "triangles_source": 3754,
+   "triangles_export": 0,
+   "triangles_displayed": 3226
+  },
+  "muscle_flexor_hallucis_longus_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3754,
+   "triangles_export": 3226,
+   "triangles_displayed": 3226,
+   "simplified": true
+  },
+  "muscle_extensor_digitorum_brevis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_extensor_digitorum_brevis_r",
+   "triangles_source": 4302,
+   "triangles_export": 0,
+   "triangles_displayed": 3390
+  },
+  "muscle_extensor_digitorum_brevis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 4302,
+   "triangles_export": 3390,
+   "triangles_displayed": 3390,
+   "simplified": true
+  },
+  "muscle_abductor_hallucis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_abductor_hallucis_r",
+   "triangles_source": 1688,
+   "triangles_export": 0,
+   "triangles_displayed": 1688
+  },
+  "muscle_abductor_hallucis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1688,
+   "triangles_export": 1688,
+   "triangles_displayed": 1688,
+   "simplified": false
+  },
+  "muscle_flexor_digitorum_brevis_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_flexor_digitorum_brevis_r",
+   "triangles_source": 3224,
+   "triangles_export": 0,
+   "triangles_displayed": 3066
+  },
+  "muscle_flexor_digitorum_brevis_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 3224,
+   "triangles_export": 3066,
+   "triangles_displayed": 3066,
+   "simplified": true
+  },
+  "muscle_abductor_digiti_minimi_foot_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_abductor_digiti_minimi_foot_r",
+   "triangles_source": 1280,
+   "triangles_export": 0,
+   "triangles_displayed": 1280
+  },
+  "muscle_abductor_digiti_minimi_foot_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 1280,
+   "triangles_export": 1280,
+   "triangles_displayed": 1280,
+   "simplified": false
+  },
+  "muscle_foot_intrinsics_deep_l": {
+   "system": "muscle",
+   "mirror_of": "muscle_foot_intrinsics_deep_r",
+   "triangles_source": 7996,
+   "triangles_export": 0,
+   "triangles_displayed": 4498
+  },
+  "muscle_foot_intrinsics_deep_r": {
+   "system": "muscle",
+   "mirror_of": null,
+   "triangles_source": 7996,
+   "triangles_export": 4498,
+   "triangles_displayed": 4498,
+   "simplified": true
+  },
+  "nerve_spinal_cord": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 15554,
+   "triangles_export": 6766,
+   "triangles_displayed": 6766,
+   "simplified": true
+  },
+  "nerve_cauda_equina": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 3456,
+   "triangles_export": 3136,
+   "triangles_displayed": 3136,
+   "simplified": true
+  },
+  "nerve_spinal_nerve_roots_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_spinal_nerve_roots_r",
+   "triangles_source": 4848,
+   "triangles_export": 0,
+   "triangles_displayed": 3554
+  },
+  "nerve_spinal_nerve_roots_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 4848,
+   "triangles_export": 3554,
+   "triangles_displayed": 3554,
+   "simplified": true
+  },
+  "nerve_brachial_plexus_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_brachial_plexus_r",
+   "triangles_source": 2088,
+   "triangles_export": 0,
+   "triangles_displayed": 2088
+  },
+  "nerve_brachial_plexus_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 2088,
+   "triangles_export": 2088,
+   "triangles_displayed": 2088,
+   "simplified": false
+  },
+  "nerve_suprascapular_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_suprascapular_r",
+   "triangles_source": 1224,
+   "triangles_export": 0,
+   "triangles_displayed": 1224
+  },
+  "nerve_suprascapular_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1224,
+   "triangles_export": 1224,
+   "triangles_displayed": 1224,
+   "simplified": false
+  },
+  "nerve_long_thoracic_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_long_thoracic_r",
+   "triangles_source": 1008,
+   "triangles_export": 0,
+   "triangles_displayed": 1008
+  },
+  "nerve_long_thoracic_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1008,
+   "triangles_export": 1008,
+   "triangles_displayed": 1008,
+   "simplified": false
+  },
+  "nerve_dorsal_scapular_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_dorsal_scapular_r",
+   "triangles_source": 648,
+   "triangles_export": 0,
+   "triangles_displayed": 648
+  },
+  "nerve_dorsal_scapular_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 648,
+   "triangles_export": 648,
+   "triangles_displayed": 648,
+   "simplified": false
+  },
+  "nerve_axillary_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_axillary_r",
+   "triangles_source": 288,
+   "triangles_export": 0,
+   "triangles_displayed": 288
+  },
+  "nerve_axillary_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 288,
+   "triangles_export": 288,
+   "triangles_displayed": 288,
+   "simplified": false
+  },
+  "nerve_musculocutaneous_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_musculocutaneous_r",
+   "triangles_source": 360,
+   "triangles_export": 0,
+   "triangles_displayed": 360
+  },
+  "nerve_musculocutaneous_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 360,
+   "triangles_export": 360,
+   "triangles_displayed": 360,
+   "simplified": false
+  },
+  "nerve_median_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_median_r",
+   "triangles_source": 1296,
+   "triangles_export": 0,
+   "triangles_displayed": 1296
+  },
+  "nerve_median_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1296,
+   "triangles_export": 1296,
+   "triangles_displayed": 1296,
+   "simplified": false
+  },
+  "nerve_anterior_interosseous_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_anterior_interosseous_r",
+   "triangles_source": 360,
+   "triangles_export": 0,
+   "triangles_displayed": 360
+  },
+  "nerve_anterior_interosseous_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 360,
+   "triangles_export": 360,
+   "triangles_displayed": 360,
+   "simplified": false
+  },
+  "nerve_median_digital_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_median_digital_r",
+   "triangles_source": 3312,
+   "triangles_export": 0,
+   "triangles_displayed": 3092
+  },
+  "nerve_median_digital_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 3312,
+   "triangles_export": 3092,
+   "triangles_displayed": 3092,
+   "simplified": true
+  },
+  "nerve_ulnar_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_ulnar_r",
+   "triangles_source": 792,
+   "triangles_export": 0,
+   "triangles_displayed": 792
+  },
+  "nerve_ulnar_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 792,
+   "triangles_export": 792,
+   "triangles_displayed": 792,
+   "simplified": false
+  },
+  "nerve_ulnar_hand_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_ulnar_hand_r",
+   "triangles_source": 2448,
+   "triangles_export": 0,
+   "triangles_displayed": 2448
+  },
+  "nerve_ulnar_hand_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 2448,
+   "triangles_export": 2448,
+   "triangles_displayed": 2448,
+   "simplified": false
+  },
+  "nerve_radial_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_radial_r",
+   "triangles_source": 576,
+   "triangles_export": 0,
+   "triangles_displayed": 576
+  },
+  "nerve_radial_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 576,
+   "triangles_export": 576,
+   "triangles_displayed": 576,
+   "simplified": false
+  },
+  "nerve_radial_superficial_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_radial_superficial_r",
+   "triangles_source": 1080,
+   "triangles_export": 0,
+   "triangles_displayed": 1080
+  },
+  "nerve_radial_superficial_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1080,
+   "triangles_export": 1080,
+   "triangles_displayed": 1080,
+   "simplified": false
+  },
+  "nerve_posterior_interosseous_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_posterior_interosseous_r",
+   "triangles_source": 936,
+   "triangles_export": 0,
+   "triangles_displayed": 936
+  },
+  "nerve_posterior_interosseous_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 936,
+   "triangles_export": 936,
+   "triangles_displayed": 936,
+   "simplified": false
+  },
+  "nerve_femoral_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_femoral_r",
+   "triangles_source": 1008,
+   "triangles_export": 0,
+   "triangles_displayed": 1008
+  },
+  "nerve_femoral_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1008,
+   "triangles_export": 1008,
+   "triangles_displayed": 1008,
+   "simplified": false
+  },
+  "nerve_saphenous_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_saphenous_r",
+   "triangles_source": 1656,
+   "triangles_export": 0,
+   "triangles_displayed": 1656
+  },
+  "nerve_saphenous_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1656,
+   "triangles_export": 1656,
+   "triangles_displayed": 1656,
+   "simplified": false
+  },
+  "nerve_lateral_femoral_cutaneous_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_lateral_femoral_cutaneous_r",
+   "triangles_source": 1152,
+   "triangles_export": 0,
+   "triangles_displayed": 1152
+  },
+  "nerve_lateral_femoral_cutaneous_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1152,
+   "triangles_export": 1152,
+   "triangles_displayed": 1152,
+   "simplified": false
+  },
+  "nerve_obturator_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_obturator_r",
+   "triangles_source": 1584,
+   "triangles_export": 0,
+   "triangles_displayed": 1584
+  },
+  "nerve_obturator_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1584,
+   "triangles_export": 1584,
+   "triangles_displayed": 1584,
+   "simplified": false
+  },
+  "nerve_superior_gluteal_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_superior_gluteal_r",
+   "triangles_source": 864,
+   "triangles_export": 0,
+   "triangles_displayed": 864
+  },
+  "nerve_superior_gluteal_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 864,
+   "triangles_export": 864,
+   "triangles_displayed": 864,
+   "simplified": false
+  },
+  "nerve_pudendal_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_pudendal_r",
+   "triangles_source": 936,
+   "triangles_export": 0,
+   "triangles_displayed": 936
+  },
+  "nerve_pudendal_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 936,
+   "triangles_export": 936,
+   "triangles_displayed": 936,
+   "simplified": false
+  },
+  "nerve_posterior_femoral_cutaneous_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_posterior_femoral_cutaneous_r",
+   "triangles_source": 648,
+   "triangles_export": 0,
+   "triangles_displayed": 648
+  },
+  "nerve_posterior_femoral_cutaneous_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 648,
+   "triangles_export": 648,
+   "triangles_displayed": 648,
+   "simplified": false
+  },
+  "nerve_sciatic_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_sciatic_r",
+   "triangles_source": 1224,
+   "triangles_export": 0,
+   "triangles_displayed": 1224
+  },
+  "nerve_sciatic_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1224,
+   "triangles_export": 1224,
+   "triangles_displayed": 1224,
+   "simplified": false
+  },
+  "nerve_tibial_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_tibial_r",
+   "triangles_source": 648,
+   "triangles_export": 0,
+   "triangles_displayed": 648
+  },
+  "nerve_tibial_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 648,
+   "triangles_export": 648,
+   "triangles_displayed": 648,
+   "simplified": false
+  },
+  "nerve_common_fibular_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_common_fibular_r",
+   "triangles_source": 504,
+   "triangles_export": 0,
+   "triangles_displayed": 504
+  },
+  "nerve_common_fibular_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 504,
+   "triangles_export": 504,
+   "triangles_displayed": 504,
+   "simplified": false
+  },
+  "nerve_deep_fibular_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_deep_fibular_r",
+   "triangles_source": 1080,
+   "triangles_export": 0,
+   "triangles_displayed": 1080
+  },
+  "nerve_deep_fibular_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1080,
+   "triangles_export": 1080,
+   "triangles_displayed": 1080,
+   "simplified": false
+  },
+  "nerve_superficial_fibular_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_superficial_fibular_r",
+   "triangles_source": 792,
+   "triangles_export": 0,
+   "triangles_displayed": 792
+  },
+  "nerve_superficial_fibular_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 792,
+   "triangles_export": 792,
+   "triangles_displayed": 792,
+   "simplified": false
+  },
+  "nerve_sural_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_sural_r",
+   "triangles_source": 1008,
+   "triangles_export": 0,
+   "triangles_displayed": 1008
+  },
+  "nerve_sural_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 1008,
+   "triangles_export": 1008,
+   "triangles_displayed": 1008,
+   "simplified": false
+  },
+  "nerve_medial_plantar_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_medial_plantar_r",
+   "triangles_source": 288,
+   "triangles_export": 0,
+   "triangles_displayed": 288
+  },
+  "nerve_medial_plantar_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 288,
+   "triangles_export": 288,
+   "triangles_displayed": 288,
+   "simplified": false
+  },
+  "nerve_lateral_plantar_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_lateral_plantar_r",
+   "triangles_source": 288,
+   "triangles_export": 0,
+   "triangles_displayed": 288
+  },
+  "nerve_lateral_plantar_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 288,
+   "triangles_export": 288,
+   "triangles_displayed": 288,
+   "simplified": false
+  },
+  "nerve_plantar_digital_l": {
+   "system": "nerve",
+   "mirror_of": "nerve_plantar_digital_r",
+   "triangles_source": 4248,
+   "triangles_export": 0,
+   "triangles_displayed": 3374
+  },
+  "nerve_plantar_digital_r": {
+   "system": "nerve",
+   "mirror_of": null,
+   "triangles_source": 4248,
+   "triangles_export": 3374,
+   "triangles_displayed": 3374,
+   "simplified": true
+  },
+  "bursa_subacromial_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_subacromial_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_subacromial_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_subdeltoid_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_subdeltoid_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_subdeltoid_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_subcutaneous_acromial_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_subcutaneous_acromial_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_subcutaneous_acromial_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_coracobrachial_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_coracobrachial_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_coracobrachial_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_infraspinatus_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_infraspinatus_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_infraspinatus_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_teres_major_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_teres_major_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_teres_major_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_trapezius_l": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 5888,
+   "triangles_export": 5888,
+   "triangles_displayed": 5888,
+   "simplified": false
+  },
+  "bursa_trapezius_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_trochanteric_gluteus_maximus_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_trochanteric_gluteus_maximus_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_trochanteric_gluteus_maximus_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_trochanteric_gluteus_medius_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_trochanteric_gluteus_medius_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_trochanteric_gluteus_medius_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_trochanteric_gluteus_minimus_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_trochanteric_gluteus_minimus_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_trochanteric_gluteus_minimus_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_trochanteric_subcutaneous_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_trochanteric_subcutaneous_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_trochanteric_subcutaneous_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_iliopectineal_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_iliopectineal_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_iliopectineal_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_iliacus_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_iliacus_r",
+   "triangles_source": 352,
+   "triangles_export": 0,
+   "triangles_displayed": 352
+  },
+  "bursa_iliacus_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 352,
+   "triangles_export": 352,
+   "triangles_displayed": 352,
+   "simplified": false
+  },
+  "bursa_ischial_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_ischial_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_ischial_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_obturator_internus_ischial_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_obturator_internus_ischial_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_obturator_internus_ischial_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_obturator_internus_subtendinous_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_obturator_internus_subtendinous_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_obturator_internus_subtendinous_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_piriformis_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_piriformis_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_piriformis_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_intermuscular_gluteal_l": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1240,
+   "triangles_export": 1240,
+   "triangles_displayed": 1240,
+   "simplified": false
+  },
+  "bursa_intermuscular_gluteal_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 4960,
+   "triangles_export": 4960,
+   "triangles_displayed": 4960,
+   "simplified": false
+  },
+  "bursa_biceps_femoris_superior_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_biceps_femoris_superior_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_biceps_femoris_superior_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_suprapatellar_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_suprapatellar_r",
+   "triangles_source": 1296,
+   "triangles_export": 0,
+   "triangles_displayed": 1296
+  },
+  "bursa_suprapatellar_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1296,
+   "triangles_export": 1296,
+   "triangles_displayed": 1296,
+   "simplified": false
+  },
+  "bursa_prepatellar_subcutaneous_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_prepatellar_subcutaneous_r",
+   "triangles_source": 992,
+   "triangles_export": 0,
+   "triangles_displayed": 992
+  },
+  "bursa_prepatellar_subcutaneous_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bursa_prepatellar_subfascial_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_prepatellar_subfascial_r",
+   "triangles_source": 992,
+   "triangles_export": 0,
+   "triangles_displayed": 992
+  },
+  "bursa_prepatellar_subfascial_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bursa_prepatellar_subtendinous_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_prepatellar_subtendinous_r",
+   "triangles_source": 992,
+   "triangles_export": 0,
+   "triangles_displayed": 992
+  },
+  "bursa_prepatellar_subtendinous_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bursa_infrapatellar_subcutaneous_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_infrapatellar_subcutaneous_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_infrapatellar_subcutaneous_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_infrapatellar_deep_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_infrapatellar_deep_r",
+   "triangles_source": 992,
+   "triangles_export": 0,
+   "triangles_displayed": 992
+  },
+  "bursa_infrapatellar_deep_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bursa_tibial_tuberosity_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_tibial_tuberosity_r",
+   "triangles_source": 1472,
+   "triangles_export": 0,
+   "triangles_displayed": 1472
+  },
+  "bursa_tibial_tuberosity_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1472,
+   "triangles_export": 1472,
+   "triangles_displayed": 1472,
+   "simplified": false
+  },
+  "bursa_pes_anserine_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_pes_anserine_r",
+   "triangles_source": 1216,
+   "triangles_export": 0,
+   "triangles_displayed": 1216
+  },
+  "bursa_pes_anserine_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1216,
+   "triangles_export": 1216,
+   "triangles_displayed": 1216,
+   "simplified": false
+  },
+  "bursa_sartorius_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_sartorius_r",
+   "triangles_source": 1296,
+   "triangles_export": 0,
+   "triangles_displayed": 1296
+  },
+  "bursa_sartorius_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 1296,
+   "triangles_export": 1296,
+   "triangles_displayed": 1296,
+   "simplified": false
+  },
+  "bursa_semimembranosus_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_semimembranosus_r",
+   "triangles_source": 992,
+   "triangles_export": 0,
+   "triangles_displayed": 992
+  },
+  "bursa_semimembranosus_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bursa_biceps_femoris_inferior_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_biceps_femoris_inferior_r",
+   "triangles_source": 992,
+   "triangles_export": 0,
+   "triangles_displayed": 992
+  },
+  "bursa_biceps_femoris_inferior_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  },
+  "bursa_gastrocnemius_medial_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_gastrocnemius_medial_r",
+   "triangles_source": 864,
+   "triangles_export": 0,
+   "triangles_displayed": 864
+  },
+  "bursa_gastrocnemius_medial_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 864,
+   "triangles_export": 864,
+   "triangles_displayed": 864,
+   "simplified": false
+  },
+  "bursa_gastrocnemius_lateral_l": {
+   "system": "bursa",
+   "mirror_of": "bursa_gastrocnemius_lateral_r",
+   "triangles_source": 992,
+   "triangles_export": 0,
+   "triangles_displayed": 992
+  },
+  "bursa_gastrocnemius_lateral_r": {
+   "system": "bursa",
+   "mirror_of": null,
+   "triangles_source": 992,
+   "triangles_export": 992,
+   "triangles_displayed": 992,
+   "simplified": false
+  }
+ }
+}

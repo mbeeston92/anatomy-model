@@ -23,3 +23,6 @@ tmp/
 Thumbs.db
 desktop.ini
 .vscode/
+
+# Preview renders (about 65 MB; recreated by npm run build:models)
+data/previews/
