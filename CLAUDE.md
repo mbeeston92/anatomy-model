@@ -30,6 +30,7 @@ A physiotherapist, not a software developer. When you report back:
 - ligaments
 - cartilage (articular cartilage, menisci, labra, intervertebral discs)
 - nerves
+- bursae (shoulder, hip and knee only)
 
 The exact list is set by the user in `data/structures-approved.csv` (produced in Stage 1). That file is the source of truth for what's in the app, plus each structure's name, region and system. Don't add or remove structures without updating it and telling the user.
 
@@ -62,7 +63,9 @@ The exact list is set by the user in `data/structures-approved.csv` (produced in
 
    The user can hide or restore any region, or isolate one (show only that region).
 
-   Secondary control: show or hide each system (bones, cartilage, ligaments, tendons, muscles, nerves). This lets them reveal deep structures, e.g. hide muscles around the knee to show the cruciate ligaments.
+   Soft-tissue side switch: soft tissue (everything except bone) can be shown on the left, the right or both sides, so the physiotherapist picks the side of the injury. Bones always show on both sides.
+
+   Secondary control: show or hide each system (bones, cartilage, ligaments, tendons, muscles, nerves, bursae). This lets them reveal deep structures, e.g. hide muscles around the knee to show the cruciate ligaments.
 3. **Selection.** Click a structure to see its plain-English name in UK spelling, plus which side (left/right). Hovering shows the name too. A search box finds structures by name. A setting can show the medical name as well (off by default).
 4. **Coloured injury highlights.** Mark one or more structures in a chosen colour, e.g. red for the injured structure and amber for structures affected or under strain. Highlights can be cleared one at a time or all at once. A clean presentation view hides the interface for screenshots.
 5. **Joint movement.** Knee, ankle and shoulder move through physiological ranges using sliders. Soft tissues (muscles, tendons, ligaments, nerves) follow the bones believably.
@@ -76,6 +79,7 @@ The exact list is set by the user in `data/structures-approved.csv` (produced in
   - Run headless from scripts only: `blender --background <file> --python <script>`. Never ask the user to click through Blender. All Blender steps must be reproducible scripts in `blender/`.
   - Find the Blender executable on this machine. If you can't, ask the user for its path once and record it in `PROGRESS.md`.
   - Never modify the original file in `source/`. Save any working copies elsewhere.
+- **Left/right mirroring of soft tissue:** to halve the download, soft tissue is exported for one side only (the right) and mirrored in the app to make the left. This is valid because left and right in Z-Anatomy are mirror copies. Any pair that is not an exact mirror in the source is exported for both sides as it is. Bones are exported for both sides. Each side keeps its own structure ID (`_l` / `_r`).
 - **Structure data:**
   - `data/structures-approved.csv` is the human-edited source of truth.
   - A build script turns it into `public/data/structures.json`, which the app loads.
@@ -110,6 +114,7 @@ PROGRESS.md           Stage log: what's done, decisions made, known issues
   - ligaments and tendons: pale silver-cream
   - muscles: muted red
   - nerves: yellow
+  - bursae: pale translucent blue
 
   Highlight colours must stand out clearly from all of these.
 - UK spelling everywhere in the interface (e.g. "colour", "centre", "anaesthetic", "grey").

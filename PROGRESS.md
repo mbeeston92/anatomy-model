@@ -9,7 +9,7 @@
   - `Source/Z-Biomechanics/Startup.blend` (133 MB). Skeleton and muscle attachment marks only, rigged to an armature (movable skeleton). Not used yet; likely useful for Stage 5 (joint movement).
 - The folder on disk is `Source` with a capital S. Windows treats it the same as `source`.
 
-## Stage 1a: inventory and proposed structure list — DONE, list approved with two open questions
+## Stage 1a: inventory and proposed structure list — DONE, list approved
 
 ### What was done
 
@@ -69,13 +69,16 @@ The user saved `data/structures-approved.csv` with no row edits and answered the
 
 `scripts/propose_structures.py` was updated to match. The list is now **803 structures, about 2.80 million triangles** before simplification (bone 208, cartilage 78, ligament 116, tendon 48, muscle 225, nerve 64, bursa 64).
 
-**NOT YET APPLIED to `structures-approved.csv`:** the file was locked (open in Excel) when the update ran, so it still holds the original 762 rows. The updated 803-row list is in `structures-proposed.csv`. Copy it over `structures-approved.csv` once the file is closed, then delete this note.
+`data/structures-approved.csv` now holds this 803-row list (identical to `structures-proposed.csv`).
 
-### Open questions (waiting for the user)
+### Decisions after review (16 November 2026)
 
-- **Soft tissue on one side only?** The user asked whether this would save triangles. Facts: soft tissue is about 1.06 million triangles per side, so one side only brings the total from 2.80 to about 1.74 million before simplification. Left and right in the source are mirror copies of each other (952 of 975 pairs match by vertex count, size and position). Options put to the user: (A) both sides, rely on simplification; (B) soft tissue on one side only; (C) download one side and mirror it in the app, with a switch for left, right or both. Not decided.
-- **Bursa as a seventh system.** CLAUDE.md lists six systems. Bursae need their own show/hide switch and colour. Waiting for the user to confirm before CLAUDE.md is changed.
+- **Mirror soft tissue, with a side switch.** Soft tissue is exported for the right side only and mirrored in the app to make the left. The app gets a switch: soft tissue on left, right or both. Bones are exported for both sides. Reason: halves the soft-tissue download (about 1.06 million triangles per side before simplification) and keeps rotation smooth when one side is shown, while still showing the injury on the correct side. Left and right in the source are mirror copies (952 of 975 pairs match by vertex count, size and position).
+  - Stage 1b must check each proposed left/right pair properly (vertex positions, not just bounding boxes) and export both sides as they are for any pair that is not an exact mirror.
+  - The CSV keeps separate `_l` and `_r` rows for every structure; mirroring is an export and loading detail.
+- **Bursae are a seventh system** with their own show/hide switch. Colour: pale translucent blue (my suggestion; the user has not commented on the colour).
+- `CLAUDE.md` updated with both decisions.
 
 ### Next step
 
-Stage 1b (export) once the approved file is updated and the two open questions are answered.
+Stage 1b (export). Stage 1a is complete with no open questions.
