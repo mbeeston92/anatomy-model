@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anatomy model</title>
+    <meta name="description" content="Interactive 3D anatomy model for patient education." />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <aside id="panel" class="panel" aria-label="Controls">
+        <div class="panel__inner">
+          <h1 class="panel__title">Anatomy model</h1>
+          <p class="panel__note">
+            Controls for body regions, systems and highlights will appear here.
+          </p>
+          <h2 class="panel__heading">Moving the model</h2>
+          <dl class="help">
+            <div><dt>Rotate</dt><dd>Drag</dd></div>
+            <div><dt>Move</dt><dd>Right-drag, or drag with two fingers</dd></div>
+            <div><dt>Zoom</dt><dd>Scroll or pinch</dd></div>
+            <div><dt>Centre on a point</dt><dd>Double-click the model</dd></div>
+          </dl>
+        </div>
+      </aside>
+
+      <main id="viewport" class="viewport">
+        <canvas id="canvas" class="viewport__canvas" aria-label="3D anatomy model"></canvas>
+
+        <button id="panel-toggle" class="panel-toggle" type="button"
+                aria-controls="panel" aria-expanded="true" title="Hide panel">
+          <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true">
+            <path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span id="panel-toggle-label" class="visually-hidden">Hide panel</span>
+        </button>
+
+        <div id="loading" class="loading" role="status" aria-live="polite">
+          <div class="loading__text">
+            <span id="loading-label">Loading bones</span>
+            <span id="loading-percent" class="loading__percent">0%</span>
+          </div>
+          <div id="loading-track" class="loading__track" role="progressbar"
+               aria-label="Model loading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="loading-bar" class="loading__bar"></div>
+          </div>
+        </div>
+
+        <div id="error" class="error" role="alert" hidden>
+          <p id="error-title" class="error__title"></p>
+          <p id="error-detail" class="error__detail"></p>
+          <button id="error-retry" class="button button--primary" type="button">Try again</button>
+        </div>
+
+        <nav class="views" aria-label="Camera views">
+          <div class="views__group" role="group" aria-label="Preset views">
+            <button class="button" type="button" data-view="front" title="View from the front">Front</button>
+            <button class="button" type="button" data-view="back" title="View from the back">Back</button>
+            <button class="button" type="button" data-view="left" title="View of the body's left side">Left</button>
+            <button class="button" type="button" data-view="right" title="View of the body's right side">Right</button>
+            <button class="button" type="button" data-view="top" title="View from above">Top</button>
+          </div>
+          <button class="button button--reset" type="button" data-view="reset"
+                  title="Return to the starting view">Reset view</button>
+        </nav>
+      </main>
+
+      <footer class="footer">
+        <span>Anatomy models:
+          <a href="https://www.z-anatomy.com/" target="_blank" rel="noopener">Z-Anatomy</a>
+          (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>)</span>
+        <span>For patient education only. Not a diagnostic tool.</span>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

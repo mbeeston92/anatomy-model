@@ -5,6 +5,11 @@
   "type": "module",
   "description": "Interactive 3D anatomy model for physiotherapy patient education",
   "scripts": {
+    "start": "vite --open",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --open",
+    "check": "node tests/check-viewer.mjs",
     "build:models": "node scripts/build-models.mjs",
     "export": "node scripts/build-models.mjs --only export",
     "compress": "node scripts/compress.mjs",
@@ -15,6 +20,12 @@
     "@gltf-transform/core": "4.5.1",
     "@gltf-transform/extensions": "4.5.1",
     "@gltf-transform/functions": "4.5.1",
-    "meshoptimizer": "1.3.0"
+    "meshoptimizer": "1.3.0",
+    "playwright": "1.65.1",
+    "vite": "8.3.8"
+  },
+  "dependencies": {
+    "@fontsource/atkinson-hyperlegible": "5.3.0",
+    "three": "0.187.0"
   }
 }

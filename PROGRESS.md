@@ -162,4 +162,63 @@ MCL (superficial part), sacrotuberous ligament, sacrospinous ligament, transvers
 
 ### Next step
 
-Stage 2 (the app). Not started.
+Done; see Stage 2 below.
+
+## Stage 2: the 3D viewer — DONE
+
+### How to start the app on the laptop
+
+1. Open a terminal in the project folder (`C:\Users\Mbees\Desktop\anatomy-model`).
+2. First time only, or after pulling changes: `npm install`
+3. Type `npm start`. The app opens in the browser at `http://localhost:5173/`.
+4. To stop it, click in the terminal and press `Ctrl` + `C`.
+
+Other commands:
+
+- `npm run build` makes the finished static site in `dist/` (this is what goes on GitHub Pages; about 9 MB in total).
+- `npm run preview` opens that built site, to check it before publishing.
+- `npm run check` runs the automated check: it starts the app, takes screenshots into `work/screens/` (not committed) and prints load time and frame rate. Add `-- --headed` to watch it in a real browser window.
+
+### What was built
+
+- Vite 8.3.8 and Three.js 0.187.0, versions pinned in `package.json`. Playwright 1.65.1 is used for the automated check only. The typeface (Atkinson Hyperlegible) is bundled with the app; nothing is fetched from other sites.
+- Code layout in `src/`:
+  - `scene.js`: renderer, camera, lights.
+  - `materials.js`: one material per system (colour from `structures.json`, finish set here).
+  - `registry.js`: the structure registry. Every structure id maps to its data and its own mesh. Look-ups by id, system, region or mesh. Later stages hide, select and highlight through this.
+  - `loader.js`: downloads the models with overall progress; builds the mirrored left side.
+  - `camera.js`: orbit controls, preset views, transitions, double-click to centre.
+  - `ui.js`: side panel, loading bar, error message, view buttons.
+  - `main.js`: joins them up and runs the drawing loop.
+- **Loading:** bones first, then the other six systems together. One progress bar with the overall percentage. If a file fails, a message names the part ("Some parts could not be loaded: muscles") with a "Try again" button that reloads only what failed.
+- **Mirroring:** the 280 left-side soft-tissue structures are copies of the right, flipped by a parent group. Each is its own mesh with its own `_l` id; only the shape data is shared. All 817 structures have a separate mesh.
+- **Rendering:** soft studio environment light plus key, fill and rim lights that travel with the camera, so the side facing the viewer is always lit. Matte bone and muscle; slightly glossy cartilage, ligaments and tendons; translucent bursae. Light neutral backdrop.
+- **Depth sorting:** bone and muscle are drawn fractionally behind the tissues that lie on them, and the camera's depth range follows the zoom distance. No flicker seen in the knee close-ups.
+- **Camera:** drag to rotate, right-drag or two fingers to pan, scroll or pinch to zoom (zooms towards the pointer). Zoom limits 6 cm to 9 m. Front, Back, Left, Right, Top and Reset view with 0.7-second transitions. Double-click centres the orbit on that point. The orbit centre cannot be dragged far off the body, so the model cannot be lost.
+- **Layout:** model fills the screen; collapsible side panel (currently holds the mouse/touch instructions); footer with the Z-Anatomy credit, licence link and disclaimer.
+
+### Decisions made
+
+- "Left" and "Right" views show the body's left and right sides (the camera stands on that side).
+- "Top" view looks straight down with the front of the body towards the bottom of the screen.
+- "Reset view" returns to the front view with the whole body in frame.
+- **No ambient occlusion.** It needs an extra full-screen pass every frame, which is the most likely thing to cost smoothness on integrated graphics, and the lighting already shows form well. Can be revisited.
+- **Performance measures used:** the picture is only redrawn when something changes (a still model uses no graphics power); on high-resolution screens the picture is drawn at standard resolution while moving and sharpened as soon as it stops; meshes off-screen are skipped. No meshes were merged.
+- Accent colour for the interface is a muted teal (#1F6F78), chosen to stay clear of the red and amber planned for injury highlights.
+
+### Measured (16 November 2026, this laptop, AMD Radeon 780M integrated graphics)
+
+- **Frame rate:** 60 frames per second (the screen's limit), slowest 1% of frames 59.5, while spinning the whole body with every system visible (1.82 million triangles drawn, 881 draw calls) and when zoomed in.
+- **Load time from this laptop's own disk:** skeleton visible in about 0.45 s, everything in about 0.75 s. That is not an internet figure. The whole download is about 8.1 MB (models 7.85 MB, app code 0.17 MB compressed, typeface 0.04 MB), so on a 20 Mbit/s connection expect roughly 4 seconds in total, with the skeleton after about 1.5 seconds. To be confirmed once the site is on GitHub Pages.
+- The frame rate was measured at a 1440 x 810 window at standard resolution. Not yet measured on a 4K screen or on older Intel graphics.
+
+### Known issues / things to look at
+
+- On a phone-width screen the view buttons cover the feet in the starting view. Phones are not a target device; left as it is.
+- Double-click uses a simple hit test that takes a moment on the full model (not noticeable on a double-click). Stage 3 hover names will need a faster method (a spatial index such as three-mesh-bvh).
+- The issues listed under Stage 1b (jagged tendon edges with muscles hidden, flat ligament straps, linea alba gap) are visible in the viewer as expected.
+- The app code is one 680 KB file (172 KB compressed). Fine for now.
+
+### Next step
+
+Stage 3. Not started.
