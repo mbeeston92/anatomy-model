@@ -47,6 +47,7 @@ export function createCameraRig({ camera, domElement, getPickTargets, onViewChan
   let transition = null;
   let currentView = null;
   const raycaster = new THREE.Raycaster();
+  raycaster.firstHitOnly = true;   // used by the spatial index (see picking.js)
   const scratch = new THREE.Vector3();
   const spherical = new THREE.Spherical();
 

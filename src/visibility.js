@@ -28,7 +28,8 @@ const emptyState = () => ({
   hidden: new Set(),          // "region|side" keys
   isolated: null,             // { region, sides: ['left', 'right'] } or null
   systemsOff: new Set(),      // system ids that are unticked
-  structuresOff: new Set(),   // structure ids hidden one by one (quick views)
+  structuresOff: new Set(),   // structure ids hidden one by one (quick views, "Hide this")
+  only: null,                 // id of the one structure being shown on its own ("Isolate this")
   preset: null,               // label of the quick view that produced this state
 });
 
@@ -37,6 +38,7 @@ const serialise = (s) => JSON.stringify({
   isolated: s.isolated && { region: s.isolated.region, sides: [...s.isolated.sides].sort() },
   systemsOff: [...s.systemsOff].sort(),
   structuresOff: [...s.structuresOff].sort(),
+  only: s.only,
   preset: s.preset,
 });
 
@@ -47,6 +49,7 @@ const deserialise = (text) => {
     isolated: o.isolated,
     systemsOff: new Set(o.systemsOff),
     structuresOff: new Set(o.structuresOff),
+    only: o.only ?? null,
     preset: o.preset,
   };
 };
@@ -77,6 +80,8 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
   /** 'shown', 'filtered' (system or single structure switched off) or 'hidden' (by region). */
   function statusOf(entry, s = state) {
     const d = entry.data;
+    // One structure on its own: everything else counts as hidden (and is ghosted).
+    if (s.only) return entry.id === s.only ? 'shown' : 'hidden';
     if (s.systemsOff.has(d.system) || s.structuresOff.has(entry.id)) return 'filtered';
 
     const iso = s.isolated;
@@ -97,7 +102,7 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
       const mesh = entry.mesh;
       if (!mesh) continue;
       const status = statusOf(entry);
-      const ghosted = ghost && status === 'hidden';
+      const ghosted = (ghost || state.only !== null) && status === 'hidden';
       mesh.visible = status === 'shown' || ghosted;
       mesh.material = ghosted ? ghostMaterial : materials.get(entry.data.system);
       mesh.userData.ghost = ghosted;
@@ -111,6 +116,7 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
   function commit(change) {
     const next = deserialise(serialise(state));
     next.preset = null;
+    next.only = null;            // any other change ends "Isolate this"
     change(next);
     const text = serialise(next);
     if (text === history[position]) return false;
@@ -185,6 +191,33 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
     return commit((s) => { s.structuresOff = new Set(); });
   }
 
+  /** Hide or show one structure ("Hide this" on the info card). */
+  function setStructure(id, on) {
+    if (!registry.has(id)) return false;
+    return commit((s) => { if (on) s.structuresOff.delete(id); else s.structuresOff.add(id); });
+  }
+
+  /** Show one structure on its own, the rest as a faint outline. Again on the same one ends it. */
+  function isolateStructure(id) {
+    if (!registry.has(id)) return false;
+    if (state.only === id) { commit(() => {}); return false; }
+    commit((s) => { s.structuresOff.delete(id); s.only = id; });
+    return true;
+  }
+
+  /** Make sure one structure is shown (used when it is picked from the search). */
+  function reveal(id) {
+    const entry = registry.get(id);
+    if (!entry || statusOf(entry) === 'shown') return false;
+    return commit((s) => {
+      s.structuresOff.delete(id);
+      s.systemsOff.delete(entry.data.system);
+      if (statusOf(entry, s) === 'shown') return;
+      const sides = entry.data.side === 'midline' ? SIDES : [entry.data.side];
+      for (const region of entry.data.regions) for (const side of sides) s.hidden.delete(key(region, side));
+    });
+  }
+
   function showEverything() {
     return commit((s) => Object.assign(s, emptyState()));
   }
@@ -255,6 +288,10 @@ export function createVisibility({ registry, materials, onChange = () => {} }) {
     regions,
     isPaired,
     hide, show, isolate, isIsolated, setSystem, showStructures, showEverything, applyPreset,
+    setStructure, isolateStructure, reveal,
+    get only() { return state.only; },
+    get isolated() { return state.isolated; },
+    structureOn: (id) => !state.structuresOff.has(id),
     undo: () => step(-1),
     redo: () => step(1),
     get canUndo() { return position > 0; },

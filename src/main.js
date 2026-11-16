@@ -12,13 +12,17 @@ import { createCameraRig } from './camera.js';
 import { createUI, listInWords } from './ui.js';
 import { createVisibility } from './visibility.js';
 import { createPanel } from './panel.js';
+import { createPicker } from './picking.js';
+import { createSelection } from './selection.js';
+import { createSearchBox } from './searchbox.js';
+import { createLabels } from './labels.js';
 
 const canvas = document.getElementById('canvas');
 const viewport = document.getElementById('viewport');
 
 const SETTLE_MS = 400;  // how long after movement stops before the sharp redraw
 
-let stage, rig, registry, loader, visibility, panel;
+let stage, rig, registry, loader, visibility, panel, picker, selection, searchBox, labels;
 let frameOnIsolate = true;
 let needsRender = true;
 let moving = false;
@@ -36,7 +40,10 @@ function frame(now) {
   requestAnimationFrame(frame);
   if (!stage || !rig) return;
 
-  if (rig.update(now)) {
+  const cameraMoved = rig.update(now);
+  selection?.tick(cameraMoved);          // hover: at most one hit test per frame
+
+  if (cameraMoved) {
     lastMoved = now;
     if (!moving) { moving = true; stage.setMoving(true); }
     needsRender = true;
@@ -50,6 +57,7 @@ function frame(now) {
   if (needsRender) {
     needsRender = false;
     stage.render();
+    labels?.update();
     stats.frames++;
   }
 }
@@ -125,10 +133,36 @@ async function start() {
       visibility = createVisibility({
         registry,
         materials,
-        onChange: () => { panel?.refresh(); requestRender(); },
+        onChange: () => { panel?.refresh(); selection?.refresh(); labels?.invalidate(); requestRender(); },
+      });
+      picker = createPicker({
+        camera: stage.camera,
+        domElement: canvas,
+        registry,
+        getTargets: () => visibility.shownMeshes(),
+      });
+      selection = createSelection({
+        registry, visibility, picker, rig, canvas, viewport,
+        outline: stage.outline,
+        shouldZoom: () => frameOnIsolate,
+        requestRender,
+        onChange: () => { labels?.invalidate(); requestRender(); },
+      });
+      searchBox = createSearchBox({
+        registry,
+        showMedical: () => selection.medical,
+        onPick: (id) => selection.select(id, { reveal: true, zoom: true }),
+      });
+      labels = createLabels({
+        registry, visibility, viewport,
+        camera: stage.camera,
+        getSelectedId: () => selection.selectedId,
+        onPick: (id) => selection.select(id),
+        onHover: (id) => selection.setHover(id, false),
       });
       panel = createPanel({
         visibility,
+        registry,
         systems: data.systems,
         presets: await loadPresets(),
         onIsolated: (region, sides) => { if (frameOnIsolate) frameRegion(region, sides); },
@@ -139,6 +173,8 @@ async function start() {
         },
         onGhost: (on) => visibility.setGhost(on),
         onFrameOption: (on) => { frameOnIsolate = on; },
+        onMedicalOption: (on) => { selection.setMedical(on); searchBox.refresh(); },
+        onLabelsOption: (on) => { labels.setEnabled(on); requestRender(); },
       });
       loader = createModelLoader({
         registry,
@@ -153,6 +189,7 @@ async function start() {
             stats.firstModelAt = performance.now();
           }
           visibility.apply();      // newly arrived parts follow the current settings
+          picker.index(group);     // build the fast hit-test index in the background
         },
       });
     }
@@ -189,6 +226,9 @@ window.__viewer = {
   get rig() { return rig; },
   get registry() { return registry; },
   get visibility() { return visibility; },
+  get picker() { return picker; },
+  get selection() { return selection; },
+  get labels() { return labels; },
   stats,
   requestRender,
 };

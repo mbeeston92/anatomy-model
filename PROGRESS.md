@@ -324,4 +324,79 @@ Current quick views:
 
 ### Next step
 
-Stage 4 (selection, names, search). Not started.
+Done; see Stage 4 below.
+
+## Stage 4: names, selection and search — DONE
+
+### How to use it
+
+- **Point at a structure:** a small dark label by the pointer gives its name and side, and the structure gets a thin blue outline. Hidden structures and faint ghost outlines never respond.
+- **Click a structure:** it gets a thicker blue outline and an info card opens near the top of the side panel with its name, side, system and region(s). Click empty space, press `Esc`, or press the × on the card to deselect. Dragging to rotate does not select. Double-click still centres the view.
+- **Info card buttons:**
+  - **Hide this** hides that one structure (the button becomes "Show this").
+  - **Isolate this** shows only that structure, with the rest of the body as a faint outline. Press it again, or "Show the rest" in the panel, to end it.
+  - **Zoom to this** moves the camera to it.
+  - Hide and Isolate are steps in the same Undo/Redo history as the region controls; "Show everything" clears them.
+- **Search box** (top of the panel): results appear as you type. A left/right pair is one row with a **Left** and a **Right** button. Picking one selects it, brings it back if it was hidden, and zooms to it. `Enter` picks the first result; `Esc` clears the box. Typing "left" or "right" as an extra word narrows the side.
+- **Options, both off to start with and not stored:**
+  - "Show medical names as well" adds the medical name under the plain name in the pointer label, the info card and the search results.
+  - "Label the structures in the isolated region" turns on floating labels with leader lines. Clicking a label selects that structure.
+
+### What was built
+
+- `src/picking.js`: hit testing with `three-mesh-bvh` 0.9.18 (version pinned). The index is built in small slices after loading so the page does not freeze.
+- `src/outline.js`: the blue outline. Only the selected and pointed-at structures are drawn a second time, so it costs almost nothing.
+- `src/selection.js`: pointer label, click to select, info card. `src/searchbox.js` and `src/search.js`: the search. `src/labels.js`: labels mode. `src/names.js`: how names are worded.
+- `src/visibility.js`: new single-structure actions (hide one, show one on its own, reveal for search), all in the undo history.
+- `npm run check:select` (`tests/check-select.mjs`): about 70 pass/fail checks and screenshots 20 to 30 in `work/screens/`.
+
+### Decisions made
+
+- **Label wording:** name, then side and region for a one-region structure ("Anterior cruciate ligament (ACL) – left knee"); side only for a structure in several regions ("Achilles tendon – left"); name only for midline structures. Agreed with the user.
+- **All names come from `structures.json`.** Nothing is typed into the interface. Abbreviations (ACL, MCL, ATFL, ITB and so on) are found because they are in brackets in the plain names.
+- **Search matching:** every typed word must match a word of the plain or medical name: exactly, as its beginning, inside it, or within one letter (two for words of eight letters or more). Plain-name matches rank above medical-name matches.
+- **Outline colour** is a clear blue (#0077A8), away from every tissue colour and from the red and amber planned for injury highlights. The outline of a selected structure shows through whatever is in front of it, so a deep structure can still be located.
+- **Any other visibility change ends "Isolate this"** (hiding a region, a quick view, a system tick box).
+- **Picking from the search while a region is isolated** brings back the regions that structure belongs to; it does not end the isolation.
+- **Labels mode** labels the isolated region (or the single isolated structure) plus the selected structure. Most relevant first: structures belonging only to that region, then ligaments, cartilage, tendons, bursae, nerves, bones, muscles. If they do not all fit, the rest are left out and a note says how many. Structures whose middle is off-screen get no label.
+- The quick-view note now reads "N single structures are hidden" because single structures can also be hidden from the info card.
+
+### Checked (16 November 2026)
+
+- `npm run check:select`: all pass, no console errors. Hover and click checked on the ACL (left knee isolated, muscles off, from behind), Achilles tendon (whole body, from behind), supraspinatus (rotator cuff quick view) and sciatic nerve (muscles off, from behind). Searches "acl", "achillies", "rotator", "mcl", "atfl", "itb" and the medical name "ischiadicus" all find the right structure first. Hide this with Undo/Redo, Isolate this, Zoom to this, Esc, medical names and labels mode all checked. Screenshots looked at.
+- Hit test on the whole body: about 0.4 ms each (was the slow part noted in Stage 2). 60 frames per second while turning the whole body with a structure selected.
+- `npm run check` and `npm run check:regions` (Stages 2 and 3) still pass. `npm run build` succeeds.
+
+### Names for the user to look at (nothing was changed)
+
+Plain names:
+
+- **"Wrist cartilage disc (TFCC)"**: the mesh is the articular disc only; the TFCC is the disc plus its ligaments.
+- **"Breastbone (sternum)"**: this row is the body of the sternum only (the manubrium and xiphoid are separate rows).
+- **"Common extensor tendon at the elbow (ECRB; tennis elbow)"**: the piece is cut from ECRB only, not the whole common extensor origin.
+- **"Quadriceps: vastus medialis (inner; VMO)"**: VMO is strictly the lower oblique fibres, not the whole muscle.
+- **"Lateral femoral cutaneous nerve"** and **"Posterior femoral cutaneous nerve"**: usual UK wording is "lateral cutaneous nerve of the thigh" and "posterior cutaneous nerve of the thigh".
+- **"Ischial bursa (over the sitting bone)"**: still waiting for confirmation from Stage 1.
+- **"Hip bone (pelvis)"**: one row per side; each is one half of the pelvis.
+- Plain names say "peroneal", medical names say "fibularis". Both are correct; searching either word works.
+
+Medical names (only seen when the option is on):
+
+- "Musculi thenaris" and "Musculi hypothenaris": the usual forms are "Musculi thenares" / "Musculi hypothenares".
+- "Tendo musculi iliopsoas": strictly "iliopsoatis".
+
+No non-UK spellings were found.
+
+### Known issues / things to look at
+
+- **Labels mode is busy with every system on.** A whole knee with muscles and bursae has about 40 labels: readable, none overlapping, but crowded, and leader lines cross. It is clean with muscles and bursae unticked (about 20 labels). Long names are cut short with "…"; resting the pointer on the label shows the full name.
+- Label lines point at a spot on the structure's surface near its middle. That spot can be behind another structure from some angles.
+- Search only knows words that are in the names. "Slipped disc" or "funny bone" find nothing. A `search_terms` column in the CSV could add such words; not added, as agreed.
+- "Isolate this" draws the whole body as faint outlines, which shows as a grey haze around a small structure when zoomed in.
+- Selecting a structure scrolls the panel just enough to show the info card; the search box may then be just above the visible part.
+- The app code is now 774 KB (202 KB compressed).
+- Still not built: the whole-body soft-tissue side switch (noted under Stage 3).
+
+### Next step
+
+The next stage, as set by the user (injury highlights and joint movement are still to build). Not started.

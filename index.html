@@ -13,6 +13,35 @@
         <div class="panel__inner">
           <h1 class="panel__title">Anatomy model</h1>
 
+          <section class="section search" aria-label="Find a structure">
+            <input id="search" class="search__input" type="search" placeholder="Find a structure by name"
+                   aria-label="Find a structure by name" aria-controls="search-results"
+                   autocomplete="off" spellcheck="false" />
+            <div id="search-results" class="search__results" hidden></div>
+          </section>
+
+          <section id="info" class="section info" aria-label="Selected structure" aria-live="polite">
+            <p id="info-empty" class="info__empty">Click a structure on the model to see its name.</p>
+            <div id="info-card" class="info__card" hidden>
+              <div class="info__head">
+                <h2 id="info-name" class="info__name"></h2>
+                <button id="info-close" class="info__close" type="button" title="Deselect (Esc)" aria-label="Deselect">&times;</button>
+              </div>
+              <p id="info-medical" class="info__medical" hidden></p>
+              <dl class="info__facts">
+                <div><dt>Side</dt><dd id="info-side"></dd></div>
+                <div><dt>System</dt><dd id="info-system"></dd></div>
+                <div><dt id="info-regions-label">Region</dt><dd id="info-regions"></dd></div>
+              </dl>
+              <p id="info-state" class="info__state" hidden></p>
+              <div class="info__actions">
+                <button id="info-hide" class="button button--small" type="button">Hide this</button>
+                <button id="info-isolate" class="button button--small" type="button" aria-pressed="false">Isolate this</button>
+                <button id="info-zoom" class="button button--small" type="button">Zoom to this</button>
+              </div>
+            </div>
+          </section>
+
           <section id="quick-views" class="section" aria-labelledby="quick-views-heading">
             <div class="section__head">
               <h2 id="quick-views-heading" class="panel__heading">Quick views</h2>
@@ -29,6 +58,10 @@
           <p id="structures-note" class="note" hidden>
             <span id="structures-count"></span>
             <button id="structures-show" class="link" type="button">Show them</button>
+          </p>
+          <p id="only-note" class="note" hidden>
+            <span id="only-name"></span>
+            <button id="only-end" class="link" type="button">Show the rest</button>
           </p>
 
           <section class="section" aria-labelledby="systems-heading">
@@ -49,7 +82,15 @@
             </label>
             <label class="check check--wide">
               <input id="option-frame" class="check__box" type="checkbox" checked />
-              <span>Zoom to a region when I isolate it</span>
+              <span>Zoom to a region or structure when I isolate it</span>
+            </label>
+            <label class="check check--wide">
+              <input id="option-medical" class="check__box" type="checkbox" />
+              <span>Show medical names as well</span>
+            </label>
+            <label class="check check--wide">
+              <input id="option-labels" class="check__box" type="checkbox" />
+              <span>Label the structures in the isolated region</span>
             </label>
           </section>
 
@@ -59,6 +100,8 @@
               <div><dt>Rotate</dt><dd>Drag</dd></div>
               <div><dt>Move</dt><dd>Right-drag, or drag with two fingers</dd></div>
               <div><dt>Zoom</dt><dd>Scroll or pinch</dd></div>
+              <div><dt>Name a structure</dt><dd>Point at it</dd></div>
+              <div><dt>Select a structure</dt><dd>Click it. Click empty space or press Esc to deselect</dd></div>
               <div><dt>Centre on a point</dt><dd>Double-click the model</dd></div>
             </dl>
           </details>
@@ -67,6 +110,15 @@
 
       <main id="viewport" class="viewport">
         <canvas id="canvas" class="viewport__canvas" aria-label="3D anatomy model"></canvas>
+
+        <div id="labels" class="labels" hidden>
+          <svg id="labels-lines" class="labels__lines" aria-hidden="true"></svg>
+          <p id="labels-note" class="labels__note" hidden></p>
+        </div>
+        <div id="hover-label" class="hover-label" role="tooltip" hidden>
+          <span id="hover-name" class="hover-label__name"></span>
+          <span id="hover-medical" class="hover-label__medical" hidden></span>
+        </div>
 
         <button id="panel-toggle" class="panel-toggle" type="button"
                 aria-controls="panel" aria-expanded="true" title="Hide panel">

@@ -2,6 +2,7 @@
 // region rows and display options. It reads everything from the visibility
 // module and redraws itself whenever that changes.
 import { SIDES } from './visibility.js';
+import { regionLabel, fullLabel } from './names.js';
 
 const $ = (id) => document.getElementById(id);
 
@@ -16,11 +17,7 @@ const el = (tag, attrs = {}, children = []) => {
   return node;
 };
 
-/** "abdomen and lower back (lumbar)" -> "Abdomen and lower back". */
-export const regionLabel = (region) => {
-  const short = region.replace(/\s*\(.*\)\s*$/, '');
-  return short.charAt(0).toUpperCase() + short.slice(1);
-};
+export { regionLabel };
 
 const SIDE_CHOICES = [
   { id: 'left', label: 'Left', sides: ['left'] },
@@ -55,7 +52,7 @@ function sideChooser(label, initial, onPick) {
   };
 }
 
-export function createPanel({ visibility, systems, presets, onIsolated, onPreset, onGhost, onFrameOption }) {
+export function createPanel({ visibility, registry, systems, presets, onIsolated, onPreset, onGhost, onFrameOption, onMedicalOption, onLabelsOption }) {
   const refreshers = [];
 
   // ----- Quick views -----
@@ -81,6 +78,7 @@ export function createPanel({ visibility, systems, presets, onIsolated, onPreset
   $('undo').addEventListener('click', () => visibility.undo());
   $('redo').addEventListener('click', () => visibility.redo());
   $('structures-show').addEventListener('click', () => visibility.showStructures());
+  $('only-end').addEventListener('click', () => visibility.isolateStructure(visibility.only));
   refreshers.push(() => {
     $('undo').disabled = !visibility.canUndo;
     $('redo').disabled = !visibility.canRedo;
@@ -88,8 +86,11 @@ export function createPanel({ visibility, systems, presets, onIsolated, onPreset
     const count = visibility.structuresOffCount;
     $('structures-note').hidden = count === 0;
     $('structures-count').textContent = count === 1
-      ? '1 single structure is hidden by the quick view.'
-      : `${count} single structures are hidden by the quick view.`;
+      ? '1 single structure is hidden.'
+      : `${count} single structures are hidden.`;
+    const only = visibility.only && registry.get(visibility.only);
+    $('only-note').hidden = !only;
+    if (only) $('only-name').textContent = `Showing only: ${fullLabel(only.data)}.`;
   });
 
   // ----- Systems -----
@@ -171,6 +172,8 @@ export function createPanel({ visibility, systems, presets, onIsolated, onPreset
   // ----- Options -----
   $('option-ghost').addEventListener('change', (event) => onGhost(event.target.checked));
   $('option-frame').addEventListener('change', (event) => onFrameOption(event.target.checked));
+  $('option-medical').addEventListener('change', (event) => onMedicalOption(event.target.checked));
+  $('option-labels').addEventListener('change', (event) => onLabelsOption(event.target.checked));
 
   function refresh() {
     for (const run of refreshers) run();

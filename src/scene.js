@@ -1,5 +1,6 @@
 // Scene setup: renderer, camera, lighting. No knowledge of anatomy or the interface.
 import * as THREE from 'three';
+import { createOutline } from './outline.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const MAX_PIXEL_RATIO = 2;      // sharp when still
@@ -69,10 +70,13 @@ export function createStage(canvas, container) {
     return true;
   }
 
+  const outline = createOutline(renderer, camera);
+
   function render() {
     renderer.render(scene, camera);
+    outline.render();            // selected / hovered structure, if any
   }
 
   resize();
-  return { renderer, scene, camera, lights, resize, render, setMoving };
+  return { renderer, scene, camera, lights, outline, resize, render, setMoving };
 }

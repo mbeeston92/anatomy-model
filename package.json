@@ -11,6 +11,7 @@
     "preview": "vite preview --open",
     "check": "node tests/check-viewer.mjs",
     "check:regions": "node tests/check-regions.mjs",
+    "check:select": "node tests/check-select.mjs",
     "build:models": "node scripts/build-models.mjs",
     "export": "node scripts/build-models.mjs --only export",
     "compress": "node scripts/compress.mjs",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible": "5.3.0",
-    "three": "0.187.0"
+    "three": "0.187.0",
+    "three-mesh-bvh": "0.9.18"
   }
 }
