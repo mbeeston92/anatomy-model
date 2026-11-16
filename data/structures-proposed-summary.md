@@ -1,5 +1,11 @@
 # Proposed structures: summary (Stage 1a)
 
+> **Updated after review (16 November 2026).** The list now has
+> **803 structures and about 2.80 million triangles**: the 23 separate disc
+> centres were removed and 64 bursae (shoulder, hip and knee, both sides) were
+> added as a new "bursa" system. The tables below show the original proposal
+> of 762. See `PROGRESS.md` for the current numbers.
+
 This goes with `data/structures-proposed.csv`. Nothing has been exported yet.
 All numbers come from `data/inventory.csv`, which was read straight from the
 Z-Anatomy file by `blender/inventory.py`.

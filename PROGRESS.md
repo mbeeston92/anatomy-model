@@ -9,7 +9,7 @@
   - `Source/Z-Biomechanics/Startup.blend` (133 MB). Skeleton and muscle attachment marks only, rigged to an armature (movable skeleton). Not used yet; likely useful for Stage 5 (joint movement).
 - The folder on disk is `Source` with a capital S. Windows treats it the same as `source`.
 
-## Stage 1a: inventory and proposed structure list — DONE, waiting for user review
+## Stage 1a: inventory and proposed structure list — DONE, list approved with two open questions
 
 ### What was done
 
@@ -57,6 +57,25 @@ The Blender file is opened and never saved. `--disable-autoexec` stops the scrip
 - Bursae (78 in source) are left out because the brief has no bursa system. Waiting for the user's decision.
 - About 2.73 million triangles as proposed; plan to simplify the over-detailed meshes to roughly 1.2–1.5 million in Stage 1b.
 
+### Review outcome (16 November 2026)
+
+The user saved `data/structures-approved.csv` with no row edits and answered the review questions:
+
+1. Cut key tendons out of their muscles: **yes**.
+2. Cut articular cartilage out of the nine major bones: **yes**.
+3. Bursae: **add those of the shoulder, hip and knee**. Added 32 per side (64 rows) with system `bursa`.
+4. Split any merged muscles: **no**.
+5. Keep disc centres (nucleus pulposus) as separate structures: **no**. The 23 `disc_nucleus_` rows were removed.
+
+`scripts/propose_structures.py` was updated to match. The list is now **803 structures, about 2.80 million triangles** before simplification (bone 208, cartilage 78, ligament 116, tendon 48, muscle 225, nerve 64, bursa 64).
+
+**NOT YET APPLIED to `structures-approved.csv`:** the file was locked (open in Excel) when the update ran, so it still holds the original 762 rows. The updated 803-row list is in `structures-proposed.csv`. Copy it over `structures-approved.csv` once the file is closed, then delete this note.
+
+### Open questions (waiting for the user)
+
+- **Soft tissue on one side only?** The user asked whether this would save triangles. Facts: soft tissue is about 1.06 million triangles per side, so one side only brings the total from 2.80 to about 1.74 million before simplification. Left and right in the source are mirror copies of each other (952 of 975 pairs match by vertex count, size and position). Options put to the user: (A) both sides, rely on simplification; (B) soft tissue on one side only; (C) download one side and mirror it in the app, with a switch for left, right or both. Not decided.
+- **Bursa as a seventh system.** CLAUDE.md lists six systems. Bursae need their own show/hide switch and colour. Waiting for the user to confirm before CLAUDE.md is changed.
+
 ### Next step
 
-User reviews `data/structures-proposed.csv` and saves the edited version as `data/structures-approved.csv`. Stage 1b (export) does not start until that file exists.
+Stage 1b (export) once the approved file is updated and the two open questions are answered.
