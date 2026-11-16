@@ -19,7 +19,7 @@ const TRANSITION_MS = 700;
 const MIN_DISTANCE = 0.06;   // 6 cm: close enough to fill the screen with one ligament
 const MAX_DISTANCE = 9;
 const FIT_MARGIN = 1.16;     // space round the model for the buttons
-const WHEEL_ZOOM_RATE = 0.0022;  // one mouse-wheel notch (100 units) = about 20% closer or further
+const WHEEL_ZOOM_RATE = 0.00154; // one mouse-wheel notch (100 units) = about 14% closer or further
 const ZOOM_GLIDE_MS = 70;        // how quickly the camera catches up with the wheel
 
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);

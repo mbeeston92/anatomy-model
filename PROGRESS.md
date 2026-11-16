@@ -224,7 +224,7 @@ Other commands:
 - Cause: the built-in wheel zoom moves about 5% per wheel notch in instant jumps, and the picture switched resolution on every notch.
 - Fix: the wheel (and trackpad) now uses our own smooth zoom in `camera.js`. Each notch zooms about 20% and the camera glides to it over a few frames, still towards the point under the pointer. The sharpen-when-still delay went from 0.18 s to 0.4 s so it no longer switches between notches. Touch pinch is unchanged.
 - Measured: the camera starts moving within 60 ms of the first notch; five notches take the view from whole body (4.07 m) to 1.36 m. Tune with `WHEEL_ZOOM_RATE` and `ZOOM_GLIDE_MS` in `src/camera.js`.
-- Waiting for the user to confirm it feels right on their mouse or trackpad.
+- The user confirmed it is more responsive and asked for 30% less zoom per notch. `WHEEL_ZOOM_RATE` went from 0.0022 to 0.00154, so each notch is now about 14% (the figures above were measured at the earlier setting).
 
 ### Known issues / things to look at
 
