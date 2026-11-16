@@ -247,11 +247,8 @@ for d in DISCS:
     s = d.lower().replace("-", "_")
     cart("disc_" + s, "Intervertebral disc " + d, "%s disc (spinal disc)" % d.replace("-", "/"),
          "Discus intervertebralis " + d, regs, paired=False)
-    cart("disc_nucleus_" + s, "Nucleus pulposus " + d,
-         "%s disc, soft centre (nucleus pulposus)" % d.replace("-", "/"),
-         "Nucleus pulposus " + d, regs,
-         "Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).",
-         paired=False)
+    # The separate "Nucleus pulposus" objects are deliberately not used
+    # (user decision at review: disc centres are not shown separately).
 AC_NOTE = ("Not a separate object in source: articular cartilage is a painted area on the bone mesh. "
            "Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. "
            "Needs a visual check in Stage 1b.")
@@ -578,6 +575,48 @@ nrv("plantar_digital", ["Common plantar digital branches of medial plantar nerve
     "Toe nerves (plantar digital nerves; Morton's neuroma site)", "Nervi digitales plantares", AF, "Merged.")
 
 
+# ==================================================================== BURSAE
+# Added at review: the user asked for the bursae of the shoulder, hip and knee.
+def bur(slug, src, plain, medical, regions, notes=""):
+    add("bursa", slug, src, plain, medical, regions, notes, True)
+
+
+bur("subacromial", "Subacromial bursa", "Subacromial bursa (under the tip of the shoulder)", "Bursa subacromialis", SH)
+bur("subdeltoid", "Subdeltoid bursa", "Subdeltoid bursa (under the deltoid)", "Bursa subdeltoidea", SH)
+bur("subcutaneous_acromial", "Subcutaneous acromial bursa", "Bursa over the tip of the shoulder (subcutaneous acromial bursa)", "Bursa subcutanea acromialis", SH)
+bur("coracobrachial", "Coracobrachial bursa", "Coracobrachial bursa (front of shoulder)", "Bursa musculi coracobrachialis", SH)
+bur("infraspinatus", "Subtendinous bursa of infraspinatus muscle", "Bursa under the infraspinatus tendon", "Bursa subtendinea musculi infraspinati", SH)
+bur("teres_major", "Subtendinous bursa of teres major muscle", "Bursa under the teres major tendon", "Bursa subtendinea musculi teretis majoris", SH)
+bur("trapezius", "Subtendinous bursa of trapezius muscle", "Bursa under the trapezius (over the shoulder blade spine)", "Bursa subtendinea musculi trapezii", SH)
+
+bur("trochanteric_gluteus_maximus", "Trochanteric bursa of gluteus maximus muscle", "Trochanteric bursa (outer hip, under gluteus maximus)", "Bursa trochanterica musculi glutei maximi", PH)
+bur("trochanteric_gluteus_medius", "Trochanteric bursa of gluteus medius muscle", "Trochanteric bursa (outer hip, under gluteus medius)", "Bursa trochanterica musculi glutei medii", PH)
+bur("trochanteric_gluteus_minimus", "Trochanteric bursa of gluteus minimus muscle", "Trochanteric bursa (outer hip, under gluteus minimus)", "Bursa trochanterica musculi glutei minimi", PH)
+bur("trochanteric_subcutaneous", "Subcutaneous trochanteric bursa", "Bursa over the outer hip bone (subcutaneous trochanteric bursa)", "Bursa subcutanea trochanterica", PH)
+bur("iliopectineal", "(Iliopectineal bursa)", "Iliopsoas bursa (front of hip)", "Bursa iliopectinea", PH, "Source name is 'Iliopectineal bursa'; this is the bursa usually called the iliopsoas bursa. Please confirm the plain name.")
+bur("iliacus", "Subtendinous bursa of iliacus muscle", "Bursa under the iliacus tendon (front of hip)", "Bursa subtendinea iliaca", PH)
+bur("ischial", "Sciatic bursa of gluteus maximus muscle", "Ischial bursa (over the sitting bone)", "Bursa ischiadica musculi glutei maximi", PH, "Source name is 'Sciatic bursa of gluteus maximus'; this is the ischiogluteal bursa. Please confirm the plain name.")
+bur("obturator_internus_ischial", "Sciatic bursa of obturator internus", "Bursa of obturator internus at the sitting bone", "Bursa ischiadica musculi obturatorii interni", PH)
+bur("obturator_internus_subtendinous", "Subtendinous bursa of obturator internus", "Bursa under the obturator internus tendon", "Bursa subtendinea musculi obturatorii interni", PH)
+bur("piriformis", "Bursa of piriformis muscle", "Piriformis bursa", "Bursa musculi piriformis", PH)
+bur("intermuscular_gluteal", "Intermuscular gluteal bursae", "Bursae between the buttock muscles", "Bursae intermusculares musculorum gluteorum", [PH, TG])
+bur("biceps_femoris_superior", "Superior bursa of biceps femoris muscle", "Bursa under the top of the hamstring (biceps femoris)", "Bursa musculi bicipitis femoris superior", [PH, TG])
+
+bur("suprapatellar", "Suprapatellar bursa", "Suprapatellar bursa (pouch above the kneecap)", "Bursa suprapatellaris", [TG, KN])
+bur("prepatellar_subcutaneous", "Subcutaneous prepatellar bursa", "Prepatellar bursa (in front of the kneecap, under the skin)", "Bursa subcutanea prepatellaris", KN)
+bur("prepatellar_subfascial", "Subfacial prepatellar bursa", "Prepatellar bursa (in front of the kneecap, middle layer)", "Bursa subfascialis prepatellaris", KN, "Spelt 'Subfacial' in the source.")
+bur("prepatellar_subtendinous", "Subtendinous prepatellar bursa", "Prepatellar bursa (in front of the kneecap, deep layer)", "Bursa subtendinea prepatellaris", KN)
+bur("infrapatellar_subcutaneous", "Subcutaneous infrapatellar bursa", "Superficial infrapatellar bursa (below the kneecap, under the skin)", "Bursa subcutanea infrapatellaris", KN)
+bur("infrapatellar_deep", "Deep infrapatellar bursa", "Deep infrapatellar bursa (behind the patellar tendon)", "Bursa infrapatellaris profunda", KN)
+bur("tibial_tuberosity", "Subcutaneous bursa of tuberosity of tibia", "Bursa over the bump below the knee (tibial tuberosity)", "Bursa subcutanea tuberositatis tibiae", KN)
+bur("pes_anserine", "Anserine bursa", "Pes anserine bursa (inner knee)", "Bursa anserina", KN)
+bur("sartorius", "Subtendinous bursa of sartorius muscle", "Bursa under the sartorius tendon (inner knee)", "Bursae subtendineae musculi sartorii", KN)
+bur("semimembranosus", "Semimembranosus bursa", "Semimembranosus bursa (back inner knee; Baker's cyst site)", "Bursa musculi semimembranosi", KN)
+bur("biceps_femoris_inferior", "Inferior subtendinous bursa of biceps femoris muscle", "Bursa under the hamstring tendon (outer knee)", "Bursa subtendinea musculi bicipitis femoris inferior", KN)
+bur("gastrocnemius_medial", "Medial subtendinous bursa of gastrocnemius muscle", "Bursa under the inner calf muscle head (back of knee)", "Bursa subtendinea musculi gastrocnemii medialis", KN)
+bur("gastrocnemius_lateral", "Lateral subtendinous bursa of gastrocnemius muscle", "Bursa under the outer calf muscle head (back of knee)", "Bursa subtendinea musculi gastrocnemii lateralis", KN)
+
+
 # ============================================================== build the CSV
 def resolve(base, side):
     """Return the real Z-Anatomy object name for a base name and side."""
@@ -684,7 +723,7 @@ with open(os.path.join(DATA, "structures-proposed.csv"), "w", newline="",
     w.writerows(rows)
 
 # ------------------------------------------------------------------ the stats
-SYSTEMS = ["bone", "cartilage", "ligament", "tendon", "muscle", "nerve"]
+SYSTEMS = ["bone", "cartilage", "ligament", "tendon", "muscle", "nerve", "bursa"]
 stats = {
     "total_structures": len(rows),
     "total_triangles": sum(r["_tris"] for r in rows),
@@ -695,6 +734,8 @@ stats = {
     "by_region": {g: {s: sum(1 for r in rows if r["system"] == s and g in r["regions"].split("|"))
                       for s in SYSTEMS} for g in REGION_ORDER},
     "by_side": {s: sum(1 for r in rows if r["side"] == s) for s in ("left", "right", "midline")},
+    "soft_tissue_triangles_right_side_only": sum(r["_tris"] for r in rows if r["system"] != "bone" and r["side"] == "right"),
+    "soft_tissue_structures_right_side_only": sum(1 for r in rows if r["system"] != "bone" and r["side"] == "right"),
     "heaviest": sorted(((r["_tris"], r["id"]) for r in rows), reverse=True)[:15],
 }
 print(json.dumps(stats, indent=1))
