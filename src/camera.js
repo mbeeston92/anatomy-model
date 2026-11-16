@@ -19,6 +19,8 @@ const TRANSITION_MS = 700;
 const MIN_DISTANCE = 0.06;   // 6 cm: close enough to fill the screen with one ligament
 const MAX_DISTANCE = 9;
 const FIT_MARGIN = 1.16;     // space round the model for the buttons
+const WHEEL_ZOOM_RATE = 0.0022;  // one mouse-wheel notch (100 units) = about 20% closer or further
+const ZOOM_GLIDE_MS = 70;        // how quickly the camera catches up with the wheel
 
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
@@ -27,7 +29,7 @@ export function createCameraRig({ camera, domElement, getPickTargets, onViewChan
   controls.enableDamping = true;
   controls.dampingFactor = 0.12;
   controls.rotateSpeed = 0.85;
-  controls.zoomSpeed = 1.1;
+  controls.zoomSpeed = 1.1;          // touch pinch only; the wheel is handled below
   controls.zoomToCursor = true;
   controls.screenSpacePanning = true;
   controls.minDistance = MIN_DISTANCE;
@@ -124,6 +126,55 @@ export function createCameraRig({ camera, domElement, getPickTargets, onViewChan
     setCurrentView(null);
   });
 
+  // ----- Smooth wheel / trackpad zoom -----
+  // The built-in wheel zoom moves in small fixed jumps. Instead, each wheel
+  // movement adds to an amount still to be zoomed, and the camera glides
+  // through it over the next few frames, towards the point under the pointer.
+  const zoom = { pending: 0, pointer: new THREE.Vector2(), lastTime: 0 };
+  const zoomPlane = new THREE.Plane();
+  const zoomPoint = new THREE.Vector3();
+  const viewDirection = new THREE.Vector3();
+
+  domElement.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();          // keep OrbitControls' stepped zoom out of it
+    let delta = event.deltaY;
+    if (event.deltaMode === 1) delta *= 32;    // lines (some mice)
+    else if (event.deltaMode === 2) delta *= 400;
+    if (event.ctrlKey) delta *= 8;             // trackpad pinch arrives as small ctrl+wheel steps
+    delta = THREE.MathUtils.clamp(delta, -240, 240);
+    zoom.pending = THREE.MathUtils.clamp(zoom.pending + delta * WHEEL_ZOOM_RATE, -2.5, 2.5);
+
+    const rect = domElement.getBoundingClientRect();
+    zoom.pointer.set(
+      ((event.clientX - rect.left) / rect.width) * 2 - 1,
+      -((event.clientY - rect.top) / rect.height) * 2 + 1,
+    );
+    transition = null;
+    setCurrentView(null);
+  }, { capture: true, passive: false });
+
+  function applyZoom(now) {
+    const dt = Math.min(now - zoom.lastTime, 50);
+    const step = zoom.pending * (1 - Math.exp(-dt / ZOOM_GLIDE_MS));
+    zoom.pending -= step;
+    if (Math.abs(zoom.pending) < 0.0005) zoom.pending = 0;
+
+    const distance = camera.position.distanceTo(controls.target);
+    const wanted = THREE.MathUtils.clamp(distance * Math.exp(step), MIN_DISTANCE, MAX_DISTANCE);
+    const scale = wanted / distance;
+    if (wanted !== distance * Math.exp(step)) zoom.pending = 0;   // reached a zoom limit
+    if (scale === 1) return;
+
+    // The point under the pointer, at the depth of the orbit centre, stays put.
+    camera.getWorldDirection(viewDirection);
+    zoomPlane.setFromNormalAndCoplanarPoint(viewDirection, controls.target);
+    raycaster.setFromCamera(zoom.pointer, camera);
+    if (!raycaster.ray.intersectPlane(zoomPlane, zoomPoint)) zoomPoint.copy(controls.target);
+    camera.position.sub(zoomPoint).multiplyScalar(scale).add(zoomPoint);
+    controls.target.sub(zoomPoint).multiplyScalar(scale).add(zoomPoint);
+  }
+
   function applyTransition(now) {
     const { start, duration, from, to } = transition;
     const t = duration <= 0 ? 1 : Math.min((now - start) / duration, 1);
@@ -164,10 +215,13 @@ export function createCameraRig({ camera, domElement, getPickTargets, onViewChan
   function update(now) {
     const animating = transition !== null;
     if (animating) applyTransition(now);
+    const zooming = zoom.pending !== 0;
+    if (zooming) applyZoom(now);
+    zoom.lastTime = now;
     const moved = controls.update();
     if (!animating) keepInReach();
     fitDepthRange();
-    return animating || moved;
+    return animating || zooming || moved;
   }
 
   return {

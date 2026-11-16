@@ -14,7 +14,7 @@ import { createUI, listInWords } from './ui.js';
 const canvas = document.getElementById('canvas');
 const viewport = document.getElementById('viewport');
 
-const SETTLE_MS = 180;   // how long after movement stops before the sharp redraw
+const SETTLE_MS = 400;  // how long after movement stops before the sharp redraw
 
 let stage, rig, registry, loader;
 let needsRender = true;

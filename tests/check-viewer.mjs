@@ -101,6 +101,31 @@ await settle();
 const after = await page.evaluate(() => window.__viewer.rig.controls.target.toArray());
 await shot('04-after-double-click');
 
+// Wheel zoom: five notches in over the right knee, then check speed and smoothness.
+await page.click('[data-view="reset"]');
+await settle();
+const distance = () => page.evaluate(() => {
+  const { rig, stage } = window.__viewer;
+  return stage.camera.position.distanceTo(rig.controls.target);
+});
+const zoomStart = await distance();
+await page.mouse.move(box.x + box.width * 0.47, box.y + box.height * 0.69);
+const framesBeforeZoom = await page.evaluate(() => window.__viewer.stats.frames);
+await page.mouse.wheel(0, -100);
+await page.waitForTimeout(60);
+const zoomAfter60ms = await distance();
+for (let i = 0; i < 4; i++) { await page.mouse.wheel(0, -100); await page.waitForTimeout(40); }
+await settle();
+const zoomEnd = await distance();
+const zoomFrames = await page.evaluate(() => window.__viewer.stats.frames) - framesBeforeZoom;
+await shot('04b-after-wheel-zoom');
+const zoomReport = {
+  startMetres: +zoomStart.toFixed(2),
+  after60ms: +zoomAfter60ms.toFixed(2),
+  afterFiveNotches: +zoomEnd.toFixed(2),
+  framesDrawn: zoomFrames,
+};
+
 // Panel collapsed.
 await page.click('#panel-toggle');
 await page.waitForTimeout(600);
@@ -171,6 +196,7 @@ await small.screenshot({ path: path.join(OUT, '07-narrow-screen.png') });
 
 console.log(info);
 console.log('Double-click moved orbit centre:', before.map((n) => +n.toFixed(3)), '->', after.map((n) => +n.toFixed(3)));
+console.log('Wheel zoom:', zoomReport);
 console.log('Load failure message:', JSON.stringify(errorText));
 console.log('Recovered after "Try again":', recovered);
 console.log(problems.length ? `Console problems:\n  ${problems.join('\n  ')}` : 'No console errors or warnings.');

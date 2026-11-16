@@ -218,6 +218,14 @@ Other commands:
 - **Load time from this laptop's own disk:** skeleton visible in about 0.45 s, everything in about 0.75 s. That is not an internet figure. The whole download is about 8.1 MB (models 7.85 MB, app code 0.17 MB compressed, typeface 0.04 MB), so on a 20 Mbit/s connection expect roughly 4 seconds in total, with the skeleton after about 1.5 seconds. To be confirmed once the site is on GitHub Pages.
 - The frame rate was measured at a 1440 x 810 window at standard resolution. Not yet measured on a 4K screen or on older Intel graphics.
 
+### Changes after the user's first test (16 November 2026)
+
+- The user reported: rotate, move and double-click good; **zoom clunky, slow and delayed**.
+- Cause: the built-in wheel zoom moves about 5% per wheel notch in instant jumps, and the picture switched resolution on every notch.
+- Fix: the wheel (and trackpad) now uses our own smooth zoom in `camera.js`. Each notch zooms about 20% and the camera glides to it over a few frames, still towards the point under the pointer. The sharpen-when-still delay went from 0.18 s to 0.4 s so it no longer switches between notches. Touch pinch is unchanged.
+- Measured: the camera starts moving within 60 ms of the first notch; five notches take the view from whole body (4.07 m) to 1.36 m. Tune with `WHEEL_ZOOM_RATE` and `ZOOM_GLIDE_MS` in `src/camera.js`.
+- Waiting for the user to confirm it feels right on their mouse or trackpad.
+
 ### Known issues / things to look at
 
 - On a phone-width screen the view buttons cover the feet in the starting view. Phones are not a target device; left as it is.
