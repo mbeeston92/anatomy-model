@@ -1,0 +1,763 @@
+﻿id,source_object_names,plain_name_uk,medical_name,system,side,regions,notes
+bone_frontal,Frontal bone,Forehead bone (frontal bone),Os frontale,bone,midline,head and neck,
+bone_occipital,Occipital bone,Back of skull (occipital bone),Os occipitale,bone,midline,head and neck,
+bone_sphenoid,Sphenoid bone,Sphenoid bone (base of skull),Os sphenoidale,bone,midline,head and neck,
+bone_ethmoid,Ethmoid bone,Ethmoid bone (between the eyes),Os ethmoidale,bone,midline,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_vomer,Vomer,Vomer (bone of the nasal septum),Vomer,bone,midline,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_mandible,Mandible,Lower jaw (mandible),Mandibula,bone,midline,head and neck,
+bone_hyoid,Hyoid bone,Hyoid bone (front of neck),Os hyoideum,bone,midline,head and neck,
+bone_parietal_l,Parietal bone.l,Side of skull (parietal bone),Os parietale,bone,left,head and neck,
+bone_parietal_r,Parietal bone.r,Side of skull (parietal bone),Os parietale,bone,right,head and neck,
+bone_temporal_l,Temporal bone.l,Temple bone (temporal bone),Os temporale,bone,left,head and neck,
+bone_temporal_r,Temporal bone.r,Temple bone (temporal bone),Os temporale,bone,right,head and neck,
+bone_maxilla_l,Maxilla.l,Upper jaw (maxilla),Maxilla,bone,left,head and neck,
+bone_maxilla_r,Maxilla.r,Upper jaw (maxilla),Maxilla,bone,right,head and neck,
+bone_zygomatic_l,Zygomatic bone.l,Cheekbone (zygomatic bone),Os zygomaticum,bone,left,head and neck,
+bone_zygomatic_r,Zygomatic bone.r,Cheekbone (zygomatic bone),Os zygomaticum,bone,right,head and neck,
+bone_nasal_l,Nasal bone.l,Nasal bone (bridge of nose),Os nasale,bone,left,head and neck,
+bone_nasal_r,Nasal bone.r,Nasal bone (bridge of nose),Os nasale,bone,right,head and neck,
+bone_lacrimal_l,Lacrimal bone.l,Lacrimal bone (inner eye socket),Os lacrimale,bone,left,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_lacrimal_r,Lacrimal bone.r,Lacrimal bone (inner eye socket),Os lacrimale,bone,right,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_palatine_l,Palatine bone.l,Palatine bone (back of the roof of the mouth),Os palatinum,bone,left,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_palatine_r,Palatine bone.r,Palatine bone (back of the roof of the mouth),Os palatinum,bone,right,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_inferior_nasal_concha_l,Inferior nasal concha bone.l,Inferior nasal concha (inside the nose),Concha nasalis inferior,bone,left,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_inferior_nasal_concha_r,Inferior nasal concha bone.r,Inferior nasal concha (inside the nose),Concha nasalis inferior,bone,right,head and neck,Small internal skull bone; delete the row if not wanted.
+bone_teeth_upper_l,Upper medial incisor.l + Upper lateral incisor.l + Upper canine.l + Upper first premolar.l + Upper second premolar.l + Upper first molar tooth.l + Upper second molar tooth.l,Upper teeth,Dentes superiores,bone,left,head and neck,Teeth are not bone; included (merged into one piece per side) so the skull looks complete. Delete the row if not wanted.
+bone_teeth_upper_r,Upper medial incisor.r + Upper lateral incisor.r + Upper canine.r + Upper first premolar.r + Upper second premolar.r + Upper first molar tooth.r + Upper second molar tooth.r,Upper teeth,Dentes superiores,bone,right,head and neck,Teeth are not bone; included (merged into one piece per side) so the skull looks complete. Delete the row if not wanted.
+bone_teeth_lower_l,Lower medial incisor.l + Lower lateral incisor.l + Lower canine.l + Lower first premolar.l + Lower second premolar.l + Lower first molar tooth.l + Lower second molar tooth.l,Lower teeth,Dentes inferiores,bone,left,head and neck,Teeth are not bone; included (merged into one piece per side) so the skull looks complete. Delete the row if not wanted.
+bone_teeth_lower_r,Lower medial incisor.r + Lower lateral incisor.r + Lower canine.r + Lower first premolar.r + Lower second premolar.r + Lower first molar tooth.r + Lower second molar tooth.r,Lower teeth,Dentes inferiores,bone,right,head and neck,Teeth are not bone; included (merged into one piece per side) so the skull looks complete. Delete the row if not wanted.
+bone_vertebra_c1,Atlas (C1),C1 vertebra (atlas),Atlas (C1),bone,midline,head and neck,
+bone_vertebra_c2,Axis (C2),C2 vertebra (axis),Axis (C2),bone,midline,head and neck,
+bone_vertebra_c3,Vertebra C3,C3 vertebra (neck),Vertebra cervicalis 3,bone,midline,head and neck,
+bone_vertebra_c4,Vertebra C4,C4 vertebra (neck),Vertebra cervicalis 4,bone,midline,head and neck,
+bone_vertebra_c5,Vertebra C5,C5 vertebra (neck),Vertebra cervicalis 5,bone,midline,head and neck,
+bone_vertebra_c6,Vertebra C6,C6 vertebra (neck),Vertebra cervicalis 6,bone,midline,head and neck,
+bone_vertebra_c7,Vertebra C7,C7 vertebra (neck),Vertebra cervicalis 7,bone,midline,head and neck,
+bone_vertebra_t1,Vertebra T1,T1 vertebra (upper back),Vertebra thoracica 1,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t2,Vertebra T2,T2 vertebra (upper back),Vertebra thoracica 2,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t3,Vertebra T3,T3 vertebra (upper back),Vertebra thoracica 3,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t4,Vertebra T4,T4 vertebra (upper back),Vertebra thoracica 4,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t5,Vertebra T5,T5 vertebra (upper back),Vertebra thoracica 5,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t6,Vertebra T6,T6 vertebra (upper back),Vertebra thoracica 6,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t7,Vertebra T7,T7 vertebra (upper back),Vertebra thoracica 7,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t8,Vertebra T8,T8 vertebra (upper back),Vertebra thoracica 8,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t9,Vertebra T9,T9 vertebra (upper back),Vertebra thoracica 9,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t10,Vertebra T10,T10 vertebra (upper back),Vertebra thoracica 10,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t11,Vertebra T11,T11 vertebra (upper back),Vertebra thoracica 11,bone,midline,chest and upper back (thoracic),
+bone_vertebra_t12,Vertebra T12,T12 vertebra (upper back),Vertebra thoracica 12,bone,midline,chest and upper back (thoracic),
+bone_vertebra_l1,Vertebra L1,L1 vertebra (lower back),Vertebra lumbalis 1,bone,midline,abdomen and lower back (lumbar),
+bone_vertebra_l2,Vertebra L2,L2 vertebra (lower back),Vertebra lumbalis 2,bone,midline,abdomen and lower back (lumbar),
+bone_vertebra_l3,Vertebra L3,L3 vertebra (lower back),Vertebra lumbalis 3,bone,midline,abdomen and lower back (lumbar),
+bone_vertebra_l4,Vertebra L4,L4 vertebra (lower back),Vertebra lumbalis 4,bone,midline,abdomen and lower back (lumbar),
+bone_vertebra_l5,Vertebra L5,L5 vertebra (lower back),Vertebra lumbalis 5,bone,midline,abdomen and lower back (lumbar),
+bone_sacrum,Sacrum,Sacrum (base of the spine),Os sacrum,bone,midline,abdomen and lower back (lumbar)|pelvis and hip,
+bone_coccyx,Coccyx,Tailbone (coccyx),Os coccygis,bone,midline,pelvis and hip,
+bone_manubrium,Manubrium of sternum,"Breastbone, upper part (manubrium)",Manubrium sterni,bone,midline,chest and upper back (thoracic),
+bone_sternum_body,Body of sternum,Breastbone (sternum),Corpus sterni,bone,midline,chest and upper back (thoracic),
+bone_xiphoid,Xiphoid process,"Breastbone, lower tip (xiphoid process)",Processus xiphoideus,bone,midline,chest and upper back (thoracic),
+bone_rib_1_l,First rib.l,1st rib,Costa I,bone,left,chest and upper back (thoracic),
+bone_rib_1_r,First rib.r,1st rib,Costa I,bone,right,chest and upper back (thoracic),
+bone_rib_2_l,Second rib.l,2nd rib,Costa II,bone,left,chest and upper back (thoracic),
+bone_rib_2_r,Second rib.r,2nd rib,Costa II,bone,right,chest and upper back (thoracic),
+bone_rib_3_l,Third rib.l,3rd rib,Costa III,bone,left,chest and upper back (thoracic),
+bone_rib_3_r,Third rib.r,3rd rib,Costa III,bone,right,chest and upper back (thoracic),
+bone_rib_4_l,Fourth rib.l,4th rib,Costa IV,bone,left,chest and upper back (thoracic),
+bone_rib_4_r,Fourth rib.r,4th rib,Costa IV,bone,right,chest and upper back (thoracic),
+bone_rib_5_l,Fifth rib.l,5th rib,Costa V,bone,left,chest and upper back (thoracic),
+bone_rib_5_r,Fifth rib.r,5th rib,Costa V,bone,right,chest and upper back (thoracic),
+bone_rib_6_l,Sixth rib.l,6th rib,Costa VI,bone,left,chest and upper back (thoracic),
+bone_rib_6_r,Sixth rib.r,6th rib,Costa VI,bone,right,chest and upper back (thoracic),
+bone_rib_7_l,Seventh rib.l,7th rib,Costa VII,bone,left,chest and upper back (thoracic),
+bone_rib_7_r,Seventh rib.r,7th rib,Costa VII,bone,right,chest and upper back (thoracic),
+bone_rib_8_l,Eighth rib.l,8th rib,Costa VIII,bone,left,chest and upper back (thoracic),
+bone_rib_8_r,Eighth rib.r,8th rib,Costa VIII,bone,right,chest and upper back (thoracic),
+bone_rib_9_l,Ninth rib.l,9th rib,Costa IX,bone,left,chest and upper back (thoracic),
+bone_rib_9_r,Ninth rib.r,9th rib,Costa IX,bone,right,chest and upper back (thoracic),
+bone_rib_10_l,Tenth rib.l,10th rib,Costa X,bone,left,chest and upper back (thoracic),
+bone_rib_10_r,Tenth rib.r,10th rib,Costa X,bone,right,chest and upper back (thoracic),
+bone_rib_11_l,Eleventh rib.l,11th rib,Costa XI,bone,left,chest and upper back (thoracic),
+bone_rib_11_r,Eleventh rib.r,11th rib,Costa XI,bone,right,chest and upper back (thoracic),
+bone_rib_12_l,Twelfth rib.l,12th rib,Costa XII,bone,left,chest and upper back (thoracic),
+bone_rib_12_r,Twelfth rib.r,12th rib,Costa XII,bone,right,chest and upper back (thoracic),
+bone_clavicle_l,Clavicle.l,Collarbone (clavicle),Clavicula,bone,left,shoulder,
+bone_clavicle_r,Clavicle.r,Collarbone (clavicle),Clavicula,bone,right,shoulder,
+bone_scapula_l,Scapula.l#!Cartilage,Shoulder blade (scapula),Scapula,bone,left,shoulder|chest and upper back (thoracic),"High detail in source (about 25,000 triangles per side); may be simplified at export."
+bone_scapula_r,Scapula.r#!Cartilage,Shoulder blade (scapula),Scapula,bone,right,shoulder|chest and upper back (thoracic),"High detail in source (about 25,000 triangles per side); may be simplified at export."
+bone_humerus_l,Humerus.l#!Cartilage,Upper arm bone (humerus),Humerus,bone,left,shoulder|upper arm|elbow,
+bone_humerus_r,Humerus.r#!Cartilage,Upper arm bone (humerus),Humerus,bone,right,shoulder|upper arm|elbow,
+bone_radius_l,Radius.l#!Cartilage,"Radius (forearm bone, thumb side)",Radius,bone,left,elbow|forearm|wrist and hand,
+bone_radius_r,Radius.r#!Cartilage,"Radius (forearm bone, thumb side)",Radius,bone,right,elbow|forearm|wrist and hand,
+bone_ulna_l,Ulna.l#!Cartilage,"Ulna (forearm bone, little-finger side)",Ulna,bone,left,elbow|forearm|wrist and hand,
+bone_ulna_r,Ulna.r#!Cartilage,"Ulna (forearm bone, little-finger side)",Ulna,bone,right,elbow|forearm|wrist and hand,
+bone_scaphoid_l,Scaphoid bone.l,Scaphoid (wrist bone),Os scaphoideum,bone,left,wrist and hand,
+bone_scaphoid_r,Scaphoid bone.r,Scaphoid (wrist bone),Os scaphoideum,bone,right,wrist and hand,
+bone_lunate_l,Lunate bone.l,Lunate (wrist bone),Os lunatum,bone,left,wrist and hand,
+bone_lunate_r,Lunate bone.r,Lunate (wrist bone),Os lunatum,bone,right,wrist and hand,
+bone_triquetrum_l,Triquetrum bone.l,Triquetrum (wrist bone),Os triquetrum,bone,left,wrist and hand,
+bone_triquetrum_r,Triquetrum bone.r,Triquetrum (wrist bone),Os triquetrum,bone,right,wrist and hand,
+bone_pisiform_l,Pisiform bone.l,Pisiform (wrist bone),Os pisiforme,bone,left,wrist and hand,
+bone_pisiform_r,Pisiform bone.r,Pisiform (wrist bone),Os pisiforme,bone,right,wrist and hand,
+bone_trapezium_l,Trapezium bone.l,Trapezium (wrist bone),Os trapezium,bone,left,wrist and hand,
+bone_trapezium_r,Trapezium bone.r,Trapezium (wrist bone),Os trapezium,bone,right,wrist and hand,
+bone_trapezoid_l,Trapezoid bone.l,Trapezoid (wrist bone),Os trapezoideum,bone,left,wrist and hand,
+bone_trapezoid_r,Trapezoid bone.r,Trapezoid (wrist bone),Os trapezoideum,bone,right,wrist and hand,
+bone_capitate_l,Capitate bone.l,Capitate (wrist bone),Os capitatum,bone,left,wrist and hand,
+bone_capitate_r,Capitate bone.r,Capitate (wrist bone),Os capitatum,bone,right,wrist and hand,
+bone_hamate_l,Hamate bone.l,Hamate (wrist bone),Os hamatum,bone,left,wrist and hand,
+bone_hamate_r,Hamate bone.r,Hamate (wrist bone),Os hamatum,bone,right,wrist and hand,
+bone_metacarpal_1_l,First metacarpal bone.l,1st metacarpal (hand bone to the thumb),Os metacarpale I,bone,left,wrist and hand,
+bone_metacarpal_1_r,First metacarpal bone.r,1st metacarpal (hand bone to the thumb),Os metacarpale I,bone,right,wrist and hand,
+bone_metacarpal_2_l,Second metacarpal bone.l,2nd metacarpal (hand bone to the index finger),Os metacarpale II,bone,left,wrist and hand,
+bone_metacarpal_2_r,Second metacarpal bone.r,2nd metacarpal (hand bone to the index finger),Os metacarpale II,bone,right,wrist and hand,
+bone_metacarpal_3_l,Third metacarpal bone.l,3rd metacarpal (hand bone to the middle finger),Os metacarpale III,bone,left,wrist and hand,
+bone_metacarpal_3_r,Third metacarpal bone.r,3rd metacarpal (hand bone to the middle finger),Os metacarpale III,bone,right,wrist and hand,
+bone_metacarpal_4_l,Fourth metacarpal bone.l,4th metacarpal (hand bone to the ring finger),Os metacarpale IV,bone,left,wrist and hand,
+bone_metacarpal_4_r,Fourth metacarpal bone.r,4th metacarpal (hand bone to the ring finger),Os metacarpale IV,bone,right,wrist and hand,
+bone_metacarpal_5_l,Fifth metacarpal bone.l,5th metacarpal (hand bone to the little finger),Os metacarpale V,bone,left,wrist and hand,
+bone_metacarpal_5_r,Fifth metacarpal bone.r,5th metacarpal (hand bone to the little finger),Os metacarpale V,bone,right,wrist and hand,
+bone_phalanx_hand_thumb_proximal_l,Proximal phalanx of first finger of hand.l,"Thumb, base bone (proximal phalanx)",Phalanx proximalis digiti I manus,bone,left,wrist and hand,
+bone_phalanx_hand_thumb_proximal_r,Proximal phalanx of first finger of hand.r,"Thumb, base bone (proximal phalanx)",Phalanx proximalis digiti I manus,bone,right,wrist and hand,
+bone_phalanx_hand_thumb_distal_l,Distal phalanx of first finger of hand.l,"Thumb, tip bone (distal phalanx)",Phalanx distalis digiti I manus,bone,left,wrist and hand,
+bone_phalanx_hand_thumb_distal_r,Distal phalanx of first finger of hand.r,"Thumb, tip bone (distal phalanx)",Phalanx distalis digiti I manus,bone,right,wrist and hand,
+bone_phalanx_hand_index_proximal_l,Proximal phalanx of second finger of hand.l,"Index finger, base bone (proximal phalanx)",Phalanx proximalis digiti II manus,bone,left,wrist and hand,
+bone_phalanx_hand_index_proximal_r,Proximal phalanx of second finger of hand.r,"Index finger, base bone (proximal phalanx)",Phalanx proximalis digiti II manus,bone,right,wrist and hand,
+bone_phalanx_hand_index_middle_l,Middle phalanx of second finger of hand.l,"Index finger, middle bone (middle phalanx)",Phalanx media digiti II manus,bone,left,wrist and hand,
+bone_phalanx_hand_index_middle_r,Middle phalanx of second finger of hand.r,"Index finger, middle bone (middle phalanx)",Phalanx media digiti II manus,bone,right,wrist and hand,
+bone_phalanx_hand_index_distal_l,Distal phalanx of second finger of hand.l,"Index finger, tip bone (distal phalanx)",Phalanx distalis digiti II manus,bone,left,wrist and hand,
+bone_phalanx_hand_index_distal_r,Distal phalanx of second finger of hand.r,"Index finger, tip bone (distal phalanx)",Phalanx distalis digiti II manus,bone,right,wrist and hand,
+bone_phalanx_hand_middle_proximal_l,Proximal phalanx of third finger of hand.l,"Middle finger, base bone (proximal phalanx)",Phalanx proximalis digiti III manus,bone,left,wrist and hand,
+bone_phalanx_hand_middle_proximal_r,Proximal phalanx of third finger of hand.r,"Middle finger, base bone (proximal phalanx)",Phalanx proximalis digiti III manus,bone,right,wrist and hand,
+bone_phalanx_hand_middle_middle_l,Middle phalanx of third finger of hand.l,"Middle finger, middle bone (middle phalanx)",Phalanx media digiti III manus,bone,left,wrist and hand,
+bone_phalanx_hand_middle_middle_r,Middle phalanx of third finger of hand.r,"Middle finger, middle bone (middle phalanx)",Phalanx media digiti III manus,bone,right,wrist and hand,
+bone_phalanx_hand_middle_distal_l,Distal phalanx of third finger of hand.l,"Middle finger, tip bone (distal phalanx)",Phalanx distalis digiti III manus,bone,left,wrist and hand,
+bone_phalanx_hand_middle_distal_r,Distal phalanx of third finger of hand.r,"Middle finger, tip bone (distal phalanx)",Phalanx distalis digiti III manus,bone,right,wrist and hand,
+bone_phalanx_hand_ring_proximal_l,Proximal phalanx of fourth finger of hand.l,"Ring finger, base bone (proximal phalanx)",Phalanx proximalis digiti IV manus,bone,left,wrist and hand,
+bone_phalanx_hand_ring_proximal_r,Proximal phalanx of fourth finger of hand.r,"Ring finger, base bone (proximal phalanx)",Phalanx proximalis digiti IV manus,bone,right,wrist and hand,
+bone_phalanx_hand_ring_middle_l,Middle phalanx of fourth finger of hand.l,"Ring finger, middle bone (middle phalanx)",Phalanx media digiti IV manus,bone,left,wrist and hand,
+bone_phalanx_hand_ring_middle_r,Middle phalanx of fourth finger of hand.r,"Ring finger, middle bone (middle phalanx)",Phalanx media digiti IV manus,bone,right,wrist and hand,
+bone_phalanx_hand_ring_distal_l,Distal phalanx of fourth finger of hand.l,"Ring finger, tip bone (distal phalanx)",Phalanx distalis digiti IV manus,bone,left,wrist and hand,
+bone_phalanx_hand_ring_distal_r,Distal phalanx of fourth finger of hand.r,"Ring finger, tip bone (distal phalanx)",Phalanx distalis digiti IV manus,bone,right,wrist and hand,
+bone_phalanx_hand_little_proximal_l,Proximal phalanx of fifth finger of hand.l,"Little finger, base bone (proximal phalanx)",Phalanx proximalis digiti V manus,bone,left,wrist and hand,
+bone_phalanx_hand_little_proximal_r,Proximal phalanx of fifth finger of hand.r,"Little finger, base bone (proximal phalanx)",Phalanx proximalis digiti V manus,bone,right,wrist and hand,
+bone_phalanx_hand_little_middle_l,Middle phalanx of fifth finger of hand.l,"Little finger, middle bone (middle phalanx)",Phalanx media digiti V manus,bone,left,wrist and hand,
+bone_phalanx_hand_little_middle_r,Middle phalanx of fifth finger of hand.r,"Little finger, middle bone (middle phalanx)",Phalanx media digiti V manus,bone,right,wrist and hand,
+bone_phalanx_hand_little_distal_l,Distal phalanx of fifth finger of hand.l,"Little finger, tip bone (distal phalanx)",Phalanx distalis digiti V manus,bone,left,wrist and hand,
+bone_phalanx_hand_little_distal_r,Distal phalanx of fifth finger of hand.r,"Little finger, tip bone (distal phalanx)",Phalanx distalis digiti V manus,bone,right,wrist and hand,
+bone_hip_bone_l,Hip bone.l#!Cartilage,Hip bone (pelvis),Os coxae,bone,left,pelvis and hip,
+bone_hip_bone_r,Hip bone.r#!Cartilage,Hip bone (pelvis),Os coxae,bone,right,pelvis and hip,
+bone_femur_l,Femur.l#!Cartilage,Thigh bone (femur),Femur,bone,left,pelvis and hip|thigh|knee,
+bone_femur_r,Femur.r#!Cartilage,Thigh bone (femur),Femur,bone,right,pelvis and hip|thigh|knee,
+bone_patella_l,Patella.l#!Cartilage,Kneecap (patella),Patella,bone,left,knee,
+bone_patella_r,Patella.r#!Cartilage,Kneecap (patella),Patella,bone,right,knee,
+bone_tibia_l,Tibia.l#!Cartilage,Shin bone (tibia),Tibia,bone,left,knee|lower leg|ankle and foot,
+bone_tibia_r,Tibia.r#!Cartilage,Shin bone (tibia),Tibia,bone,right,knee|lower leg|ankle and foot,
+bone_fibula_l,Fibula.l,Fibula (outer lower-leg bone),Fibula,bone,left,knee|lower leg|ankle and foot,
+bone_fibula_r,Fibula.r,Fibula (outer lower-leg bone),Fibula,bone,right,knee|lower leg|ankle and foot,
+bone_talus_l,Talus.l#!Cartilage,Talus (ankle bone),Talus,bone,left,ankle and foot,
+bone_talus_r,Talus.r#!Cartilage,Talus (ankle bone),Talus,bone,right,ankle and foot,
+bone_calcaneus_l,Calcaneus.l,Heel bone (calcaneus),Calcaneus,bone,left,ankle and foot,
+bone_calcaneus_r,Calcaneus.r,Heel bone (calcaneus),Calcaneus,bone,right,ankle and foot,
+bone_navicular_l,Navicular bone.l,Navicular (midfoot bone),Os naviculare,bone,left,ankle and foot,
+bone_navicular_r,Navicular bone.r,Navicular (midfoot bone),Os naviculare,bone,right,ankle and foot,
+bone_cuboid_l,Cuboid bone.l,Cuboid (midfoot bone),Os cuboideum,bone,left,ankle and foot,
+bone_cuboid_r,Cuboid bone.r,Cuboid (midfoot bone),Os cuboideum,bone,right,ankle and foot,
+bone_cuneiform_medial_l,Medial cuneiform bone.l,Medial cuneiform (midfoot bone),Os cuneiforme mediale,bone,left,ankle and foot,
+bone_cuneiform_medial_r,Medial cuneiform bone.r,Medial cuneiform (midfoot bone),Os cuneiforme mediale,bone,right,ankle and foot,
+bone_cuneiform_intermediate_l,Intermediate cuneiform bone.l,Intermediate cuneiform (midfoot bone),Os cuneiforme intermedium,bone,left,ankle and foot,
+bone_cuneiform_intermediate_r,Intermediate cuneiform bone.r,Intermediate cuneiform (midfoot bone),Os cuneiforme intermedium,bone,right,ankle and foot,
+bone_cuneiform_lateral_l,Lateral cuneiform bone.l,Lateral cuneiform (midfoot bone),Os cuneiforme laterale,bone,left,ankle and foot,
+bone_cuneiform_lateral_r,Lateral cuneiform bone.r,Lateral cuneiform (midfoot bone),Os cuneiforme laterale,bone,right,ankle and foot,
+bone_metatarsal_1_l,First metatarsal bone.l,1st metatarsal (foot bone to the big toe),Os metatarsale I,bone,left,ankle and foot,
+bone_metatarsal_1_r,First metatarsal bone.r,1st metatarsal (foot bone to the big toe),Os metatarsale I,bone,right,ankle and foot,
+bone_metatarsal_2_l,Second metatarsal bone.l,2nd metatarsal (foot bone to the 2nd toe),Os metatarsale II,bone,left,ankle and foot,
+bone_metatarsal_2_r,Second metatarsal bone.r,2nd metatarsal (foot bone to the 2nd toe),Os metatarsale II,bone,right,ankle and foot,
+bone_metatarsal_3_l,Third metatarsal bone.l,3rd metatarsal (foot bone to the 3rd toe),Os metatarsale III,bone,left,ankle and foot,
+bone_metatarsal_3_r,Third metatarsal bone.r,3rd metatarsal (foot bone to the 3rd toe),Os metatarsale III,bone,right,ankle and foot,
+bone_metatarsal_4_l,Fourth metatarsal bone.l,4th metatarsal (foot bone to the 4th toe),Os metatarsale IV,bone,left,ankle and foot,
+bone_metatarsal_4_r,Fourth metatarsal bone.r,4th metatarsal (foot bone to the 4th toe),Os metatarsale IV,bone,right,ankle and foot,
+bone_metatarsal_5_l,Fifth metatarsal bone.l,5th metatarsal (foot bone to the little toe),Os metatarsale V,bone,left,ankle and foot,
+bone_metatarsal_5_r,Fifth metatarsal bone.r,5th metatarsal (foot bone to the little toe),Os metatarsale V,bone,right,ankle and foot,
+bone_phalanx_foot_big_proximal_l,Proximal phalanx of first finger of foot.l,"Big toe, base bone (proximal phalanx)",Phalanx proximalis digiti I pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_big_proximal_r,Proximal phalanx of first finger of foot.r,"Big toe, base bone (proximal phalanx)",Phalanx proximalis digiti I pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_big_distal_l,Distal phalanx of first finger of foot.l,"Big toe, tip bone (distal phalanx)",Phalanx distalis digiti I pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_big_distal_r,Distal phalanx of first finger of foot.r,"Big toe, tip bone (distal phalanx)",Phalanx distalis digiti I pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_2nd_proximal_l,Proximal phalanx of second finger of foot.l,"2nd toe, base bone (proximal phalanx)",Phalanx proximalis digiti II pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_2nd_proximal_r,Proximal phalanx of second finger of foot.r,"2nd toe, base bone (proximal phalanx)",Phalanx proximalis digiti II pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_2nd_middle_l,Middle phalanx of second finger of foot.l,"2nd toe, middle bone (middle phalanx)",Phalanx media digiti II pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_2nd_middle_r,Middle phalanx of second finger of foot.r,"2nd toe, middle bone (middle phalanx)",Phalanx media digiti II pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_2nd_distal_l,Distal phalanx of second finger of foot.l,"2nd toe, tip bone (distal phalanx)",Phalanx distalis digiti II pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_2nd_distal_r,Distal phalanx of second finger of foot.r,"2nd toe, tip bone (distal phalanx)",Phalanx distalis digiti II pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_3rd_proximal_l,Proximal phalanx of third finger of foot.l,"3rd toe, base bone (proximal phalanx)",Phalanx proximalis digiti III pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_3rd_proximal_r,Proximal phalanx of third finger of foot.r,"3rd toe, base bone (proximal phalanx)",Phalanx proximalis digiti III pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_3rd_middle_l,Middle phalanx of third finger of foot.l,"3rd toe, middle bone (middle phalanx)",Phalanx media digiti III pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_3rd_middle_r,Middle phalanx of third finger of foot.r,"3rd toe, middle bone (middle phalanx)",Phalanx media digiti III pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_3rd_distal_l,Distal phalanx of third finger of foot.l,"3rd toe, tip bone (distal phalanx)",Phalanx distalis digiti III pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_3rd_distal_r,Distal phalanx of third finger of foot.r,"3rd toe, tip bone (distal phalanx)",Phalanx distalis digiti III pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_4th_proximal_l,Proximal phalanx of fourth finger of foot.l,"4th toe, base bone (proximal phalanx)",Phalanx proximalis digiti IV pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_4th_proximal_r,Proximal phalanx of fourth finger of foot.r,"4th toe, base bone (proximal phalanx)",Phalanx proximalis digiti IV pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_4th_middle_l,Middle phalanx of fourth finger of foot.l,"4th toe, middle bone (middle phalanx)",Phalanx media digiti IV pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_4th_middle_r,Middle phalanx of fourth finger of foot.r,"4th toe, middle bone (middle phalanx)",Phalanx media digiti IV pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_4th_distal_l,Distal phalanx of fourth finger of foot.l,"4th toe, tip bone (distal phalanx)",Phalanx distalis digiti IV pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_4th_distal_r,Distal phalanx of fourth finger of foot.r,"4th toe, tip bone (distal phalanx)",Phalanx distalis digiti IV pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_little_proximal_l,Proximal phalanx of fifth finger of foot.l,"Little toe, base bone (proximal phalanx)",Phalanx proximalis digiti V pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_little_proximal_r,Proximal phalanx of fifth finger of foot.r,"Little toe, base bone (proximal phalanx)",Phalanx proximalis digiti V pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_little_middle_l,Middle phalanx of fifth finger of foot.l,"Little toe, middle bone (middle phalanx)",Phalanx media digiti V pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_little_middle_r,Middle phalanx of fifth finger of foot.r,"Little toe, middle bone (middle phalanx)",Phalanx media digiti V pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_little_distal_l,Distal phalanx of fifth finger of foot.l,"Little toe, tip bone (distal phalanx)",Phalanx distalis digiti V pedis,bone,left,ankle and foot,Source calls toes 'fingers of foot'.
+bone_phalanx_foot_little_distal_r,Distal phalanx of fifth finger of foot.r,"Little toe, tip bone (distal phalanx)",Phalanx distalis digiti V pedis,bone,right,ankle and foot,Source calls toes 'fingers of foot'.
+bone_sesamoids_foot_l,Sesamoid bones of foot.l,Sesamoid bones (under the big toe joint),Ossa sesamoidea pedis,bone,left,ankle and foot,
+bone_sesamoids_foot_r,Sesamoid bones of foot.r,Sesamoid bones (under the big toe joint),Ossa sesamoidea pedis,bone,right,ankle and foot,
+cartilage_meniscus_medial_l,Medial meniscus.l,Medial meniscus (inner knee cartilage),Meniscus medialis,cartilage,left,knee,
+cartilage_meniscus_medial_r,Medial meniscus.r,Medial meniscus (inner knee cartilage),Meniscus medialis,cartilage,right,knee,
+cartilage_meniscus_lateral_l,Lateral meniscus.l,Lateral meniscus (outer knee cartilage),Meniscus lateralis,cartilage,left,knee,
+cartilage_meniscus_lateral_r,Lateral meniscus.r,Lateral meniscus (outer knee cartilage),Meniscus lateralis,cartilage,right,knee,
+cartilage_labrum_hip_l,Acetabular labrum.l,Hip labrum (cartilage rim of the hip socket),Labrum acetabuli,cartilage,left,pelvis and hip,
+cartilage_labrum_hip_r,Acetabular labrum.r,Hip labrum (cartilage rim of the hip socket),Labrum acetabuli,cartilage,right,pelvis and hip,
+cartilage_labrum_shoulder_l,Glenoid labrum.l,Shoulder labrum (cartilage rim of the shoulder socket),Labrum glenoidale,cartilage,left,shoulder,
+cartilage_labrum_shoulder_r,Glenoid labrum.r,Shoulder labrum (cartilage rim of the shoulder socket),Labrum glenoidale,cartilage,right,shoulder,
+cartilage_tfcc_disc_l,Articular disc of distal radio-ulnar joint.l,Wrist cartilage disc (TFCC),Discus articularis radioulnaris distalis,cartilage,left,wrist and hand,"Uncertain match: source has only the articular disc, not the full TFCC complex. Very simple shape in source."
+cartilage_tfcc_disc_r,Articular disc of distal radio-ulnar joint.r,Wrist cartilage disc (TFCC),Discus articularis radioulnaris distalis,cartilage,right,wrist and hand,"Uncertain match: source has only the articular disc, not the full TFCC complex. Very simple shape in source."
+cartilage_disc_ac_joint_l,Articular disc of acromioclavicular joint.l,AC joint disc,Discus articularis acromioclavicularis,cartilage,left,shoulder,Very simple shape in source.
+cartilage_disc_ac_joint_r,Articular disc of acromioclavicular joint.r,AC joint disc,Discus articularis acromioclavicularis,cartilage,right,shoulder,Very simple shape in source.
+cartilage_disc_sc_joint_l,Articular disc of sternoclavicular joint.l,SC joint disc (collarbone to breastbone),Discus articularis sternoclavicularis,cartilage,left,shoulder|chest and upper back (thoracic),Very simple shape in source.
+cartilage_disc_sc_joint_r,Articular disc of sternoclavicular joint.r,SC joint disc (collarbone to breastbone),Discus articularis sternoclavicularis,cartilage,right,shoulder|chest and upper back (thoracic),Very simple shape in source.
+cartilage_disc_tmj_l,Articular disc of temporomandibular joint.l,Jaw joint disc (TMJ),Discus articularis temporomandibularis,cartilage,left,head and neck,
+cartilage_disc_tmj_r,Articular disc of temporomandibular joint.r,Jaw joint disc (TMJ),Discus articularis temporomandibularis,cartilage,right,head and neck,
+cartilage_pubic_symphysis,Interpubic disc,Pubic symphysis (cartilage joint at the front of the pelvis),Discus interpubicus,cartilage,midline,pelvis and hip,"Source has two overlapping objects, 'Interpubic disc' and 'Pubic symphysis'; the disc is proposed."
+cartilage_costal_cartilage_1_l,Costal cartilage of first rib.l,"Rib cartilage, 1st rib (costal cartilage)",Cartilago costalis 1,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_1_r,Costal cartilage of first rib.r,"Rib cartilage, 1st rib (costal cartilage)",Cartilago costalis 1,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_2_l,Costal cartilage of second rib.l,"Rib cartilage, 2nd rib (costal cartilage)",Cartilago costalis 2,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_2_r,Costal cartilage of second rib.r,"Rib cartilage, 2nd rib (costal cartilage)",Cartilago costalis 2,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_3_l,Costal cartilage of third rib.l,"Rib cartilage, 3rd rib (costal cartilage)",Cartilago costalis 3,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_3_r,Costal cartilage of third rib.r,"Rib cartilage, 3rd rib (costal cartilage)",Cartilago costalis 3,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_4_l,Costal cartilage of fourth rib.l,"Rib cartilage, 4th rib (costal cartilage)",Cartilago costalis 4,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_4_r,Costal cartilage of fourth rib.r,"Rib cartilage, 4th rib (costal cartilage)",Cartilago costalis 4,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_5_l,Costal cartilage of fifth rib.l,"Rib cartilage, 5th rib (costal cartilage)",Cartilago costalis 5,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_5_r,Costal cartilage of fifth rib.r,"Rib cartilage, 5th rib (costal cartilage)",Cartilago costalis 5,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_6_l,Costal cartilage of sixth rib.l,"Rib cartilage, 6th rib (costal cartilage)",Cartilago costalis 6,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_6_r,Costal cartilage of sixth rib.r,"Rib cartilage, 6th rib (costal cartilage)",Cartilago costalis 6,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_7_l,Costal cartilage of seventh rib.l,"Rib cartilage, 7th rib (costal cartilage)",Cartilago costalis 7,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_7_r,Costal cartilage of seventh rib.r,"Rib cartilage, 7th rib (costal cartilage)",Cartilago costalis 7,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_8_l,Costal cartilage of eighth rib.l,"Rib cartilage, 8th rib (costal cartilage)",Cartilago costalis 8,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_8_r,Costal cartilage of eighth rib.r,"Rib cartilage, 8th rib (costal cartilage)",Cartilago costalis 8,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_9_l,Costal cartilage of ninth rib.l,"Rib cartilage, 9th rib (costal cartilage)",Cartilago costalis 9,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_9_r,Costal cartilage of ninth rib.r,"Rib cartilage, 9th rib (costal cartilage)",Cartilago costalis 9,cartilage,right,chest and upper back (thoracic),
+cartilage_costal_cartilage_10_l,Costal cartilage of tenth rib.l,"Rib cartilage, 10th rib (costal cartilage)",Cartilago costalis 10,cartilage,left,chest and upper back (thoracic),
+cartilage_costal_cartilage_10_r,Costal cartilage of tenth rib.r,"Rib cartilage, 10th rib (costal cartilage)",Cartilago costalis 10,cartilage,right,chest and upper back (thoracic),
+cartilage_disc_c2_c3,Intervertebral disc C2-C3,C2/C3 disc (spinal disc),Discus intervertebralis C2-C3,cartilage,midline,head and neck,
+cartilage_disc_nucleus_c2_c3,Nucleus pulposus C2-C3,"C2/C3 disc, soft centre (nucleus pulposus)",Nucleus pulposus C2-C3,cartilage,midline,head and neck,Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_c3_c4,Intervertebral disc C3-C4,C3/C4 disc (spinal disc),Discus intervertebralis C3-C4,cartilage,midline,head and neck,
+cartilage_disc_nucleus_c3_c4,Nucleus pulposus C3-C4,"C3/C4 disc, soft centre (nucleus pulposus)",Nucleus pulposus C3-C4,cartilage,midline,head and neck,Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_c4_c5,Intervertebral disc C4-C5,C4/C5 disc (spinal disc),Discus intervertebralis C4-C5,cartilage,midline,head and neck,
+cartilage_disc_nucleus_c4_c5,Nucleus pulposus C4-C5,"C4/C5 disc, soft centre (nucleus pulposus)",Nucleus pulposus C4-C5,cartilage,midline,head and neck,Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_c5_c6,Intervertebral disc C5-C6,C5/C6 disc (spinal disc),Discus intervertebralis C5-C6,cartilage,midline,head and neck,
+cartilage_disc_nucleus_c5_c6,Nucleus pulposus C5-C6,"C5/C6 disc, soft centre (nucleus pulposus)",Nucleus pulposus C5-C6,cartilage,midline,head and neck,Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_c6_c7,Intervertebral disc C6-C7,C6/C7 disc (spinal disc),Discus intervertebralis C6-C7,cartilage,midline,head and neck,
+cartilage_disc_nucleus_c6_c7,Nucleus pulposus C6-C7,"C6/C7 disc, soft centre (nucleus pulposus)",Nucleus pulposus C6-C7,cartilage,midline,head and neck,Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_c7_t1,Intervertebral disc C7-T1,C7/T1 disc (spinal disc),Discus intervertebralis C7-T1,cartilage,midline,head and neck|chest and upper back (thoracic),
+cartilage_disc_nucleus_c7_t1,Nucleus pulposus C7-T1,"C7/T1 disc, soft centre (nucleus pulposus)",Nucleus pulposus C7-T1,cartilage,midline,head and neck|chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t1_t2,Intervertebral disc T1-T2,T1/T2 disc (spinal disc),Discus intervertebralis T1-T2,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t1_t2,Nucleus pulposus T1-T2,"T1/T2 disc, soft centre (nucleus pulposus)",Nucleus pulposus T1-T2,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t2_t3,Intervertebral disc T2-T3,T2/T3 disc (spinal disc),Discus intervertebralis T2-T3,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t2_t3,Nucleus pulposus T2-T3,"T2/T3 disc, soft centre (nucleus pulposus)",Nucleus pulposus T2-T3,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t3_t4,Intervertebral disc T3-T4,T3/T4 disc (spinal disc),Discus intervertebralis T3-T4,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t3_t4,Nucleus pulposus T3-T4,"T3/T4 disc, soft centre (nucleus pulposus)",Nucleus pulposus T3-T4,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t4_t5,Intervertebral disc T4-T5,T4/T5 disc (spinal disc),Discus intervertebralis T4-T5,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t4_t5,Nucleus pulposus T4-T5,"T4/T5 disc, soft centre (nucleus pulposus)",Nucleus pulposus T4-T5,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t5_t6,Intervertebral disc T5-T6,T5/T6 disc (spinal disc),Discus intervertebralis T5-T6,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t5_t6,Nucleus pulposus T5-T6,"T5/T6 disc, soft centre (nucleus pulposus)",Nucleus pulposus T5-T6,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t6_t7,Intervertebral disc T6-T7,T6/T7 disc (spinal disc),Discus intervertebralis T6-T7,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t6_t7,Nucleus pulposus T6-T7,"T6/T7 disc, soft centre (nucleus pulposus)",Nucleus pulposus T6-T7,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t7_t8,Intervertebral disc T7-T8,T7/T8 disc (spinal disc),Discus intervertebralis T7-T8,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t7_t8,Nucleus pulposus T7-T8,"T7/T8 disc, soft centre (nucleus pulposus)",Nucleus pulposus T7-T8,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t8_t9,Intervertebral disc T8-T9,T8/T9 disc (spinal disc),Discus intervertebralis T8-T9,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t8_t9,Nucleus pulposus T8-T9,"T8/T9 disc, soft centre (nucleus pulposus)",Nucleus pulposus T8-T9,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t9_t10,Intervertebral disc T9-T10,T9/T10 disc (spinal disc),Discus intervertebralis T9-T10,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t9_t10,Nucleus pulposus T9-T10,"T9/T10 disc, soft centre (nucleus pulposus)",Nucleus pulposus T9-T10,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t10_t11,Intervertebral disc T10-T11,T10/T11 disc (spinal disc),Discus intervertebralis T10-T11,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t10_t11,Nucleus pulposus T10-T11,"T10/T11 disc, soft centre (nucleus pulposus)",Nucleus pulposus T10-T11,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t11_t12,Intervertebral disc T11-T12,T11/T12 disc (spinal disc),Discus intervertebralis T11-T12,cartilage,midline,chest and upper back (thoracic),
+cartilage_disc_nucleus_t11_t12,Nucleus pulposus T11-T12,"T11/T12 disc, soft centre (nucleus pulposus)",Nucleus pulposus T11-T12,cartilage,midline,chest and upper back (thoracic),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_t12_l1,Intervertebral disc T12-L1,T12/L1 disc (spinal disc),Discus intervertebralis T12-L1,cartilage,midline,chest and upper back (thoracic)|abdomen and lower back (lumbar),
+cartilage_disc_nucleus_t12_l1,Nucleus pulposus T12-L1,"T12/L1 disc, soft centre (nucleus pulposus)",Nucleus pulposus T12-L1,cartilage,midline,chest and upper back (thoracic)|abdomen and lower back (lumbar),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_l1_l2,Intervertebral disc L1-L2,L1/L2 disc (spinal disc),Discus intervertebralis L1-L2,cartilage,midline,abdomen and lower back (lumbar),
+cartilage_disc_nucleus_l1_l2,Nucleus pulposus L1-L2,"L1/L2 disc, soft centre (nucleus pulposus)",Nucleus pulposus L1-L2,cartilage,midline,abdomen and lower back (lumbar),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_l2_l3,Intervertebral disc L2-L3,L2/L3 disc (spinal disc),Discus intervertebralis L2-L3,cartilage,midline,abdomen and lower back (lumbar),
+cartilage_disc_nucleus_l2_l3,Nucleus pulposus L2-L3,"L2/L3 disc, soft centre (nucleus pulposus)",Nucleus pulposus L2-L3,cartilage,midline,abdomen and lower back (lumbar),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_l3_l4,Intervertebral disc L3-L4,L3/L4 disc (spinal disc),Discus intervertebralis L3-L4,cartilage,midline,abdomen and lower back (lumbar),
+cartilage_disc_nucleus_l3_l4,Nucleus pulposus L3-L4,"L3/L4 disc, soft centre (nucleus pulposus)",Nucleus pulposus L3-L4,cartilage,midline,abdomen and lower back (lumbar),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_l4_l5,Intervertebral disc L4-L5,L4/L5 disc (spinal disc),Discus intervertebralis L4-L5,cartilage,midline,abdomen and lower back (lumbar),
+cartilage_disc_nucleus_l4_l5,Nucleus pulposus L4-L5,"L4/L5 disc, soft centre (nucleus pulposus)",Nucleus pulposus L4-L5,cartilage,midline,abdomen and lower back (lumbar),Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_disc_l5_s1,Intervertebral disc L5-S1,L5/S1 disc (spinal disc),Discus intervertebralis L5-S1,cartilage,midline,abdomen and lower back (lumbar)|pelvis and hip,
+cartilage_disc_nucleus_l5_s1,Nucleus pulposus L5-S1,"L5/S1 disc, soft centre (nucleus pulposus)",Nucleus pulposus L5-S1,cartilage,midline,abdomen and lower back (lumbar)|pelvis and hip,Sits inside the disc. Keep only if you want to show the centre separately (e.g. disc bulge).
+cartilage_articular_femur_l,Femur.l#Cartilage,Joint cartilage of the thigh bone (hip and knee surfaces),Cartilago articularis femoris,cartilage,left,pelvis and hip|knee,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. Covers the head (hip) and condyles (knee) in one area; I will try to split these into two pieces.
+cartilage_articular_femur_r,Femur.r#Cartilage,Joint cartilage of the thigh bone (hip and knee surfaces),Cartilago articularis femoris,cartilage,right,pelvis and hip|knee,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. Covers the head (hip) and condyles (knee) in one area; I will try to split these into two pieces.
+cartilage_articular_tibia_l,Tibia.l#Cartilage,Joint cartilage of the shin bone (knee and ankle surfaces),Cartilago articularis tibiae,cartilage,left,knee|ankle and foot,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. Knee and ankle surfaces in one area; I will try to split them.
+cartilage_articular_tibia_r,Tibia.r#Cartilage,Joint cartilage of the shin bone (knee and ankle surfaces),Cartilago articularis tibiae,cartilage,right,knee|ankle and foot,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. Knee and ankle surfaces in one area; I will try to split them.
+cartilage_articular_patella_l,Patella.l#Cartilage,Joint cartilage behind the kneecap,Cartilago articularis patellae,cartilage,left,knee,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+cartilage_articular_patella_r,Patella.r#Cartilage,Joint cartilage behind the kneecap,Cartilago articularis patellae,cartilage,right,knee,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+cartilage_articular_talus_l,Talus.l#Cartilage,Joint cartilage of the ankle bone (talus),Cartilago articularis tali,cartilage,left,ankle and foot,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+cartilage_articular_talus_r,Talus.r#Cartilage,Joint cartilage of the ankle bone (talus),Cartilago articularis tali,cartilage,right,ankle and foot,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+cartilage_articular_acetabulum_l,Hip bone.l#Cartilage,Joint cartilage of the hip socket,Facies lunata acetabuli,cartilage,left,pelvis and hip,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. May also include the sacroiliac and pubic joint surfaces.
+cartilage_articular_acetabulum_r,Hip bone.r#Cartilage,Joint cartilage of the hip socket,Facies lunata acetabuli,cartilage,right,pelvis and hip,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. May also include the sacroiliac and pubic joint surfaces.
+cartilage_articular_humerus_l,Humerus.l#Cartilage,Joint cartilage of the upper arm bone (shoulder and elbow surfaces),Cartilago articularis humeri,cartilage,left,shoulder|elbow,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. Shoulder and elbow surfaces in one area; I will try to split them.
+cartilage_articular_humerus_r,Humerus.r#Cartilage,Joint cartilage of the upper arm bone (shoulder and elbow surfaces),Cartilago articularis humeri,cartilage,right,shoulder|elbow,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. Shoulder and elbow surfaces in one area; I will try to split them.
+cartilage_articular_glenoid_l,Scapula.l#Cartilage,Joint cartilage of the shoulder socket,Cartilago articularis cavitatis glenoidalis,cartilage,left,shoulder,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. May also include the small AC joint surface.
+cartilage_articular_glenoid_r,Scapula.r#Cartilage,Joint cartilage of the shoulder socket,Cartilago articularis cavitatis glenoidalis,cartilage,right,shoulder,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b. May also include the small AC joint surface.
+cartilage_articular_radius_l,Radius.l#Cartilage,Joint cartilage of the radius (elbow and wrist surfaces),Cartilago articularis radii,cartilage,left,elbow|wrist and hand,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+cartilage_articular_radius_r,Radius.r#Cartilage,Joint cartilage of the radius (elbow and wrist surfaces),Cartilago articularis radii,cartilage,right,elbow|wrist and hand,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+cartilage_articular_ulna_l,Ulna.l#Cartilage,Joint cartilage of the ulna (elbow and wrist surfaces),Cartilago articularis ulnae,cartilage,left,elbow|wrist and hand,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+cartilage_articular_ulna_r,Ulna.r#Cartilage,Joint cartilage of the ulna (elbow and wrist surfaces),Cartilago articularis ulnae,cartilage,right,elbow|wrist and hand,Not a separate object in source: articular cartilage is a painted area on the bone mesh. Proposed to be cut out of the bone at export so it can be selected and highlighted on its own. Needs a visual check in Stage 1b.
+ligament_acl_l,Anterior cruciate ligament.l,Anterior cruciate ligament (ACL),Ligamentum cruciatum anterius,ligament,left,knee,
+ligament_acl_r,Anterior cruciate ligament.r,Anterior cruciate ligament (ACL),Ligamentum cruciatum anterius,ligament,right,knee,
+ligament_pcl_l,Posterior cruciate ligament.l,Posterior cruciate ligament (PCL),Ligamentum cruciatum posterius,ligament,left,knee,
+ligament_pcl_r,Posterior cruciate ligament.r,Posterior cruciate ligament (PCL),Ligamentum cruciatum posterius,ligament,right,knee,
+ligament_mcl_l,Superficial part of tibial collateral ligament.l + Deep part of tibial collateral ligament.l,Medial collateral ligament (MCL),Ligamentum collaterale tibiale,ligament,left,knee,Superficial and deep parts merged.
+ligament_mcl_r,Superficial part of tibial collateral ligament.r + Deep part of tibial collateral ligament.r,Medial collateral ligament (MCL),Ligamentum collaterale tibiale,ligament,right,knee,Superficial and deep parts merged.
+ligament_lcl_l,Fibular collateral ligament.l,Lateral collateral ligament (LCL),Ligamentum collaterale fibulare,ligament,left,knee,Simple strap shape in source (thin band).
+ligament_lcl_r,Fibular collateral ligament.r,Lateral collateral ligament (LCL),Ligamentum collaterale fibulare,ligament,right,knee,Simple strap shape in source (thin band).
+ligament_popliteofibular_l,Popliteofibular ligament.l,Popliteofibular ligament (back outer corner of the knee),Ligamentum popliteofibulare,ligament,left,knee,
+ligament_popliteofibular_r,Popliteofibular ligament.r,Popliteofibular ligament (back outer corner of the knee),Ligamentum popliteofibulare,ligament,right,knee,
+ligament_oblique_popliteal_l,Oblique popliteal ligament.l,Oblique popliteal ligament (back of the knee),Ligamentum popliteum obliquum,ligament,left,knee,
+ligament_oblique_popliteal_r,Oblique popliteal ligament.r,Oblique popliteal ligament (back of the knee),Ligamentum popliteum obliquum,ligament,right,knee,
+ligament_patellar_retinaculum_medial_l,Medial patellar retinaculum.l,Inner kneecap stabiliser (medial patellar retinaculum),Retinaculum patellae mediale,ligament,left,knee,Source has no separate MPFL; this is the nearest structure.
+ligament_patellar_retinaculum_medial_r,Medial patellar retinaculum.r,Inner kneecap stabiliser (medial patellar retinaculum),Retinaculum patellae mediale,ligament,right,knee,Source has no separate MPFL; this is the nearest structure.
+ligament_patellar_retinaculum_lateral_l,Lateral patellar retinaculum.l,Outer kneecap stabiliser (lateral patellar retinaculum),Retinaculum patellae laterale,ligament,left,knee,
+ligament_patellar_retinaculum_lateral_r,Lateral patellar retinaculum.r,Outer kneecap stabiliser (lateral patellar retinaculum),Retinaculum patellae laterale,ligament,right,knee,
+ligament_atfl_l,Anterior talofibular ligament.l,Anterior talofibular ligament (ATFL),Ligamentum talofibulare anterius,ligament,left,ankle and foot,Simple strap shape in source (thin band).
+ligament_atfl_r,Anterior talofibular ligament.r,Anterior talofibular ligament (ATFL),Ligamentum talofibulare anterius,ligament,right,ankle and foot,Simple strap shape in source (thin band).
+ligament_cfl_l,Calcaneofibular ligament.l,Calcaneofibular ligament (CFL),Ligamentum calcaneofibulare,ligament,left,ankle and foot,Simple strap shape in source (thin band).
+ligament_cfl_r,Calcaneofibular ligament.r,Calcaneofibular ligament (CFL),Ligamentum calcaneofibulare,ligament,right,ankle and foot,Simple strap shape in source (thin band).
+ligament_ptfl_l,Posterior talofibular ligament.l,Posterior talofibular ligament (PTFL),Ligamentum talofibulare posterius,ligament,left,ankle and foot,Simple strap shape in source (thin band).
+ligament_ptfl_r,Posterior talofibular ligament.r,Posterior talofibular ligament (PTFL),Ligamentum talofibulare posterius,ligament,right,ankle and foot,Simple strap shape in source (thin band).
+ligament_deltoid_l,Tibionavicular ligament.l + Tibiocalcaneal ligament.l + Posterior tibiotalar ligament.l,Deltoid ligament (inner ankle ligament),Ligamentum collaterale mediale (deltoideum),ligament,left,ankle and foot,Three parts merged. The anterior tibiotalar part is not in the source.
+ligament_deltoid_r,Tibionavicular ligament.r + Tibiocalcaneal ligament.r + Posterior tibiotalar ligament.r,Deltoid ligament (inner ankle ligament),Ligamentum collaterale mediale (deltoideum),ligament,right,ankle and foot,Three parts merged. The anterior tibiotalar part is not in the source.
+ligament_aitfl_l,Anterior tibiofibular ligament.l,Front syndesmosis ligament (AITFL),Ligamentum tibiofibulare anterius,ligament,left,lower leg|ankle and foot,
+ligament_aitfl_r,Anterior tibiofibular ligament.r,Front syndesmosis ligament (AITFL),Ligamentum tibiofibulare anterius,ligament,right,lower leg|ankle and foot,
+ligament_pitfl_l,Posterior tibiofibular ligament.l,Back syndesmosis ligament (PITFL),Ligamentum tibiofibulare posterius,ligament,left,lower leg|ankle and foot,
+ligament_pitfl_r,Posterior tibiofibular ligament.r,Back syndesmosis ligament (PITFL),Ligamentum tibiofibulare posterius,ligament,right,lower leg|ankle and foot,
+ligament_interosseous_membrane_leg_l,Interosseous membrane of leg.l,Membrane between the shin bones (interosseous membrane),Membrana interossea cruris,ligament,left,lower leg,
+ligament_interosseous_membrane_leg_r,Interosseous membrane of leg.r,Membrane between the shin bones (interosseous membrane),Membrana interossea cruris,ligament,right,lower leg,
+ligament_spring_l,Plantar calcaneonavicular ligament.l,Spring ligament (plantar calcaneonavicular ligament),Ligamentum calcaneonaviculare plantare,ligament,left,ankle and foot,Simple strap shape in source (thin band).
+ligament_spring_r,Plantar calcaneonavicular ligament.r,Spring ligament (plantar calcaneonavicular ligament),Ligamentum calcaneonaviculare plantare,ligament,right,ankle and foot,Simple strap shape in source (thin band).
+ligament_long_plantar_l,Long plantar ligament.l,Long plantar ligament (sole of the foot),Ligamentum plantare longum,ligament,left,ankle and foot,
+ligament_long_plantar_r,Long plantar ligament.r,Long plantar ligament (sole of the foot),Ligamentum plantare longum,ligament,right,ankle and foot,
+ligament_bifurcate_l,Calcaneonavicular ligament.l + Calcaneocuboid ligament.l,Bifurcate ligament (top outer midfoot),Ligamentum bifurcatum,ligament,left,ankle and foot,Two parts merged.
+ligament_bifurcate_r,Calcaneonavicular ligament.r + Calcaneocuboid ligament.r,Bifurcate ligament (top outer midfoot),Ligamentum bifurcatum,ligament,right,ankle and foot,Two parts merged.
+ligament_lisfranc_l,Cuneometatarsal interosseous ligaments.l,Lisfranc ligament (midfoot),Ligamenta cuneometatarsalia interossea,ligament,left,ankle and foot,Uncertain match: source groups the cuneometatarsal interosseous ligaments in one object; the Lisfranc ligament is one of them.
+ligament_lisfranc_r,Cuneometatarsal interosseous ligaments.r,Lisfranc ligament (midfoot),Ligamenta cuneometatarsalia interossea,ligament,right,ankle and foot,Uncertain match: source groups the cuneometatarsal interosseous ligaments in one object; the Lisfranc ligament is one of them.
+ligament_plantar_fascia_l,Plantar aponeurosis.l,Plantar fascia (sole of the foot),Aponeurosis plantaris,ligament,left,ankle and foot,"A fascia, filed under 'ligament' because there is no fascia system. Low detail in source."
+ligament_plantar_fascia_r,Plantar aponeurosis.r,Plantar fascia (sole of the foot),Aponeurosis plantaris,ligament,right,ankle and foot,"A fascia, filed under 'ligament' because there is no fascia system. Low detail in source."
+ligament_iliofemoral_l,Descending part of iliofemoral ligament.l + Transverse part of iliofemoral ligament.l,Iliofemoral ligament (front of hip),Ligamentum iliofemorale,ligament,left,pelvis and hip,Two parts merged.
+ligament_iliofemoral_r,Descending part of iliofemoral ligament.r + Transverse part of iliofemoral ligament.r,Iliofemoral ligament (front of hip),Ligamentum iliofemorale,ligament,right,pelvis and hip,Two parts merged.
+ligament_pubofemoral_l,Pubofemoral ligament.l,Pubofemoral ligament (front lower hip),Ligamentum pubofemorale,ligament,left,pelvis and hip,
+ligament_pubofemoral_r,Pubofemoral ligament.r,Pubofemoral ligament (front lower hip),Ligamentum pubofemorale,ligament,right,pelvis and hip,
+ligament_ischiofemoral_l,Ischiofemoral ligament.l,Ischiofemoral ligament (back of hip),Ligamentum ischiofemorale,ligament,left,pelvis and hip,
+ligament_ischiofemoral_r,Ischiofemoral ligament.r,Ischiofemoral ligament (back of hip),Ligamentum ischiofemorale,ligament,right,pelvis and hip,
+ligament_si_anterior_l,Anterior sacro-iliac ligament.l,"Sacroiliac ligament, front (anterior SI ligament)",Ligamentum sacroiliacum anterius,ligament,left,pelvis and hip,
+ligament_si_anterior_r,Anterior sacro-iliac ligament.r,"Sacroiliac ligament, front (anterior SI ligament)",Ligamentum sacroiliacum anterius,ligament,right,pelvis and hip,
+ligament_si_posterior_l,Posterior sacro-iliac ligament.l,"Sacroiliac ligament, back (posterior SI ligament)",Ligamentum sacroiliacum posterius,ligament,left,pelvis and hip,
+ligament_si_posterior_r,Posterior sacro-iliac ligament.r,"Sacroiliac ligament, back (posterior SI ligament)",Ligamentum sacroiliacum posterius,ligament,right,pelvis and hip,
+ligament_si_interosseous_l,Interosseous sacro-iliac ligament.l,"Sacroiliac ligament, deep (interosseous SI ligament)",Ligamentum sacroiliacum interosseum,ligament,left,pelvis and hip,
+ligament_si_interosseous_r,Interosseous sacro-iliac ligament.r,"Sacroiliac ligament, deep (interosseous SI ligament)",Ligamentum sacroiliacum interosseum,ligament,right,pelvis and hip,
+ligament_sacrotuberous_l,Sacrotuberous ligament.l,Sacrotuberous ligament (sacrum to sitting bone),Ligamentum sacrotuberale,ligament,left,pelvis and hip,
+ligament_sacrotuberous_r,Sacrotuberous ligament.r,Sacrotuberous ligament (sacrum to sitting bone),Ligamentum sacrotuberale,ligament,right,pelvis and hip,
+ligament_sacrospinous_l,Sacrospinous ligament.l,Sacrospinous ligament,Ligamentum sacrospinale,ligament,left,pelvis and hip,
+ligament_sacrospinous_r,Sacrospinous ligament.r,Sacrospinous ligament,Ligamentum sacrospinale,ligament,right,pelvis and hip,
+ligament_iliolumbar_l,Iliolumbar ligament.l,Iliolumbar ligament (lower spine to pelvis),Ligamentum iliolumbale,ligament,left,abdomen and lower back (lumbar)|pelvis and hip,
+ligament_iliolumbar_r,Iliolumbar ligament.r,Iliolumbar ligament (lower spine to pelvis),Ligamentum iliolumbale,ligament,right,abdomen and lower back (lumbar)|pelvis and hip,
+ligament_inguinal_l,Inguinal ligament.l,Inguinal ligament (groin),Ligamentum inguinale,ligament,left,abdomen and lower back (lumbar)|pelvis and hip,
+ligament_inguinal_r,Inguinal ligament.r,Inguinal ligament (groin),Ligamentum inguinale,ligament,right,abdomen and lower back (lumbar)|pelvis and hip,
+ligament_anterior_longitudinal,Anterior longitudinal ligament,Front spinal ligament (anterior longitudinal ligament),Ligamentum longitudinale anterius,ligament,midline,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),"One object for the whole spine in source, so it cannot be hidden region by region unless it is cut at export."
+ligament_posterior_longitudinal,Posterior longitudinal ligament,Back-of-disc spinal ligament (posterior longitudinal ligament),Ligamentum longitudinale posterius,ligament,midline,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),"One object for the whole spine in source, so it cannot be hidden region by region unless it is cut at export."
+ligament_ligamenta_flava,Ligamenta flava,Ligamentum flavum (between the vertebral arches),Ligamenta flava,ligament,midline,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),"One object for the whole spine in source, so it cannot be hidden region by region unless it is cut at export."
+ligament_interspinous,Interspinous ligaments,Interspinous ligaments (between the spinous processes),Ligamenta interspinalia,ligament,midline,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),"One object for the whole spine in source, so it cannot be hidden region by region unless it is cut at export. Flat sheet in source."
+ligament_supraspinous,Supraspinous ligament,Supraspinous ligament (along the tips of the spine),Ligamentum supraspinale,ligament,midline,chest and upper back (thoracic)|abdomen and lower back (lumbar),"One object for the whole spine in source, so it cannot be hidden region by region unless it is cut at export."
+ligament_nuchal,Nuchal ligament,Nuchal ligament (back of the neck),Ligamentum nuchae,ligament,midline,head and neck,Flat sheet in source.
+ligament_acromioclavicular_l,Acromioclavicular ligament.l,AC joint ligament (acromioclavicular ligament),Ligamentum acromioclaviculare,ligament,left,shoulder,
+ligament_acromioclavicular_r,Acromioclavicular ligament.r,AC joint ligament (acromioclavicular ligament),Ligamentum acromioclaviculare,ligament,right,shoulder,
+ligament_coracoclavicular_l,Conoid ligament.l + Trapezoid ligament.l,Coracoclavicular ligaments (conoid and trapezoid),Ligamentum coracoclaviculare,ligament,left,shoulder,Two parts merged. Simple strap shape in source (thin band).
+ligament_coracoclavicular_r,Conoid ligament.r + Trapezoid ligament.r,Coracoclavicular ligaments (conoid and trapezoid),Ligamentum coracoclaviculare,ligament,right,shoulder,Two parts merged. Simple strap shape in source (thin band).
+ligament_coracoacromial_l,Coraco-acromial ligament.l,Coracoacromial ligament (roof of the shoulder),Ligamentum coracoacromiale,ligament,left,shoulder,Simple strap shape in source (thin band).
+ligament_coracoacromial_r,Coraco-acromial ligament.r,Coracoacromial ligament (roof of the shoulder),Ligamentum coracoacromiale,ligament,right,shoulder,Simple strap shape in source (thin band).
+ligament_coracohumeral_l,Coracohumeral ligament.l,Coracohumeral ligament,Ligamentum coracohumerale,ligament,left,shoulder,
+ligament_coracohumeral_r,Coracohumeral ligament.r,Coracohumeral ligament,Ligamentum coracohumerale,ligament,right,shoulder,
+ligament_glenohumeral_superior_l,Superior glenohumeral ligament.l,Superior glenohumeral ligament,Ligamentum glenohumerale superius,ligament,left,shoulder,
+ligament_glenohumeral_superior_r,Superior glenohumeral ligament.r,Superior glenohumeral ligament,Ligamentum glenohumerale superius,ligament,right,shoulder,
+ligament_glenohumeral_middle_l,Middle glenohumeral ligament.l,Middle glenohumeral ligament,Ligamentum glenohumerale medium,ligament,left,shoulder,
+ligament_glenohumeral_middle_r,Middle glenohumeral ligament.r,Middle glenohumeral ligament,Ligamentum glenohumerale medium,ligament,right,shoulder,
+ligament_glenohumeral_inferior_l,Inferior glenohumeral ligament.l,Inferior glenohumeral ligament,Ligamentum glenohumerale inferius,ligament,left,shoulder,
+ligament_glenohumeral_inferior_r,Inferior glenohumeral ligament.r,Inferior glenohumeral ligament,Ligamentum glenohumerale inferius,ligament,right,shoulder,
+ligament_transverse_humeral_l,Transverse humeral ligament.l,Transverse humeral ligament (holds the biceps tendon in its groove),Ligamentum transversum humeri,ligament,left,shoulder,
+ligament_transverse_humeral_r,Transverse humeral ligament.r,Transverse humeral ligament (holds the biceps tendon in its groove),Ligamentum transversum humeri,ligament,right,shoulder,
+ligament_sternoclavicular_anterior_l,Anterior sternoclavicular ligament.l,"SC joint ligament, front (anterior sternoclavicular ligament)",Ligamentum sternoclaviculare anterius,ligament,left,shoulder|chest and upper back (thoracic),
+ligament_sternoclavicular_anterior_r,Anterior sternoclavicular ligament.r,"SC joint ligament, front (anterior sternoclavicular ligament)",Ligamentum sternoclaviculare anterius,ligament,right,shoulder|chest and upper back (thoracic),
+ligament_costoclavicular_l,Costoclavicular ligament.l,Costoclavicular ligament (collarbone to 1st rib),Ligamentum costoclaviculare,ligament,left,shoulder|chest and upper back (thoracic),Simple strap shape in source (thin band).
+ligament_costoclavicular_r,Costoclavicular ligament.r,Costoclavicular ligament (collarbone to 1st rib),Ligamentum costoclaviculare,ligament,right,shoulder|chest and upper back (thoracic),Simple strap shape in source (thin band).
+ligament_ucl_elbow_l,Ulnar collateral ligament.l,"Ulnar collateral ligament of the elbow (UCL, inner elbow)",Ligamentum collaterale ulnare,ligament,left,elbow,
+ligament_ucl_elbow_r,Ulnar collateral ligament.r,"Ulnar collateral ligament of the elbow (UCL, inner elbow)",Ligamentum collaterale ulnare,ligament,right,elbow,
+ligament_rcl_elbow_l,Radial collateral ligament.l,Radial collateral ligament of the elbow (outer elbow),Ligamentum collaterale radiale,ligament,left,elbow,
+ligament_rcl_elbow_r,Radial collateral ligament.r,Radial collateral ligament of the elbow (outer elbow),Ligamentum collaterale radiale,ligament,right,elbow,
+ligament_annular_l,Annular ligament of radius.l,Annular ligament (ring around the head of the radius),Ligamentum anulare radii,ligament,left,elbow,
+ligament_annular_r,Annular ligament of radius.r,Annular ligament (ring around the head of the radius),Ligamentum anulare radii,ligament,right,elbow,
+ligament_interosseous_membrane_forearm_l,Interosseous membrane of forearm.l,Membrane between the forearm bones (interosseous membrane),Membrana interossea antebrachii,ligament,left,forearm,
+ligament_interosseous_membrane_forearm_r,Interosseous membrane of forearm.r,Membrane between the forearm bones (interosseous membrane),Membrana interossea antebrachii,ligament,right,forearm,
+ligament_scapholunate_l,Scapholunate interosseous ligament.l,Scapholunate ligament (wrist),Ligamentum scapholunatum interosseum,ligament,left,wrist and hand,Simple strap shape in source (thin band).
+ligament_scapholunate_r,Scapholunate interosseous ligament.r,Scapholunate ligament (wrist),Ligamentum scapholunatum interosseum,ligament,right,wrist and hand,Simple strap shape in source (thin band).
+ligament_lunotriquetral_l,Lunotriquetral interosseous ligament.l,Lunotriquetral ligament (wrist),Ligamentum lunotriquetrum interosseum,ligament,left,wrist and hand,Simple strap shape in source (thin band).
+ligament_lunotriquetral_r,Lunotriquetral interosseous ligament.r,Lunotriquetral ligament (wrist),Ligamentum lunotriquetrum interosseum,ligament,right,wrist and hand,Simple strap shape in source (thin band).
+ligament_dorsal_radiocarpal_l,Dorsal radiocarpal ligament.l,Dorsal radiocarpal ligament (back of wrist),Ligamentum radiocarpale dorsale,ligament,left,wrist and hand,
+ligament_dorsal_radiocarpal_r,Dorsal radiocarpal ligament.r,Dorsal radiocarpal ligament (back of wrist),Ligamentum radiocarpale dorsale,ligament,right,wrist and hand,
+ligament_palmar_radiocarpal_l,Radioscaphocapitate ligament.l + Radiocapitate ligament.l,Palmar radiocarpal ligaments (front of wrist),Ligamentum radiocarpale palmare,ligament,left,wrist and hand,Two parts merged. Simple strap shape in source (thin band).
+ligament_palmar_radiocarpal_r,Radioscaphocapitate ligament.r + Radiocapitate ligament.r,Palmar radiocarpal ligaments (front of wrist),Ligamentum radiocarpale palmare,ligament,right,wrist and hand,Two parts merged. Simple strap shape in source (thin band).
+ligament_rcl_wrist_l,Radial collateral ligament of wrist joint.l,Radial collateral ligament of the wrist (thumb side),Ligamentum collaterale carpi radiale,ligament,left,wrist and hand,
+ligament_rcl_wrist_r,Radial collateral ligament of wrist joint.r,Radial collateral ligament of the wrist (thumb side),Ligamentum collaterale carpi radiale,ligament,right,wrist and hand,
+ligament_ucl_wrist_l,Ulnar collateral ligament of wrist joint.l,Ulnar collateral ligament of the wrist (little-finger side),Ligamentum collaterale carpi ulnare,ligament,left,wrist and hand,
+ligament_ucl_wrist_r,Ulnar collateral ligament of wrist joint.r,Ulnar collateral ligament of the wrist (little-finger side),Ligamentum collaterale carpi ulnare,ligament,right,wrist and hand,
+ligament_flexor_retinaculum_wrist_l,Flexor retinaculum of wrist.l,Carpal tunnel roof (flexor retinaculum),Retinaculum musculorum flexorum,ligament,left,wrist and hand,
+ligament_flexor_retinaculum_wrist_r,Flexor retinaculum of wrist.r,Carpal tunnel roof (flexor retinaculum),Retinaculum musculorum flexorum,ligament,right,wrist and hand,
+ligament_collateral_mcp_l,Collateral metacarpophalangeal ligaments.l,"Knuckle collateral ligaments (MCP joints, includes thumb UCL)",Ligamenta collateralia articulationum metacarpophalangearum,ligament,left,wrist and hand,"All five knuckles are one object in source, so the thumb UCL (skier's thumb) cannot be highlighted alone unless cut at export."
+ligament_collateral_mcp_r,Collateral metacarpophalangeal ligaments.r,"Knuckle collateral ligaments (MCP joints, includes thumb UCL)",Ligamenta collateralia articulationum metacarpophalangearum,ligament,right,wrist and hand,"All five knuckles are one object in source, so the thumb UCL (skier's thumb) cannot be highlighted alone unless cut at export."
+ligament_collateral_ip_hand_l,Collateral interphalangeal ligaments of hand.l,Finger joint collateral ligaments (PIP and DIP joints),Ligamenta collateralia articulationum interphalangearum manus,ligament,left,wrist and hand,All fingers are one object in source.
+ligament_collateral_ip_hand_r,Collateral interphalangeal ligaments of hand.r,Finger joint collateral ligaments (PIP and DIP joints),Ligamenta collateralia articulationum interphalangearum manus,ligament,right,wrist and hand,All fingers are one object in source.
+ligament_palmar_plates_l,Palmar interphalangeal ligaments.l,Finger joint palmar plates (volar plates),Ligamenta palmaria articulationum interphalangearum,ligament,left,wrist and hand,All fingers are one object in source.
+ligament_palmar_plates_r,Palmar interphalangeal ligaments.r,Finger joint palmar plates (volar plates),Ligamenta palmaria articulationum interphalangearum,ligament,right,wrist and hand,All fingers are one object in source.
+ligament_tmj_lateral_l,Lateral temporomandibular ligament.r,Jaw joint ligament (lateral TMJ ligament),Ligamentum laterale articulationis temporomandibularis,ligament,left,head and neck,Left and right are labelled the wrong way round in the source; assigned here by actual position.
+ligament_tmj_lateral_r,Lateral temporomandibular ligament.l,Jaw joint ligament (lateral TMJ ligament),Ligamentum laterale articulationis temporomandibularis,ligament,right,head and neck,Left and right are labelled the wrong way round in the source; assigned here by actual position.
+tendon_achilles_l,Calcaneal tendon.l,Achilles tendon,Tendo calcaneus,tendon,left,lower leg|ankle and foot,
+tendon_achilles_r,Calcaneal tendon.r,Achilles tendon,Tendo calcaneus,tendon,right,lower leg|ankle and foot,
+tendon_quadriceps_patellar_l,Rectus femoris muscle.l#Tendon + Vastus lateralis muscle.l#Tendon + Vastus medialis muscle.l#Tendon + Vastus intermedius muscle.l#Tendon,Quadriceps tendon and patellar tendon,Tendo musculi quadricipitis femoris; ligamentum patellae,tendon,left,thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. The patellar tendon is NOT a separate object; it appears to be part of this tendon area (rectus femoris reaches below the kneecap). Needs a visual check in Stage 1b; I will try to separate quadriceps tendon from patellar tendon.
+tendon_quadriceps_patellar_r,Rectus femoris muscle.r#Tendon + Vastus lateralis muscle.r#Tendon + Vastus medialis muscle.r#Tendon + Vastus intermedius muscle.r#Tendon,Quadriceps tendon and patellar tendon,Tendo musculi quadricipitis femoris; ligamentum patellae,tendon,right,thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. The patellar tendon is NOT a separate object; it appears to be part of this tendon area (rectus femoris reaches below the kneecap). Needs a visual check in Stage 1b; I will try to separate quadriceps tendon from patellar tendon.
+tendon_biceps_long_head_l,Long head of biceps brachii.l#Tendon,"Biceps tendon, long head",Tendo capitis longi musculi bicipitis brachii,tendon,left,shoulder|upper arm|elbow,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Includes the tendon at both the shoulder and elbow ends; I will try to split them.
+tendon_biceps_long_head_r,Long head of biceps brachii.r#Tendon,"Biceps tendon, long head",Tendo capitis longi musculi bicipitis brachii,tendon,right,shoulder|upper arm|elbow,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Includes the tendon at both the shoulder and elbow ends; I will try to split them.
+tendon_biceps_short_head_l,Short head of biceps brachii.l#Tendon,"Biceps tendon, short head",Tendo capitis brevis musculi bicipitis brachii,tendon,left,shoulder|upper arm|elbow,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_biceps_short_head_r,Short head of biceps brachii.r#Tendon,"Biceps tendon, short head",Tendo capitis brevis musculi bicipitis brachii,tendon,right,shoulder|upper arm|elbow,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_triceps_l,Long head of triceps brachii.l#Tendon + Lateral head of triceps brachii.l#Tendon + Medial head of triceps brachii.l#Tendon,Triceps tendon,Tendo musculi tricipitis brachii,tendon,left,upper arm|elbow,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_triceps_r,Long head of triceps brachii.r#Tendon + Lateral head of triceps brachii.r#Tendon + Medial head of triceps brachii.r#Tendon,Triceps tendon,Tendo musculi tricipitis brachii,tendon,right,upper arm|elbow,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_infraspinatus_l,Infraspinatus muscle.l#Tendon,Rotator cuff tendon: infraspinatus,Tendo musculi infraspinati,tendon,left,shoulder,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. The other three rotator cuff tendons are not marked in the source (see summary).
+tendon_infraspinatus_r,Infraspinatus muscle.r#Tendon,Rotator cuff tendon: infraspinatus,Tendo musculi infraspinati,tendon,right,shoulder,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. The other three rotator cuff tendons are not marked in the source (see summary).
+tendon_common_extensor_l,Extensor carpi radialis brevis.l#Tendon,Wrist extensor tendon (ECRB; tennis elbow tendon),Tendo musculi extensoris carpi radialis brevis,tendon,left,elbow|forearm|wrist and hand,"Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Uncertain match: the source has no single 'common extensor origin'. This is the ECRB tendon, both ends."
+tendon_common_extensor_r,Extensor carpi radialis brevis.r#Tendon,Wrist extensor tendon (ECRB; tennis elbow tendon),Tendo musculi extensoris carpi radialis brevis,tendon,right,elbow|forearm|wrist and hand,"Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Uncertain match: the source has no single 'common extensor origin'. This is the ECRB tendon, both ends."
+tendon_common_flexor_l,Flexor carpi radialis.l#Tendon + Superficial head of pronator teres.l#Tendon,Wrist flexor tendons (golfer's elbow tendons),Tendines musculorum flexorum (origo communis),tendon,left,elbow|forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Uncertain match: the source has no single 'common flexor origin'. These are the tendon areas of flexor carpi radialis and pronator teres.
+tendon_common_flexor_r,Flexor carpi radialis.r#Tendon + Superficial head of pronator teres.r#Tendon,Wrist flexor tendons (golfer's elbow tendons),Tendines musculorum flexorum (origo communis),tendon,right,elbow|forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Uncertain match: the source has no single 'common flexor origin'. These are the tendon areas of flexor carpi radialis and pronator teres.
+tendon_finger_extensors_l,Extensor digitorum.l#Tendon,Finger extensor tendons,Tendines musculi extensoris digitorum,tendon,left,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_finger_extensors_r,Extensor digitorum.r#Tendon,Finger extensor tendons,Tendines musculi extensoris digitorum,tendon,right,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_finger_flexors_l,Humero-ulnar head of flexor digitorum superficialis.l#Tendon + Flexor digitorum profundus.l#Tendon,Finger flexor tendons,Tendines musculorum flexorum digitorum,tendon,left,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Superficial and deep flexor tendons merged.
+tendon_finger_flexors_r,Humero-ulnar head of flexor digitorum superficialis.r#Tendon + Flexor digitorum profundus.r#Tendon,Finger flexor tendons,Tendines musculorum flexorum digitorum,tendon,right,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Superficial and deep flexor tendons merged.
+tendon_de_quervain_l,Abductor pollicis longus.l#Tendon + Extensor pollicis brevis.l#Tendon,Thumb tendons at the wrist (APL and EPB; De Quervain's tendons),Tendines musculorum abductoris pollicis longi et extensoris pollicis brevis,tendon,left,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_de_quervain_r,Abductor pollicis longus.r#Tendon + Extensor pollicis brevis.r#Tendon,Thumb tendons at the wrist (APL and EPB; De Quervain's tendons),Tendines musculorum abductoris pollicis longi et extensoris pollicis brevis,tendon,right,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_ecu_l,Humeral head of extensor carpi ulnaris.l#Tendon + Ulnar head of extensor carpi ulnaris.l#Tendon,ECU tendon (little-finger side of wrist),Tendo musculi extensoris carpi ulnaris,tendon,left,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_ecu_r,Humeral head of extensor carpi ulnaris.r#Tendon + Ulnar head of extensor carpi ulnaris.r#Tendon,ECU tendon (little-finger side of wrist),Tendo musculi extensoris carpi ulnaris,tendon,right,forearm|wrist and hand,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_gluteus_medius_l,Gluteus medius muscle.l#Tendon,Gluteal tendon (gluteus medius),Tendo musculi glutei medii,tendon,left,pelvis and hip,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Gluteus minimus has no tendon marked in the source.
+tendon_gluteus_medius_r,Gluteus medius muscle.r#Tendon,Gluteal tendon (gluteus medius),Tendo musculi glutei medii,tendon,right,pelvis and hip,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Gluteus minimus has no tendon marked in the source.
+tendon_iliopsoas_l,Psoas major.l#Tendon + Iliacus muscle.l#Tendon,Hip flexor tendon (iliopsoas),Tendo musculi iliopsoas,tendon,left,pelvis and hip,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_iliopsoas_r,Psoas major.r#Tendon + Iliacus muscle.r#Tendon,Hip flexor tendon (iliopsoas),Tendo musculi iliopsoas,tendon,right,pelvis and hip,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_adductor_longus_l,Adductor longus.l#Tendon,Adductor tendon (adductor longus; groin),Tendo musculi adductoris longi,tendon,left,pelvis and hip|thigh,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_adductor_longus_r,Adductor longus.r#Tendon,Adductor tendon (adductor longus; groin),Tendo musculi adductoris longi,tendon,right,pelvis and hip|thigh,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_hamstring_biceps_femoris_l,Long head of biceps femoris.l#Tendon + Short head of biceps femoris.l#Tendon,Hamstring tendon: biceps femoris (outer),Tendo musculi bicipitis femoris,tendon,left,pelvis and hip|thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Top and bottom tendons in one area; I will try to split them.
+tendon_hamstring_biceps_femoris_r,Long head of biceps femoris.r#Tendon + Short head of biceps femoris.r#Tendon,Hamstring tendon: biceps femoris (outer),Tendo musculi bicipitis femoris,tendon,right,pelvis and hip|thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Top and bottom tendons in one area; I will try to split them.
+tendon_hamstring_semitendinosus_l,Semitendinosus muscle.l#Tendon,Hamstring tendon: semitendinosus (inner),Tendo musculi semitendinosi,tendon,left,pelvis and hip|thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_hamstring_semitendinosus_r,Semitendinosus muscle.r#Tendon,Hamstring tendon: semitendinosus (inner),Tendo musculi semitendinosi,tendon,right,pelvis and hip|thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_hamstring_semimembranosus_l,Semimembranosus muscle.l#Tendon,"Hamstring tendon: semimembranosus (inner, deep)",Tendo musculi semimembranosi,tendon,left,pelvis and hip|thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_hamstring_semimembranosus_r,Semimembranosus muscle.r#Tendon,"Hamstring tendon: semimembranosus (inner, deep)",Tendo musculi semimembranosi,tendon,right,pelvis and hip|thigh|knee,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_itb_l,Iliotibial tract.l,Iliotibial band (ITB),Tractus iliotibialis,tendon,left,pelvis and hip|thigh|knee,"A band of fascia, filed under 'tendon'. Very high detail in source (about 48,000 triangles per side); will be simplified at export."
+tendon_itb_r,Iliotibial tract.r,Iliotibial band (ITB),Tractus iliotibialis,tendon,right,pelvis and hip|thigh|knee,"A band of fascia, filed under 'tendon'. Very high detail in source (about 48,000 triangles per side); will be simplified at export."
+tendon_tibialis_posterior_l,Tibialis posterior muscle.l#Tendon,Tibialis posterior tendon (inner ankle),Tendo musculi tibialis posterioris,tendon,left,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_tibialis_posterior_r,Tibialis posterior muscle.r#Tendon,Tibialis posterior tendon (inner ankle),Tendo musculi tibialis posterioris,tendon,right,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_tibialis_anterior_l,Tibialis anterior muscle.l#Tendon,Tibialis anterior tendon (front of ankle),Tendo musculi tibialis anterioris,tendon,left,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_tibialis_anterior_r,Tibialis anterior muscle.r#Tendon,Tibialis anterior tendon (front of ankle),Tendo musculi tibialis anterioris,tendon,right,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_peroneal_l,Fibularis longus muscle.l#Tendon + Fibularis brevis muscle.l#Tendon,Peroneal tendons (outer ankle),Tendines musculorum fibularium,tendon,left,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Longus and brevis merged.
+tendon_peroneal_r,Fibularis longus muscle.r#Tendon + Fibularis brevis muscle.r#Tendon,Peroneal tendons (outer ankle),Tendines musculorum fibularium,tendon,right,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own. Longus and brevis merged.
+tendon_fhl_l,Flexor hallucis longus.l#Tendon,Big toe flexor tendon (FHL),Tendo musculi flexoris hallucis longi,tendon,left,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_fhl_r,Flexor hallucis longus.r#Tendon,Big toe flexor tendon (FHL),Tendo musculi flexoris hallucis longi,tendon,right,lower leg|ankle and foot,Not a separate object in source: this is the area of the muscle mesh that the source paints as 'Tendon'. Proposed to be cut from the muscle at export so it can be selected on its own.
+tendon_toe_extensors_l,Tendon of extensor digitorum longus.l,Toe extensor tendons (top of foot),Tendines musculi extensoris digitorum longi,tendon,left,ankle and foot,
+tendon_toe_extensors_r,Tendon of extensor digitorum longus.r,Toe extensor tendons (top of foot),Tendines musculi extensoris digitorum longi,tendon,right,ankle and foot,
+muscle_masseter_l,Superficial part of masseter.l + Deep part of masseter.l,Jaw muscle (masseter),Musculus masseter,muscle,left,head and neck,
+muscle_masseter_r,Superficial part of masseter.r + Deep part of masseter.r,Jaw muscle (masseter),Musculus masseter,muscle,right,head and neck,
+muscle_temporalis_l,Temporalis muscle.l,Temple muscle (temporalis),Musculus temporalis,muscle,left,head and neck,
+muscle_temporalis_r,Temporalis muscle.r,Temple muscle (temporalis),Musculus temporalis,muscle,right,head and neck,
+muscle_pterygoid_medial_l,Medial pterygoid muscle.l,Medial pterygoid (deep jaw muscle),Musculus pterygoideus medialis,muscle,left,head and neck,
+muscle_pterygoid_medial_r,Medial pterygoid muscle.r,Medial pterygoid (deep jaw muscle),Musculus pterygoideus medialis,muscle,right,head and neck,
+muscle_pterygoid_lateral_l,Superior head of lateral pterygoid muscle.l + Inferior head of lateral pterygoid muscle.l,Lateral pterygoid (deep jaw muscle),Musculus pterygoideus lateralis,muscle,left,head and neck,
+muscle_pterygoid_lateral_r,Superior head of lateral pterygoid muscle.r + Inferior head of lateral pterygoid muscle.r,Lateral pterygoid (deep jaw muscle),Musculus pterygoideus lateralis,muscle,right,head and neck,
+muscle_sternocleidomastoid_l,Sternocleidomastoid muscle.l,Sternocleidomastoid (SCM; front-side neck muscle),Musculus sternocleidomastoideus,muscle,left,head and neck,
+muscle_sternocleidomastoid_r,Sternocleidomastoid muscle.r,Sternocleidomastoid (SCM; front-side neck muscle),Musculus sternocleidomastoideus,muscle,right,head and neck,
+muscle_scalene_anterior_l,Scalenus anterior muscle.l,"Scalene muscle, front (anterior scalene)",Musculus scalenus anterior,muscle,left,head and neck,
+muscle_scalene_anterior_r,Scalenus anterior muscle.r,"Scalene muscle, front (anterior scalene)",Musculus scalenus anterior,muscle,right,head and neck,
+muscle_scalene_middle_l,Scalenus medius muscle.l,"Scalene muscle, middle",Musculus scalenus medius,muscle,left,head and neck,
+muscle_scalene_middle_r,Scalenus medius muscle.r,"Scalene muscle, middle",Musculus scalenus medius,muscle,right,head and neck,
+muscle_scalene_posterior_l,Scalenus posterior muscle.l,"Scalene muscle, back (posterior scalene)",Musculus scalenus posterior,muscle,left,head and neck,
+muscle_scalene_posterior_r,Scalenus posterior muscle.r,"Scalene muscle, back (posterior scalene)",Musculus scalenus posterior,muscle,right,head and neck,
+muscle_longus_colli_l,Longus colli muscle.l,Deep neck flexor (longus colli),Musculus longus colli,muscle,left,head and neck,
+muscle_longus_colli_r,Longus colli muscle.r,Deep neck flexor (longus colli),Musculus longus colli,muscle,right,head and neck,
+muscle_longus_capitis_l,Longus capitis muscle.l,Deep neck flexor (longus capitis),Musculus longus capitis,muscle,left,head and neck,
+muscle_longus_capitis_r,Longus capitis muscle.r,Deep neck flexor (longus capitis),Musculus longus capitis,muscle,right,head and neck,
+muscle_suboccipitals_l,Rectus posterior major capitis muscle.l + Rectus posterior minor capitis muscle.l + Obliquus superior capitis muscle.l + Obliquus inferior capitis muscle.l,Suboccipital muscles (base of skull),Musculi suboccipitales,muscle,left,head and neck,Four small muscles merged.
+muscle_suboccipitals_r,Rectus posterior major capitis muscle.r + Rectus posterior minor capitis muscle.r + Obliquus superior capitis muscle.r + Obliquus inferior capitis muscle.r,Suboccipital muscles (base of skull),Musculi suboccipitales,muscle,right,head and neck,Four small muscles merged.
+muscle_splenius_l,Splenius capitis muscle.l + Splenius colli muscle.l,Splenius (back of neck),Musculus splenius capitis et colli,muscle,left,head and neck|chest and upper back (thoracic),
+muscle_splenius_r,Splenius capitis muscle.r + Splenius colli muscle.r,Splenius (back of neck),Musculus splenius capitis et colli,muscle,right,head and neck|chest and upper back (thoracic),
+muscle_levator_scapulae_l,Levator scapulae.l,Levator scapulae (neck to shoulder blade),Musculus levator scapulae,muscle,left,head and neck|shoulder,
+muscle_levator_scapulae_r,Levator scapulae.r,Levator scapulae (neck to shoulder blade),Musculus levator scapulae,muscle,right,head and neck|shoulder,
+muscle_trapezius_upper_l,Descending part of trapezius muscle.l,Upper trapezius,"Musculus trapezius, pars descendens",muscle,left,head and neck|shoulder,
+muscle_trapezius_upper_r,Descending part of trapezius muscle.r,Upper trapezius,"Musculus trapezius, pars descendens",muscle,right,head and neck|shoulder,
+muscle_trapezius_middle_l,Transverse part of trapezius muscle.l,Middle trapezius,"Musculus trapezius, pars transversa",muscle,left,shoulder|chest and upper back (thoracic),
+muscle_trapezius_middle_r,Transverse part of trapezius muscle.r,Middle trapezius,"Musculus trapezius, pars transversa",muscle,right,shoulder|chest and upper back (thoracic),
+muscle_trapezius_lower_l,Ascending part of trapezius muscle.l,Lower trapezius,"Musculus trapezius, pars ascendens",muscle,left,shoulder|chest and upper back (thoracic),
+muscle_trapezius_lower_r,Ascending part of trapezius muscle.r,Lower trapezius,"Musculus trapezius, pars ascendens",muscle,right,shoulder|chest and upper back (thoracic),
+muscle_rhomboid_major_l,Rhomboid major muscle.l,Rhomboid major (between shoulder blade and spine),Musculus rhomboideus major,muscle,left,shoulder|chest and upper back (thoracic),
+muscle_rhomboid_major_r,Rhomboid major muscle.r,Rhomboid major (between shoulder blade and spine),Musculus rhomboideus major,muscle,right,shoulder|chest and upper back (thoracic),
+muscle_rhomboid_minor_l,Rhomboid minor muscle.l,Rhomboid minor (between shoulder blade and spine),Musculus rhomboideus minor,muscle,left,shoulder|chest and upper back (thoracic),
+muscle_rhomboid_minor_r,Rhomboid minor muscle.r,Rhomboid minor (between shoulder blade and spine),Musculus rhomboideus minor,muscle,right,shoulder|chest and upper back (thoracic),
+muscle_serratus_anterior_l,Serratus anterior muscle.l,Serratus anterior (side of the rib cage),Musculus serratus anterior,muscle,left,shoulder|chest and upper back (thoracic),"High detail in source (about 25,000 triangles per side); may be simplified at export."
+muscle_serratus_anterior_r,Serratus anterior muscle.r,Serratus anterior (side of the rib cage),Musculus serratus anterior,muscle,right,shoulder|chest and upper back (thoracic),"High detail in source (about 25,000 triangles per side); may be simplified at export."
+muscle_pectoralis_major_l,Clavicular head of pectoralis major muscle.l + Sternocostal head of pectoralis major muscle.l + (Abdominal part of pectoralis major muscle).l,Chest muscle (pectoralis major),Musculus pectoralis major,muscle,left,shoulder|chest and upper back (thoracic),Three heads merged.
+muscle_pectoralis_major_r,Clavicular head of pectoralis major muscle.r + Sternocostal head of pectoralis major muscle.r + (Abdominal part of pectoralis major muscle).r,Chest muscle (pectoralis major),Musculus pectoralis major,muscle,right,shoulder|chest and upper back (thoracic),Three heads merged.
+muscle_pectoralis_minor_l,Pectoralis minor muscle.l,Pectoralis minor (deep chest muscle),Musculus pectoralis minor,muscle,left,shoulder|chest and upper back (thoracic),
+muscle_pectoralis_minor_r,Pectoralis minor muscle.r,Pectoralis minor (deep chest muscle),Musculus pectoralis minor,muscle,right,shoulder|chest and upper back (thoracic),
+muscle_latissimus_dorsi_l,Latissimus dorsi muscle.l,Latissimus dorsi (lats),Musculus latissimus dorsi,muscle,left,shoulder|chest and upper back (thoracic)|abdomen and lower back (lumbar),
+muscle_latissimus_dorsi_r,Latissimus dorsi muscle.r,Latissimus dorsi (lats),Musculus latissimus dorsi,muscle,right,shoulder|chest and upper back (thoracic)|abdomen and lower back (lumbar),
+muscle_deltoid_l,Clavicular part of deltoid muscle.l + Acromial part of deltoid muscle.l + Scapular spinal part of deltoid muscle.l,Deltoid (shoulder muscle),Musculus deltoideus,muscle,left,shoulder|upper arm,"Front, middle and back parts merged; can be kept separate if preferred."
+muscle_deltoid_r,Clavicular part of deltoid muscle.r + Acromial part of deltoid muscle.r + Scapular spinal part of deltoid muscle.r,Deltoid (shoulder muscle),Musculus deltoideus,muscle,right,shoulder|upper arm,"Front, middle and back parts merged; can be kept separate if preferred."
+muscle_supraspinatus_l,Supraspinatus muscle.l,Rotator cuff: supraspinatus,Musculus supraspinatus,muscle,left,shoulder,Tendon is not marked separately in source; it is part of this mesh.
+muscle_supraspinatus_r,Supraspinatus muscle.r,Rotator cuff: supraspinatus,Musculus supraspinatus,muscle,right,shoulder,Tendon is not marked separately in source; it is part of this mesh.
+muscle_infraspinatus_l,Infraspinatus muscle.l#!Tendon,Rotator cuff: infraspinatus,Musculus infraspinatus,muscle,left,shoulder,
+muscle_infraspinatus_r,Infraspinatus muscle.r#!Tendon,Rotator cuff: infraspinatus,Musculus infraspinatus,muscle,right,shoulder,
+muscle_teres_minor_l,Teres minor muscle.l,Rotator cuff: teres minor,Musculus teres minor,muscle,left,shoulder,Tendon is not marked separately in source; it is part of this mesh.
+muscle_teres_minor_r,Teres minor muscle.r,Rotator cuff: teres minor,Musculus teres minor,muscle,right,shoulder,Tendon is not marked separately in source; it is part of this mesh.
+muscle_subscapularis_l,Subscapularis muscle.l,Rotator cuff: subscapularis,Musculus subscapularis,muscle,left,shoulder,Tendon is not marked separately in source; it is part of this mesh.
+muscle_subscapularis_r,Subscapularis muscle.r,Rotator cuff: subscapularis,Musculus subscapularis,muscle,right,shoulder,Tendon is not marked separately in source; it is part of this mesh.
+muscle_teres_major_l,Teres major muscle.l,Teres major,Musculus teres major,muscle,left,shoulder,
+muscle_teres_major_r,Teres major muscle.r,Teres major,Musculus teres major,muscle,right,shoulder,
+muscle_intercostals_external_l,External intercostal muscles.l,"Rib muscles, outer layer (external intercostals)",Musculi intercostales externi,muscle,left,chest and upper back (thoracic),"High detail in source (about 41,000 triangles per side); will be simplified at export."
+muscle_intercostals_external_r,External intercostal muscles.r,"Rib muscles, outer layer (external intercostals)",Musculi intercostales externi,muscle,right,chest and upper back (thoracic),"High detail in source (about 41,000 triangles per side); will be simplified at export."
+muscle_intercostals_internal_l,Internal intercostal muscles.l,"Rib muscles, inner layer (internal intercostals)",Musculi intercostales interni,muscle,left,chest and upper back (thoracic),"High detail in source (about 40,000 triangles per side); will be simplified at export."
+muscle_intercostals_internal_r,Internal intercostal muscles.r,"Rib muscles, inner layer (internal intercostals)",Musculi intercostales interni,muscle,right,chest and upper back (thoracic),"High detail in source (about 40,000 triangles per side); will be simplified at export."
+muscle_diaphragm,Diaphragm,Diaphragm (breathing muscle),Diaphragma,muscle,midline,chest and upper back (thoracic)|abdomen and lower back (lumbar),"High detail in source (about 39,000 triangles); will be simplified at export."
+muscle_iliocostalis_l,Iliocostalis lumborum muscle.l + Iliocostalis thoracis muscle.l + Iliocostalis colli muscle,"Back extensor, outer column (erector spinae: iliocostalis)",Musculus iliocostalis,muscle,left,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),Three levels merged.
+muscle_iliocostalis_r,Iliocostalis lumborum muscle.r + Iliocostalis thoracis muscle.r + Iliocostalis colli muscle.r,"Back extensor, outer column (erector spinae: iliocostalis)",Musculus iliocostalis,muscle,right,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),Three levels merged.
+muscle_longissimus_l,Longissimus thoracis muscle.l + Longissimus colli muscle.l + Longissimus capitis muscle.l,"Back extensor, middle column (erector spinae: longissimus)",Musculus longissimus,muscle,left,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),Three levels merged.
+muscle_longissimus_r,Longissimus thoracis muscle.r + Longissimus colli muscle.r + Longissimus capitis muscle.r,"Back extensor, middle column (erector spinae: longissimus)",Musculus longissimus,muscle,right,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),Three levels merged.
+muscle_spinalis_l,Spinalis thoracis muscle.l + Spinalis colli muscle.l + Spinalis capitis muscle.l,"Back extensor, inner column (erector spinae: spinalis)",Musculus spinalis,muscle,left,head and neck|chest and upper back (thoracic),Three levels merged.
+muscle_spinalis_r,Spinalis thoracis muscle.r + Spinalis colli muscle.r + Spinalis capitis muscle.r,"Back extensor, inner column (erector spinae: spinalis)",Musculus spinalis,muscle,right,head and neck|chest and upper back (thoracic),Three levels merged.
+muscle_multifidus_lumbar_l,Multifidus lumborum muscle.l,"Multifidus, lower back (deep spinal stabiliser)",Musculus multifidus lumborum,muscle,left,abdomen and lower back (lumbar),
+muscle_multifidus_lumbar_r,Multifidus lumborum muscle.r,"Multifidus, lower back (deep spinal stabiliser)",Musculus multifidus lumborum,muscle,right,abdomen and lower back (lumbar),
+muscle_multifidus_thoracic_l,Multifidus thoracis muscle.l,"Multifidus, upper back",Musculus multifidus thoracis,muscle,left,chest and upper back (thoracic),
+muscle_multifidus_thoracic_r,Multifidus thoracis muscle.r,"Multifidus, upper back",Musculus multifidus thoracis,muscle,right,chest and upper back (thoracic),
+muscle_multifidus_cervical_l,Multifidus colli muscle.l,"Multifidus, neck",Musculus multifidus cervicis,muscle,left,head and neck,
+muscle_multifidus_cervical_r,Multifidus colli muscle.r,"Multifidus, neck",Musculus multifidus cervicis,muscle,right,head and neck,
+muscle_semispinalis_l,Semispinalis thoracis muscle.l + Semispinalis colli muscle.l,Semispinalis (deep back and neck muscle),Musculus semispinalis thoracis et cervicis,muscle,left,head and neck|chest and upper back (thoracic),Semispinalis capitis is not in the source.
+muscle_semispinalis_r,Semispinalis thoracis muscle.r + Semispinalis colli muscle.r,Semispinalis (deep back and neck muscle),Musculus semispinalis thoracis et cervicis,muscle,right,head and neck|chest and upper back (thoracic),Semispinalis capitis is not in the source.
+muscle_quadratus_lumborum_l,Quadratus lumborum muscle.l,Quadratus lumborum (QL; deep lower-back muscle),Musculus quadratus lumborum,muscle,left,abdomen and lower back (lumbar),
+muscle_quadratus_lumborum_r,Quadratus lumborum muscle.r,Quadratus lumborum (QL; deep lower-back muscle),Musculus quadratus lumborum,muscle,right,abdomen and lower back (lumbar),
+muscle_rectus_abdominis_l,Rectus abdominis muscle.l,Abdominal muscle (rectus abdominis; 'six-pack'),Musculus rectus abdominis,muscle,left,abdomen and lower back (lumbar),
+muscle_rectus_abdominis_r,Rectus abdominis muscle.r,Abdominal muscle (rectus abdominis; 'six-pack'),Musculus rectus abdominis,muscle,right,abdomen and lower back (lumbar),
+muscle_external_oblique_l,External abdominal oblique muscle.l,External oblique (side abdominal muscle),Musculus obliquus externus abdominis,muscle,left,chest and upper back (thoracic)|abdomen and lower back (lumbar),"High detail in source (about 30,000 triangles per side); will be simplified at export."
+muscle_external_oblique_r,External abdominal oblique muscle.r,External oblique (side abdominal muscle),Musculus obliquus externus abdominis,muscle,right,chest and upper back (thoracic)|abdomen and lower back (lumbar),"High detail in source (about 30,000 triangles per side); will be simplified at export."
+muscle_internal_oblique_l,Internal abdominal oblique muscle.l,Internal oblique (side abdominal muscle),Musculus obliquus internus abdominis,muscle,left,abdomen and lower back (lumbar),"High detail in source (about 29,000 triangles per side); will be simplified at export."
+muscle_internal_oblique_r,Internal abdominal oblique muscle.r,Internal oblique (side abdominal muscle),Musculus obliquus internus abdominis,muscle,right,abdomen and lower back (lumbar),"High detail in source (about 29,000 triangles per side); will be simplified at export."
+muscle_transversus_abdominis_l,Transversus abdominis muscle.l,Transversus abdominis (deep core muscle),Musculus transversus abdominis,muscle,left,abdomen and lower back (lumbar),"High detail in source (about 34,000 triangles per side); will be simplified at export."
+muscle_transversus_abdominis_r,Transversus abdominis muscle.r,Transversus abdominis (deep core muscle),Musculus transversus abdominis,muscle,right,abdomen and lower back (lumbar),"High detail in source (about 34,000 triangles per side); will be simplified at export."
+muscle_psoas_major_l,Psoas major.l#!Tendon,Psoas (deep hip flexor),Musculus psoas major,muscle,left,abdomen and lower back (lumbar)|pelvis and hip,Psoas minor is not in the source.
+muscle_psoas_major_r,Psoas major.r#!Tendon,Psoas (deep hip flexor),Musculus psoas major,muscle,right,abdomen and lower back (lumbar)|pelvis and hip,Psoas minor is not in the source.
+muscle_iliacus_l,Iliacus muscle.l#!Tendon,Iliacus (hip flexor inside the pelvis),Musculus iliacus,muscle,left,pelvis and hip,
+muscle_iliacus_r,Iliacus muscle.r#!Tendon,Iliacus (hip flexor inside the pelvis),Musculus iliacus,muscle,right,pelvis and hip,
+muscle_pelvic_floor_l,Pubococcygeus muscle.l + Iliococcygeus muscle.l + Pubo-analis muscle.l + Coccygeus muscle.l,Pelvic floor muscles,Musculus levator ani et musculus coccygeus,muscle,left,pelvis and hip,Four parts merged. Delete the row if not wanted.
+muscle_pelvic_floor_r,Pubococcygeus muscle.r + Iliococcygeus muscle.r + Pubo-analis muscle.r + Coccygeus muscle.r,Pelvic floor muscles,Musculus levator ani et musculus coccygeus,muscle,right,pelvis and hip,Four parts merged. Delete the row if not wanted.
+muscle_biceps_long_head_l,Long head of biceps brachii.l#!Tendon,"Biceps, long head","Musculus biceps brachii, caput longum",muscle,left,shoulder|upper arm|elbow,
+muscle_biceps_long_head_r,Long head of biceps brachii.r#!Tendon,"Biceps, long head","Musculus biceps brachii, caput longum",muscle,right,shoulder|upper arm|elbow,
+muscle_biceps_short_head_l,Short head of biceps brachii.l#!Tendon,"Biceps, short head","Musculus biceps brachii, caput breve",muscle,left,shoulder|upper arm|elbow,
+muscle_biceps_short_head_r,Short head of biceps brachii.r#!Tendon,"Biceps, short head","Musculus biceps brachii, caput breve",muscle,right,shoulder|upper arm|elbow,
+muscle_coracobrachialis_l,Coracobrachialis muscle.l,Coracobrachialis,Musculus coracobrachialis,muscle,left,shoulder|upper arm,
+muscle_coracobrachialis_r,Coracobrachialis muscle.r,Coracobrachialis,Musculus coracobrachialis,muscle,right,shoulder|upper arm,
+muscle_brachialis_l,Brachialis muscle.l,Brachialis (deep elbow flexor),Musculus brachialis,muscle,left,upper arm|elbow,
+muscle_brachialis_r,Brachialis muscle.r,Brachialis (deep elbow flexor),Musculus brachialis,muscle,right,upper arm|elbow,
+muscle_triceps_l,Long head of triceps brachii.l#!Tendon + Lateral head of triceps brachii.l#!Tendon + Medial head of triceps brachii.l#!Tendon,Triceps,Musculus triceps brachii,muscle,left,shoulder|upper arm|elbow,Three heads merged.
+muscle_triceps_r,Long head of triceps brachii.r#!Tendon + Lateral head of triceps brachii.r#!Tendon + Medial head of triceps brachii.r#!Tendon,Triceps,Musculus triceps brachii,muscle,right,shoulder|upper arm|elbow,Three heads merged.
+muscle_anconeus_l,Anconeus muscle.l,Anconeus (small muscle behind the elbow),Musculus anconeus,muscle,left,elbow,
+muscle_anconeus_r,Anconeus muscle.r,Anconeus (small muscle behind the elbow),Musculus anconeus,muscle,right,elbow,
+muscle_brachioradialis_l,Brachioradialis muscle.l,Brachioradialis,Musculus brachioradialis,muscle,left,elbow|forearm,
+muscle_brachioradialis_r,Brachioradialis muscle.r,Brachioradialis,Musculus brachioradialis,muscle,right,elbow|forearm,
+muscle_pronator_teres_l,Superficial head of pronator teres.l#!Tendon + Deep head of pronator teres.l,Pronator teres,Musculus pronator teres,muscle,left,elbow|forearm,
+muscle_pronator_teres_r,Superficial head of pronator teres.r#!Tendon + Deep head of pronator teres.r,Pronator teres,Musculus pronator teres,muscle,right,elbow|forearm,
+muscle_flexor_carpi_radialis_l,Flexor carpi radialis.l#!Tendon,"Wrist flexor, thumb side (flexor carpi radialis)",Musculus flexor carpi radialis,muscle,left,elbow|forearm|wrist and hand,
+muscle_flexor_carpi_radialis_r,Flexor carpi radialis.r#!Tendon,"Wrist flexor, thumb side (flexor carpi radialis)",Musculus flexor carpi radialis,muscle,right,elbow|forearm|wrist and hand,
+muscle_palmaris_longus_l,Palmaris longus muscle.l,Palmaris longus,Musculus palmaris longus,muscle,left,elbow|forearm|wrist and hand,
+muscle_palmaris_longus_r,Palmaris longus muscle.r,Palmaris longus,Musculus palmaris longus,muscle,right,elbow|forearm|wrist and hand,
+muscle_flexor_carpi_ulnaris_l,Humeral head of flexor carpi ulnaris.l + Ulnar head of flexor carpi ulnaris.l,"Wrist flexor, little-finger side (flexor carpi ulnaris)",Musculus flexor carpi ulnaris,muscle,left,elbow|forearm|wrist and hand,
+muscle_flexor_carpi_ulnaris_r,Humeral head of flexor carpi ulnaris.r + Ulnar head of flexor carpi ulnaris.r,"Wrist flexor, little-finger side (flexor carpi ulnaris)",Musculus flexor carpi ulnaris,muscle,right,elbow|forearm|wrist and hand,
+muscle_flexor_digitorum_superficialis_l,Humero-ulnar head of flexor digitorum superficialis.l#!Tendon + Radial head of flexor digitorum superficialis.l,"Finger flexor, superficial (FDS)",Musculus flexor digitorum superficialis,muscle,left,elbow|forearm|wrist and hand,
+muscle_flexor_digitorum_superficialis_r,Humero-ulnar head of flexor digitorum superficialis.r#!Tendon + Radial head of flexor digitorum superficialis.r,"Finger flexor, superficial (FDS)",Musculus flexor digitorum superficialis,muscle,right,elbow|forearm|wrist and hand,
+muscle_flexor_digitorum_profundus_l,Flexor digitorum profundus.l#!Tendon,"Finger flexor, deep (FDP)",Musculus flexor digitorum profundus,muscle,left,forearm|wrist and hand,
+muscle_flexor_digitorum_profundus_r,Flexor digitorum profundus.r#!Tendon,"Finger flexor, deep (FDP)",Musculus flexor digitorum profundus,muscle,right,forearm|wrist and hand,
+muscle_flexor_pollicis_longus_l,Flexor pollicis longus.l,Thumb flexor (flexor pollicis longus),Musculus flexor pollicis longus,muscle,left,forearm|wrist and hand,
+muscle_flexor_pollicis_longus_r,Flexor pollicis longus.r,Thumb flexor (flexor pollicis longus),Musculus flexor pollicis longus,muscle,right,forearm|wrist and hand,
+muscle_pronator_quadratus_l,Pronator quadratus.l,Pronator quadratus,Musculus pronator quadratus,muscle,left,forearm,
+muscle_pronator_quadratus_r,Pronator quadratus.r,Pronator quadratus,Musculus pronator quadratus,muscle,right,forearm,
+muscle_supinator_l,Supinator.l,Supinator,Musculus supinator,muscle,left,elbow|forearm,
+muscle_supinator_r,Supinator.r,Supinator,Musculus supinator,muscle,right,elbow|forearm,
+muscle_ecrl_l,Extensor carpi radialis longus.l,"Wrist extensor, long (ECRL)",Musculus extensor carpi radialis longus,muscle,left,elbow|forearm|wrist and hand,
+muscle_ecrl_r,Extensor carpi radialis longus.r,"Wrist extensor, long (ECRL)",Musculus extensor carpi radialis longus,muscle,right,elbow|forearm|wrist and hand,
+muscle_ecrb_l,Extensor carpi radialis brevis.l#!Tendon,"Wrist extensor, short (ECRB)",Musculus extensor carpi radialis brevis,muscle,left,elbow|forearm|wrist and hand,
+muscle_ecrb_r,Extensor carpi radialis brevis.r#!Tendon,"Wrist extensor, short (ECRB)",Musculus extensor carpi radialis brevis,muscle,right,elbow|forearm|wrist and hand,
+muscle_extensor_digitorum_l,Extensor digitorum.l#!Tendon,Finger extensor (extensor digitorum),Musculus extensor digitorum,muscle,left,elbow|forearm|wrist and hand,
+muscle_extensor_digitorum_r,Extensor digitorum.r#!Tendon,Finger extensor (extensor digitorum),Musculus extensor digitorum,muscle,right,elbow|forearm|wrist and hand,
+muscle_extensor_digiti_minimi_l,Extensor digiti minimi.l,Little finger extensor,Musculus extensor digiti minimi,muscle,left,forearm|wrist and hand,
+muscle_extensor_digiti_minimi_r,Extensor digiti minimi.r,Little finger extensor,Musculus extensor digiti minimi,muscle,right,forearm|wrist and hand,
+muscle_extensor_carpi_ulnaris_l,Humeral head of extensor carpi ulnaris.l#!Tendon + Ulnar head of extensor carpi ulnaris.l#!Tendon,"Wrist extensor, little-finger side (ECU)",Musculus extensor carpi ulnaris,muscle,left,elbow|forearm|wrist and hand,
+muscle_extensor_carpi_ulnaris_r,Humeral head of extensor carpi ulnaris.r#!Tendon + Ulnar head of extensor carpi ulnaris.r#!Tendon,"Wrist extensor, little-finger side (ECU)",Musculus extensor carpi ulnaris,muscle,right,elbow|forearm|wrist and hand,
+muscle_abductor_pollicis_longus_l,Abductor pollicis longus.l#!Tendon,"Thumb abductor, long (APL)",Musculus abductor pollicis longus,muscle,left,forearm|wrist and hand,
+muscle_abductor_pollicis_longus_r,Abductor pollicis longus.r#!Tendon,"Thumb abductor, long (APL)",Musculus abductor pollicis longus,muscle,right,forearm|wrist and hand,
+muscle_extensor_pollicis_brevis_l,Extensor pollicis brevis.l#!Tendon,"Thumb extensor, short (EPB)",Musculus extensor pollicis brevis,muscle,left,forearm|wrist and hand,
+muscle_extensor_pollicis_brevis_r,Extensor pollicis brevis.r#!Tendon,"Thumb extensor, short (EPB)",Musculus extensor pollicis brevis,muscle,right,forearm|wrist and hand,
+muscle_extensor_pollicis_longus_l,Extensor pollicis longus.l,"Thumb extensor, long (EPL)",Musculus extensor pollicis longus,muscle,left,forearm|wrist and hand,
+muscle_extensor_pollicis_longus_r,Extensor pollicis longus.r,"Thumb extensor, long (EPL)",Musculus extensor pollicis longus,muscle,right,forearm|wrist and hand,
+muscle_extensor_indicis_l,Extensor indicis.l,Index finger extensor,Musculus extensor indicis,muscle,left,forearm|wrist and hand,
+muscle_extensor_indicis_r,Extensor indicis.r,Index finger extensor,Musculus extensor indicis,muscle,right,forearm|wrist and hand,
+muscle_thenar_l,Abductor pollicis brevis.l + Superficial head of flexor pollicis brevis.l + Deep head of flexor pollicis brevis.l + Opponens pollicis muscle.l,Thumb pad muscles (thenar muscles),Musculi thenaris,muscle,left,wrist and hand,Three muscles merged.
+muscle_thenar_r,Abductor pollicis brevis.r + Superficial head of flexor pollicis brevis.r + Deep head of flexor pollicis brevis.r + Opponens pollicis muscle.r,Thumb pad muscles (thenar muscles),Musculi thenaris,muscle,right,wrist and hand,Three muscles merged.
+muscle_adductor_pollicis_l,Oblique head of adductor pollicis.l + Transverse head of adductor pollicis.l,Thumb adductor (adductor pollicis),Musculus adductor pollicis,muscle,left,wrist and hand,
+muscle_adductor_pollicis_r,Oblique head of adductor pollicis.r + Transverse head of adductor pollicis.r,Thumb adductor (adductor pollicis),Musculus adductor pollicis,muscle,right,wrist and hand,
+muscle_hypothenar_l,Abductor digiti minimi of hand.l + Flexor digiti minimi of hand.l + Opponens digiti minimi muscle of hand.l,Little-finger pad muscles (hypothenar muscles),Musculi hypothenaris,muscle,left,wrist and hand,Three muscles merged.
+muscle_hypothenar_r,Abductor digiti minimi of hand.r + Flexor digiti minimi of hand.r + Opponens digiti minimi muscle of hand.r,Little-finger pad muscles (hypothenar muscles),Musculi hypothenaris,muscle,right,wrist and hand,Three muscles merged.
+muscle_hand_intrinsics_l,Lumbrical muscles of hand.l + Dorsal interossei muscles of hand.l + Palmar interossei muscles.l,Small muscles between the hand bones (lumbricals and interossei),Musculi lumbricales et interossei manus,muscle,left,wrist and hand,Merged.
+muscle_hand_intrinsics_r,Lumbrical muscles of hand.r + Dorsal interossei muscles of hand.r + Palmar interossei muscles.r,Small muscles between the hand bones (lumbricals and interossei),Musculi lumbricales et interossei manus,muscle,right,wrist and hand,Merged.
+muscle_gluteus_maximus_l,Gluteus maximus muscle.l,Buttock muscle (gluteus maximus),Musculus gluteus maximus,muscle,left,pelvis and hip,
+muscle_gluteus_maximus_r,Gluteus maximus muscle.r,Buttock muscle (gluteus maximus),Musculus gluteus maximus,muscle,right,pelvis and hip,
+muscle_gluteus_medius_l,Gluteus medius muscle.l#!Tendon,Gluteus medius (side of hip),Musculus gluteus medius,muscle,left,pelvis and hip,
+muscle_gluteus_medius_r,Gluteus medius muscle.r#!Tendon,Gluteus medius (side of hip),Musculus gluteus medius,muscle,right,pelvis and hip,
+muscle_gluteus_minimus_l,Gluteus minimus muscle.l,Gluteus minimus (deep side of hip),Musculus gluteus minimus,muscle,left,pelvis and hip,
+muscle_gluteus_minimus_r,Gluteus minimus muscle.r,Gluteus minimus (deep side of hip),Musculus gluteus minimus,muscle,right,pelvis and hip,
+muscle_tensor_fasciae_latae_l,Tensor fasciae latae.l,Tensor fasciae latae (TFL),Musculus tensor fasciae latae,muscle,left,pelvis and hip|thigh,
+muscle_tensor_fasciae_latae_r,Tensor fasciae latae.r,Tensor fasciae latae (TFL),Musculus tensor fasciae latae,muscle,right,pelvis and hip|thigh,
+muscle_piriformis_l,Piriformis muscle.l,Piriformis (deep buttock muscle),Musculus piriformis,muscle,left,pelvis and hip,
+muscle_piriformis_r,Piriformis muscle.r,Piriformis (deep buttock muscle),Musculus piriformis,muscle,right,pelvis and hip,
+muscle_deep_hip_rotators_l,Superior gemellus muscle.l + Obturator internus.l + Inferior gemellus muscle.l + Quadratus femoris muscle.l + Obturator externus.l,"Deep hip rotators (gemelli, obturators, quadratus femoris)","Musculi gemelli, obturatorii et quadratus femoris",muscle,left,pelvis and hip,Five muscles merged.
+muscle_deep_hip_rotators_r,Superior gemellus muscle.r + Obturator internus.r + Inferior gemellus muscle.r + Quadratus femoris muscle.r + Obturator externus.r,"Deep hip rotators (gemelli, obturators, quadratus femoris)","Musculi gemelli, obturatorii et quadratus femoris",muscle,right,pelvis and hip,Five muscles merged.
+muscle_rectus_femoris_l,Rectus femoris muscle.l#!Tendon,Quadriceps: rectus femoris,Musculus rectus femoris,muscle,left,pelvis and hip|thigh|knee,
+muscle_rectus_femoris_r,Rectus femoris muscle.r#!Tendon,Quadriceps: rectus femoris,Musculus rectus femoris,muscle,right,pelvis and hip|thigh|knee,
+muscle_vastus_lateralis_l,Vastus lateralis muscle.l#!Tendon,Quadriceps: vastus lateralis (outer),Musculus vastus lateralis,muscle,left,thigh|knee,
+muscle_vastus_lateralis_r,Vastus lateralis muscle.r#!Tendon,Quadriceps: vastus lateralis (outer),Musculus vastus lateralis,muscle,right,thigh|knee,
+muscle_vastus_medialis_l,Vastus medialis muscle.l#!Tendon,Quadriceps: vastus medialis (inner; VMO),Musculus vastus medialis,muscle,left,thigh|knee,
+muscle_vastus_medialis_r,Vastus medialis muscle.r#!Tendon,Quadriceps: vastus medialis (inner; VMO),Musculus vastus medialis,muscle,right,thigh|knee,
+muscle_vastus_intermedius_l,Vastus intermedius muscle.l#!Tendon,Quadriceps: vastus intermedius (deep),Musculus vastus intermedius,muscle,left,thigh|knee,
+muscle_vastus_intermedius_r,Vastus intermedius muscle.r#!Tendon,Quadriceps: vastus intermedius (deep),Musculus vastus intermedius,muscle,right,thigh|knee,
+muscle_sartorius_l,Sartorius muscle.l,Sartorius,Musculus sartorius,muscle,left,pelvis and hip|thigh|knee,
+muscle_sartorius_r,Sartorius muscle.r,Sartorius,Musculus sartorius,muscle,right,pelvis and hip|thigh|knee,
+muscle_gracilis_l,Gracilis muscle.l,Gracilis (inner thigh),Musculus gracilis,muscle,left,pelvis and hip|thigh|knee,
+muscle_gracilis_r,Gracilis muscle.r,Gracilis (inner thigh),Musculus gracilis,muscle,right,pelvis and hip|thigh|knee,
+muscle_pectineus_l,Pectineus muscle.l,Pectineus (groin),Musculus pectineus,muscle,left,pelvis and hip|thigh,
+muscle_pectineus_r,Pectineus muscle.r,Pectineus (groin),Musculus pectineus,muscle,right,pelvis and hip|thigh,
+muscle_adductor_longus_l,Adductor longus.l#!Tendon,Adductor longus (groin),Musculus adductor longus,muscle,left,pelvis and hip|thigh,
+muscle_adductor_longus_r,Adductor longus.r#!Tendon,Adductor longus (groin),Musculus adductor longus,muscle,right,pelvis and hip|thigh,
+muscle_adductor_brevis_l,Adductor brevis.l,Adductor brevis (groin),Musculus adductor brevis,muscle,left,pelvis and hip|thigh,
+muscle_adductor_brevis_r,Adductor brevis.r,Adductor brevis (groin),Musculus adductor brevis,muscle,right,pelvis and hip|thigh,
+muscle_adductor_magnus_l,Adductor magnus.l + (Adductor minimus).l,Adductor magnus (inner thigh),Musculus adductor magnus,muscle,left,pelvis and hip|thigh,Includes the small 'adductor minimus' part.
+muscle_adductor_magnus_r,Adductor magnus.r + (Adductor minimus).r,Adductor magnus (inner thigh),Musculus adductor magnus,muscle,right,pelvis and hip|thigh,Includes the small 'adductor minimus' part.
+muscle_biceps_femoris_l,Long head of biceps femoris.l#!Tendon + Short head of biceps femoris.l#!Tendon,Hamstring: biceps femoris (outer),Musculus biceps femoris,muscle,left,pelvis and hip|thigh|knee,Long and short heads merged.
+muscle_biceps_femoris_r,Long head of biceps femoris.r#!Tendon + Short head of biceps femoris.r#!Tendon,Hamstring: biceps femoris (outer),Musculus biceps femoris,muscle,right,pelvis and hip|thigh|knee,Long and short heads merged.
+muscle_semitendinosus_l,Semitendinosus muscle.l#!Tendon,Hamstring: semitendinosus (inner),Musculus semitendinosus,muscle,left,pelvis and hip|thigh|knee,
+muscle_semitendinosus_r,Semitendinosus muscle.r#!Tendon,Hamstring: semitendinosus (inner),Musculus semitendinosus,muscle,right,pelvis and hip|thigh|knee,
+muscle_semimembranosus_l,Semimembranosus muscle.l#!Tendon,"Hamstring: semimembranosus (inner, deep)",Musculus semimembranosus,muscle,left,pelvis and hip|thigh|knee,
+muscle_semimembranosus_r,Semimembranosus muscle.r#!Tendon,"Hamstring: semimembranosus (inner, deep)",Musculus semimembranosus,muscle,right,pelvis and hip|thigh|knee,
+muscle_popliteus_l,Popliteus muscle.l,Popliteus (behind the knee),Musculus popliteus,muscle,left,knee,
+muscle_popliteus_r,Popliteus muscle.r,Popliteus (behind the knee),Musculus popliteus,muscle,right,knee,
+muscle_gastrocnemius_medial_l,Medial head of gastrocnemius.l,"Calf muscle, inner head (gastrocnemius)","Musculus gastrocnemius, caput mediale",muscle,left,knee|lower leg,
+muscle_gastrocnemius_medial_r,Medial head of gastrocnemius.r,"Calf muscle, inner head (gastrocnemius)","Musculus gastrocnemius, caput mediale",muscle,right,knee|lower leg,
+muscle_gastrocnemius_lateral_l,Lateral head of gastrocnemius.l,"Calf muscle, outer head (gastrocnemius)","Musculus gastrocnemius, caput laterale",muscle,left,knee|lower leg,
+muscle_gastrocnemius_lateral_r,Lateral head of gastrocnemius.r,"Calf muscle, outer head (gastrocnemius)","Musculus gastrocnemius, caput laterale",muscle,right,knee|lower leg,
+muscle_soleus_l,Soleus muscle.l,Deep calf muscle (soleus),Musculus soleus,muscle,left,lower leg,
+muscle_soleus_r,Soleus muscle.r,Deep calf muscle (soleus),Musculus soleus,muscle,right,lower leg,
+muscle_plantaris_l,Plantaris muscle.l,Plantaris,Musculus plantaris,muscle,left,knee|lower leg,
+muscle_plantaris_r,Plantaris muscle.r,Plantaris,Musculus plantaris,muscle,right,knee|lower leg,
+muscle_tibialis_anterior_l,Tibialis anterior muscle.l#!Tendon,Shin muscle (tibialis anterior),Musculus tibialis anterior,muscle,left,lower leg|ankle and foot,
+muscle_tibialis_anterior_r,Tibialis anterior muscle.r#!Tendon,Shin muscle (tibialis anterior),Musculus tibialis anterior,muscle,right,lower leg|ankle and foot,
+muscle_extensor_digitorum_longus_l,Extensor digitorum longus.l,Toe extensor (extensor digitorum longus),Musculus extensor digitorum longus,muscle,left,lower leg|ankle and foot,
+muscle_extensor_digitorum_longus_r,Extensor digitorum longus.r,Toe extensor (extensor digitorum longus),Musculus extensor digitorum longus,muscle,right,lower leg|ankle and foot,
+muscle_extensor_hallucis_longus_l,Extensor hallucis longus.l,Big toe extensor (extensor hallucis longus),Musculus extensor hallucis longus,muscle,left,lower leg|ankle and foot,
+muscle_extensor_hallucis_longus_r,Extensor hallucis longus.r,Big toe extensor (extensor hallucis longus),Musculus extensor hallucis longus,muscle,right,lower leg|ankle and foot,
+muscle_fibularis_longus_l,Fibularis longus muscle.l#!Tendon,"Peroneal muscle, long (peroneus longus)",Musculus fibularis longus,muscle,left,lower leg|ankle and foot,
+muscle_fibularis_longus_r,Fibularis longus muscle.r#!Tendon,"Peroneal muscle, long (peroneus longus)",Musculus fibularis longus,muscle,right,lower leg|ankle and foot,
+muscle_fibularis_brevis_l,Fibularis brevis muscle.l#!Tendon,"Peroneal muscle, short (peroneus brevis)",Musculus fibularis brevis,muscle,left,lower leg|ankle and foot,
+muscle_fibularis_brevis_r,Fibularis brevis muscle.r#!Tendon,"Peroneal muscle, short (peroneus brevis)",Musculus fibularis brevis,muscle,right,lower leg|ankle and foot,
+muscle_fibularis_tertius_l,Fibularis tertius muscle.l,Peroneus tertius,Musculus fibularis tertius,muscle,left,lower leg|ankle and foot,
+muscle_fibularis_tertius_r,Fibularis tertius muscle.r,Peroneus tertius,Musculus fibularis tertius,muscle,right,lower leg|ankle and foot,
+muscle_tibialis_posterior_l,Tibialis posterior muscle.l#!Tendon,Tibialis posterior (deep calf muscle supporting the arch),Musculus tibialis posterior,muscle,left,lower leg|ankle and foot,
+muscle_tibialis_posterior_r,Tibialis posterior muscle.r#!Tendon,Tibialis posterior (deep calf muscle supporting the arch),Musculus tibialis posterior,muscle,right,lower leg|ankle and foot,
+muscle_flexor_digitorum_longus_l,Flexor digitorum longus.l,Toe flexor (flexor digitorum longus),Musculus flexor digitorum longus,muscle,left,lower leg|ankle and foot,
+muscle_flexor_digitorum_longus_r,Flexor digitorum longus.r,Toe flexor (flexor digitorum longus),Musculus flexor digitorum longus,muscle,right,lower leg|ankle and foot,
+muscle_flexor_hallucis_longus_l,Flexor hallucis longus.l#!Tendon,Big toe flexor (flexor hallucis longus),Musculus flexor hallucis longus,muscle,left,lower leg|ankle and foot,
+muscle_flexor_hallucis_longus_r,Flexor hallucis longus.r#!Tendon,Big toe flexor (flexor hallucis longus),Musculus flexor hallucis longus,muscle,right,lower leg|ankle and foot,
+muscle_extensor_digitorum_brevis_l,Extensor digitorum brevis.l + Extensor hallucis brevis.l,Short toe extensors (top of foot),Musculi extensor digitorum brevis et extensor hallucis brevis,muscle,left,ankle and foot,Two muscles merged.
+muscle_extensor_digitorum_brevis_r,Extensor digitorum brevis.r + Extensor hallucis brevis.r,Short toe extensors (top of foot),Musculi extensor digitorum brevis et extensor hallucis brevis,muscle,right,ankle and foot,Two muscles merged.
+muscle_abductor_hallucis_l,Abductor hallucis.l,Abductor hallucis (inner arch muscle),Musculus abductor hallucis,muscle,left,ankle and foot,
+muscle_abductor_hallucis_r,Abductor hallucis.r,Abductor hallucis (inner arch muscle),Musculus abductor hallucis,muscle,right,ankle and foot,
+muscle_flexor_digitorum_brevis_l,Flexor digitorum brevis.l,Short toe flexor (sole of foot),Musculus flexor digitorum brevis,muscle,left,ankle and foot,
+muscle_flexor_digitorum_brevis_r,Flexor digitorum brevis.r,Short toe flexor (sole of foot),Musculus flexor digitorum brevis,muscle,right,ankle and foot,
+muscle_abductor_digiti_minimi_foot_l,Abductor digiti minimi of foot.l,Abductor of the little toe (outer sole),Musculus abductor digiti minimi pedis,muscle,left,ankle and foot,
+muscle_abductor_digiti_minimi_foot_r,Abductor digiti minimi of foot.r,Abductor of the little toe (outer sole),Musculus abductor digiti minimi pedis,muscle,right,ankle and foot,
+muscle_foot_intrinsics_deep_l,Quadratus plantae muscle.l + Lumbrical muscles of foot.l + Medial head of flexor hallucis brevis.l + Lateral head of flexor hallucis brevis.l + Oblique head of adductor hallucis.l + Transverse head of adductor hallucis.l + Flexor digiti minimi of foot.l + Dorsal interossei muscles of foot.l + Plantar interossei muscles.l,Deep small muscles of the foot,Musculi plantares profundi et interossei pedis,muscle,left,ankle and foot,Nine small muscles merged.
+muscle_foot_intrinsics_deep_r,Quadratus plantae muscle.r + Lumbrical muscles of foot.r + Medial head of flexor hallucis brevis.r + Lateral head of flexor hallucis brevis.r + Oblique head of adductor hallucis.r + Transverse head of adductor hallucis.r + Flexor digiti minimi of foot.r + Dorsal interossei muscles of foot.r + Plantar interossei muscles.r,Deep small muscles of the foot,Musculi plantares profundi et interossei pedis,muscle,right,ankle and foot,Nine small muscles merged.
+nerve_spinal_cord,White matter of spinal cord,Spinal cord,Medulla spinalis,nerve,midline,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),"A mesh, not a curve. Source also has internal tracts and the dura, which are not proposed."
+nerve_cauda_equina,Cauda equina,Nerve roots at the base of the spine (cauda equina),Cauda equina,nerve,midline,abdomen and lower back (lumbar)|pelvis and hip,"This is the only object covering the lower lumbar and sacral nerve roots; individual roots (e.g. L5, S1) are not separate. Drawn as a curve (line) in source; becomes a thin tube at export."
+nerve_spinal_nerve_roots_l,Anterior root of spinal nerve.l + Posterior root of spinal nerve.l + Spinal ganglion.l,Spinal nerve roots,Radices nervorum spinalium,nerve,left,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),One object per side for all levels (neck to upper lumbar); individual roots cannot be highlighted unless cut at export. Front and back roots and ganglia merged. Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_spinal_nerve_roots_r,Anterior root of spinal nerve.r + Posterior root of spinal nerve.r + Spinal ganglion.r,Spinal nerve roots,Radices nervorum spinalium,nerve,right,head and neck|chest and upper back (thoracic)|abdomen and lower back (lumbar),One object per side for all levels (neck to upper lumbar); individual roots cannot be highlighted unless cut at export. Front and back roots and ganglia merged. Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_brachial_plexus_l,Roots of brachial plexus.l + Superior trunk of brachial plexus.l + Middle trunk of brachial plexus.l + Inferior trunk of brachial plexus.l + Anterior division of superior trunk of brachial plexus.l + Posterior division of superior trunk of brachial plexus.l + Anterior division of middle trunk of brachial plexus.l + Posterior division of middle trunk of brachial plexus.l + Anterior division of inferior trunk of brachial plexus.l + Posterior division of inferior trunk of brachial plexus.l + Posterior cord of brachial plexus.l,Brachial plexus (nerve network from neck to arm),Plexus brachialis,nerve,left,head and neck|shoulder,"Roots, trunks, divisions and posterior cord merged. Lateral and medial cords are not separate objects in source. Drawn as a curve (line) in source; becomes a thin tube at export."
+nerve_brachial_plexus_r,Roots of brachial plexus.r + Superior trunk of brachial plexus.r + Middle trunk of brachial plexus.r + Inferior trunk of brachial plexus.r + Anterior division of superior trunk of brachial plexus.r + Posterior division of superior trunk of brachial plexus.r + Anterior division of middle trunk of brachial plexus.r + Posterior division of middle trunk of brachial plexus.r + Anterior division of inferior trunk of brachial plexus.r + Posterior division of inferior trunk of brachial plexus.r + Posterior cord of brachial plexus.r,Brachial plexus (nerve network from neck to arm),Plexus brachialis,nerve,right,head and neck|shoulder,"Roots, trunks, divisions and posterior cord merged. Lateral and medial cords are not separate objects in source. Drawn as a curve (line) in source; becomes a thin tube at export."
+nerve_suprascapular_l,Suprascapular nerve.l,Suprascapular nerve,Nervus suprascapularis,nerve,left,shoulder,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_suprascapular_r,Suprascapular nerve.r,Suprascapular nerve,Nervus suprascapularis,nerve,right,shoulder,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_long_thoracic_l,Long thoracic nerve.l,Long thoracic nerve,Nervus thoracicus longus,nerve,left,shoulder|chest and upper back (thoracic),Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_long_thoracic_r,Long thoracic nerve.r,Long thoracic nerve,Nervus thoracicus longus,nerve,right,shoulder|chest and upper back (thoracic),Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_dorsal_scapular_l,Dorsal scapular nerve.l,Dorsal scapular nerve,Nervus dorsalis scapulae,nerve,left,head and neck|shoulder,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_dorsal_scapular_r,Dorsal scapular nerve.r,Dorsal scapular nerve,Nervus dorsalis scapulae,nerve,right,head and neck|shoulder,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_axillary_l,Axillary nerve.l,Axillary nerve,Nervus axillaris,nerve,left,shoulder,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_axillary_r,Axillary nerve.r,Axillary nerve,Nervus axillaris,nerve,right,shoulder,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_musculocutaneous_l,Musculocutaneous nerve.l,Musculocutaneous nerve,Nervus musculocutaneus,nerve,left,shoulder|upper arm,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_musculocutaneous_r,Musculocutaneous nerve.r,Musculocutaneous nerve,Nervus musculocutaneus,nerve,right,shoulder|upper arm,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_median_l,Median nerve.l,Median nerve,Nervus medianus,nerve,left,shoulder|upper arm|elbow|forearm|wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_median_r,Median nerve.r,Median nerve,Nervus medianus,nerve,right,shoulder|upper arm|elbow|forearm|wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_anterior_interosseous_l,Anterior interosseous nerve of forearm.l,Anterior interosseous nerve (branch of median),Nervus interosseus antebrachii anterior,nerve,left,forearm,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_anterior_interosseous_r,Anterior interosseous nerve of forearm.r,Anterior interosseous nerve (branch of median),Nervus interosseus antebrachii anterior,nerve,right,forearm,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_median_digital_l,Common palmar digital branches of median nerve.l + Proper palmar digital branches of median nerve.l,Finger nerves from the median nerve (digital nerves),Nervi digitales palmares nervi mediani,nerve,left,wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_median_digital_r,Common palmar digital branches of median nerve.r + Proper palmar digital branches of median nerve.r,Finger nerves from the median nerve (digital nerves),Nervi digitales palmares nervi mediani,nerve,right,wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_ulnar_l,Ulnar nerve.l,Ulnar nerve,Nervus ulnaris,nerve,left,shoulder|upper arm|elbow|forearm|wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_ulnar_r,Ulnar nerve.r,Ulnar nerve,Nervus ulnaris,nerve,right,shoulder|upper arm|elbow|forearm|wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_ulnar_hand_l,Superficial branch of ulnar nerve.l + Deep branch of ulnar nerve.l + Common palmar digital branches of ulnar nerve.l + Proper palmar digital branches of ulnar nerve.l,Ulnar nerve branches in the hand,Rami nervi ulnaris (manus),nerve,left,wrist and hand,Merged. Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_ulnar_hand_r,Superficial branch of ulnar nerve.r + Deep branch of ulnar nerve.r + Common palmar digital branches of ulnar nerve.r + Proper palmar digital branches of ulnar nerve.r,Ulnar nerve branches in the hand,Rami nervi ulnaris (manus),nerve,right,wrist and hand,Merged. Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_radial_l,Radial nerve.l,Radial nerve,Nervus radialis,nerve,left,shoulder|upper arm|elbow,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_radial_r,Radial nerve.r,Radial nerve,Nervus radialis,nerve,right,shoulder|upper arm|elbow,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_radial_superficial_l,Superficial branch of radial nerve.l,"Radial nerve, superficial branch (back of hand sensation)",Ramus superficialis nervi radialis,nerve,left,elbow|forearm|wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_radial_superficial_r,Superficial branch of radial nerve.r,"Radial nerve, superficial branch (back of hand sensation)",Ramus superficialis nervi radialis,nerve,right,elbow|forearm|wrist and hand,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_posterior_interosseous_l,Deep branch of radial nerve.l + Posterior interosseous nerve of forearm.l,Posterior interosseous nerve (deep branch of radial),Nervus interosseus antebrachii posterior,nerve,left,elbow|forearm,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_posterior_interosseous_r,Deep branch of radial nerve.r + Posterior interosseous nerve of forearm.r,Posterior interosseous nerve (deep branch of radial),Nervus interosseus antebrachii posterior,nerve,right,elbow|forearm,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_femoral_l,Femoral nerve.l,Femoral nerve,Nervus femoralis,nerve,left,abdomen and lower back (lumbar)|pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_femoral_r,Femoral nerve.r,Femoral nerve,Nervus femoralis,nerve,right,abdomen and lower back (lumbar)|pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_saphenous_l,Saphenous nerve.l,Saphenous nerve (inner leg sensation),Nervus saphenus,nerve,left,thigh|knee|lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_saphenous_r,Saphenous nerve.r,Saphenous nerve (inner leg sensation),Nervus saphenus,nerve,right,thigh|knee|lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_lateral_femoral_cutaneous_l,Lateral femoral cutaneous nerve.l,Lateral femoral cutaneous nerve (outer thigh sensation),Nervus cutaneus femoris lateralis,nerve,left,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_lateral_femoral_cutaneous_r,Lateral femoral cutaneous nerve.r,Lateral femoral cutaneous nerve (outer thigh sensation),Nervus cutaneus femoris lateralis,nerve,right,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_obturator_l,Obturator nerve.l + Anterior branch of obturator nerve.l + Posterior branch of obturator nerve.l,Obturator nerve,Nervus obturatorius,nerve,left,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_obturator_r,Obturator nerve.r + Anterior branch of obturator nerve.r + Posterior branch of obturator nerve.r,Obturator nerve,Nervus obturatorius,nerve,right,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_superior_gluteal_l,Superior gluteal nerve.l,Superior gluteal nerve,Nervus gluteus superior,nerve,left,pelvis and hip,Inferior gluteal nerve is not in the source. Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_superior_gluteal_r,Superior gluteal nerve.r,Superior gluteal nerve,Nervus gluteus superior,nerve,right,pelvis and hip,Inferior gluteal nerve is not in the source. Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_pudendal_l,Pudendal nerve.l,Pudendal nerve,Nervus pudendus,nerve,left,pelvis and hip,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_pudendal_r,Pudendal nerve.r,Pudendal nerve,Nervus pudendus,nerve,right,pelvis and hip,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_posterior_femoral_cutaneous_l,Posterior femoral cutaneous nerve.l,Posterior femoral cutaneous nerve (back of thigh sensation),Nervus cutaneus femoris posterior,nerve,left,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_posterior_femoral_cutaneous_r,Posterior femoral cutaneous nerve.r,Posterior femoral cutaneous nerve (back of thigh sensation),Nervus cutaneus femoris posterior,nerve,right,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_sciatic_l,Sciatic nerve.l,Sciatic nerve,Nervus ischiadicus,nerve,left,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_sciatic_r,Sciatic nerve.r,Sciatic nerve,Nervus ischiadicus,nerve,right,pelvis and hip|thigh,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_tibial_l,Tibial nerve.l,Tibial nerve,Nervus tibialis,nerve,left,knee|lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_tibial_r,Tibial nerve.r,Tibial nerve,Nervus tibialis,nerve,right,knee|lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_common_fibular_l,Common fibular nerve.l,Common peroneal nerve,Nervus fibularis communis,nerve,left,knee|lower leg,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_common_fibular_r,Common fibular nerve.r,Common peroneal nerve,Nervus fibularis communis,nerve,right,knee|lower leg,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_deep_fibular_l,Deep fibular nerve.l,Deep peroneal nerve,Nervus fibularis profundus,nerve,left,lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_deep_fibular_r,Deep fibular nerve.r,Deep peroneal nerve,Nervus fibularis profundus,nerve,right,lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_superficial_fibular_l,Superficial fibular nerve.l,Superficial peroneal nerve,Nervus fibularis superficialis,nerve,left,lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_superficial_fibular_r,Superficial fibular nerve.r,Superficial peroneal nerve,Nervus fibularis superficialis,nerve,right,lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_sural_l,Sural nerve.l,Sural nerve (outer ankle sensation),Nervus suralis,nerve,left,lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_sural_r,Sural nerve.r,Sural nerve (outer ankle sensation),Nervus suralis,nerve,right,lower leg|ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_medial_plantar_l,Medial plantar nerve.l,Medial plantar nerve (sole of foot),Nervus plantaris medialis,nerve,left,ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_medial_plantar_r,Medial plantar nerve.r,Medial plantar nerve (sole of foot),Nervus plantaris medialis,nerve,right,ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_lateral_plantar_l,Lateral plantar nerve.l,Lateral plantar nerve (sole of foot),Nervus plantaris lateralis,nerve,left,ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_lateral_plantar_r,Lateral plantar nerve.r,Lateral plantar nerve (sole of foot),Nervus plantaris lateralis,nerve,right,ankle and foot,Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_plantar_digital_l,Common plantar digital branches of medial plantar nerve.l + Common plantar digital branches of lateral plantar nerve.l + Proper plantar digital branches of medial plantar nerve.l + Proper plantar digital branches of lateral plantar nerve.l,Toe nerves (plantar digital nerves; Morton's neuroma site),Nervi digitales plantares,nerve,left,ankle and foot,Merged. Drawn as a curve (line) in source; becomes a thin tube at export.
+nerve_plantar_digital_r,Common plantar digital branches of medial plantar nerve + Common plantar digital branches of lateral plantar nerve.r + Proper plantar digital branches of medial plantar nerve.r + Proper plantar digital branches of lateral plantar nerve.r,Toe nerves (plantar digital nerves; Morton's neuroma site),Nervi digitales plantares,nerve,right,ankle and foot,Merged. Drawn as a curve (line) in source; becomes a thin tube at export.

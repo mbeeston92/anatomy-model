@@ -1,0 +1,25 @@
+# Original Z-Anatomy files (too large for Git; never modified)
+source/
+Source/
+
+# Node
+node_modules/
+dist/
+
+# Large intermediate files
+*.blend
+*.blend1
+*.fbx
+*.obj
+work/
+tmp/
+*.log
+
+# Raw (uncompressed) model exports; compressed ones in public/models/ are kept
+*.raw.glb
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
