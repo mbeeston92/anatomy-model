@@ -168,10 +168,16 @@ Done; see Stage 2 below.
 
 ### How to start the app on the laptop
 
-1. Open a terminal in the project folder (`C:\Users\Mbees\Desktop\anatomy-model`).
-2. First time only, or after pulling changes: `npm install`
-3. Type `npm start`. The app opens in the browser at `http://localhost:5173/`.
+**Easiest:** in the project folder, double-click `Start anatomy model.cmd`. A black window opens and the app appears in the browser at `http://localhost:5173/`. Close the black window to stop it.
+
+**From a terminal (PowerShell):**
+
+1. `cd "C:\Users\Mbees\Desktop\anatomy-model"`
+2. First time only, or after pulling changes: `npm.cmd install`
+3. `npm.cmd start`
 4. To stop it, click in the terminal and press `Ctrl` + `C`.
+
+On this laptop PowerShell blocks plain `npm` ("running scripts is disabled on this system"). Typing `npm.cmd` instead avoids that without changing any Windows security setting. The same applies to the other commands below (`npm.cmd run build`, and so on).
 
 Other commands:
 
