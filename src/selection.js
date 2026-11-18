@@ -123,7 +123,7 @@ export function createSelection({
     if (!shown) {
       $('info-state').textContent = switchedOff
         ? 'Hidden at the moment.'
-        : 'Hidden at the moment (its region or system is switched off).';
+        : 'Hidden at the moment (its region, system or side is switched off).';
     }
   }
 

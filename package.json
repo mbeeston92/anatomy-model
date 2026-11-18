@@ -13,6 +13,7 @@
     "check:regions": "node tests/check-regions.mjs",
     "check:select": "node tests/check-select.mjs",
     "check:highlights": "node tests/check-highlights.mjs",
+    "check:side": "node tests/check-side.mjs",
     "build:models": "node scripts/build-models.mjs",
     "export": "node scripts/build-models.mjs --only export",
     "compress": "node scripts/compress.mjs",

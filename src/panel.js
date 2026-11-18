@@ -26,19 +26,20 @@ const SIDE_CHOICES = [
 ];
 const sidesOf = (choice) => SIDE_CHOICES.find((c) => c.id === choice).sides;
 
-/** A Left / Right / Both chooser. Returns { node, get value, refresh(marks) }. */
+/** A Left / Right / Both chooser. Returns { node, get value, set value, refresh(marks) }. */
 function sideChooser(label, initial, onPick) {
   let value = initial;
   const buttons = SIDE_CHOICES.map((choice) => {
     const button = el('button', { type: 'button', class: 'seg__option', role: 'radio', text: choice.label });
     button.dataset.side = choice.id;
-    button.addEventListener('click', () => { value = choice.id; onPick(); });
+    button.addEventListener('click', () => { value = choice.id; onPick(choice.id); });
     return button;
   });
   const node = el('div', { class: 'seg', role: 'radiogroup', 'aria-label': label }, buttons);
   return {
     node,
     get value() { return value; },
+    set value(next) { value = next; },
     /** marks: { left: 'hidden'|'only'|'shown', right: ..., both: ... } (optional) */
     refresh(marks = {}) {
       for (const button of buttons) {
@@ -93,6 +94,27 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
     if (only) $('only-name').textContent = `Showing only: ${fullLabel(only.data)}.`;
   });
 
+  // ----- Soft-tissue side -----
+  const regionChoosers = [];
+  let lastSoftSide = visibility.softSide;
+  const setRegionChoosers = (choice) => {
+    for (const chooser of regionChoosers) chooser.value = choice;
+  };
+  const softSide = sideChooser('Side for soft tissue', 'both', (choice) => {
+    setRegionChoosers(choice);
+    if (!visibility.setSoftSide(choice)) refresh();
+  });
+  $('soft-side').append(softSide.node);
+  refreshers.push(() => {
+    const current = visibility.softSide ?? 'both';
+    softSide.value = current;
+    if (visibility.softSide !== lastSoftSide) {
+      lastSoftSide = visibility.softSide;
+      setRegionChoosers(current);
+    }
+    softSide.refresh();
+  });
+
   // ----- Systems -----
   const systemBox = $('systems');
   for (const system of systems) {
@@ -111,6 +133,7 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
     const label = regionLabel(region);
     const paired = visibility.isPaired(region);
     const chooser = paired ? sideChooser(`Side for ${label}`, 'both', () => refresh()) : null;
+    if (chooser) regionChoosers.push(chooser);
     const selected = () => (chooser ? sidesOf(chooser.value) : SIDES);
 
     const stateText = el('span', { class: 'region__state' });

@@ -3,13 +3,14 @@
 // structures (set by quick views). Also keeps the undo / redo history.
 //
 // The rule:
-//   1. A structure whose system is unticked, or which is individually hidden,
-//      is not shown.
+//   1. A structure whose system is unticked, whose soft-tissue side is switched
+//      off, or which is individually hidden, is not shown.
 //   2. A structure in the isolated region is shown.
 //   3. Otherwise soft tissue is hidden if ANY of its regions is hidden;
 //      a bone is hidden only when ALL of its regions are hidden.
-// Midline structures (spine, sacrum) count a region as hidden only when both
-// its left and right sides are hidden.
+// Midline structures (spine, sacrum, spinal cord) count a region as hidden
+// only when both its left and right sides are hidden, and stay shown when
+// soft tissue is set to one side.
 import * as THREE from 'three';
 
 export const SIDES = ['left', 'right'];
@@ -28,6 +29,7 @@ const key = (region, side) => `${region}|${side}`;
 const emptyState = () => ({
   hidden: new Set(),          // "region|side" keys
   isolated: null,             // { region, sides: ['left', 'right'] } or null
+  softSide: null,             // 'left' or 'right' when soft tissue is shown on one side only; null for both
   systemsOff: new Set(),      // system ids that are unticked
   structuresOff: new Set(),   // structure ids hidden one by one (quick views, "Hide this")
   only: null,                 // id of the one structure being shown on its own ("Isolate this")
@@ -39,6 +41,7 @@ const emptyState = () => ({
 const serialise = (s) => JSON.stringify({
   hidden: [...s.hidden].sort(),
   isolated: s.isolated && { region: s.isolated.region, sides: [...s.isolated.sides].sort() },
+  softSide: s.softSide,
   systemsOff: [...s.systemsOff].sort(),
   structuresOff: [...s.structuresOff].sort(),
   only: s.only,
@@ -55,6 +58,7 @@ const deserialise = (text) => {
   return {
     hidden: new Set(o.hidden),
     isolated: o.isolated,
+    softSide: o.softSide ?? null,
     systemsOff: new Set(o.systemsOff),
     structuresOff: new Set(o.structuresOff),
     only: o.only ?? null,
@@ -89,12 +93,13 @@ export function createVisibility({ registry, materials, looks = null, onChange =
 
   // ----- The rule -----
 
-  /** 'shown', 'filtered' (system or single structure switched off) or 'hidden' (by region). */
+  /** 'shown', 'filtered' (system, soft-tissue side or single structure switched off) or 'hidden' (by region). */
   function statusOf(entry, s = state) {
     const d = entry.data;
     // One structure on its own: everything else counts as hidden (and is ghosted).
     if (s.only) return entry.id === s.only ? 'shown' : 'hidden';
     if (s.systemsOff.has(d.system) || s.structuresOff.has(entry.id)) return 'filtered';
+    if (s.softSide && d.system !== 'bone' && d.side !== 'midline' && d.side !== s.softSide) return 'filtered';
 
     const iso = s.isolated;
     if (iso && d.regions.includes(iso.region) && (d.side === 'midline' || iso.sides.includes(d.side))) {
@@ -209,6 +214,12 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     return commit((s) => { if (on) s.systemsOff.delete(systemId); else s.systemsOff.add(systemId); });
   }
 
+  /** Show soft tissue on 'left', 'right' or both (null / 'both'). Bones and midline structures always stay. */
+  function setSoftSide(side) {
+    const next = side === 'left' || side === 'right' ? side : null;
+    return commit((s) => { s.softSide = next; });
+  }
+
   function showStructures() {
     return commit((s) => { s.structuresOff = new Set(); });
   }
@@ -234,6 +245,9 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     return commit((s) => {
       s.structuresOff.delete(id);
       s.systemsOff.delete(entry.data.system);
+      if (s.softSide && entry.data.system !== 'bone' && entry.data.side !== 'midline' && entry.data.side !== s.softSide) {
+        s.softSide = null;
+      }
       if (statusOf(entry, s) === 'shown') return;
       const sides = entry.data.side === 'midline' ? SIDES : [entry.data.side];
       for (const region of entry.data.regions) for (const side of sides) s.hidden.delete(key(region, side));
@@ -346,7 +360,7 @@ export function createVisibility({ registry, materials, looks = null, onChange =
   return {
     regions,
     isPaired,
-    hide, show, isolate, isIsolated, setSystem, showStructures, showEverything, applyPreset,
+    hide, show, isolate, isIsolated, setSystem, setSoftSide, showStructures, showEverything, applyPreset,
     setStructure, isolateStructure, reveal,
     highlightOf, setHighlight, removeHighlight, clearHighlights, addSpot, removeSpot,
     /** [{ id, colour }] in the order they were made. */
@@ -358,6 +372,7 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     setEmphasis(on) { emphasis = !!on; apply(); },
     get only() { return state.only; },
     get isolated() { return state.isolated; },
+    get softSide() { return state.softSide; },
     structureOn: (id) => !state.structuresOff.has(id),
     undo: () => step(-1),
     redo: () => step(1),
