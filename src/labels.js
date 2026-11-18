@@ -174,8 +174,32 @@ export function createLabels({ registry, visibility, camera, viewport, getSelect
     note.hidden = wanted.length > 0 && leftOut === 0;
   }
 
+  /** Positions of all labels currently on screen, in viewport pixels (for Save image). */
+  function getLayout() {
+    if (!enabled) return [];
+    const base = viewport.getBoundingClientRect();
+    const out = [];
+    for (const item of items.values()) {
+      if (!item.node.isConnected) continue;
+      const r = item.node.getBoundingClientRect();
+      out.push({
+        text: item.node.textContent,
+        left: r.left - base.left,
+        top: r.top - base.top,
+        width: r.width,
+        height: r.height,
+        x1: Number(item.line.getAttribute('x1')),
+        y1: Number(item.line.getAttribute('y1')),
+        x2: Number(item.line.getAttribute('x2')),
+        y2: Number(item.line.getAttribute('y2')),
+      });
+    }
+    return out;
+  }
+
   return {
     update,
+    getLayout,
     /** Call when what is shown or selected changes. */
     invalidate() { stale = true; },
     get enabled() { return enabled; },

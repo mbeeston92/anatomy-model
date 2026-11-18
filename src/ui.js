@@ -50,6 +50,7 @@ export function createUI({ onView, onRetry }) {
     $('error-detail').textContent = detail;
     error.classList.toggle('is-partial', partial);
     error.hidden = false;
+    loading.hidden = true;
     loading.classList.add('is-done');
   }
   function hideError() {
@@ -57,6 +58,7 @@ export function createUI({ onView, onRetry }) {
   }
   $('error-retry').addEventListener('click', () => {
     hideError();
+    loading.hidden = false;
     loading.classList.remove('is-done');
     onRetry();
   });

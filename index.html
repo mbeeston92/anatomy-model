@@ -6,6 +6,8 @@
     <title>Anatomy model</title>
     <meta name="description" content="Interactive 3D anatomy model for patient education." />
     <link rel="icon" href="data:," />
+    <link rel="preload" href="./data/structures.json" as="fetch" crossorigin="anonymous" />
+    <link rel="preload" href="./models/bones.glb" as="fetch" crossorigin="anonymous" />
   </head>
   <body>
     <div id="app" class="app">
@@ -48,38 +50,44 @@
 
           <section id="highlights" class="section highlights" aria-labelledby="highlights-heading">
             <div class="section__head">
-              <h2 id="highlights-heading" class="panel__heading">Highlights</h2>
-              <button id="highlights-clear" class="button button--small" type="button" disabled>Clear all highlights</button>
+              <h2 id="highlights-heading" class="panel__heading">
+                <button type="button" class="section__toggle" aria-expanded="true" aria-controls="highlights-body">Highlights</button>
+              </h2>
+              <button id="highlights-clear" class="button button--small" type="button" title="Clear all highlights (C)" disabled>Clear all highlights</button>
             </div>
-            <div id="palette" class="palette"></div>
-            <p id="palette-hint" class="note palette__hint">Select a structure, then click a colour. Click the same colour again to remove it. The wording of each colour can be changed.</p>
-            <ul id="highlight-list" class="marks" aria-label="Current highlights"></ul>
-            <label class="check check--wide">
-              <input id="option-emphasis" class="check__box" type="checkbox" />
-              <span>Fade everything that is not highlighted</span>
-            </label>
-            <div class="spot">
-              <button id="spot-add" class="button button--small" type="button" aria-pressed="false">Shade a pain area</button>
-              <div id="spot-colours" class="swatches" role="radiogroup" aria-label="Colour for the pain area"></div>
-              <label class="spot__size">
-                <span class="visually-hidden">Size of the pain area</span>
-                <input id="spot-size" type="range" min="2" max="12" step="1" value="5" />
-                <span id="spot-size-text">5 cm</span>
+            <div id="highlights-body" class="section__body">
+              <div id="palette" class="palette"></div>
+              <p id="palette-hint" class="note palette__hint">Select a structure, then click a colour. Click the same colour again to remove it. The wording of each colour can be changed.</p>
+              <ul id="highlight-list" class="marks" aria-label="Current highlights"></ul>
+              <label class="check check--wide">
+                <input id="option-emphasis" class="check__box" type="checkbox" />
+                <span>Fade everything that is not highlighted</span>
               </label>
+              <div class="spot">
+                <button id="spot-add" class="button button--small" type="button" aria-pressed="false">Shade a pain area</button>
+                <div id="spot-colours" class="swatches" role="radiogroup" aria-label="Colour for the pain area"></div>
+                <label class="spot__size">
+                  <span class="visually-hidden">Size of the pain area</span>
+                  <input id="spot-size" type="range" min="2" max="12" step="1" value="5" />
+                  <span id="spot-size-text">5 cm</span>
+                </label>
+              </div>
+              <p id="spot-hint" class="note spot__hint" hidden>Now click the model where the pain is. Press Esc to cancel.</p>
             </div>
-            <p id="spot-hint" class="note spot__hint" hidden>Now click the model where the pain is. Press Esc to cancel.</p>
           </section>
 
           <section id="quick-views" class="section" aria-labelledby="quick-views-heading">
             <div class="section__head">
-              <h2 id="quick-views-heading" class="panel__heading">Quick views</h2>
+              <h2 id="quick-views-heading" class="panel__heading">
+                <button type="button" class="section__toggle" aria-expanded="true" aria-controls="presets">Quick views</button>
+              </h2>
               <div id="preset-side"></div>
             </div>
             <div id="presets" class="presets"></div>
           </section>
 
           <div class="restore">
-            <button id="show-everything" class="button button--small restore__all" type="button">Show everything</button>
+            <button id="show-everything" class="button button--small restore__all" type="button" title="Show all regions, systems and sides (A)">Show everything</button>
             <button id="undo" class="button button--small" type="button" title="Undo (Ctrl+Z)" disabled>Undo</button>
             <button id="redo" class="button button--small" type="button" title="Redo (Ctrl+Shift+Z)" disabled>Redo</button>
           </div>
@@ -174,6 +182,7 @@
         <div class="tools">
           <button id="present" class="button button--small" type="button" title="Hide the controls for a clean picture (P)">Presentation view</button>
           <button id="save-image" class="button button--small" type="button" title="Save a picture of this view to your Downloads folder (S in presentation view)">Save image</button>
+          <button id="help-open" class="button button--small button--icon" type="button" title="How to use and keyboard shortcuts (?)" aria-label="How to use and keyboard shortcuts" aria-haspopup="dialog" aria-expanded="false">?</button>
         </div>
         <div id="key" class="key" aria-label="Colour key" hidden><ul id="key-list" class="key__list"></ul></div>
         <p id="present-hint" class="present-hint" role="status" hidden>Press P or Esc to return. Press S to save an image.</p>
@@ -198,16 +207,50 @@
 
         <nav class="views" aria-label="Camera views">
           <div class="views__group" role="group" aria-label="Preset views">
-            <button class="button" type="button" data-view="front" title="View from the front">Front</button>
-            <button class="button" type="button" data-view="back" title="View from the back">Back</button>
-            <button class="button" type="button" data-view="left" title="View of the body's left side">Left</button>
-            <button class="button" type="button" data-view="right" title="View of the body's right side">Right</button>
-            <button class="button" type="button" data-view="top" title="View from above">Top</button>
+            <button class="button" type="button" data-view="front" title="View from the front (1)">Front</button>
+            <button class="button" type="button" data-view="back" title="View from the back (2)">Back</button>
+            <button class="button" type="button" data-view="left" title="View of the body's left side (3)">Left</button>
+            <button class="button" type="button" data-view="right" title="View of the body's right side (4)">Right</button>
+            <button class="button" type="button" data-view="top" title="View from above (5)">Top</button>
           </div>
           <button class="button button--reset" type="button" data-view="reset"
-                  title="Return to the starting view">Reset view</button>
+                  title="Return to the starting view (R)">Reset view</button>
         </nav>
       </main>
+
+      <div id="help-dialog" class="dialog" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden>
+        <div class="dialog__card">
+          <div class="dialog__head">
+            <h2 id="help-title" class="dialog__title">How to use &amp; shortcuts</h2>
+            <button id="help-close" class="info__close" type="button" title="Close (Esc)" aria-label="Close help">&times;</button>
+          </div>
+          <div class="dialog__body">
+            <section class="dialog__section">
+              <h3 class="dialog__heading">30-second guide</h3>
+              <ol class="guide">
+                <li><strong>Focus on the injury:</strong> pick a <em>Quick view</em>, switch <em>Soft-tissue side</em> to Left or Right, or isolate a body region. Untick <em>Muscles</em> to see ligaments, tendons and nerves underneath.</li>
+                <li><strong>Find and name structures:</strong> point at any part to see its name, click it to open its card, or type a name (such as <code>ACL</code> or <code>rotator</code>) in the search box.</li>
+                <li><strong>Mark what is involved:</strong> pick a highlight colour (red = solid outline, amber = dashed, green = dotted, blue = double outline) or right-click a structure. Tick <em>Fade everything that is not highlighted</em> to make it stand out.</li>
+                <li><strong>Show or save for the patient:</strong> press <kbd class="kbd">P</kbd> for a clean presentation view, or click <em>Save image</em> to download a high-resolution picture for a handout. Nothing is saved or uploaded.</li>
+              </ol>
+            </section>
+            <section class="dialog__section">
+              <h3 class="dialog__heading">Keyboard shortcuts</h3>
+              <dl class="shortcuts">
+                <div><dt><kbd class="kbd">1</kbd> – <kbd class="kbd">5</kbd></dt><dd>Camera views: Front, Back, Left, Right, Top</dd></div>
+                <div><dt><kbd class="kbd">R</kbd></dt><dd>Reset view (whole body, front)</dd></div>
+                <div><dt><kbd class="kbd">P</kbd></dt><dd>Toggle presentation view</dd></div>
+                <div><dt><kbd class="kbd">S</kbd></dt><dd>Save image (while in presentation view)</dd></div>
+                <div><dt><kbd class="kbd">A</kbd></dt><dd>Show everything (keeps highlights)</dd></div>
+                <div><dt><kbd class="kbd">C</kbd></dt><dd>Clear all highlights and pain areas</dd></div>
+                <div><dt><kbd class="kbd">Ctrl</kbd>+<kbd class="kbd">Z</kbd></dt><dd>Undo (add <kbd class="kbd">Shift</kbd> or <kbd class="kbd">Ctrl</kbd>+<kbd class="kbd">Y</kbd> to redo)</dd></div>
+                <div><dt><kbd class="kbd">Esc</kbd></dt><dd>Close menu / leave presentation view / deselect</dd></div>
+                <div><dt><kbd class="kbd">?</kbd></dt><dd>Open or close this help window</dd></div>
+              </dl>
+            </section>
+          </div>
+        </div>
+      </div>
 
       <footer class="footer">
         <span>Anatomy models:

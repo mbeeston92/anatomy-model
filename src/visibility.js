@@ -22,6 +22,10 @@ const UNPAIRED = new Set([
   'abdomen and lower back (lumbar)',
 ]);
 
+// Midline soft-tissue meshes that span both sides of the body (hidden when
+// soft tissue is switched to a single side, as agreed with the user).
+const BILATERAL_MIDLINE = new Set(['muscle_diaphragm']);
+
 const HISTORY_LIMIT = 100;
 export const MAX_SPOTS = 6;     // shaded pain areas at once (the oldest goes when a seventh is added)
 const key = (region, side) => `${region}|${side}`;
@@ -99,7 +103,10 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     // One structure on its own: everything else counts as hidden (and is ghosted).
     if (s.only) return entry.id === s.only ? 'shown' : 'hidden';
     if (s.systemsOff.has(d.system) || s.structuresOff.has(entry.id)) return 'filtered';
-    if (s.softSide && d.system !== 'bone' && d.side !== 'midline' && d.side !== s.softSide) return 'filtered';
+    if (s.softSide && d.system !== 'bone'
+      && (d.side !== 'midline' ? d.side !== s.softSide : BILATERAL_MIDLINE.has(entry.id))) {
+      return 'filtered';
+    }
 
     const iso = s.isolated;
     if (iso && d.regions.includes(iso.region) && (d.side === 'midline' || iso.sides.includes(d.side))) {
@@ -245,7 +252,8 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     return commit((s) => {
       s.structuresOff.delete(id);
       s.systemsOff.delete(entry.data.system);
-      if (s.softSide && entry.data.system !== 'bone' && entry.data.side !== 'midline' && entry.data.side !== s.softSide) {
+      if (s.softSide && entry.data.system !== 'bone'
+        && (entry.data.side !== 'midline' ? entry.data.side !== s.softSide : BILATERAL_MIDLINE.has(entry.id))) {
         s.softSide = null;
       }
       if (statusOf(entry, s) === 'shown') return;

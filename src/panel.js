@@ -55,6 +55,24 @@ function sideChooser(label, initial, onPick) {
 
 export function createPanel({ visibility, registry, systems, presets, onIsolated, onPreset, onGhost, onFrameOption, onMedicalOption, onLabelsOption }) {
   const refreshers = [];
+  const regionChoosers = new Map();
+  let lastSoftSide = visibility.softSide;
+  let lastIsoKey = null;
+
+  const setRegionChoosers = (choice) => {
+    for (const chooser of regionChoosers.values()) chooser.value = choice;
+  };
+
+  // Collapsible sections (Highlights, Quick views) so users can free up room on a laptop screen.
+  for (const button of document.querySelectorAll('.section__toggle[aria-controls]')) {
+    const body = $(button.getAttribute('aria-controls'));
+    if (!body) continue;
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      body.hidden = !open;
+    });
+  }
 
   // ----- Quick views -----
   const presetSide = sideChooser('Side for quick views', 'right', () => refresh());
@@ -95,25 +113,13 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
   });
 
   // ----- Soft-tissue side -----
-  const regionChoosers = [];
-  let lastSoftSide = visibility.softSide;
-  const setRegionChoosers = (choice) => {
-    for (const chooser of regionChoosers) chooser.value = choice;
-  };
   const softSide = sideChooser('Side for soft tissue', 'both', (choice) => {
     setRegionChoosers(choice);
+    presetSide.value = choice;
     if (!visibility.setSoftSide(choice)) refresh();
   });
   $('soft-side').append(softSide.node);
-  refreshers.push(() => {
-    const current = visibility.softSide ?? 'both';
-    softSide.value = current;
-    if (visibility.softSide !== lastSoftSide) {
-      lastSoftSide = visibility.softSide;
-      setRegionChoosers(current);
-    }
-    softSide.refresh();
-  });
+  refreshers.push(() => softSide.refresh());
 
   // ----- Systems -----
   const systemBox = $('systems');
@@ -133,13 +139,13 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
     const label = regionLabel(region);
     const paired = visibility.isPaired(region);
     const chooser = paired ? sideChooser(`Side for ${label}`, 'both', () => refresh()) : null;
-    if (chooser) regionChoosers.push(chooser);
+    if (chooser) regionChoosers.set(region, chooser);
     const selected = () => (chooser ? sidesOf(chooser.value) : SIDES);
 
     const stateText = el('span', { class: 'region__state' });
     const name = el('span', { class: 'region__name', text: label });
     const action = (id, text, title, run) => {
-      const button = el('button', { type: 'button', class: 'region__action', text, title });
+      const button = el('button', { type: 'button', class: 'region__action', text, title, 'aria-label': title });
       button.dataset.action = id;
       button.addEventListener('click', run);
       return button;
@@ -198,7 +204,27 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
   $('option-medical').addEventListener('change', (event) => onMedicalOption(event.target.checked));
   $('option-labels').addEventListener('change', (event) => onLabelsOption(event.target.checked));
 
+  function syncFromState() {
+    const current = visibility.softSide ?? 'both';
+    softSide.value = current;
+    if (visibility.softSide !== lastSoftSide) {
+      lastSoftSide = visibility.softSide;
+      setRegionChoosers(current);
+      presetSide.value = current;
+    }
+    const iso = visibility.isolated;
+    const isoKey = iso ? `${iso.region}|${[...iso.sides].sort().join('+')}` : null;
+    if (isoKey !== lastIsoKey) {
+      lastIsoKey = isoKey;
+      if (iso) {
+        const chooser = regionChoosers.get(iso.region);
+        if (chooser) chooser.value = iso.sides.length === 1 ? iso.sides[0] : 'both';
+      }
+    }
+  }
+
   function refresh() {
+    syncFromState();
     for (const run of refreshers) run();
   }
   refresh();

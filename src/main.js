@@ -19,14 +19,19 @@ import { createLabels } from './labels.js';
 import { createPalette } from './palette.js';
 import { createHighlights } from './highlights.js';
 import { createPresentation } from './present.js';
+import { createHelp } from './help.js';
 
 const canvas = document.getElementById('canvas');
 const viewport = document.getElementById('viewport');
 
 const SETTLE_MS = 400;  // how long after movement stops before the sharp redraw
+const VIEW_KEYS = { 1: 'front', 2: 'back', 3: 'left', 4: 'right', 5: 'top' };
+const isTyping = (target) => target instanceof HTMLElement
+  && target.matches('input[type="text"], input[type="search"], textarea, [contenteditable="true"]');
 
 let stage, rig, registry, loader, visibility, panel, picker, selection, searchBox, labels;
 let highlights, presentation;
+const help = createHelp();
 const palette = createPalette();   // highlight colours and their meanings (this session only)
 let frameOnIsolate = true;
 let needsRender = true;
@@ -50,11 +55,12 @@ function frame(now) {
 
   if (cameraMoved) {
     lastMoved = now;
-    if (!moving) { moving = true; stage.setMoving(true); }
+    if (!moving) { moving = true; stage.setMoving(true); picker?.setPaused(true); }
     needsRender = true;
   } else if (moving && now - lastMoved > SETTLE_MS) {
     moving = false;
     stage.setMoving(false);
+    picker?.setPaused(false);
     needsRender = true;          // one sharp frame once everything is still
   }
 
@@ -118,13 +124,26 @@ function presetView(view, sides) {
   return view === 'outer' ? sides[0] : other[sides[0]];
 }
 
-// Undo and redo from the keyboard.
+// Keyboard shortcuts (ignored while typing in the search box or editing highlight labels).
 window.addEventListener('keydown', (event) => {
-  if (!visibility || !(event.ctrlKey || event.metaKey) || event.altKey) return;
-  if (event.target instanceof HTMLElement && event.target.matches('input[type="text"], input[type="search"], textarea')) return;
+  if (isTyping(event.target)) return;
+  if (event.ctrlKey || event.metaKey) {
+    if (!visibility || event.altKey) return;
+    const letter = event.key.toLowerCase();
+    if (letter === 'z') { event.preventDefault(); if (event.shiftKey) visibility.redo(); else visibility.undo(); }
+    else if (letter === 'y') { event.preventDefault(); visibility.redo(); }
+    return;
+  }
+  if (event.altKey) return;
+  if (event.key === '?') { event.preventDefault(); help.toggle(); return; }
+  if (help.isOpen) return;
+
+  const view = VIEW_KEYS[event.key];
+  if (view && rig) { event.preventDefault(); rig.goTo(view); return; }
   const letter = event.key.toLowerCase();
-  if (letter === 'z') { event.preventDefault(); if (event.shiftKey) visibility.redo(); else visibility.undo(); }
-  else if (letter === 'y') { event.preventDefault(); visibility.redo(); }
+  if (letter === 'r' && rig) { event.preventDefault(); rig.goTo('reset'); }
+  else if (letter === 'a' && visibility) { event.preventDefault(); visibility.showEverything(); }
+  else if (letter === 'c' && visibility) { event.preventDefault(); visibility.clearHighlights(); }
 });
 
 async function start() {
@@ -165,6 +184,7 @@ async function start() {
       presentation = createPresentation({
         stage, viewport, requestRender,
         coloursInUse: () => highlights.coloursInUse(),
+        getLabels: () => labels?.getLayout() ?? [],
         onChange: () => { highlights.closeMenu(); selection.setHover(null); },
       });
       searchBox = createSearchBox({
@@ -250,6 +270,7 @@ window.__viewer = {
   get labels() { return labels; },
   get highlights() { return highlights; },
   get presentation() { return presentation; },
+  help,
   palette,
   stats,
   requestRender,

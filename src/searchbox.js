@@ -45,7 +45,8 @@ export function createSearchBox({ registry, showMedical = () => false, onPick })
     }
     for (const result of results) {
       const buttons = SIDE_BUTTONS.filter(([side]) => result[side]).map(([side, label]) => {
-        const button = el('button', { type: 'button', class: 'search__pick', text: label });
+        const aria = side === 'midline' ? `Select ${result.name}` : `Select ${result.name} (${label.toLowerCase()})`;
+        const button = el('button', { type: 'button', class: 'search__pick', text: label, 'aria-label': aria });
         button.dataset.result = result[side];
         button.addEventListener('click', () => pick(result[side]));
         return button;

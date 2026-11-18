@@ -11,7 +11,7 @@ const FONT = "'Atkinson Hyperlegible', system-ui, 'Segoe UI', sans-serif";
 const isTyping = (target) => target instanceof HTMLElement
   && target.matches('input[type="text"], input[type="search"], textarea, [contenteditable="true"]');
 
-export function createPresentation({ stage, viewport, coloursInUse, requestRender, onChange = () => {} }) {
+export function createPresentation({ stage, viewport, coloursInUse, getLabels = () => [], requestRender, onChange = () => {} }) {
   const app = $('app');
   const key = $('key');
   const hint = $('present-hint');
@@ -25,6 +25,8 @@ export function createPresentation({ stage, viewport, coloursInUse, requestRende
       const dot = document.createElement('span');
       dot.className = 'key__dot';
       dot.style.setProperty('--swatch', colour.colour);
+      dot.dataset.pattern = colour.pattern;
+      dot.setAttribute('aria-hidden', 'true');
       const item = document.createElement('li');
       item.append(dot, colour.name);
       return item;
@@ -96,9 +98,49 @@ export function createPresentation({ stage, viewport, coloursInUse, requestRende
     ctx.scale(scale, scale);     // from here on, work in on-screen pixels
     ctx.textBaseline = 'middle';
 
+    // Visible floating labels (labels mode), if switched on.
+    const floatingLabels = getLabels();
+    if (floatingLabels.length) {
+      ctx.font = `13px ${FONT}`;
+      for (const item of floatingLabels) {
+        ctx.strokeStyle = 'rgba(30, 42, 51, 0.55)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(item.x1, item.y1);
+        ctx.lineTo(item.x2, item.y2);
+        ctx.stroke();
+
+        ctx.fillStyle = '#1e2a33';
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(item.x2, item.y2, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        roundedBox(ctx, item.left, item.top, item.width, item.height, 4);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
+        ctx.fill();
+        ctx.strokeStyle = '#d3dae0';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.fillStyle = '#1e2a33';
+        ctx.textAlign = 'left';
+        const maxW = Math.max(10, item.width - 14);
+        let text = item.text;
+        if (ctx.measureText(text).width > maxW) {
+          while (text.length > 1 && ctx.measureText(`${text}…`).width > maxW) text = text.slice(0, -1);
+          text = `${text.trimEnd()}…`;
+        }
+        ctx.fillText(text, item.left + 7, item.top + item.height / 2 + 0.5);
+      }
+    }
+
     const colours = refreshKey();
     if (colours.length) {
       ctx.font = `16px ${FONT}`;
+      ctx.textAlign = 'left';
       const row = 26;
       const textWidth = Math.max(...colours.map((c) => ctx.measureText(c.name).width));
       const boxWidth = Math.min(width - 36, 14 + 16 + 10 + textWidth + 14);
@@ -112,11 +154,33 @@ export function createPresentation({ stage, viewport, coloursInUse, requestRende
       ctx.lineWidth = 1;
       ctx.stroke();
       colours.forEach((colour, i) => {
+        const cx = x + 14 + 8;
         const cy = y + 10 + i * row + 10;
+        ctx.save();
         ctx.fillStyle = colour.colour;
+        ctx.strokeStyle = '#ffffff';
         ctx.beginPath();
-        ctx.arc(x + 14 + 8, cy, 8, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 8, 0, Math.PI * 2);
         ctx.fill();
+        // Matching visual marker inside the key dot for colour-blind accessibility.
+        if (colour.pattern === 'dashed') {
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.moveTo(cx - 4.5, cy + 4.5); ctx.lineTo(cx + 4.5, cy - 4.5);
+          ctx.stroke();
+        } else if (colour.pattern === 'dotted') {
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath();
+          ctx.arc(cx - 2.5, cy, 1.5, 0, Math.PI * 2);
+          ctx.arc(cx + 2.5, cy, 1.5, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (colour.pattern === 'double') {
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        ctx.restore();
         ctx.fillStyle = '#1e2a33';
         ctx.fillText(colour.name, x + 14 + 16 + 10, cy + 1, boxWidth - 54);
       });
@@ -157,9 +221,10 @@ export function createPresentation({ stage, viewport, coloursInUse, requestRende
   $('save-image').addEventListener('click', () => saveImage());
   $('option-key').addEventListener('change', refreshKey);
 
-  // P toggles; Esc leaves (before Esc does anything else); S saves while presenting.
+  // P toggles; Esc leaves (unless the help dialog is open); S saves while presenting.
   window.addEventListener('keydown', (event) => {
     if (event.ctrlKey || event.metaKey || event.altKey || isTyping(event.target)) return;
+    if (!$('help-dialog')?.hidden) return;
     const letter = event.key.toLowerCase();
     if (letter === 'p') { event.preventDefault(); setPresenting(!presenting); }
     else if (presenting && event.key === 'Escape') { event.preventDefault(); event.stopImmediatePropagation(); setPresenting(false); }

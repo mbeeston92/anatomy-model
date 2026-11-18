@@ -38,8 +38,8 @@ export async function loadPresets() {
 }
 
 /** Download a file, calling onBytes(count) as each piece arrives. */
-async function fetchWithProgress(url, onBytes) {
-  const response = await fetch(url);
+async function fetchWithProgress(url, onBytes, priority = 'auto') {
+  const response = await fetch(url, { priority });
   if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
   if (!response.body) {
     const buffer = await response.arrayBuffer();
@@ -132,13 +132,17 @@ export function createModelLoader({ registry, materials, parent, onProgress, onS
     return group;
   }
 
-  async function loadSystem(system) {
+  function startFetch(system, priority = 'auto') {
     received.set(system.id, 0);
+    return fetchWithProgress(`${BASE}${system.file}`, (count) => {
+      received.set(system.id, received.get(system.id) + count);
+      report();
+    }, priority);
+  }
+
+  async function finishSystem(system, fetchPromise) {
     try {
-      const buffer = await fetchWithProgress(`${BASE}${system.file}`, (count) => {
-        received.set(system.id, received.get(system.id) + count);
-        report();
-      });
+      const buffer = await fetchPromise;
       const gltf = await gltfLoader.parseAsync(buffer, '');
       const group = addSystem(system, gltf);
       finished.add(system.id);
@@ -152,19 +156,31 @@ export function createModelLoader({ registry, materials, parent, onProgress, onS
   }
 
   /**
-   * Load the given systems (default: all not yet loaded). Bones go first so
-   * the skeleton appears quickly; the rest download together.
+   * Load the given systems (default: all not yet loaded). Bones download first
+   * at high priority; as soon as the bone bytes arrive, the remaining systems
+   * start downloading in parallel while the skeleton is parsed and shown.
    * Returns the list of systems that failed (empty when all is well).
    */
   async function load(only = systems.filter((s) => !finished.has(s.id))) {
     const failed = [];
     report();
     const bones = only.find((s) => s.id === 'bone');
-    if (bones) {
-      try { await loadSystem(bones); } catch (error) { console.error(error); failed.push(bones); }
-    }
     const rest = only.filter((s) => s !== bones);
-    const results = await Promise.allSettled(rest.map(loadSystem));
+    let restFetches = null;
+    if (bones) {
+      const boneFetch = startFetch(bones, 'high');
+      // Overlap downloading the rest with parsing the skeleton once bone bytes arrive.
+      const kickRest = boneFetch.then(() => { restFetches = rest.map((s) => startFetch(s)); }, () => {});
+      try {
+        await finishSystem(bones, boneFetch);
+      } catch (error) {
+        console.error(error);
+        failed.push(bones);
+      }
+      await kickRest;
+    }
+    const fetches = restFetches ?? rest.map((s) => startFetch(s));
+    const results = await Promise.allSettled(rest.map((s, i) => finishSystem(s, fetches[i])));
     results.forEach((result, i) => {
       if (result.status === 'rejected') { console.error(result.reason); failed.push(rest[i]); }
     });

@@ -140,7 +140,9 @@ export function createSelection({
     if (reveal) visibility.reveal(id);
     refreshCard();
     syncOutline();
-    $('info').scrollIntoView({ block: 'nearest' });
+    const scroller = $('panel')?.querySelector('.panel__inner');
+    if (scroller && scroller.scrollTop > 0) scroller.scrollTop = 0;
+    else $('info').scrollIntoView({ block: 'nearest' });
     if (zoom) zoomTo(id);
     onChange();
   }

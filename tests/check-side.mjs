@@ -59,8 +59,9 @@ const BONES = [
   'bone_clavicle_l', 'bone_clavicle_r', 'bone_sacrum', 'bone_frontal',
 ];
 const MIDLINE_SOFT = [
-  'cartilage_disc_l4_l5', 'cartilage_pubic_symphysis', 'muscle_diaphragm',
+  'cartilage_disc_l4_l5', 'cartilage_pubic_symphysis',
 ];
+const BILATERAL_MIDLINE = ['muscle_diaphragm'];
 
 await page.goto(url);
 await page.waitForFunction(() => window.__viewer?.stats.allLoadedAt, null, { timeout: 120000 });
@@ -78,7 +79,7 @@ check('panel controls fit the panel width', overflow <= 0, `${overflow}px over`)
 // ----- Switch soft tissue to Left -----
 await page.click('#soft-side [data-side="left"]');
 await settle();
-let s = await status([...LEFT_SOFT, ...RIGHT_SOFT, ...BONES, ...MIDLINE_SOFT]);
+let s = await status([...LEFT_SOFT, ...RIGHT_SOFT, ...BONES, ...MIDLINE_SOFT, ...BILATERAL_MIDLINE]);
 check('Left: soft-tissue side button is selected',
   await page.getAttribute('#soft-side [data-side="left"]', 'aria-checked') === 'true'
   && await page.evaluate(() => window.__viewer.visibility.softSide === 'left'));
@@ -88,10 +89,12 @@ check('Left: right soft tissue is filtered out across all systems',
   RIGHT_SOFT.every((id) => s[id] === 'filtered'), JSON.stringify(s));
 check('Left: bones on both sides and midline stay shown',
   BONES.every((id) => s[id] === 'shown'), JSON.stringify(s));
-check('Left: midline soft tissue stays shown',
-  MIDLINE_SOFT.every((id) => s[id] === 'shown'), JSON.stringify(s));
+check('Left: midline soft tissue stays shown, diaphragm hidden',
+  MIDLINE_SOFT.every((id) => s[id] === 'shown') && BILATERAL_MIDLINE.every((id) => s[id] === 'filtered'), JSON.stringify(s));
 check('Left: all 10 paired region choosers moved to match (Left)',
   await regionChoosersOn('left') === 10);
+check('Left: quick-views side selector moved to match (Left)',
+  await page.getAttribute('#preset-side [data-side="left"]', 'aria-checked') === 'true');
 await shot('44-soft-tissue-left');
 
 // Ghost outlines do not apply to filtered soft tissue.
@@ -111,7 +114,7 @@ await settle();
 // ----- Switch soft tissue to Right -----
 await page.click('#soft-side [data-side="right"]');
 await settle();
-s = await status([...LEFT_SOFT, ...RIGHT_SOFT, ...BONES, ...MIDLINE_SOFT]);
+s = await status([...LEFT_SOFT, ...RIGHT_SOFT, ...BONES, ...MIDLINE_SOFT, ...BILATERAL_MIDLINE]);
 check('Right: soft-tissue side button is selected',
   await page.getAttribute('#soft-side [data-side="right"]', 'aria-checked') === 'true'
   && await page.evaluate(() => window.__viewer.visibility.softSide === 'right'));
@@ -121,10 +124,12 @@ check('Right: left soft tissue is filtered out across all systems',
   LEFT_SOFT.every((id) => s[id] === 'filtered'), JSON.stringify(s));
 check('Right: bones on both sides and midline stay shown',
   BONES.every((id) => s[id] === 'shown'), JSON.stringify(s));
-check('Right: midline soft tissue stays shown',
-  MIDLINE_SOFT.every((id) => s[id] === 'shown'), JSON.stringify(s));
+check('Right: midline soft tissue stays shown, diaphragm hidden',
+  MIDLINE_SOFT.every((id) => s[id] === 'shown') && BILATERAL_MIDLINE.every((id) => s[id] === 'filtered'), JSON.stringify(s));
 check('Right: all 10 paired region choosers moved to match (Right)',
   await regionChoosersOn('right') === 10);
+check('Right: quick-views side selector moved to match (Right)',
+  await page.getAttribute('#preset-side [data-side="right"]', 'aria-checked') === 'true');
 await shot('45-soft-tissue-right');
 
 // ----- Undo and Redo -----

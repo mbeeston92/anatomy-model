@@ -7,10 +7,10 @@
 // royal blue, darker than cartilage and bursae and unlike the selection outline.
 
 const COLOURS = [
-  { id: 'red', colour: '#F0123C', name: 'Injured' },
-  { id: 'amber', colour: '#FF8A00', name: 'Affected / under strain' },
-  { id: 'green', colour: '#12A84A', name: 'Healing' },
-  { id: 'blue', colour: '#3554F2', name: 'Area to strengthen' },
+  { id: 'red', colour: '#F0123C', name: 'Injured', pattern: 'solid' },
+  { id: 'amber', colour: '#FF8A00', name: 'Affected / under strain', pattern: 'dashed' },
+  { id: 'green', colour: '#12A84A', name: 'Healing', pattern: 'dotted' },
+  { id: 'blue', colour: '#3554F2', name: 'Area to strengthen', pattern: 'double' },
 ];
 
 export function createPalette() {

@@ -131,14 +131,16 @@ vec3 toScreen(vec3 c) { return pow(clamp(c, 0.0, 1.0), vec3(1.0 / 2.2)); }
 
 void main() {
   vec4 here = texture2D(mask, vUv);
-  vec4 nearMax = here, farMax = here;
+  vec4 nearMax = here, midMax = here, farMax = here;
   float nearMin = here.a, farMin = here.a;
   for (int i = 0; i < 8; i++) {
     float angle = float(i) * 0.7853982;
     vec2 step = vec2(cos(angle), sin(angle)) * texel * scale;
-    vec4 a = texture2D(mask, vUv + step * 2.4);
-    vec4 b = texture2D(mask, vUv + step * 6.0);
+    vec4 a = texture2D(mask, vUv + step * 2.2);
+    vec4 m = texture2D(mask, vUv + step * 4.4);
+    vec4 b = texture2D(mask, vUv + step * 6.4);
     if (a.a > nearMax.a) nearMax = a;
+    if (m.a > midMax.a) midMax = m;
     if (b.a > farMax.a) farMax = b;
     nearMin = min(nearMin, a.a); farMin = min(farMin, b.a);
   }
@@ -150,8 +152,25 @@ void main() {
   vec3 haloColour = farMax.rgb / max(farMax.a, 0.001);
   vec3 tintColour = here.rgb / max(here.a, 0.001);
 
+  // Distinct outline patterns so colour-blind viewers can tell highlights apart:
+  // red = solid, amber = dashed, green = dotted, blue = double outline.
+  bool isAmber = lineColour.r > 0.4 && lineColour.g > 0.12 && lineColour.b < 0.12;
+  bool isGreen = lineColour.g > lineColour.r && lineColour.g > lineColour.b;
+  bool isBlue  = farMax.b > farMax.r && farMax.b > farMax.g;
+
+  if (isAmber) {
+    float dash = step(0.42, fract((gl_FragCoord.x + gl_FragCoord.y) / (14.0 * scale)));
+    line *= mix(0.22, 1.0, dash);
+  } else if (isGreen) {
+    vec2 cell = fract(gl_FragCoord.xy / (8.0 * scale)) - 0.5;
+    float dotMask = 1.0 - smoothstep(0.22, 0.36, length(cell));
+    line *= mix(0.22, 1.0, dotMask);
+  }
+  float doubleRing = isBlue ? max(0.0, farMax.a - midMax.a) * 0.9 : 0.0;
+
   vec4 sum = vec4(tintColour * tint, tint);
   sum = vec4(haloColour * halo, halo) + sum * (1.0 - halo);
+  sum = vec4(haloColour * doubleRing, doubleRing) + sum * (1.0 - doubleRing);
   sum = vec4(lineColour * line, line) + sum * (1.0 - line);
   if (sum.a < 0.004) discard;
   gl_FragColor = vec4(toScreen(sum.rgb / sum.a), sum.a);

@@ -1,8 +1,8 @@
-# HANDOFF — anatomy-model (updated 2026-11-18; last code change at commit `5bc7070`)
+# HANDOFF — anatomy-model (updated 2026-11-19)
 
 Read `CLAUDE.md` (binding project brief) and `PROGRESS.md` (full stage log, decisions, known issues) first. This file is the compressed state plus what is NOT yet in either.
 
-**State in one line:** Stages 1a–5 are done, committed and checked. Commits after `5bc7070` changed only documents and agent instruction files; no code, data or model has changed. Joint movement (planned Stage 6) was started, then removed by the user, and has been taken out of the brief. Nothing is in progress.
+**State in one line:** Stages 1a–5 and Stage 7 Part A (soft-tissue side switch, workflow polish, keyboard shortcuts & `?` help overlay, colour-blind highlight patterns, performance optimisations, `USER-GUIDE.md`, and `.github/workflows/deploy.yml`) are done, verified across all 6 Playwright checks + Chrome/Edge, and committed. Only Stage 7 Part B (GitHub auth, creating the repo, pushing, and checking the live GitHub Pages URL) remains.
 
 ---
 
@@ -128,19 +128,21 @@ dist/                         Git-ignored build output.
 
 ## 3. Completed & Working Features (verified; do not touch unless required)
 
-All four check scripts and `npm run build` passed at commit `5bc7070`. No code has changed since (only documents), so they have not been re-run.
+All six check scripts (`check`, `check:regions`, `check:select`, `check:highlights`, `check:side`, `check:polish`), Chrome/Edge cross-browser tests, and `npm.cmd run build` pass with zero console errors or warnings.
 
 - **Stage 1a/1b — data and models.** 817 structures (bone 208, cartilage 88, ligament 116, tendon 52, muscle 225, nerve 64, bursa 64). 537 exported meshes; 280 left soft-tissue structures are mirrored from the right in the app. 1.73 M triangles shown with both sides. No export warnings; ids match both ways.
 - **Stage 2 — viewer.** Progressive load (bones first), progress bar, partial-failure message with retry, lights that follow the camera, depth-bias ordering, render-on-demand, camera presets, smooth wheel zoom to pointer (`WHEEL_ZOOM_RATE = 0.00154`, user-approved), double-click to centre. 60 fps on Radeon 780M integrated graphics at 1440x810.
-- **Stage 3 — regions.** Hide/Show/Isolate per region and side, system tick boxes, quick views from `presets.json`, Show everything, Undo/Redo (100 steps, Ctrl+Z / Ctrl+Shift+Z / Ctrl+Y), ghost outlines of hidden regions, zoom-on-isolate option.
+- **Stage 3 — regions.** Hide/Show/Isolate per region and side, system tick boxes, quick views from `presets.json`, Show everything, Undo/Redo (100 steps, Ctrl+Z / Ctrl+Shift+Z / Ctrl+Y), ghost outlines of hidden regions (60 fps verified), zoom-on-isolate option.
 - **Stage 4 — names.** Hover label + outline, click select, info card (Hide this / Isolate this / Zoom to this), search with fuzzy matching and Left/Right buttons, medical-name option, labels mode.
 - **Stage 5 — highlights.** Four colours (red #F0123C, amber #FF8A00, green #12A84A, blue #3554F2) with editable meanings, right-click menu, highlight list, fade-everything-else, pain-area spots (max 6), presentation view (`P`), Save image (`S`, PNG 2x), all inside the undo history. Privacy check: no cookies, no storage, no third-party requests.
+- **Stage 7 Part A — soft-tissue side switch, polish, shortcuts, accessibility & performance.** Whole-body Soft-tissue side switch (`Left / Right / Both`; keeps bones and midline structures; hides `muscle_diaphragm` on single side per user decision; syncs region and quick-view side choosers; undoable). Collapsible Highlights & Quick views; quick views sync isolated region row chooser; larger trackpad targets; saved PNG includes visible floating labels; keyboard shortcuts (`1`–`5`, `R`, `A`, `C`, `P`, `S`, `Ctrl+Z`, `?`) + `?` help overlay with 30-second guide; distinct colour-blind patterns (solid/dashed/dotted/double) in 3D glow shader, UI swatches and saved PNG; improved contrast and ARIA labels; WebGL fallback hides loading bar immediately; preloads, overlapped loading, pause-BVH-while-moving, and `three` vendor chunk split; `USER-GUIDE.md` and `.github/workflows/deploy.yml` added.
 
 **User-agreed behaviours that look like bugs but are not** (do not "fix"):
 - Soft tissue hides if ANY of its regions is hidden; a bone hides only when ALL its regions are hidden.
 - Isolate shows the full length of structures crossing the region but frames the camera on region-only structures.
 - "Show everything" and quick views keep highlights; only "Clear all highlights" removes them.
-- Ghost outlines apply to region-hidden structures only, never to system-filtered ones.
+- Ghost outlines apply to region-hidden structures only, never to system-filtered or soft-side-filtered ones.
+- `muscle_diaphragm` hides when a single soft-tissue side (`Left` or `Right`) is picked (user decision, 19 Nov 2026); all other structure names kept as-is.
 - No ambient occlusion (deliberate, for integrated graphics).
 - Nucleus pulposus rows removed; merged muscles not split; quadriceps + patellar tendon is one structure (continuous in source).
 
@@ -148,28 +150,11 @@ All four check scripts and `npm run build` passed at commit `5bc7070`. No code h
 
 ## 4. Current Work-in-Progress & Unfinished State
 
-**Nothing is in progress.** No stage is open and nothing is uncommitted. Changes since the last code commit (`5bc7070`), all documents or agent setup:
-
-- `CLAUDE.md`: joint movement removed from Purpose and Core features (now 1–4) and listed under Not in scope.
-- `PROGRESS.md`: Stage 5 "Next step" reads "Not decided"; a final section "Joint movement: dropped (17 November 2026)" records the decision and lists what is still open.
-- `HANDOFF.md` (this file), `AGENTS.md` and `.agents/skills/claude-handoff/` added so Antigravity can pick up the work. Antigravity reads `AGENTS.md`, `GEMINI.md` and the `.agents/` folder only; it does not read `CLAUDE.md` or a `.antigravity/` folder on its own, which is why `AGENTS.md` points to `CLAUDE.md`.
+**In progress:** Stage 7 Part B (GitHub Pages deployment). Part A is finished and verified; `.github/workflows/deploy.yml` and `USER-GUIDE.md` are in place. Waiting for the user to sign in to GitHub (`gh auth login`) and confirm the repository name (suggested: `anatomy-model`), then create the repo, push `main`, verify the live GitHub Pages URL with Playwright, and record the live URL + real-network load times in `PROGRESS.md`.
 
 ### Joint movement: dropped (user decision, 2026-11-17)
 
-- A Stage 6 attempt (knee hinge measured from the femoral condyles, patella tracking, skin weights in a Blender module) was made and then **removed completely by the user**: the Blender script, the `export.py` change and the scratch files are all gone. Nothing of it remains in the repo or in `work/`.
-- The user does not plan to build joint movement, and the brief now says so. **Do not restart it unless the user asks.**
-
-### Features in the brief that are still not built
-
-- **Soft-tissue side switch** (`CLAUDE.md` Core feature 2): one whole-body control to show soft tissue on the left, the right or both, with bones always on both sides. Missing since Stage 3. The per-region Left/Right/Both choosers only partly cover it.
-
-### Never done
-
-- Deployment to GitHub Pages (no remote, no workflow). Load time over a real connection against the ~10 s target is unmeasured; the estimate is about 4 s at 20 Mbit/s for the ~8.1 MB total download.
-
-### Waiting on the user (recorded in `PROGRESS.md` Stage 4, nothing changed)
-
-Plain names: "Wrist cartilage disc (TFCC)" is the disc only; "Breastbone (sternum)" is the body only; "Common extensor tendon at the elbow (ECRB; tennis elbow)" is cut from ECRB only; "Quadriceps: vastus medialis (inner; VMO)" is the whole muscle; "Lateral/Posterior femoral cutaneous nerve" vs UK "... cutaneous nerve of the thigh"; "Ischial bursa (over the sitting bone)" unconfirmed since Stage 1; "Hip bone (pelvis)" is one half per side. Medical names: "Musculi thenaris/hypothenaris" (usual: thenares/hypothenares); "Tendo musculi iliopsoas" (strictly iliopsoatis). Bursa colour (pale translucent blue) was never commented on by the user.
+- A Stage 6 attempt was removed completely by the user and taken out of the brief. **Do not restart it unless the user asks.**
 
 ---
 
@@ -258,9 +243,5 @@ Plain names: "Wrist cartilage disc (TFCC)" is the disc only; "Breastbone (sternu
 
 ## 7. Immediate Next Steps (Ordered)
 
-The user has not chosen what comes after Stage 5. These are the remaining items from the brief and the logs, in suggested order; confirm with the user before starting any of them.
-
-1. **Build the soft-tissue side switch** (the only unbuilt feature in the brief). Suggested shape: a `softSide: null | 'left' | 'right'` field in the `visibility.js` state; in `statusOf()`, return `'filtered'` for a non-bone, non-midline structure whose side differs from `softSide`; a three-way Left / Right / Both control near the top of the panel. Ask the user first: should it be part of Undo/Redo, should it set the region rows' Left/Right/Both choosers, and should midline soft tissue (e.g. spinal cord, interspinous ligaments) always show? Add `tests/check-side.mjs` (screenshots from 44), re-run all four existing checks and `npm run build`.
-2. **Deploy to GitHub Pages** (needs the user's go-ahead and their GitHub account). Create a repo, push, and add a Pages workflow that runs `npm ci && npm run build` and publishes `dist/` (`base: './'` is already set). Then measure first-view and full-load times on a normal connection against the 10 s target and record them in `PROGRESS.md`.
-3. **Settle the naming questions** listed in section 4 with the user; apply any changes in `data/structures-approved.csv` (and `propose_structures.py` while the two CSVs are still generated), then `npm run build:models -- --only data`.
-4. **Measure what was never measured:** frame rate with ghost outlines on, on a 4K screen, and on older Intel integrated graphics (`npm run check -- --headed` prints fps).
+1. **Finish Stage 7 Part B — Deploy to GitHub Pages:** authenticate with GitHub (`gh auth login`), create the public repository with the user's chosen name (suggested: `anatomy-model`), push `main`, enable GitHub Pages from GitHub Actions, verify the live URL loads and works via Playwright, and record the live URL and real-network load times in `PROGRESS.md`.
+2. **Optional future checks:** measure frame rate on a 4K screen and on older Intel integrated graphics, and test on Safari (macOS/iPadOS).

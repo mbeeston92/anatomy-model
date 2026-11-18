@@ -28,6 +28,7 @@ export function createHighlights({
     const button = el('button', { type: 'button', class: 'swatch', ...extra });
     button.style.setProperty('--swatch', colour.colour);
     button.dataset.colour = colour.id;
+    button.dataset.pattern = colour.pattern;
     return button;
   };
 
@@ -82,6 +83,7 @@ export function createHighlights({
       if (!entry || !shade) continue;
       const dot = el('span', { class: 'marks__dot', 'aria-hidden': 'true' });
       dot.style.setProperty('--swatch', shade.colour);
+      dot.dataset.pattern = shade.pattern;
       const hidden = visibility.statusOf(entry) !== 'shown';
       const jump = el('button', { type: 'button', class: 'marks__jump', title: 'Go to this structure' }, [
         fullLabel(entry.data),
@@ -100,6 +102,7 @@ export function createHighlights({
       const on = spot.on ? registry.get(spot.on) : null;
       const dot = el('span', { class: 'marks__dot marks__dot--area', 'aria-hidden': 'true' });
       dot.style.setProperty('--swatch', shade.colour);
+      dot.dataset.pattern = shade.pattern;
       const text = el('span', { class: 'marks__jump' }, [
         `Pain area, ${Math.round(spot.r * 200)} cm across`,
         el('small', { text: on ? `${shade.name} · placed on ${fullLabel(on.data)}` : shade.name }),
@@ -178,6 +181,7 @@ export function createHighlights({
       if (colour) {
         const dot = el('span', { class: 'menu__dot', 'aria-hidden': 'true' });
         dot.style.setProperty('--swatch', colour.colour);
+        dot.dataset.pattern = colour.pattern;
         button.append(dot);
         button.dataset.menuColour = colour.id;
       }

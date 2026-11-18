@@ -471,7 +471,57 @@ Not decided. See "Joint movement: dropped" below for what is still open.
 
 ### Still open from the brief and earlier stages
 
-- **Soft-tissue side switch** (left, right or both for the whole body) is not built yet (noted under Stage 3).
-- **Not yet on GitHub Pages.** Load time over a normal internet connection has not been measured.
-- **Names waiting for the user's view** (listed under Stage 4).
-- **Not measured:** frame rate with faint outlines (ghost mode) on, on a 4K screen, and on older Intel graphics.
+- **Not yet on GitHub Pages** (Part B of Stage 7 below).
+- **Not measured:** frame rate on a 4K screen and on older Intel graphics.
+
+## Stage 7: soft-tissue side switch, polish, shortcuts, accessibility and publishing — Part A DONE, Part B ready
+
+### What was built (Part A — 19 November 2026)
+
+- **Whole-body soft-tissue side switch** (`src/visibility.js`, `src/panel.js`, `index.html`):
+  - Choose **Left**, **Right** or **Both** to show muscles, tendons, ligaments, cartilage, nerves and bursae on one side while keeping bones on both sides and midline spinal structures visible.
+  - The diaphragm (`muscle_diaphragm`) is hidden when a single side is chosen (user decision, since it spans both sides of the rib cage).
+  - Switching soft-tissue side moves the individual body-region rows and Quick views side selector to match, works with **Undo / Redo**, resets to **Both** on **Show everything**, and reveals the hidden side automatically if you pick a structure from search.
+- **Appointment workflow polish:**
+  - **Highlights** and **Quick views** sections can now be collapsed/expanded to free up room in the side panel.
+  - Clicking a **Quick view** syncs the isolated region row's `Left / Right / Both` selector so pressing Isolate on that row toggles it off directly.
+  - Selecting a structure scrolls the panel back to the top so the search box and info card stay in sight together.
+  - Secondary buttons, segmented side selectors and close buttons enlarged to 36–38 px for easier laptop-trackpad use.
+  - **Save image** now composites visible floating labels and leader lines (with clean ellipsis truncation) when labels mode is on.
+- **Keyboard shortcuts and `?` help overlay** (`src/help.js`, `src/main.js`, `index.html`):
+  - `1`–`5` Front / Back / Left / Right / Top views; `R` Reset view; `P` Presentation view; `S` Save image (in presentation view); `A` Show everything; `C` Clear all highlights; `Ctrl+Z` / `Ctrl+Shift+Z` / `Ctrl+Y` Undo / Redo; `Esc` close dialog/menu/presentation/deselect; `?` toggle help.
+  - Added a `?` button at the top right opening a modal with a **30-second guide** and full keyboard shortcuts list.
+- **Accessibility and colour-blind distinction** (`src/palette.js`, `src/outline.js`, `src/highlights.js`, `src/present.js`, `src/styles.css`):
+  - Distinct 3D outline patterns and matching UI/handout swatch patterns for all four highlight colours: **Red** = solid, **Amber** = dashed, **Green** = dotted, **Blue** = double outline.
+  - Raised contrast on disabled buttons and hidden/crossed-out region labels, added clear focus rings, and ensured every visible button and input has an accessible label.
+- **Performance optimisations** (`index.html`, `src/loader.js`, `src/picking.js`, `vite.config.js`):
+  - Preloaded `structures.json` and `bones.glb`, overlapped downloading the remaining 6 systems with bone parsing, paused background BVH indexing while the camera moves (using `requestIdleCallback`), and split Three.js into its own browser-cached vendor chunk (`three-*.js`, 187 KB gzip; app code is now 21.7 KB gzip).
+- **Robustness, docs and deploy config:**
+  - Loading bar hides immediately when WebGL fails (`src/ui.js`).
+  - Wrote `USER-GUIDE.md` covering everyday use, editing `data/structures-approved.csv`, adding Quick views in `presets.json`, and updating the live site.
+  - Added `.github/workflows/deploy.yml` to build and publish `dist/` to GitHub Pages on every push to `main`.
+
+### Performance before / after (built site `dist/`, 1440 × 810, AMD Radeon 780M)
+
+| Metric | Before | After |
+|---|---:|---:|
+| Simulated 20 Mbit/s broadband — skeleton visible (from script start) | 1.45 s | **1.06 s** (1.49 s wall) |
+| Simulated 20 Mbit/s broadband — all 817 structures loaded | 3.65 s | **3.26 s** (3.60 s wall) |
+| Local disk — all 817 structures loaded (wall time) | 1.14 s | **0.83 s** |
+| Frame rate — whole body immediately after load (during BVH indexing) | 58.3 fps | **58.7 fps** (slowest 1%: 59.5) |
+| Frame rate — whole body, all systems | 60.0 fps | **59.7–60.0 fps** |
+| Frame rate — left soft tissue only | 60.0 fps | **60.0 fps** |
+| Frame rate — isolated left knee + ghost outlines | 60.0 fps | **60.0 fps** |
+| Frame rate — whole body, 3 highlights + fade everything else | 60.0 fps | **60.0 fps** |
+| App JS bundle (gzipped) | 207.5 KB (1 file) | **21.7 KB app + 187.3 KB cached Three.js** |
+
+### Checked (19 November 2026)
+
+- `npm.cmd run check:side` (26 checks, screenshots 44–47), `npm.cmd run check:polish` (24 checks, screenshots 48–51), `npm.cmd run check`, `check:regions`, `check:select`, `check:highlights`, and `npm.cmd run build` all pass with zero console errors or warnings. Screenshots 44–51 inspected visually.
+- **Browsers tested:** Playwright Chromium, **Google Chrome** (installed), and **Microsoft Edge** (installed) — all loaded all 817 structures with zero console errors. **Safari** could not be tested directly because Safari is macOS/iOS only and this laptop runs Windows 11.
+- **Repository file sizes:** `Source/` (`Startup.blend`) is excluded by `.gitignore`. Largest file in the repo is `public/models/muscles.glb` at 2.93 MB (all 7 models total 7.85 MB — well under GitHub's 50 MB / 100 MB limits).
+- **Clinical names decision:** the user chose to keep all existing structure names as they are and hide the diaphragm on single-side soft-tissue view.
+
+### Next step
+
+Part B: sign in to GitHub (`gh auth login`), create the GitHub repository, push `main`, enable GitHub Pages, verify the live URL with Playwright, and record the live link and real-network load times here.

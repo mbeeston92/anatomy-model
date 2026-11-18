@@ -7,7 +7,10 @@ import { computeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh';
 
 THREE.Mesh.prototype.raycast = acceleratedRaycast;
 
-const SLICE_MS = 6;
+const SLICE_MS = 4;
+const schedule = typeof window !== 'undefined' && window.requestIdleCallback
+  ? (fn) => window.requestIdleCallback(fn, { timeout: 60 })
+  : (fn) => setTimeout(fn, 0);
 
 export function createPicker({ camera, domElement, registry, getTargets }) {
   const raycaster = new THREE.Raycaster();
@@ -17,14 +20,16 @@ export function createPicker({ camera, domElement, registry, getTargets }) {
   const queue = [];
   const queued = new Set();
   let working = false;
+  let paused = false;
 
   function work() {
+    if (paused) { working = false; return; }
     const until = performance.now() + SLICE_MS;
     while (queue.length && performance.now() < until) {
       const geometry = queue.pop();
       try { computeBoundsTree.call(geometry); } catch (error) { console.warn('Could not index a mesh for picking:', error); }
     }
-    if (queue.length) setTimeout(work, 0);
+    if (queue.length && !paused) schedule(work);
     else working = false;
   }
 
@@ -36,7 +41,13 @@ export function createPicker({ camera, domElement, registry, getTargets }) {
       queued.add(geometry);
       queue.push(geometry);
     });
-    if (!working && queue.length) { working = true; setTimeout(work, 0); }
+    if (!working && !paused && queue.length) { working = true; schedule(work); }
+  }
+
+  /** Pause background indexing while the camera moves so rotation stays smooth. */
+  function setPaused(on) {
+    paused = !!on;
+    if (!paused && !working && queue.length) { working = true; schedule(work); }
   }
 
   /** The shown structure at a point of the page, or null. */
@@ -53,5 +64,5 @@ export function createPicker({ camera, domElement, registry, getTargets }) {
     return entry ? { entry, point: hit.point } : null;
   }
 
-  return { index, pick, get pending() { return queue.length; } };
+  return { index, pick, setPaused, get pending() { return queue.length; } };
 }
