@@ -1,8 +1,8 @@
-# HANDOFF — anatomy-model (updated 2026-11-17, at commit `5bc7070`)
+# HANDOFF — anatomy-model (updated 2026-11-18; last code change at commit `5bc7070`)
 
 Read `CLAUDE.md` (binding project brief) and `PROGRESS.md` (full stage log, decisions, known issues) first. This file is the compressed state plus what is NOT yet in either.
 
-**State in one line:** Stages 1a–5 are done, committed and checked. Since commit `5bc7070` only documents have changed (`CLAUDE.md`, `PROGRESS.md`, this file); no code, data or model has. Joint movement (planned Stage 6) was started, then removed by the user, and has been taken out of the brief. Nothing is in progress.
+**State in one line:** Stages 1a–5 are done, committed and checked. Commits after `5bc7070` changed only documents and agent instruction files; no code, data or model has changed. Joint movement (planned Stage 6) was started, then removed by the user, and has been taken out of the brief. Nothing is in progress.
 
 ---
 
@@ -58,9 +58,11 @@ npm.cmd run build:models -- --only export|compress|data|previews
 ## 2. Directory & File Architecture
 
 ```
-CLAUDE.md                     Binding project brief. Read first. Joint movement is listed there as not in scope.
+CLAUDE.md                     Binding project brief for every agent, not only Claude. Read first. Joint movement is listed there as not in scope.
+AGENTS.md                     Loaded automatically by Antigravity (and other agents): read CLAUDE.md, PROGRESS.md, HANDOFF.md first; handoff protocol; edit and verification guardrails.
+.agents/skills/claude-handoff/SKILL.md   Antigravity skill: resume from HANDOFF.md, or rewrite it for the next agent.
 PROGRESS.md                   Stage log: what was done, decisions, known issues, how to run.
-HANDOFF.md                    This file (untracked).
+HANDOFF.md                    This file. Keep it in the project root (AGENTS.md and the skill look for it there).
 Start anatomy model.cmd       Double-click launcher for the user.
 index.html                    All static markup: canvas, side panel, footer, dialogs (213 lines).
 vite.config.js                base './', port 5173, target es2022, chunkSizeWarningLimit 900.
@@ -146,11 +148,11 @@ All four check scripts and `npm run build` passed at commit `5bc7070`. No code h
 
 ## 4. Current Work-in-Progress & Unfinished State
 
-**Nothing is in progress.** No stage is open. The only uncommitted changes are the three documents below (unless `git status` shows they have since been committed):
+**Nothing is in progress.** No stage is open and nothing is uncommitted. Changes since the last code commit (`5bc7070`), all documents or agent setup:
 
-- `CLAUDE.md`: "how a joint moves" removed from Purpose; "how a movement should look" removed from the clinical-questions line; Core feature 5 (Joint movement) removed; "joint movement (dropped by the user on 17 November 2026)" added to Not in scope. Core features are now 1–4.
-- `PROGRESS.md`: line 9 no longer ties Z-Biomechanics to movement; the Stage 5 "Next step" now reads "Not decided"; a new final section "Joint movement: dropped (17 November 2026)" records the decision and lists what is still open.
-- `HANDOFF.md`: this file (untracked).
+- `CLAUDE.md`: joint movement removed from Purpose and Core features (now 1–4) and listed under Not in scope.
+- `PROGRESS.md`: Stage 5 "Next step" reads "Not decided"; a final section "Joint movement: dropped (17 November 2026)" records the decision and lists what is still open.
+- `HANDOFF.md` (this file), `AGENTS.md` and `.agents/skills/claude-handoff/` added so Antigravity can pick up the work. Antigravity reads `AGENTS.md`, `GEMINI.md` and the `.agents/` folder only; it does not read `CLAUDE.md` or a `.antigravity/` folder on its own, which is why `AGENTS.md` points to `CLAUDE.md`.
 
 ### Joint movement: dropped (user decision, 2026-11-17)
 
@@ -256,10 +258,9 @@ Plain names: "Wrist cartilage disc (TFCC)" is the disc only; "Breastbone (sternu
 
 ## 7. Immediate Next Steps (Ordered)
 
-The user has not chosen what comes after Stage 5. Steps 2–5 are the remaining items from the brief and the logs, in suggested order; confirm with the user before starting any of them.
+The user has not chosen what comes after Stage 5. These are the remaining items from the brief and the logs, in suggested order; confirm with the user before starting any of them.
 
-1. **Commit the document changes** if `git status` still shows `CLAUDE.md`, `PROGRESS.md` and `HANDOFF.md` as changed or untracked: one commit, e.g. "Drop joint movement from the brief; add handoff notes". No code is involved.
-2. **Build the soft-tissue side switch** (the only unbuilt feature in the brief). Suggested shape: a `softSide: null | 'left' | 'right'` field in the `visibility.js` state; in `statusOf()`, return `'filtered'` for a non-bone, non-midline structure whose side differs from `softSide`; a three-way Left / Right / Both control near the top of the panel. Ask the user first: should it be part of Undo/Redo, should it set the region rows' Left/Right/Both choosers, and should midline soft tissue (e.g. spinal cord, interspinous ligaments) always show? Add `tests/check-side.mjs` (screenshots from 44), re-run all four existing checks and `npm run build`.
-3. **Deploy to GitHub Pages** (needs the user's go-ahead and their GitHub account). Create a repo, push, and add a Pages workflow that runs `npm ci && npm run build` and publishes `dist/` (`base: './'` is already set). Then measure first-view and full-load times on a normal connection against the 10 s target and record them in `PROGRESS.md`.
-4. **Settle the naming questions** listed in section 4 with the user; apply any changes in `data/structures-approved.csv` (and `propose_structures.py` while the two CSVs are still generated), then `npm run build:models -- --only data`.
-5. **Measure what was never measured:** frame rate with ghost outlines on, on a 4K screen, and on older Intel integrated graphics (`npm run check -- --headed` prints fps).
+1. **Build the soft-tissue side switch** (the only unbuilt feature in the brief). Suggested shape: a `softSide: null | 'left' | 'right'` field in the `visibility.js` state; in `statusOf()`, return `'filtered'` for a non-bone, non-midline structure whose side differs from `softSide`; a three-way Left / Right / Both control near the top of the panel. Ask the user first: should it be part of Undo/Redo, should it set the region rows' Left/Right/Both choosers, and should midline soft tissue (e.g. spinal cord, interspinous ligaments) always show? Add `tests/check-side.mjs` (screenshots from 44), re-run all four existing checks and `npm run build`.
+2. **Deploy to GitHub Pages** (needs the user's go-ahead and their GitHub account). Create a repo, push, and add a Pages workflow that runs `npm ci && npm run build` and publishes `dist/` (`base: './'` is already set). Then measure first-view and full-load times on a normal connection against the 10 s target and record them in `PROGRESS.md`.
+3. **Settle the naming questions** listed in section 4 with the user; apply any changes in `data/structures-approved.csv` (and `propose_structures.py` while the two CSVs are still generated), then `npm run build:models -- --only data`.
+4. **Measure what was never measured:** frame rate with ghost outlines on, on a 4K screen, and on older Intel integrated graphics (`npm run check -- --headed` prints fps).
