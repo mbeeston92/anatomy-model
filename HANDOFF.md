@@ -2,7 +2,7 @@
 
 Read `CLAUDE.md` (binding project brief) and `PROGRESS.md` (full stage log, decisions, known issues) first. This file is the compressed state plus what is NOT yet in either.
 
-**State in one line:** Stages 1a–5 and Stage 7 Part A (soft-tissue side switch, workflow polish, keyboard shortcuts & `?` help overlay, colour-blind highlight patterns, performance optimisations, `USER-GUIDE.md`, and `.github/workflows/deploy.yml`) are done, verified across all 6 Playwright checks + Chrome/Edge, and committed. Only Stage 7 Part B (GitHub auth, creating the repo, pushing, and checking the live GitHub Pages URL) remains.
+**State in one line:** All stages (1a–5 and 7, including the soft-tissue side switch, polish, shortcuts, accessibility, performance optimisations, `USER-GUIDE.md`, and live GitHub Pages deployment at https://mbeeston92.github.io/anatomy-model/) are complete, verified and pushed to `main`. Nothing is in progress.
 
 ---
 
@@ -51,7 +51,7 @@ npm.cmd run build:models -- --only export|compress|data|previews
 - `Source/Z-Anatomy/Startup.blend` (294 MB, git-ignored, **never modified**) — the only geometry source. Folder is `Source` with a capital S on disk.
 - `Source/Z-Biomechanics/Startup.blend` (133 MB) — rigged skeleton + attachment marks. Not used, and no longer needed now that movement is dropped.
 - Licence: Z-Anatomy, CC BY-SA 4.0. Footer credit and disclaimer are mandatory.
-- Hosting target: GitHub Pages. **Not deployed.** The repo has no Git remote and no `.github/` workflow. Real-network load time is unmeasured.
+- Hosting: GitHub Pages, live at **https://mbeeston92.github.io/anatomy-model/** (repo: **https://github.com/mbeeston92/anatomy-model**, auto-deployed via `.github/workflows/deploy.yml`). Real-network load measured at **2.30 s** to skeleton and **3.17 s** to all 817 structures.
 
 ---
 
@@ -150,7 +150,7 @@ All six check scripts (`check`, `check:regions`, `check:select`, `check:highligh
 
 ## 4. Current Work-in-Progress & Unfinished State
 
-**In progress:** Stage 7 Part B (GitHub Pages deployment). Part A is finished and verified; `.github/workflows/deploy.yml` and `USER-GUIDE.md` are in place. Waiting for the user to sign in to GitHub (`gh auth login`) and confirm the repository name (suggested: `anatomy-model`), then create the repo, push `main`, verify the live GitHub Pages URL with Playwright, and record the live URL + real-network load times in `PROGRESS.md`.
+**Nothing is in progress.** All brief requirements and Stage 7 (Part A and Part B) are complete, verified locally and on the live GitHub Pages URL (https://mbeeston92.github.io/anatomy-model/), and pushed to `main`.
 
 ### Joint movement: dropped (user decision, 2026-11-17)
 
@@ -243,5 +243,6 @@ All six check scripts (`check`, `check:regions`, `check:select`, `check:highligh
 
 ## 7. Immediate Next Steps (Ordered)
 
-1. **Finish Stage 7 Part B — Deploy to GitHub Pages:** authenticate with GitHub (`gh auth login`), create the public repository with the user's chosen name (suggested: `anatomy-model`), push `main`, enable GitHub Pages from GitHub Actions, verify the live URL loads and works via Playwright, and record the live URL and real-network load times in `PROGRESS.md`.
-2. **Optional future checks:** measure frame rate on a 4K screen and on older Intel integrated graphics, and test on Safari (macOS/iPadOS).
+Project is live and complete. Optional follow-ups only if requested by the user:
+1. Measure frame rate on a 4K screen and on older Intel integrated graphics, and test on Safari (macOS/iPadOS).
+2. Any future clinical naming or quick-view adjustments (see `USER-GUIDE.md`).

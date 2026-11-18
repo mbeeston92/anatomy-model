@@ -7,7 +7,7 @@ An interactive 3D model of the adult male body for physiotherapy appointments. N
 ## 1. Everyday use in an appointment
 
 ### Opening the app
-- **Online (any laptop or tablet):** open your GitHub Pages link in Chrome, Edge or Safari.
+- **Online (any laptop or tablet):** open **https://mbeeston92.github.io/anatomy-model/** in Chrome, Edge or Safari.
 - **Offline on this laptop:** double-click **Start anatomy model.cmd** in the project folder. Close the black window when you finish.
 
 ### Moving the model

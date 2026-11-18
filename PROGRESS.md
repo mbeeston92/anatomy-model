@@ -471,10 +471,9 @@ Not decided. See "Joint movement: dropped" below for what is still open.
 
 ### Still open from the brief and earlier stages
 
-- **Not yet on GitHub Pages** (Part B of Stage 7 below).
-- **Not measured:** frame rate on a 4K screen and on older Intel graphics.
+- **Not measured:** frame rate on a 4K screen and on older Intel graphics, and live testing on Safari (macOS/iPadOS).
 
-## Stage 7: soft-tissue side switch, polish, shortcuts, accessibility and publishing — Part A DONE, Part B ready
+## Stage 7: soft-tissue side switch, polish, shortcuts, accessibility and publishing — DONE
 
 ### What was built (Part A — 19 November 2026)
 
@@ -522,6 +521,18 @@ Not decided. See "Joint movement: dropped" below for what is still open.
 - **Repository file sizes:** `Source/` (`Startup.blend`) is excluded by `.gitignore`. Largest file in the repo is `public/models/muscles.glb` at 2.93 MB (all 7 models total 7.85 MB — well under GitHub's 50 MB / 100 MB limits).
 - **Clinical names decision:** the user chose to keep all existing structure names as they are and hide the diaphragm on single-side soft-tissue view.
 
+### Published to GitHub Pages (Part B — 19 November 2026)
+
+- **Live site:** https://mbeeston92.github.io/anatomy-model/
+- **Repository (public):** https://github.com/mbeeston92/anatomy-model
+- **Automatic deployment:** `.github/workflows/deploy.yml` builds with Vite (`base: './'`) and deploys `dist/` to GitHub Pages on every push to `main`.
+- **Live verification (Playwright, cold load over real broadband):**
+  - HTTP 200, all 817 structures loaded, 0 missing, 0 console errors or warnings.
+  - **Skeleton visible:** 2.30 s wall time (1.05 s from script start).
+  - **All 817 structures loaded:** 3.17 s wall time (2.00 s from script start — well within the ~10 s target).
+  - Interactive checks (soft-tissue side switch, search, selection, red highlight, `?` help overlay) all passed on the live URL.
+  - Privacy verified on the live URL: 0 cookies, 0 localStorage/sessionStorage entries, 0 third-party requests.
+
 ### Next step
 
-Part B: sign in to GitHub (`gh auth login`), create the GitHub repository, push `main`, enable GitHub Pages, verify the live URL with Playwright, and record the live link and real-network load times here.
+All stages in the brief are complete. Future updates (renaming structures in `data/structures-approved.csv` or adding quick views in `public/data/presets.json`) are documented in `USER-GUIDE.md`.
