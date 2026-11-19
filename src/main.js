@@ -20,6 +20,7 @@ import { createPalette } from './palette.js';
 import { createHighlights } from './highlights.js';
 import { createPresentation } from './present.js';
 import { createHelp } from './help.js';
+import { createSlice } from './slice.js';
 
 const canvas = document.getElementById('canvas');
 const viewport = document.getElementById('viewport');
@@ -30,7 +31,7 @@ const isTyping = (target) => target instanceof HTMLElement
   && target.matches('input[type="text"], input[type="search"], textarea, [contenteditable="true"]');
 
 let stage, rig, registry, loader, visibility, panel, picker, selection, searchBox, labels;
-let highlights, presentation;
+let highlights, presentation, slice;
 const help = createHelp();
 const palette = createPalette();   // highlight colours and their meanings (this session only)
 let frameOnIsolate = true;
@@ -90,6 +91,7 @@ function setUpStage() {
     camera: stage.camera,
     domElement: canvas,
     getPickTargets: () => visibility?.shownMeshes() ?? [],
+    getClipPlane: () => slice?.plane ?? null,
     onViewChange: (name) => ui.setCurrentView(name),
   });
   rig.goTo('front', { immediate: true });
@@ -142,7 +144,7 @@ window.addEventListener('keydown', (event) => {
   if (view && rig) { event.preventDefault(); rig.goTo(view); return; }
   const letter = event.key.toLowerCase();
   if (letter === 'r' && rig) { event.preventDefault(); rig.goTo('reset'); }
-  else if (letter === 'a' && visibility) { event.preventDefault(); visibility.showEverything(); }
+  else if (letter === 'a' && visibility) { event.preventDefault(); slice?.clear(); visibility.showEverything(); }
   else if (letter === 'c' && visibility) { event.preventDefault(); visibility.clearHighlights(); }
 });
 
@@ -160,15 +162,22 @@ async function start() {
         looks: createLooks(palette),
         onChange: () => {
           stage.glow.set(visibility.highlightedMeshes(), visibility.emphasis);
+          slice?.syncBounds();
           panel?.refresh(); selection?.refresh(); highlights?.refresh(); presentation?.refreshKey();
           labels?.invalidate(); requestRender();
         },
+      });
+      slice = createSlice({
+        stage,
+        visibility,
+        onChange: () => { panel?.refresh(); selection?.refresh(); requestRender(); },
       });
       picker = createPicker({
         camera: stage.camera,
         domElement: canvas,
         registry,
         getTargets: () => visibility.shownMeshes(),
+        getClipPlane: () => slice?.plane ?? null,
       });
       selection = createSelection({
         registry, visibility, picker, rig, canvas, viewport,
@@ -185,7 +194,7 @@ async function start() {
         stage, viewport, requestRender,
         coloursInUse: () => highlights.coloursInUse(),
         getLabels: () => labels?.getLayout() ?? [],
-        onChange: () => { highlights.closeMenu(); selection.setHover(null); },
+        onChange: (on) => { highlights.closeMenu(); selection.setHover(null); slice?.setGuideHidden(on); },
       });
       searchBox = createSearchBox({
         registry,
@@ -206,6 +215,7 @@ async function start() {
         systems: data.systems,
         presets,
         injuries,
+        slice,
         onIsolated: (region, sides) => { if (frameOnIsolate) frameRegion(region, sides); },
         onPreset: (preset, sides) => {
           const isolated = visibility.applyPreset(preset, sides);
@@ -278,6 +288,7 @@ window.__viewer = {
   get labels() { return labels; },
   get highlights() { return highlights; },
   get presentation() { return presentation; },
+  get slice() { return slice; },
   help,
   palette,
   stats,

@@ -98,7 +98,10 @@ body { background: var(--ground); overflow: hidden; }
 .presets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .preset { padding: 6px 10px; line-height: 1.2; text-align: left; min-height: 48px; }
 
-.injuries { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.injuries {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 7px;
+  max-height: 292px; overflow-y: auto; padding-right: 2px;
+}
 .injury {
   display: flex; flex-direction: column; justify-content: center; gap: 2px;
   padding: 6px 10px; line-height: 1.2; text-align: left; min-height: 48px;
@@ -193,6 +196,21 @@ body { background: var(--ground); overflow: hidden; }
 .check--wide { min-height: 40px; }
 .check__box { width: 20px; height: 20px; margin: 0; accent-color: var(--accent); cursor: pointer; flex: none; }
 .check__swatch { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(30, 42, 51, 0.35); flex: none; }
+
+/* Muscle layers peel & cross-section slice */
+.peel { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.peel__head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.peel__label { font-size: 0.875rem; color: var(--ink-soft); }
+.peel__label strong { color: var(--ink); }
+.peel__buttons { display: flex; gap: 6px; }
+.peel__slider { width: 100%; height: 24px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.peel__buttons .region__action:disabled { color: #6d7a85; border-color: var(--line); background: #f5f7f9; cursor: default; }
+
+.seg--full { display: flex; width: 100%; }
+.seg--full .seg__option { flex: 1; padding: 0 4px; text-align: center; white-space: nowrap; }
+.slice-controls { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.slice-controls[hidden] { display: none; }
+.slice-controls__pos { flex: none; min-width: 38px; text-align: right; font-size: 0.875rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--ink-soft); }
 
 /* Left / Right / Both chooser */
 .seg { display: inline-flex; flex: none; }

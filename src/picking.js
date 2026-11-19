@@ -12,7 +12,7 @@ const schedule = typeof window !== 'undefined' && window.requestIdleCallback
   ? (fn) => window.requestIdleCallback(fn, { timeout: 60 })
   : (fn) => setTimeout(fn, 0);
 
-export function createPicker({ camera, domElement, registry, getTargets }) {
+export function createPicker({ camera, domElement, registry, getTargets, getClipPlane = () => null }) {
   const raycaster = new THREE.Raycaster();
   raycaster.firstHitOnly = true;
   const pointer = new THREE.Vector2();
@@ -57,8 +57,11 @@ export function createPicker({ camera, domElement, registry, getTargets }) {
       ((clientX - rect.left) / rect.width) * 2 - 1,
       -((clientY - rect.top) / rect.height) * 2 + 1,
     );
+    const clip = getClipPlane();
+    raycaster.firstHitOnly = !clip;
     raycaster.setFromCamera(pointer, camera);
-    const hit = raycaster.intersectObjects(getTargets(), false).find((h) => h.object.visible);
+    const hit = raycaster.intersectObjects(getTargets(), false)
+      .find((h) => h.object.visible && (!clip || clip.distanceToPoint(h.point) >= -1e-4));
     if (!hit) return null;
     const entry = registry.fromMesh(hit.object);
     return entry ? { entry, point: hit.point } : null;

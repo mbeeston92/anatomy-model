@@ -25,7 +25,7 @@ const ZOOM_GLIDE_MS = 70;        // how quickly the camera catches up with the w
 
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
-export function createCameraRig({ camera, domElement, getPickTargets, onViewChange = () => {} }) {
+export function createCameraRig({ camera, domElement, getPickTargets, getClipPlane = () => null, onViewChange = () => {} }) {
   const controls = new OrbitControls(camera, domElement);
   controls.enableDamping = true;
   controls.dampingFactor = 0.12;
@@ -128,9 +128,11 @@ export function createCameraRig({ camera, domElement, getPickTargets, onViewChan
       ((event.clientX - rect.left) / rect.width) * 2 - 1,
       -((event.clientY - rect.top) / rect.height) * 2 + 1,
     );
+    const clip = getClipPlane();
+    raycaster.firstHitOnly = !clip;
     raycaster.setFromCamera(pointer, camera);
     const hits = raycaster.intersectObjects(getPickTargets(), false);
-    return hits.find((hit) => hit.object.visible) ?? null;
+    return hits.find((hit) => hit.object.visible && (!clip || clip.distanceToPoint(hit.point) >= -1e-4)) ?? null;
   }
 
   domElement.addEventListener('dblclick', (event) => {

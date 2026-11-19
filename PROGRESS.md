@@ -545,6 +545,18 @@ Not decided. See "Joint movement: dropped" below for what is still open.
 - Added collapsible **Common injuries** section with a `Left / Right` chooser (synced with **Soft-tissue side**) and a plain-English patient summary card in `index.html` and `src/panel.js`.
 - Added `npm.cmd run check:injuries` (`tests/check-injuries.mjs`, screenshots 55–60) verifying all 12 injuries load with zero warnings and every highlighted structure is visible.
 
+### Follow-up: Muscle layer peeling, 3D cross-section slice plane & 20 Common injuries (19 November 2026)
+
+- **"Peel back a layer" muscle depth control** (`src/layers.js`, `src/visibility.js`, `src/panel.js`, `index.html`):
+  - Classified all 113 unique muscles into 3 anatomical depth layers (Layer 1 superficial, Layer 2 intermediate, Layer 3 deep).
+  - Added **Peel a layer**, **Restore**, and a 4-step **Muscle layers** slider (*All muscles* → *Intermediate & deep* → *Deep only* → *No muscles*) inside the **Systems** section. Integrated into Undo/Redo, **Show everything**, and search-to-reveal.
+- **3D cross-section slice plane** (`src/slice.js`, `src/scene.js`, `src/picking.js`, `src/camera.js`, `src/panel.js`):
+  - Added **Horizontal** (axial), **Front–back** (coronal), and **Side–side** (sagittal) clipping planes with a position slider, **Flip side** button, and a subtle teal cut-frame guide (automatically hidden in presentation view and saved images).
+  - Automatically scales the slider travel to the currently shown region (or whole body), updates raycast hover/click/double-click picking so clipped-away halves never intercept pointers, and clears cleanly on **Show everything**.
+- **Expanded Common injuries to 20 presets** (`public/data/injuries.json`):
+  - Added 8 more clinical presentations: **Carpal tunnel syndrome**, **Meniscal tear**, **ITB syndrome**, **De Quervain's**, **Golfer's elbow**, **Cervical radiculopathy**, **High ankle sprain**, and **SI joint pain** (all using real Z-Anatomy geometry).
+- Added `npm.cmd run check:explore` (`tests/check-explore.mjs`, screenshots 61–65) and expanded `tests/check-injuries.mjs` (screenshots 66–69).
+
 ### Next step
 
 All stages in the brief are complete. Future updates (renaming structures in `data/structures-approved.csv` or adding quick views in `public/data/presets.json`) are documented in `USER-GUIDE.md`.

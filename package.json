@@ -16,6 +16,7 @@
     "check:side": "node tests/check-side.mjs",
     "check:polish": "node tests/check-polish.mjs",
     "check:injuries": "node tests/check-injuries.mjs",
+    "check:explore": "node tests/check-explore.mjs",
     "build:models": "node scripts/build-models.mjs",
     "export": "node scripts/build-models.mjs --only export",
     "compress": "node scripts/compress.mjs",

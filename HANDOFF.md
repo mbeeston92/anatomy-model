@@ -39,6 +39,10 @@ npm.cmd run check             # Stage 2 viewer check (screenshots -> work/screen
 npm.cmd run check:regions     # Stage 3, 34 checks
 npm.cmd run check:select      # Stage 4, ~70 checks
 npm.cmd run check:highlights  # Stage 5, 52 checks
+npm.cmd run check:side        # Soft-tissue side switch, 26 checks
+npm.cmd run check:polish      # Stage 7 polish & accessibility, 24 checks
+npm.cmd run check:injuries    # 20 Common injury presets, 29 checks
+npm.cmd run check:explore     # Muscle layer peeling & 3D cross-section slice, 13 checks
 npm.cmd run build:models      # export -> compress -> data -> previews (~2 min)
 npm.cmd run build:models -- --no-previews
 npm.cmd run build:models -- --only export|compress|data|previews
@@ -92,8 +96,9 @@ data/
 
 public/
   models/{bones,cartilage,ligaments,tendons,muscles,nerves,bursae}.glb   Committed, meshopt-compressed, 7.85 MB total.
-  data/structures.json        Generated. Keys: version, credit, units, upAxis, frontAxis, mirrorAxis, regions[13], systems[7], structures[817].
+  data/structures.json        Generated. Keys: version, credit, units, upAxis, frontAxis, mirrorAxis, regions[13], systems[7], structures[818].
   data/presets.json           Hand-editable quick views (4).
+  data/injuries.json          Hand-editable common injury demonstrations (20).
 
 src/
   main.js        Entry: wires modules, render-on-demand frame loop, undo keys, window.__viewer debug handle.
@@ -103,7 +108,9 @@ src/
   loader.js      Fetch with progress, GLTFLoader + meshopt, builds the mirrored left side, retry of failed systems.
   camera.js      createCameraRig: orbit, presets, goTo/frame transitions, smooth wheel zoom, double-click centre.
   visibility.js  THE state store: regions hidden/isolated, systems off, single structures, highlights, pain spots; undo/redo; ghost; applies materials/visibility to meshes.
-  panel.js       Side panel: systems, region rows, quick views, options.
+  panel.js       Side panel: systems, muscle layers, cross-section slice, region rows, quick views, common injuries, options.
+  layers.js      Anatomical 3-layer muscle depth classification (superficial / intermediate / deep) for 113 unique muscles.
+  slice.js       3D cross-section clipping plane (Horizontal / Front–back / Side–side, Flip side, cut-frame guide).
   picking.js     three-mesh-bvh raycast picking; index built in 6 ms slices.
   outline.js     Selection/hover outline (mask pass) and highlight glow pass.
   selection.js   Hover tooltip, click select, info card, Hide/Isolate/Zoom this.
@@ -128,14 +135,14 @@ dist/                         Git-ignored build output.
 
 ## 3. Completed & Working Features (verified; do not touch unless required)
 
-All six check scripts (`check`, `check:regions`, `check:select`, `check:highlights`, `check:side`, `check:polish`), Chrome/Edge cross-browser tests, and `npm.cmd run build` pass with zero console errors or warnings.
+All eight check scripts (`check`, `check:regions`, `check:select`, `check:highlights`, `check:side`, `check:polish`, `check:injuries`, `check:explore`), Chrome/Edge cross-browser tests, and `npm.cmd run build` pass with zero console errors or warnings.
 
 - **Stage 1a/1b — data and models.** 818 structures (bone 208, cartilage 88, ligament 117 incl. linea alba, tendon 52, muscle 225, nerve 64, bursa 64). 538 exported meshes; 280 left soft-tissue structures are mirrored from the right in the app. 1.73 M triangles shown with both sides; 7.86 MB total models. No export warnings; ids match both ways.
 - **Stage 2 — viewer.** Progressive load (bones first), progress bar, partial-failure message with retry, lights that follow the camera, depth-bias ordering, render-on-demand, camera presets, smooth wheel zoom to pointer (`WHEEL_ZOOM_RATE = 0.00154`, user-approved), double-click to centre. 60 fps on Radeon 780M integrated graphics at 1440x810.
 - **Stage 3 — regions.** Hide/Show/Isolate per region and side, system tick boxes, quick views from `presets.json`, Show everything, Undo/Redo (100 steps, Ctrl+Z / Ctrl+Shift+Z / Ctrl+Y), ghost outlines of hidden regions (60 fps verified), zoom-on-isolate option.
 - **Stage 4 — names.** Hover label + outline, click select, info card (Hide this / Isolate this / Zoom to this), search with fuzzy matching and Left/Right buttons, medical-name option, labels mode.
 - **Stage 5 — highlights.** Four colours (red #F0123C, amber #FF8A00, green #12A84A, blue #3554F2) with editable meanings, right-click menu, highlight list, fade-everything-else, pain-area spots (max 6), presentation view (`P`), Save image (`S`, PNG 2x), all inside the undo history. Privacy check: no cookies, no storage, no third-party requests.
-- **Stage 7 Part A — soft-tissue side switch, polish, shortcuts, accessibility & performance.** Whole-body Soft-tissue side switch (`Left / Right / Both`; keeps bones and midline structures; hides `muscle_diaphragm` on single side per user decision; syncs region, quick-view and injury side choosers; undoable). Collapsible Highlights, Quick views & Common injuries (12 clinical presets in `public/data/injuries.json` with `extraRegions`, Red/Amber highlights, and plain-English notes); quick views sync isolated region row chooser; larger trackpad targets; saved PNG includes visible floating labels; keyboard shortcuts (`1`–`5`, `R`, `A`, `C`, `P`, `S`, `Ctrl+Z`, `?`) + `?` help overlay with 30-second guide; distinct colour-blind patterns (solid/dashed/dotted/double) in 3D glow shader, UI swatches and saved PNG; improved contrast and ARIA labels; WebGL fallback hides loading bar immediately; preloads, overlapped loading, pause-BVH-while-moving, and `three` vendor chunk split; `USER-GUIDE.md` and `.github/workflows/deploy.yml` added.
+- **Stage 7 + Follow-ups — soft-tissue side switch, polish, shortcuts, accessibility, performance, muscle layer peeling, 3D cross-section slice & 20 common injuries.** Whole-body Soft-tissue side switch (`Left / Right / Both`; keeps bones and midline structures; hides `muscle_diaphragm` on single side per user decision; syncs region, quick-view and injury side choosers; undoable). Collapsible Highlights, Quick views & Common injuries (20 clinical presets in `public/data/injuries.json` with `extraRegions`, Red/Amber highlights, and plain-English notes); anatomical 3-layer muscle peeling (`src/layers.js`: Peel a layer + slider, undoable); 3D cross-section slice plane (`src/slice.js`: Horizontal / Front–back / Side–side, Flip side, clip-aware picking); quick views sync isolated region row chooser; larger trackpad targets; saved PNG includes visible floating labels; keyboard shortcuts (`1`–`5`, `R`, `A`, `C`, `P`, `S`, `Ctrl+Z`, `?`) + `?` help overlay with 30-second guide; distinct colour-blind patterns (solid/dashed/dotted/double) in 3D glow shader, UI swatches and saved PNG; improved contrast and ARIA labels; WebGL fallback hides loading bar immediately; preloads, overlapped loading, pause-BVH-while-moving, and `three` vendor chunk split; `USER-GUIDE.md` and `.github/workflows/deploy.yml` added.
 
 **User-agreed behaviours that look like bugs but are not** (do not "fix"):
 - Soft tissue hides if ANY of its regions is hidden; a bone hides only when ALL its regions are hidden.

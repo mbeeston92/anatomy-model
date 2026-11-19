@@ -124,6 +124,33 @@
           <section class="section" aria-labelledby="systems-heading">
             <h2 id="systems-heading" class="panel__heading">Systems</h2>
             <div id="systems" class="checks"></div>
+            <div class="peel">
+              <div class="peel__head">
+                <span class="peel__label">Muscle layers: <strong id="peel-text">All muscles</strong></span>
+                <div class="peel__buttons">
+                  <button id="peel-down" class="region__action" type="button" title="Hide the outermost visible layer of muscles">Peel a layer</button>
+                  <button id="peel-reset" class="region__action" type="button" title="Restore all muscle layers" disabled>Restore</button>
+                </div>
+              </div>
+              <input id="peel-slider" class="peel__slider" type="range" min="0" max="3" step="1" value="0" aria-label="Muscle layers peeled" />
+            </div>
+          </section>
+
+          <section id="slice-section" class="section" aria-labelledby="slice-heading">
+            <div class="section__head">
+              <h2 id="slice-heading" class="panel__heading">Cross-section slice</h2>
+              <button id="slice-flip" class="region__action" type="button" title="Keep the opposite half of the cut" hidden>Flip side</button>
+            </div>
+            <div id="slice-axis" class="seg seg--full" role="radiogroup" aria-label="Cross-section slice plane">
+              <button type="button" class="seg__option is-selected" role="radio" aria-checked="true" data-slice="off">Off</button>
+              <button type="button" class="seg__option" role="radio" aria-checked="false" data-slice="y">Horizontal</button>
+              <button type="button" class="seg__option" role="radio" aria-checked="false" data-slice="z">Front–back</button>
+              <button type="button" class="seg__option" role="radio" aria-checked="false" data-slice="x">Side–side</button>
+            </div>
+            <div id="slice-controls" class="slice-controls" hidden>
+              <input id="slice-slider" class="peel__slider" type="range" min="0" max="100" step="1" value="50" aria-label="Cross-section slice position" />
+              <span id="slice-pos" class="slice-controls__pos">50%</span>
+            </div>
           </section>
 
           <section class="section" aria-labelledby="regions-heading">

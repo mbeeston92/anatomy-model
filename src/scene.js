@@ -72,7 +72,18 @@ export function createStage(canvas, container, { highlightColours = [] } = {}) {
 
   const outline = createOutline(renderer, camera);
   const glow = createGlow(renderer, camera, highlightColours);
+  const noClips = [];
+  const activeClips = [null];
   let plain = false;             // presentation view and saved images: no selection outline
+
+  function setClipPlane(plane) {
+    if (plane) {
+      activeClips[0] = plane;
+      renderer.clippingPlanes = activeClips;
+    } else {
+      renderer.clippingPlanes = noClips;
+    }
+  }
 
   function render() {
     renderer.render(scene, camera);
@@ -86,11 +97,15 @@ export function createStage(canvas, container, { highlightColours = [] } = {}) {
    */
   function snapshot(ratio, use) {
     const wasPlain = plain;
+    const guide = scene.getObjectByName('slice_guide');
+    const wasGuide = guide?.visible ?? false;
     plain = true;
+    if (guide) guide.visible = false;
     renderer.setPixelRatio(ratio);
     render();
     try { use(renderer.domElement); } finally {
       plain = wasPlain;
+      if (guide) guide.visible = wasGuide;
       renderer.setPixelRatio(pixelRatio);
       render();
     }
@@ -98,7 +113,7 @@ export function createStage(canvas, container, { highlightColours = [] } = {}) {
 
   resize();
   return {
-    renderer, scene, camera, lights, outline, glow, resize, render, setMoving, snapshot,
+    renderer, scene, camera, lights, outline, glow, resize, render, setMoving, snapshot, setClipPlane,
     setPlain(on) { plain = !!on; },
   };
 }

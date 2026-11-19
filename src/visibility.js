@@ -12,6 +12,7 @@
 // only when both its left and right sides are hidden, and stay shown when
 // soft tissue is set to one side.
 import * as THREE from 'three';
+import { muscleLayer } from './layers.js';
 
 export const SIDES = ['left', 'right'];
 
@@ -34,6 +35,7 @@ const emptyState = () => ({
   hidden: new Set(),          // "region|side" keys
   isolated: null,             // { region, sides: ['left', 'right'] } or null
   softSide: null,             // 'left' or 'right' when soft tissue is shown on one side only; null for both
+  musclePeel: 0,              // 0 = all muscles, 1 = superficial peeled, 2 = deep only, 3 = no muscles
   systemsOff: new Set(),      // system ids that are unticked
   structuresOff: new Set(),   // structure ids hidden one by one (quick views, "Hide this")
   only: null,                 // id of the one structure being shown on its own ("Isolate this")
@@ -52,6 +54,7 @@ const serialise = (s) => JSON.stringify({
       : {}),
   },
   softSide: s.softSide,
+  musclePeel: s.musclePeel,
   systemsOff: [...s.systemsOff].sort(),
   structuresOff: [...s.structuresOff].sort(),
   only: s.only,
@@ -69,6 +72,7 @@ const deserialise = (text) => {
     hidden: new Set(o.hidden),
     isolated: o.isolated,
     softSide: o.softSide ?? null,
+    musclePeel: o.musclePeel ?? 0,
     systemsOff: new Set(o.systemsOff),
     structuresOff: new Set(o.structuresOff),
     only: o.only ?? null,
@@ -109,6 +113,7 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     // One structure on its own: everything else counts as hidden (and is ghosted).
     if (s.only) return entry.id === s.only ? 'shown' : 'hidden';
     if (s.systemsOff.has(d.system) || s.structuresOff.has(entry.id)) return 'filtered';
+    if (s.musclePeel > 0 && d.system === 'muscle' && muscleLayer(entry.id) <= s.musclePeel) return 'filtered';
     if (s.softSide && d.system !== 'bone'
       && (d.side !== 'midline' ? d.side !== s.softSide : BILATERAL_MIDLINE.has(entry.id))) {
       return 'filtered';
@@ -241,6 +246,19 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     return commit((s) => { s.softSide = next; });
   }
 
+  /** Peel muscles back by depth layer: 0 = all, 1 = superficial off, 2 = deep only, 3 = all muscles off. */
+  function setMusclePeel(level) {
+    const next = Math.max(0, Math.min(3, Math.round(Number(level) || 0)));
+    return commit((s) => {
+      s.musclePeel = next;
+      if (next < 3) s.systemsOff.delete('muscle');
+    });
+  }
+
+  function peelMuscle() {
+    return setMusclePeel(Math.min(3, state.musclePeel + 1));
+  }
+
   function showStructures() {
     return commit((s) => { s.structuresOff = new Set(); });
   }
@@ -266,6 +284,9 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     return commit((s) => {
       s.structuresOff.delete(id);
       s.systemsOff.delete(entry.data.system);
+      if (s.musclePeel > 0 && entry.data.system === 'muscle' && muscleLayer(id) <= s.musclePeel) {
+        s.musclePeel = muscleLayer(id) - 1;
+      }
       if (s.softSide && entry.data.system !== 'bone'
         && (entry.data.side !== 'midline' ? entry.data.side !== s.softSide : BILATERAL_MIDLINE.has(entry.id))) {
         s.softSide = null;
@@ -411,10 +432,13 @@ export function createVisibility({ registry, materials, looks = null, onChange =
       }
     }
     if (includeHighlights && highlighted.length) {
-      for (const { mesh } of highlighted) box.expandByObject(mesh);
-      // If none of the regions had single-region structures (e.g. thigh), the
-      // highlights themselves give a much cleaner frame than long nerves crossing it.
-      void hasCore;
+      for (const { mesh } of highlighted) {
+        const entry = registry.fromMesh(mesh);
+        // If we already have core joint structures, skip long multi-region nerves
+        // (e.g. median nerve from shoulder to hand) so the camera stays zoomed on the joint.
+        if (hasCore && entry && entry.data.regions.length > 2) continue;
+        box.expandByObject(mesh);
+      }
     }
     return box.isEmpty() ? null : box;
   }
@@ -422,7 +446,7 @@ export function createVisibility({ registry, materials, looks = null, onChange =
   return {
     regions,
     isPaired,
-    hide, show, isolate, isIsolated, setSystem, setSoftSide, showStructures, showEverything, applyPreset,
+    hide, show, isolate, isIsolated, setSystem, setSoftSide, setMusclePeel, peelMuscle, showStructures, showEverything, applyPreset,
     setStructure, isolateStructure, reveal,
     highlightOf, setHighlight, removeHighlight, clearHighlights, addSpot, removeSpot,
     /** [{ id, colour }] in the order they were made. */
@@ -435,6 +459,7 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     get only() { return state.only; },
     get isolated() { return state.isolated; },
     get softSide() { return state.softSide; },
+    get musclePeel() { return state.musclePeel; },
     structureOn: (id) => !state.structuresOff.has(id),
     undo: () => step(-1),
     redo: () => step(1),

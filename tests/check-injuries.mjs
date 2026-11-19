@@ -41,7 +41,7 @@ await page.waitForFunction(() => window.__viewer?.stats.allLoadedAt, null, { tim
 await settle();
 
 const injuryIds = await page.locator('#injuries .injury').evaluateAll((nodes) => nodes.map((n) => n.dataset.injury));
-check('12 common injuries listed', injuryIds.length === 12, injuryIds.join(', '));
+check('20 common injuries listed', injuryIds.length === 20, `${injuryIds.length} injuries`);
 const overflow = await page.evaluate(() => { const p = document.querySelector('.panel__inner'); return p.scrollWidth - p.clientWidth; });
 check('panel controls fit the panel width', overflow <= 0, `${overflow}px over`);
 
@@ -51,6 +51,10 @@ const SHOTS = {
   'rotator-cuff': '57-injury-rotator-cuff',
   'hamstring-strain': '58-injury-hamstring-strain',
   'calf-strain': '59-injury-calf-strain',
+  'carpal-tunnel': '66-injury-carpal-tunnel',
+  'meniscal-tear': '67-injury-meniscal-tear',
+  'cervical-radiculopathy': '68-injury-cervical-radiculopathy',
+  'si-joint-pain': '69-injury-si-joint-pain',
 };
 
 for (const id of injuryIds) {

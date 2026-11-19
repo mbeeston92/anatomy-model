@@ -3,6 +3,7 @@
 // module and redraws itself whenever that changes.
 import { SIDES } from './visibility.js';
 import { regionLabel, fullLabel } from './names.js';
+import { PEEL_LABELS } from './layers.js';
 
 const $ = (id) => document.getElementById(id);
 
@@ -54,7 +55,7 @@ function sideChooser(label, initial, onPick, choices = SIDE_CHOICES) {
   };
 }
 
-export function createPanel({ visibility, registry, systems, presets, injuries = [], onIsolated, onPreset, onInjury = () => {}, onGhost, onFrameOption, onMedicalOption, onLabelsOption }) {
+export function createPanel({ visibility, registry, systems, presets, injuries = [], slice = null, onIsolated, onPreset, onInjury = () => {}, onGhost, onFrameOption, onMedicalOption, onLabelsOption }) {
   const refreshers = [];
   const regionChoosers = new Map();
   let lastSoftSide = visibility.softSide;
@@ -123,7 +124,7 @@ export function createPanel({ visibility, registry, systems, presets, injuries =
   });
 
   // ----- Restore -----
-  $('show-everything').addEventListener('click', () => visibility.showEverything());
+  $('show-everything').addEventListener('click', () => { slice?.clear(); visibility.showEverything(); });
   $('undo').addEventListener('click', () => visibility.undo());
   $('redo').addEventListener('click', () => visibility.redo());
   $('structures-show').addEventListener('click', () => visibility.showStructures());
@@ -162,6 +163,58 @@ export function createPanel({ visibility, registry, systems, presets, injuries =
     swatch.style.background = system.colour;
     systemBox.append(el('label', { class: 'check' }, [input, swatch, el('span', { text: system.label })]));
     refreshers.push(() => { input.checked = visibility.systemOn(system.id); });
+  }
+
+  // ----- Muscle layers ("Peel back a layer") -----
+  const peelSlider = $('peel-slider');
+  const peelDown = $('peel-down');
+  const peelReset = $('peel-reset');
+  const peelText = $('peel-text');
+  peelDown?.addEventListener('click', () => visibility.peelMuscle());
+  peelReset?.addEventListener('click', () => visibility.setMusclePeel(0));
+  peelSlider?.addEventListener('input', () => visibility.setMusclePeel(Number(peelSlider.value)));
+  refreshers.push(() => {
+    if (!peelSlider) return;
+    const musclesOff = !visibility.systemOn('muscle');
+    const level = musclesOff ? 3 : visibility.musclePeel;
+    peelSlider.value = String(level);
+    peelText.textContent = PEEL_LABELS[level] ?? PEEL_LABELS[0];
+    peelDown.disabled = level >= 3;
+    peelReset.disabled = level === 0 && !musclesOff;
+  });
+
+  // ----- Cross-section slice plane -----
+  if (slice) {
+    const sliceButtons = [...document.querySelectorAll('#slice-axis [data-slice]')];
+    const sliceControls = $('slice-controls');
+    const sliceSlider = $('slice-slider');
+    const slicePos = $('slice-pos');
+    const sliceFlip = $('slice-flip');
+    for (const button of sliceButtons) {
+      button.addEventListener('click', () => {
+        const val = button.dataset.slice;
+        slice.setAxis(val === 'off' ? null : val);
+      });
+    }
+    sliceSlider.addEventListener('input', () => slice.setFraction(Number(sliceSlider.value) / 100));
+    sliceFlip.addEventListener('click', () => slice.flip());
+    refreshers.push(() => {
+      const current = slice.axis ?? 'off';
+      for (const button of sliceButtons) {
+        const on = button.dataset.slice === current;
+        button.classList.toggle('is-selected', on);
+        button.setAttribute('aria-checked', String(on));
+      }
+      sliceControls.hidden = !slice.active;
+      sliceFlip.hidden = !slice.active;
+      if (slice.active) {
+        const pct = Math.round(slice.fraction * 100);
+        sliceSlider.value = String(pct);
+        slicePos.textContent = `${pct}%`;
+        sliceFlip.classList.toggle('is-pressed', slice.flipped);
+        sliceFlip.setAttribute('aria-pressed', String(slice.flipped));
+      }
+    });
   }
 
   // ----- Regions -----

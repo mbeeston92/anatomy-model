@@ -176,6 +176,120 @@
       },
       "view": "back",
       "summary": "Calf strains most often affect the inner head of gastrocnemius where it narrows towards the Achilles tendon, especially during sudden push-off or running."
+    },
+    {
+      "id": "carpal-tunnel",
+      "label": "Carpal tunnel syndrome",
+      "regionLabel": "Wrist & hand",
+      "isolate": "wrist and hand",
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["nerve_median", "nerve_median_digital"],
+        "amber": ["ligament_flexor_retinaculum_wrist", "tendon_finger_flexors"]
+      },
+      "view": "front",
+      "summary": "The median nerve travels through the narrow carpal tunnel on the palm side of the wrist beneath the flexor retinaculum alongside the finger flexor tendons. Compression here causes pins and needles or numbness in the thumb and first three fingers."
+    },
+    {
+      "id": "meniscal-tear",
+      "label": "Meniscal tear",
+      "regionLabel": "Knee",
+      "isolate": "knee",
+      "hideSystems": ["muscle", "bursa"],
+      "hideStructures": ["bone_patella", "cartilage_articular_patella", "tendon_quadriceps_patellar"],
+      "highlights": {
+        "red": ["cartilage_meniscus_medial"],
+        "amber": ["cartilage_meniscus_lateral", "ligament_mcl"]
+      },
+      "view": "front",
+      "summary": "The menisci are C-shaped cartilage cushions between the thigh bone and shin bone. The medial (inner) meniscus is most often torn when twisting on a bent knee and sits closely attached to the MCL."
+    },
+    {
+      "id": "itb-syndrome",
+      "label": "ITB syndrome",
+      "regionLabel": "Knee / thigh",
+      "isolate": "knee",
+      "extraRegions": ["pelvis and hip"],
+      "hideSystems": [],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["tendon_itb"],
+        "amber": ["muscle_tensor_fasciae_latae", "muscle_gluteus_medius"]
+      },
+      "view": "outer",
+      "summary": "The iliotibial band (ITB) runs down the outer thigh from the hip muscles (TFL and gluteus medius) to the outer knee. Repetitive running or cycling can irritate the tissues where it passes over the outer thigh bone."
+    },
+    {
+      "id": "de-quervains",
+      "label": "De Quervain's",
+      "regionLabel": "Wrist & thumb",
+      "isolate": "wrist and hand",
+      "hideSystems": [],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["tendon_de_quervain"],
+        "amber": ["muscle_abductor_pollicis_longus", "muscle_extensor_pollicis_brevis"]
+      },
+      "view": "outer",
+      "summary": "Irritation of the two thumb tendons (APL and EPB) where they run side by side over the thumb side of the wrist, commonly aggravated by lifting, pinching or twisting the wrist."
+    },
+    {
+      "id": "golfers-elbow",
+      "label": "Golfer's elbow",
+      "regionLabel": "Elbow",
+      "isolate": "elbow",
+      "hideSystems": [],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["tendon_common_flexor"],
+        "amber": ["muscle_flexor_carpi_radialis", "muscle_pronator_teres"]
+      },
+      "view": "inner",
+      "summary": "Overload of the common wrist-flexor tendon on the inner bony bump of the elbow (including flexor carpi radialis and pronator teres), typically felt when gripping, pulling or flexing the wrist."
+    },
+    {
+      "id": "cervical-radiculopathy",
+      "label": "Cervical radiculopathy",
+      "regionLabel": "Neck",
+      "isolate": "head and neck",
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["cartilage_disc_c5_c6", "cartilage_disc_c6_c7"],
+        "amber": ["nerve_brachial_plexus"]
+      },
+      "view": "back",
+      "summary": "Irritation or narrowing around the lower neck discs (most commonly C5/C6 or C6/C7) can affect the nerve roots feeding into the brachial plexus, referring pain, tingling or weakness into the shoulder and arm."
+    },
+    {
+      "id": "high-ankle-sprain",
+      "label": "High ankle sprain",
+      "regionLabel": "Ankle",
+      "isolate": "ankle and foot",
+      "extraRegions": ["lower leg"],
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["ligament_aitfl"],
+        "amber": ["ligament_pitfl", "ligament_interosseous_membrane_leg"]
+      },
+      "view": "front",
+      "summary": "A twisting injury above the ankle joint strains the syndesmosis ligaments binding the tibia and fibula together—starting with the front ligament (AITFL) and sometimes involving the back ligament (PITFL) and interosseous membrane."
+    },
+    {
+      "id": "si-joint-pain",
+      "label": "SI joint pain",
+      "regionLabel": "Pelvis",
+      "isolate": "pelvis and hip",
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["ligament_si_posterior", "ligament_si_interosseous"],
+        "amber": ["ligament_si_anterior", "bone_sacrum", "bone_hip_bone"]
+      },
+      "view": "back",
+      "summary": "The sacroiliac (SI) joint links the triangular sacrum at the base of the spine to the pelvis, reinforced by strong front, deep and back ligaments that transfer load between the spine and legs."
     }
   ]
 }
