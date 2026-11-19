@@ -538,6 +538,13 @@ Not decided. See "Joint movement: dropped" below for what is still open.
 - Added **`ligament_linea_alba`** (*Linea alba (midline abdominal connective tissue)*, medical name *Linea alba*, midline, `abdomen and lower back (lumbar)`, system `ligament`) to `data/structures-approved.csv` (and `scripts/propose_structures.py`).
 - Rebuilt models via `npm.cmd run build:models -- --no-previews`: now **818 structures** (538 exported meshes, 280 mirrored; `ligaments.glb` is 68 meshes, 0.48 MB; total models 7.86 MB). Closes the front abdominal midline gap between the rectus abdominis muscles noted in Stage 1b.
 
+### Follow-up: 12 Common injury demonstrations added (19 November 2026)
+
+- Added **`public/data/injuries.json`** with 12 one-click clinical injury demonstrations (using real Z-Anatomy meshes only; no sculpted geometry): **ACL tear**, **MCL sprain / tear**, **Lumbar disc herniation**, **Rotator cuff injury**, **Lateral ankle sprain**, **Achilles tendinopathy**, **Tennis elbow**, **Plantar fasciopathy**, **Gluteal tendinopathy**, **Patellar tendon overload**, **Hamstring strain**, and **Calf strain**.
+- Extended `src/visibility.js` `applyPreset()` and `frameBox()` to support `extraRegions` (e.g. lower back + pelvis for sciatica, lower leg + ankle for Achilles tendinopathy) and automatic `highlights` (`red` + `amber`, single Undo/Redo step).
+- Added collapsible **Common injuries** section with a `Left / Right` chooser (synced with **Soft-tissue side**) and a plain-English patient summary card in `index.html` and `src/panel.js`.
+- Added `npm.cmd run check:injuries` (`tests/check-injuries.mjs`, screenshots 55–60) verifying all 12 injuries load with zero warnings and every highlighted structure is visible.
+
 ### Next step
 
 All stages in the brief are complete. Future updates (renaming structures in `data/structures-approved.csv` or adding quick views in `public/data/presets.json`) are documented in `USER-GUIDE.md`.

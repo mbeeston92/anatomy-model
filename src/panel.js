@@ -24,12 +24,13 @@ const SIDE_CHOICES = [
   { id: 'right', label: 'Right', sides: ['right'] },
   { id: 'both', label: 'Both', sides: SIDES },
 ];
+const PAIR_CHOICES = SIDE_CHOICES.slice(0, 2);
 const sidesOf = (choice) => SIDE_CHOICES.find((c) => c.id === choice).sides;
 
-/** A Left / Right / Both chooser. Returns { node, get value, set value, refresh(marks) }. */
-function sideChooser(label, initial, onPick) {
+/** A Left / Right (/ Both) chooser. Returns { node, get value, set value, refresh(marks) }. */
+function sideChooser(label, initial, onPick, choices = SIDE_CHOICES) {
   let value = initial;
-  const buttons = SIDE_CHOICES.map((choice) => {
+  const buttons = choices.map((choice) => {
     const button = el('button', { type: 'button', class: 'seg__option', role: 'radio', text: choice.label });
     button.dataset.side = choice.id;
     button.addEventListener('click', () => { value = choice.id; onPick(choice.id); });
@@ -53,7 +54,7 @@ function sideChooser(label, initial, onPick) {
   };
 }
 
-export function createPanel({ visibility, registry, systems, presets, onIsolated, onPreset, onGhost, onFrameOption, onMedicalOption, onLabelsOption }) {
+export function createPanel({ visibility, registry, systems, presets, injuries = [], onIsolated, onPreset, onInjury = () => {}, onGhost, onFrameOption, onMedicalOption, onLabelsOption }) {
   const refreshers = [];
   const regionChoosers = new Map();
   let lastSoftSide = visibility.softSide;
@@ -63,7 +64,7 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
     for (const chooser of regionChoosers.values()) chooser.value = choice;
   };
 
-  // Collapsible sections (Highlights, Quick views) so users can free up room on a laptop screen.
+  // Collapsible sections (Highlights, Quick views, Common injuries) so users can free up room on a laptop screen.
   for (const button of document.querySelectorAll('.section__toggle[aria-controls]')) {
     const body = $(button.getAttribute('aria-controls'));
     if (!body) continue;
@@ -92,6 +93,35 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
     });
   }
 
+  // ----- Common injuries -----
+  const injurySide = sideChooser('Side for common injuries', 'right', () => refresh(), PAIR_CHOICES);
+  $('injury-side').append(injurySide.node);
+  refreshers.push(() => injurySide.refresh());
+
+  const injuryBox = $('injuries');
+  const injuryNote = $('injury-note');
+  if (!injuries.length) $('common-injuries').hidden = true;
+  for (const injury of injuries) {
+    const label = el('span', { class: 'injury__name', text: injury.label });
+    const children = injury.regionLabel
+      ? [label, el('span', { class: 'injury__region', text: injury.regionLabel })]
+      : [label];
+    const button = el('button', { type: 'button', class: 'button button--small injury' }, children);
+    button.dataset.injury = injury.id;
+    button.addEventListener('click', () => onInjury(injury, sidesOf(injurySide.value)));
+    injuryBox.append(button);
+    refreshers.push(() => {
+      const current = visibility.preset?.startsWith(`injury:${injury.id}|`) ?? false;
+      button.classList.toggle('is-current', current);
+      button.setAttribute('aria-pressed', String(current));
+    });
+  }
+  refreshers.push(() => {
+    const active = injuries.find((injury) => visibility.preset?.startsWith(`injury:${injury.id}|`));
+    injuryNote.hidden = !active?.summary;
+    injuryNote.textContent = active?.summary ?? '';
+  });
+
   // ----- Restore -----
   $('show-everything').addEventListener('click', () => visibility.showEverything());
   $('undo').addEventListener('click', () => visibility.undo());
@@ -116,6 +146,7 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
   const softSide = sideChooser('Side for soft tissue', 'both', (choice) => {
     setRegionChoosers(choice);
     presetSide.value = choice;
+    if (choice === 'left' || choice === 'right') injurySide.value = choice;
     if (!visibility.setSoftSide(choice)) refresh();
   });
   $('soft-side').append(softSide.node);
@@ -211,6 +242,7 @@ export function createPanel({ visibility, registry, systems, presets, onIsolated
       lastSoftSide = visibility.softSide;
       setRegionChoosers(current);
       presetSide.value = current;
+      if (current === 'left' || current === 'right') injurySide.value = current;
     }
     const iso = visibility.isolated;
     const isoKey = iso ? `${iso.region}|${[...iso.sides].sort().join('+')}` : null;

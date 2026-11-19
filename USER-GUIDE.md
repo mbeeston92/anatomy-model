@@ -19,10 +19,11 @@ An interactive 3D model of the adult male body for physiotherapy appointments. N
 
 ### Focusing on the injured area
 1. **Quick views** (e.g. *Knee – ligaments*, *Shoulder – rotator cuff*): pick **Left**, **Right** or **Both**, then click a view.
-2. **Soft-tissue side:** switch to **Left** or **Right** to show muscles, tendons, ligaments, cartilage, nerves and bursae on the injured side only while keeping the full skeleton on both sides. The region and quick-view side selectors move to match automatically.
-3. **Systems:** untick **Muscles** or **Bursae** to reveal deep ligaments, tendons, cartilage and nerves underneath.
-4. **Body regions:** choose **Left**, **Right** or **Both**, then press **Hide**, **Show** or **Isolate**.
-5. **Show everything / Undo / Redo:** press **Show everything** (or **`A`**) to bring all regions, systems and sides back while keeping your highlights. **`Ctrl+Z`** and **`Ctrl+Shift+Z`** undo and redo visibility and highlight changes.
+2. **Common injuries** (12 one-click demonstrations including *ACL tear*, *MCL sprain / tear*, *Lumbar disc herniation*, *Rotator cuff injury*, *Lateral ankle sprain*, *Achilles tendinopathy*, *Tennis elbow*, *Plantar fasciopathy*, *Gluteal tendinopathy*, *Patellar tendon overload*, *Hamstring strain* and *Calf strain*): choose **Left** or **Right** and click an injury to isolate the area, hide overlying muscle layers, frame the best angle, highlight the injured (Red) and strained/affected (Amber) structures, and show a short plain-English summary. Press **`Ctrl+Z`** to step back at any time.
+3. **Soft-tissue side:** switch to **Left** or **Right** to show muscles, tendons, ligaments, cartilage, nerves and bursae on the injured side only while keeping the full skeleton on both sides. The region, quick-view and injury side selectors move to match automatically.
+4. **Systems:** untick **Muscles** or **Bursae** to reveal deep ligaments, tendons, cartilage and nerves underneath.
+5. **Body regions:** choose **Left**, **Right** or **Both**, then press **Hide**, **Show** or **Isolate**.
+6. **Show everything / Undo / Redo:** press **Show everything** (or **`A`**) to bring all regions, systems and sides back while keeping your highlights. **`Ctrl+Z`** and **`Ctrl+Shift+Z`** undo and redo visibility and highlight changes.
 
 ### Naming and selecting structures
 - **Point** at any structure to see its plain-English name and side.
@@ -95,6 +96,8 @@ All structure names, sides and regions come from one spreadsheet: **`data/struct
    - `hideStructures`: single structure IDs from `data/structures-approved.csv` **without** `_l` or `_r` (for example `"muscle_gluteus_maximus"`).
    - `view`: `"front"`, `"back"`, `"left"`, `"right"`, `"top"`, `"outer"`, or `"inner"`.
 3. Save the file and refresh the browser to test it. A mistyped name is skipped safely and noted in the browser console (`F12`).
+
+To add or edit **Common injuries**, open **`public/data/injuries.json`** and follow the same format, adding `"extraRegions"` (optional) for multi-region conditions, `"highlights": { "red": [...], "amber": [...] }` (structure IDs without `_l` / `_r`), and `"summary"` for the plain-English note.
 
 ---
 

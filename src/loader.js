@@ -37,6 +37,19 @@ export async function loadPresets() {
   }
 }
 
+/** Common injury demonstrations. Optional, so a failure is not fatal. */
+export async function loadInjuries() {
+  try {
+    const response = await fetch(`${BASE}data/injuries.json`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    return (data.injuries ?? []).filter((injury) => injury.id && injury.label);
+  } catch (cause) {
+    console.warn('Common injuries could not be loaded (public/data/injuries.json):', cause);
+    return [];
+  }
+}
+
 /** Download a file, calling onBytes(count) as each piece arrives. */
 async function fetchWithProgress(url, onBytes, priority = 'auto') {
   const response = await fetch(url, { priority });

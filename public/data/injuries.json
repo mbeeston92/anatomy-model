@@ -1,0 +1,181 @@
+{
+  "injuries": [
+    {
+      "id": "acl-tear",
+      "label": "ACL tear",
+      "regionLabel": "Knee",
+      "isolate": "knee",
+      "hideSystems": ["muscle", "bursa"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["ligament_acl"],
+        "amber": ["cartilage_meniscus_medial", "cartilage_meniscus_lateral"]
+      },
+      "view": "back",
+      "summary": "The anterior cruciate ligament (ACL) sits deep inside the knee and controls forward slide and twisting of the shin bone. The medial and lateral menisci often take extra load or are injured alongside it."
+    },
+    {
+      "id": "mcl-sprain",
+      "label": "MCL sprain / tear",
+      "regionLabel": "Knee",
+      "isolate": "knee",
+      "hideSystems": ["muscle", "bursa"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["ligament_mcl"],
+        "amber": ["cartilage_meniscus_medial"]
+      },
+      "view": "inner",
+      "summary": "The medial collateral ligament (MCL) stabilises the inner side of the knee against inward force. Its deep fibres attach close to the medial meniscus."
+    },
+    {
+      "id": "disc-herniation",
+      "label": "Lumbar disc herniation",
+      "regionLabel": "Lower back",
+      "isolate": "abdomen and lower back (lumbar)",
+      "extraRegions": ["pelvis and hip"],
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["cartilage_disc_l4_l5"],
+        "amber": ["nerve_cauda_equina", "nerve_sciatic"]
+      },
+      "view": "back",
+      "summary": "The lower lumbar discs (shown here at L4/L5) sit just in front of the spinal nerve roots. Irritation near a nerve root can refer pain down the buttock and leg along the sciatic nerve."
+    },
+    {
+      "id": "rotator-cuff",
+      "label": "Rotator cuff injury",
+      "regionLabel": "Shoulder",
+      "isolate": "shoulder",
+      "hideSystems": [],
+      "hideStructures": [
+        "muscle_deltoid",
+        "muscle_trapezius_upper",
+        "muscle_trapezius_middle",
+        "muscle_trapezius_lower",
+        "muscle_pectoralis_major",
+        "muscle_latissimus_dorsi"
+      ],
+      "highlights": {
+        "red": ["muscle_supraspinatus"],
+        "amber": ["bursa_subacromial", "tendon_biceps_long_head"]
+      },
+      "view": "back",
+      "summary": "Supraspinatus runs along the top of the shoulder blade to help lift and steady the arm. Irritation here often involves the nearby subacromial bursa and long head of the biceps tendon."
+    },
+    {
+      "id": "ankle-sprain",
+      "label": "Lateral ankle sprain",
+      "regionLabel": "Ankle",
+      "isolate": "ankle and foot",
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["ligament_atfl"],
+        "amber": ["ligament_cfl"]
+      },
+      "view": "outer",
+      "summary": "Rolling the ankle inwards stretches the outer ankle ligaments—most commonly the anterior talofibular ligament (ATFL) first, and the calcaneofibular ligament (CFL) in more severe sprains."
+    },
+    {
+      "id": "achilles-tendinopathy",
+      "label": "Achilles tendinopathy",
+      "regionLabel": "Ankle / calf",
+      "isolate": "lower leg",
+      "extraRegions": ["ankle and foot"],
+      "hideSystems": [],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["tendon_achilles"],
+        "amber": ["muscle_gastrocnemius_medial", "muscle_gastrocnemius_lateral", "muscle_soleus"]
+      },
+      "view": "back",
+      "summary": "The Achilles tendon joins the calf muscles (gastrocnemius and soleus) to the heel bone and absorbs load during walking, running and jumping."
+    },
+    {
+      "id": "tennis-elbow",
+      "label": "Tennis elbow",
+      "regionLabel": "Elbow",
+      "isolate": "elbow",
+      "hideSystems": [],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["tendon_common_extensor"],
+        "amber": ["muscle_ecrb"]
+      },
+      "view": "outer",
+      "summary": "Overload of the common wrist-extensor tendon on the outer elbow (especially extensor carpi radialis brevis), typically felt when gripping, typing or lifting."
+    },
+    {
+      "id": "plantar-fasciopathy",
+      "label": "Plantar fasciopathy",
+      "regionLabel": "Foot",
+      "isolate": "ankle and foot",
+      "hideSystems": ["muscle"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["ligament_plantar_fascia"],
+        "amber": ["bone_calcaneus", "tendon_achilles"]
+      },
+      "view": "inner",
+      "summary": "The plantar fascia is a thick band of connective tissue along the sole of the foot that supports the arch and attaches into the underside of the heel bone, working closely with the Achilles tendon."
+    },
+    {
+      "id": "gluteal-tendinopathy",
+      "label": "Gluteal tendinopathy",
+      "regionLabel": "Hip",
+      "isolate": "pelvis and hip",
+      "hideSystems": [],
+      "hideStructures": ["muscle_gluteus_maximus"],
+      "highlights": {
+        "red": ["tendon_gluteus_medius"],
+        "amber": ["muscle_gluteus_medius", "bursa_trochanteric_gluteus_medius", "tendon_itb"]
+      },
+      "view": "outer",
+      "summary": "The gluteus medius tendon attaches onto the outer hip bone beneath the iliotibial band (ITB) and beside the trochanteric bursa, helping steady the pelvis on one leg."
+    },
+    {
+      "id": "patellar-tendinopathy",
+      "label": "Patellar tendon overload",
+      "regionLabel": "Knee",
+      "isolate": "knee",
+      "hideSystems": ["bursa"],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["tendon_quadriceps_patellar"],
+        "amber": ["cartilage_articular_patella", "bone_patella"]
+      },
+      "view": "front",
+      "summary": "The quadriceps and patellar tendon transfer force from the thigh muscles across the kneecap to the shin bone, commonly overloaded by jumping, squatting or stairs."
+    },
+    {
+      "id": "hamstring-strain",
+      "label": "Hamstring strain",
+      "regionLabel": "Thigh",
+      "isolate": "thigh",
+      "hideSystems": [],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["muscle_biceps_femoris"],
+        "amber": ["muscle_semitendinosus", "muscle_semimembranosus", "tendon_hamstring_origin"]
+      },
+      "view": "back",
+      "summary": "The hamstrings run down the back of the thigh from the sitting bone to the knee. Biceps femoris (outer hamstring) is the most common strain site during sprinting or sudden stretching."
+    },
+    {
+      "id": "calf-strain",
+      "label": "Calf strain",
+      "regionLabel": "Lower leg",
+      "isolate": "lower leg",
+      "hideSystems": [],
+      "hideStructures": [],
+      "highlights": {
+        "red": ["muscle_gastrocnemius_medial"],
+        "amber": ["muscle_gastrocnemius_lateral", "muscle_soleus", "tendon_achilles"]
+      },
+      "view": "back",
+      "summary": "Calf strains most often affect the inner head of gastrocnemius where it narrows towards the Achilles tendon, especially during sudden push-off or running."
+    }
+  ]
+}

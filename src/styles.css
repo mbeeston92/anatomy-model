@@ -98,6 +98,21 @@ body { background: var(--ground); overflow: hidden; }
 .presets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .preset { padding: 6px 10px; line-height: 1.2; text-align: left; min-height: 48px; }
 
+.injuries { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.injury {
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  padding: 6px 10px; line-height: 1.2; text-align: left; min-height: 48px;
+}
+.injury__name { font-size: 0.875rem; font-weight: 700; }
+.injury__region { font-size: 0.75rem; font-weight: 400; color: var(--ink-soft); }
+.injury.is-current .injury__region { color: rgba(255, 255, 255, 0.88); }
+.injury-note {
+  margin: 10px 0 0; padding: 10px 12px;
+  border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius);
+  background: #f4f9fb; color: var(--ink); font-size: 0.875rem; line-height: 1.4;
+}
+.injury-note[hidden] { display: none; }
+
 .restore {
   position: sticky; top: -18px; z-index: 2;
   display: flex; gap: 8px;

@@ -7,7 +7,7 @@ import * as THREE from 'three';
 import { createStage } from './scene.js';
 import { createMaterials, createLooks } from './materials.js';
 import { createRegistry } from './registry.js';
-import { createModelLoader, loadStructureData, loadPresets } from './loader.js';
+import { createModelLoader, loadStructureData, loadPresets, loadInjuries } from './loader.js';
 import { createCameraRig } from './camera.js';
 import { createUI, listInWords } from './ui.js';
 import { createVisibility } from './visibility.js';
@@ -111,8 +111,8 @@ function setUpStage() {
   return true;
 }
 
-function frameRegion(region, sides, view = null) {
-  const box = visibility.frameBox(region, sides);
+function frameRegion(region, sides, view = null, options = {}) {
+  const box = visibility.frameBox(region, sides, options);
   if (box) rig.frame(box, { view });
 }
 
@@ -199,16 +199,24 @@ async function start() {
         onPick: (id) => selection.select(id),
         onHover: (id) => selection.setHover(id, false),
       });
+      const [presets, injuries] = await Promise.all([loadPresets(), loadInjuries()]);
       panel = createPanel({
         visibility,
         registry,
         systems: data.systems,
-        presets: await loadPresets(),
+        presets,
+        injuries,
         onIsolated: (region, sides) => { if (frameOnIsolate) frameRegion(region, sides); },
         onPreset: (preset, sides) => {
           const isolated = visibility.applyPreset(preset, sides);
-          if (isolated) frameRegion(isolated.region, isolated.sides, presetView(preset.view, sides));
+          if (isolated) frameRegion(isolated.region, isolated.sides, presetView(preset.view, sides), { extraRegions: isolated.extraRegions });
           else if (preset.view) rig.goTo(presetView(preset.view, sides) ?? 'front');
+        },
+        onInjury: (injury, sides) => {
+          selection.deselect();
+          const isolated = visibility.applyPreset(injury, sides, { prefix: 'injury:' });
+          if (isolated) frameRegion(isolated.region, sides, presetView(injury.view, sides), { extraRegions: isolated.extraRegions, includeHighlights: true });
+          else if (injury.view) rig.goTo(presetView(injury.view, sides) ?? 'front');
         },
         onGhost: (on) => visibility.setGhost(on),
         onFrameOption: (on) => { frameOnIsolate = on; },

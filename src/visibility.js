@@ -44,7 +44,13 @@ const emptyState = () => ({
 
 const serialise = (s) => JSON.stringify({
   hidden: [...s.hidden].sort(),
-  isolated: s.isolated && { region: s.isolated.region, sides: [...s.isolated.sides].sort() },
+  isolated: s.isolated && {
+    region: s.isolated.region,
+    sides: [...s.isolated.sides].sort(),
+    ...(s.isolated.extra?.length
+      ? { extra: s.isolated.extra.map((ex) => ({ region: ex.region, sides: [...ex.sides].sort() })) }
+      : {}),
+  },
   softSide: s.softSide,
   systemsOff: [...s.systemsOff].sort(),
   structuresOff: [...s.structuresOff].sort(),
@@ -109,8 +115,11 @@ export function createVisibility({ registry, materials, looks = null, onChange =
     }
 
     const iso = s.isolated;
-    if (iso && d.regions.includes(iso.region) && (d.side === 'midline' || iso.sides.includes(d.side))) {
-      return 'shown';
+    if (iso) {
+      if (d.regions.includes(iso.region) && (d.side === 'midline' || iso.sides.includes(d.side))) return 'shown';
+      if (iso.extra?.some((ex) => d.regions.includes(ex.region) && (d.side === 'midline' || ex.sides.includes(d.side)))) {
+        return 'shown';
+      }
     }
     const regionHidden = (region) => (d.side === 'midline'
       ? SIDES.every((side) => s.hidden.has(key(region, side)))
@@ -173,14 +182,19 @@ export function createVisibility({ registry, materials, looks = null, onChange =
 
   // ----- Actions -----
 
-  function isolateIn(s, region, sides) {
+  function isolateIn(s, region, sides, extra = []) {
+    const kept = new Map([[region, sides]]);
+    for (const ex of extra) kept.set(ex.region, ex.sides);
     s.hidden = new Set();
     for (const r of regions) {
+      const keepSides = kept.get(r) ?? [];
       for (const side of SIDES) {
-        if (r !== region || !sides.includes(side)) s.hidden.add(key(r, side));
+        if (!keepSides.includes(side)) s.hidden.add(key(r, side));
       }
     }
-    s.isolated = { region, sides: [...sides] };
+    s.isolated = extra.length
+      ? { region, sides: [...sides], extra: extra.map((ex) => ({ region: ex.region, sides: [...ex.sides] })) }
+      : { region, sides: [...sides] };
   }
 
   const isIsolated = (region, sides) => {
@@ -268,39 +282,65 @@ export function createVisibility({ registry, materials, looks = null, onChange =
   }
 
   /**
-   * Apply a quick view from presets.json. `sides` is the side chosen in the
-   * panel. Returns the region and sides that were isolated (for the camera).
+   * Apply a quick view (presets.json) or common injury (injuries.json).
+   * `sides` is the side chosen in the panel. Returns what was isolated (for the camera).
    */
-  function applyPreset(preset, sides) {
+  function applyPreset(preset, sides, { prefix = '' } = {}) {
     const region = preset.isolate ?? null;
     if (region && !regions.includes(region)) {
-      console.warn(`Quick view "${preset.label}": unknown region "${region}"`);
+      console.warn(`Preset "${preset.label}": unknown region "${region}"`);
       return null;
     }
+    const extraRegions = [];
+    for (const r of preset.extraRegions ?? []) {
+      if (regions.includes(r)) extraRegions.push(r);
+      else console.warn(`Preset "${preset.label}": unknown extra region "${r}"`);
+    }
     const list = region ? sidesFor(region, sides) : sides;
+    const extra = extraRegions.map((r) => ({ region: r, sides: sidesFor(r, sides) }));
     const systemsOff = new Set();
     for (const id of preset.hideSystems ?? []) {
       if (registry.systems.some((sys) => sys.id === id)) systemsOff.add(id);
-      else console.warn(`Quick view "${preset.label}": unknown system "${id}"`);
+      else console.warn(`Preset "${preset.label}": unknown system "${id}"`);
     }
-    const structuresOff = new Set();
-    for (const base of preset.hideStructures ?? []) {
+    const matchEntries = (base, allowedSides) => {
       const found = [base, `${base}_l`, `${base}_r`]
         .map((id) => registry.get(id))
-        .filter((e) => e && (e.data.side === 'midline' || list.includes(e.data.side)));
+        .filter((e) => e && (e.data.side === 'midline' || allowedSides.includes(e.data.side)));
       if (!registry.has(base) && !registry.has(`${base}_l`) && !registry.has(`${base}_r`)) {
-        console.warn(`Quick view "${preset.label}": unknown structure "${base}"`);
+        console.warn(`Preset "${preset.label}": unknown structure "${base}"`);
       }
-      for (const e of found) structuresOff.add(e.id);
+      return found;
+    };
+    const structuresOff = new Set();
+    for (const base of preset.hideStructures ?? []) {
+      for (const e of matchEntries(base, list)) structuresOff.add(e.id);
     }
+    // Common injuries provide a highlights map ({ red: [...], amber: [...] });
+    // regular quick views leave existing highlights untouched.
+    let nextMarks = null;
+    if (preset.highlights) {
+      nextMarks = [];
+      const pickSides = sides?.length ? sides : SIDES;
+      for (const [colour, bases] of Object.entries(preset.highlights)) {
+        for (const base of bases ?? []) {
+          for (const e of matchEntries(base, pickSides)) {
+            if (!nextMarks.some(([id]) => id === e.id)) nextMarks.push([e.id, colour]);
+          }
+        }
+      }
+    }
+    const presetSides = sides?.length ? sides : list;
     commit((s) => {
-      Object.assign(s, emptyState(), { marks: s.marks, spots: s.spots });
-      if (region) isolateIn(s, region, list);
+      Object.assign(s, emptyState(), nextMarks
+        ? { marks: nextMarks, spots: [] }
+        : { marks: s.marks, spots: s.spots });
+      if (region) isolateIn(s, region, list, extra);
       s.systemsOff = systemsOff;
       s.structuresOff = structuresOff;
-      s.preset = `${preset.id}|${[...list].sort().join('+')}`;
+      s.preset = `${prefix}${preset.id}|${[...presetSides].sort().join('+')}`;
     });
-    return region ? { region, sides: list } : null;
+    return region ? { region, sides: list, extraRegions } : null;
   }
 
   // ----- Highlights (injury colours) and shaded pain areas -----
@@ -348,20 +388,34 @@ export function createVisibility({ registry, materials, looks = null, onChange =
   }
 
   /**
-   * The box the camera should frame for a region: the structures that belong
-   * to that region alone (so "knee" frames the joint, not the whole femur).
+   * The box the camera should frame for a region (or regions): the structures
+   * that belong to each region alone (so "knee" frames the joint, not the whole femur).
+   * When `includeHighlights` is set (common injuries), every shown highlighted
+   * structure is also kept inside the frame.
    */
-  function frameBox(region, sides) {
-    const list = sidesFor(region, sides);
-    const inRegion = registry.byRegion(region).filter((e) => e.mesh
-      && (e.data.side === 'midline' || list.includes(e.data.side)));
-    const visible = inRegion.filter((e) => statusOf(e) === 'shown');
-    const pool = visible.length ? visible : inRegion;
-    const core = pool.filter((e) => e.data.regions.length === 1);
-    const chosen = core.length ? core : pool;
-    if (!chosen.length) return null;
+  function frameBox(region, sides, { extraRegions = [], includeHighlights = false } = {}) {
     const box = new THREE.Box3();
-    for (const e of chosen) box.expandByObject(e.mesh);
+    let hasCore = false;
+    for (const r of [region, ...extraRegions]) {
+      const list = sidesFor(r, sides);
+      const inRegion = registry.byRegion(r).filter((e) => e.mesh
+        && (e.data.side === 'midline' || list.includes(e.data.side)));
+      const visible = inRegion.filter((e) => statusOf(e) === 'shown');
+      const pool = visible.length ? visible : inRegion;
+      const core = pool.filter((e) => e.data.regions.length === 1);
+      if (core.length) {
+        hasCore = true;
+        for (const e of core) box.expandByObject(e.mesh);
+      } else if (!includeHighlights || !highlighted.length) {
+        for (const e of pool) box.expandByObject(e.mesh);
+      }
+    }
+    if (includeHighlights && highlighted.length) {
+      for (const { mesh } of highlighted) box.expandByObject(mesh);
+      // If none of the regions had single-region structures (e.g. thigh), the
+      // highlights themselves give a much cleaner frame than long nerves crossing it.
+      void hasCore;
+    }
     return box.isEmpty() ? null : box;
   }
 
