@@ -130,7 +130,7 @@ dist/                         Git-ignored build output.
 
 All six check scripts (`check`, `check:regions`, `check:select`, `check:highlights`, `check:side`, `check:polish`), Chrome/Edge cross-browser tests, and `npm.cmd run build` pass with zero console errors or warnings.
 
-- **Stage 1a/1b — data and models.** 817 structures (bone 208, cartilage 88, ligament 116, tendon 52, muscle 225, nerve 64, bursa 64). 537 exported meshes; 280 left soft-tissue structures are mirrored from the right in the app. 1.73 M triangles shown with both sides. No export warnings; ids match both ways.
+- **Stage 1a/1b — data and models.** 818 structures (bone 208, cartilage 88, ligament 117 incl. linea alba, tendon 52, muscle 225, nerve 64, bursa 64). 538 exported meshes; 280 left soft-tissue structures are mirrored from the right in the app. 1.73 M triangles shown with both sides; 7.86 MB total models. No export warnings; ids match both ways.
 - **Stage 2 — viewer.** Progressive load (bones first), progress bar, partial-failure message with retry, lights that follow the camera, depth-bias ordering, render-on-demand, camera presets, smooth wheel zoom to pointer (`WHEEL_ZOOM_RATE = 0.00154`, user-approved), double-click to centre. 60 fps on Radeon 780M integrated graphics at 1440x810.
 - **Stage 3 — regions.** Hide/Show/Isolate per region and side, system tick boxes, quick views from `presets.json`, Show everything, Undo/Redo (100 steps, Ctrl+Z / Ctrl+Shift+Z / Ctrl+Y), ghost outlines of hidden regions (60 fps verified), zoom-on-isolate option.
 - **Stage 4 — names.** Hover label + outline, click select, info card (Hide this / Isolate this / Zoom to this), search with fuzzy matching and Left/Right buttons, medical-name option, labels mode.

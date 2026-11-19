@@ -47,12 +47,12 @@
    "id": "ligament",
    "label": "Ligaments",
    "file": "models/ligaments.glb",
-   "bytes": 502064,
+   "bytes": 505552,
    "colour": "#C9CEC6",
    "opacity": 1,
    "material": "mat_ligament",
-   "meshes": 67,
-   "triangles": 64700
+   "meshes": 68,
+   "triangles": 65038
   },
   {
    "id": "tendon",
@@ -4053,6 +4053,17 @@
    "regions": [
     "abdomen and lower back (lumbar)",
     "pelvis and hip"
+   ],
+   "mirrorOf": null
+  },
+  {
+   "id": "ligament_linea_alba",
+   "name": "Linea alba (midline abdominal connective tissue)",
+   "medicalName": "Linea alba",
+   "system": "ligament",
+   "side": "midline",
+   "regions": [
+    "abdomen and lower back (lumbar)"
    ],
    "mirrorOf": null
   },

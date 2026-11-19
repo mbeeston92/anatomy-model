@@ -533,6 +533,11 @@ Not decided. See "Joint movement: dropped" below for what is still open.
   - Interactive checks (soft-tissue side switch, search, selection, red highlight, `?` help overlay) all passed on the live URL.
   - Privacy verified on the live URL: 0 cookies, 0 localStorage/sessionStorage entries, 0 third-party requests.
 
+### Follow-up: Linea alba added (19 November 2026)
+
+- Added **`ligament_linea_alba`** (*Linea alba (midline abdominal connective tissue)*, medical name *Linea alba*, midline, `abdomen and lower back (lumbar)`, system `ligament`) to `data/structures-approved.csv` (and `scripts/propose_structures.py`).
+- Rebuilt models via `npm.cmd run build:models -- --no-previews`: now **818 structures** (538 exported meshes, 280 mirrored; `ligaments.glb` is 68 meshes, 0.48 MB; total models 7.86 MB). Closes the front abdominal midline gap between the rectus abdominis muscles noted in Stage 1b.
+
 ### Next step
 
 All stages in the brief are complete. Future updates (renaming structures in `data/structures-approved.csv` or adding quick views in `public/data/presets.json`) are documented in `USER-GUIDE.md`.

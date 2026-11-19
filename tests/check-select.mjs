@@ -113,7 +113,7 @@ await page.waitForFunction(() => window.__viewer?.stats.allLoadedAt, null, { tim
 await settle();
 await page.waitForFunction(() => window.__viewer.picker.pending === 0, null, { timeout: 60000 });
 const total = (await counts()).shown;
-check('everything shown at the start', total === 817, `${total} structures`);
+check('everything shown at the start', total === 818, `${total} structures`);
 check('nothing selected at the start', await cardName() === null && await page.isVisible('#info-empty'));
 
 // ----- Speed of the hit test on the whole body -----

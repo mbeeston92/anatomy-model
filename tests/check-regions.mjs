@@ -61,7 +61,7 @@ await page.goto(url);
 await page.waitForFunction(() => window.__viewer?.stats.allLoadedAt, null, { timeout: 120000 });
 await settle();
 const total = (await counts()).shown;
-check('everything shown at the start', total === 817, `${total} structures`);
+check('everything shown at the start', total === 818, `${total} structures`);
 await shot('10-panel-start');
 
 // ----- Isolate left knee -----

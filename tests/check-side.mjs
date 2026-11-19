@@ -59,7 +59,7 @@ const BONES = [
   'bone_clavicle_l', 'bone_clavicle_r', 'bone_sacrum', 'bone_frontal',
 ];
 const MIDLINE_SOFT = [
-  'cartilage_disc_l4_l5', 'cartilage_pubic_symphysis',
+  'cartilage_disc_l4_l5', 'cartilage_pubic_symphysis', 'ligament_linea_alba',
 ];
 const BILATERAL_MIDLINE = ['muscle_diaphragm'];
 
@@ -68,7 +68,7 @@ await page.waitForFunction(() => window.__viewer?.stats.allLoadedAt, null, { tim
 await settle();
 
 const total = (await counts()).shown;
-check('everything shown at the start', total === 817, `${total} structures`);
+check('everything shown at the start', total === 818, `${total} structures`);
 check('soft-tissue side starts on Both',
   await page.getAttribute('#soft-side [data-side="both"]', 'aria-checked') === 'true'
   && await page.evaluate(() => window.__viewer.visibility.softSide === null));
@@ -142,7 +142,7 @@ check('Undo (Ctrl+Z) steps back to Left and moves region choosers to Left',
 
 await page.keyboard.press('Control+z');
 await settle();
-check('Undo again steps back to Both and restores all 817 structures',
+check('Undo again steps back to Both and restores all 818 structures',
   await page.evaluate(() => window.__viewer.visibility.softSide === null)
   && (await counts()).shown === total
   && await regionChoosersOn('both') === 10);

@@ -52,12 +52,12 @@
   }
  },
  "totals": {
-  "structures": 817,
-  "meshes_exported": 537,
+  "structures": 818,
+  "meshes_exported": 538,
   "mirrored_in_app": 280,
-  "triangles_source_both_sides": 2565860,
-  "triangles_in_files": 1106100,
-  "triangles_displayed_both_sides": 1731292
+  "triangles_source_both_sides": 2566198,
+  "triangles_in_files": 1106438,
+  "triangles_displayed_both_sides": 1731630
  },
  "by_system": {
   "bone": {
@@ -81,14 +81,14 @@
    "bytes_uncompressed": 1941292
   },
   "ligament": {
-   "structures": 116,
-   "meshes_exported": 67,
-   "triangles_source_both_sides": 105696,
-   "triangles_in_files": 64700,
-   "triangles_displayed_both_sides": 105696,
+   "structures": 117,
+   "meshes_exported": 68,
+   "triangles_source_both_sides": 106034,
+   "triangles_in_files": 65038,
+   "triangles_displayed_both_sides": 106034,
    "file": "ligaments.glb",
-   "meshes": 67,
-   "bytes_uncompressed": 1241064
+   "meshes": 68,
+   "bytes_uncompressed": 1247900
   },
   "tendon": {
    "structures": 52,
@@ -2990,6 +2990,14 @@
    "triangles_source": 1056,
    "triangles_export": 1056,
    "triangles_displayed": 1056,
+   "simplified": false
+  },
+  "ligament_linea_alba": {
+   "system": "ligament",
+   "mirror_of": null,
+   "triangles_source": 338,
+   "triangles_export": 338,
+   "triangles_displayed": 338,
    "simplified": false
   },
   "ligament_anterior_longitudinal": {

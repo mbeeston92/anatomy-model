@@ -312,6 +312,8 @@ lig("sacrotuberous", "Sacrotuberous ligament", "Sacrotuberous ligament (sacrum t
 lig("sacrospinous", "Sacrospinous ligament", "Sacrospinous ligament", "Ligamentum sacrospinale", PH)
 lig("iliolumbar", "Iliolumbar ligament", "Iliolumbar ligament (lower spine to pelvis)", "Ligamentum iliolumbale", [LU, PH])
 lig("inguinal", "Inguinal ligament", "Inguinal ligament (groin)", "Ligamentum inguinale", [LU, PH])
+lig("linea_alba", "Linea alba", "Linea alba (midline abdominal connective tissue)", "Linea alba", LU,
+    "A fibrous band (aponeurosis) down the middle of the abdomen, filed under 'ligament' because there is no fascia system.", paired=False)
 
 SPINE_NOTE = ("One object for the whole spine in source, so it cannot be hidden region by region "
               "unless it is cut at export.")
