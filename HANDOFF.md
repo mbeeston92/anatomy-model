@@ -110,7 +110,7 @@ src/
   visibility.js  THE state store: regions hidden/isolated, systems off, single structures, highlights, pain spots; undo/redo; ghost; applies materials/visibility to meshes.
   panel.js       Side panel: systems, muscle layers, cross-section slice, region rows, quick views, common injuries, options.
   layers.js      Anatomical 3-layer muscle depth classification (superficial / intermediate / deep) for 113 unique muscles.
-  slice.js       3D cross-section clipping plane (Horizontal / Front–back / Side–side, Flip side, cut-frame guide).
+  slice.js       3D cross-section clipping plane with stencil-based solid tissue/highlight cross-section caps (Horizontal / Front–back / Side–side, Flip side, cut-frame guide).
   picking.js     three-mesh-bvh raycast picking; index built in 6 ms slices.
   outline.js     Selection/hover outline (mask pass) and highlight glow pass.
   selection.js   Hover tooltip, click select, info card, Hide/Isolate/Zoom this.

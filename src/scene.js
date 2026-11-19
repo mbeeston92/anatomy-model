@@ -11,6 +11,7 @@ export function createStage(canvas, container, { highlightColours = [] } = {}) {
     canvas,
     antialias: true,
     alpha: true,                 // the page's backdrop shows through
+    stencil: true,               // needed for solid cross-section slice caps
     powerPreference: 'high-performance',
   });
   renderer.setClearColor(0x000000, 0);
@@ -74,6 +75,7 @@ export function createStage(canvas, container, { highlightColours = [] } = {}) {
   const glow = createGlow(renderer, camera, highlightColours);
   const noClips = [];
   const activeClips = [null];
+  let afterScene = null;         // optional pass right after the main scene (e.g. solid slice caps)
   let plain = false;             // presentation view and saved images: no selection outline
 
   function setClipPlane(plane) {
@@ -87,6 +89,7 @@ export function createStage(canvas, container, { highlightColours = [] } = {}) {
 
   function render() {
     renderer.render(scene, camera);
+    afterScene?.();                 // solid cross-section caps, when slicing is active
     glow.render();                  // injury highlights, if any
     if (!plain) outline.render();   // selected / hovered structure, if any
   }
@@ -114,6 +117,7 @@ export function createStage(canvas, container, { highlightColours = [] } = {}) {
   resize();
   return {
     renderer, scene, camera, lights, outline, glow, resize, render, setMoving, snapshot, setClipPlane,
+    setAfterScene(fn) { afterScene = fn; },
     setPlain(on) { plain = !!on; },
   };
 }

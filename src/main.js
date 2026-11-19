@@ -169,7 +169,9 @@ async function start() {
       });
       slice = createSlice({
         stage,
+        registry,
         visibility,
+        palette,
         onChange: () => { panel?.refresh(); selection?.refresh(); requestRender(); },
       });
       picker = createPicker({

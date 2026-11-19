@@ -135,6 +135,52 @@ const headHitClipped = await page.evaluate(() => {
 check('picking ignores the clipped-away upper half (head cannot be picked)', headHitClipped === null, `got ${headHitClipped}`);
 await shot('63-slice-horizontal');
 
+// Tilt down onto a horizontal mid-thigh cross-section (all muscles + both femurs + nerves)
+await page.evaluate(() => {
+  const { slice, rig, visibility } = window.__viewer;
+  slice.setFraction(0.36);
+  const box = visibility.frameBox('thigh', ['left', 'right']);
+  rig.frame(box, { view: 'front' });
+});
+await settle();
+// Orbit up 38 degrees so the solid axial cross-section (muscles + bones + nerves) is clearly visible
+await page.mouse.move(900, 420);
+await page.mouse.down();
+await page.mouse.move(900, 620, { steps: 12 });
+await page.mouse.up();
+await settle();
+await shot('70-slice-horizontal-thigh');
+
+// Measure FPS while orbiting with an active solid cross-section slice
+const sliceFps = await page.evaluate(() => new Promise((resolve) => {
+  const { rig, stage } = window.__viewer;
+  const times = [];
+  let prev = performance.now();
+  let n = 0;
+  function step(now) {
+    times.push(now - prev);
+    prev = now;
+    const { x, z } = stage.camera.position;
+    const c = Math.cos(0.012), s = Math.sin(0.012);
+    stage.camera.position.x = x * c - z * s;
+    stage.camera.position.z = x * s + z * c;
+    stage.camera.lookAt(0, 0.62, 0);
+    window.__viewer.requestRender();
+    if (++n < 40) requestAnimationFrame(step);
+    else {
+      const avgMs = times.slice(3).reduce((a, b) => a + b, 0) / (times.length - 3);
+      resolve(Math.round(1000 / avgMs));
+    }
+  }
+  requestAnimationFrame(step);
+}));
+check('solid cross-section slice renders smoothly while moving', sliceFps >= 40, `${sliceFps} fps`);
+
+// Reset view for Flip side check
+await page.click('[data-view="reset"]');
+await page.evaluate(() => window.__viewer.slice.setFraction(0.5));
+await settle();
+
 // Flip side keeps the upper half instead
 await page.click('#slice-flip');
 await settle();
@@ -176,6 +222,25 @@ await settle();
 await page.click('#slice-axis [data-slice="z"]');
 await settle();
 await shot('65-slice-coronal-knee');
+
+// Highlighted injury sliced sagittally (Lumbar disc herniation: solid Red L4/L5 disc + solid bone + open canal)
+await page.click('#show-everything');
+await page.click('#injuries [data-injury="disc-herniation"]');
+await settle();
+await page.uncheck('[data-system="muscle"]');
+await page.evaluate(() => {
+  const { rig, visibility } = window.__viewer;
+  rig.frame(visibility.frameBox('abdomen and lower back (lumbar)', ['left', 'right']), { view: 'left' });
+});
+await settle();
+await page.click('#slice-axis [data-slice="x"]');
+await settle();
+await shot('71-slice-herniation-highlight');
+
+// Flip side + rotate to intact rear side to verify zero stray caps from behind
+await page.click('#slice-flip');
+await settle();
+await shot('72-slice-flipped-behind');
 
 // Show everything clears the slice plane too
 await page.click('#show-everything');

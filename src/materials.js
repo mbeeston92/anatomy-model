@@ -27,7 +27,7 @@ const spotUniforms = {
   spotCount: { value: 0 },
 };
 
-function withSpots(material) {
+export function withSpots(material) {
   material.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, spotUniforms);
     shader.vertexShader = shader.vertexShader

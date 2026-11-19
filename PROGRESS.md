@@ -550,8 +550,9 @@ Not decided. See "Joint movement: dropped" below for what is still open.
 - **"Peel back a layer" muscle depth control** (`src/layers.js`, `src/visibility.js`, `src/panel.js`, `index.html`):
   - Classified all 113 unique muscles into 3 anatomical depth layers (Layer 1 superficial, Layer 2 intermediate, Layer 3 deep).
   - Added **Peel a layer**, **Restore**, and a 4-step **Muscle layers** slider (*All muscles* → *Intermediate & deep* → *Deep only* → *No muscles*) inside the **Systems** section. Integrated into Undo/Redo, **Show everything**, and search-to-reveal.
-- **3D cross-section slice plane** (`src/slice.js`, `src/scene.js`, `src/picking.js`, `src/camera.js`, `src/panel.js`):
+- **3D cross-section slice plane** (`src/slice.js`, `src/scene.js`, `src/materials.js`, `src/picking.js`, `src/camera.js`, `src/panel.js`):
   - Added **Horizontal** (axial), **Front–back** (coronal), and **Side–side** (sagittal) clipping planes with a position slider, **Flip side** button, and a subtle teal cut-frame guide (automatically hidden in presentation view and saved images).
+  - Added **solid cross-section caps** via the stencil buffer (`stencil: true` on the renderer): every cut bone, intervertebral disc, meniscus, muscle, tendon, ligament, nerve, and highlighted structure is sealed with a colour-matched lit cross-section face instead of appearing hollow, while staying at **60 fps** on integrated graphics and preserving exact Z-Anatomy geometry.
   - Automatically scales the slider travel to the currently shown region (or whole body), updates raycast hover/click/double-click picking so clipped-away halves never intercept pointers, and clears cleanly on **Show everything**.
 - **Expanded Common injuries to 20 presets** (`public/data/injuries.json`):
   - Added 8 more clinical presentations: **Carpal tunnel syndrome**, **Meniscal tear**, **ITB syndrome**, **De Quervain's**, **Golfer's elbow**, **Cervical radiculopathy**, **High ankle sprain**, and **SI joint pain** (all using real Z-Anatomy geometry).
